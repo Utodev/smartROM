@@ -85,7 +85,7 @@ START           DI
 ; ------------ Try to load ROM entries
                 CALL LoadROMEntries
                 JR C, GUIStart
-                LD L, 9                             
+                LD L, 2                             
                 CALL LoadROM
 
 GUIStart        CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
@@ -520,7 +520,14 @@ LoadROM             LD H, 0
                     LD D, H
                     LD E, L
                     LD IY, ROMDirectory
-                    ADD IY, DE     ; Now IX Points to entry
+                    ADD IY, DE     ; Now IY Points to entry
+
+                    _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
+                    AND 10111111b               ;
+                    LD E, A                     ;
+                    _SETREGB REG_DEVCONTROL     ;
+                    CALL ClearScreen            ; Also clear the screen before loading
+
 
 ; --- open file
                     LD      IX, ROMSEtFilename
@@ -532,6 +539,7 @@ LoadROM             LD H, 0
 ; -- Update CloseFile so it uses the proper file handler
                     LD (CloseFile + 1),A
                     LD (SeekLoopHandler+1),A
+                    LD (ReadROMHandler+1),A
 
 ; --- seek up to first ROM position
 
@@ -549,7 +557,7 @@ SeekSlot
                     LD E, A             ; Preserve file handler
                     LD A, (IY + 0)      ; Get Slot Number
                     OR A                   
-                    JR Z, ReadROM       ; Checks the OR above the LD A, if zero, it's first slot, skip loop
+                    JR Z, ReadROMFromFile ; Checks the OR above the LD A, if zero, it's first slot, skip loop
                     LD A, E             ; Restore file handler
                     LD B, (IY+0)        ; Get slot number again
 FSeekLoop           PUSH BC
@@ -562,32 +570,34 @@ SeekLoopHandler     LD A ,0              ; This is the file handler, that 0 is m
                     JR C, FSeekFail
                     POP BC
                     DJNZ FSeekLoop
-                    JR  ReadROM
+                    JR  AfterSeek
 FSeekFail           POP BC
                     RET                    
 
-; --- read ROM      
-ReadROM            LD IX, $C000
-                   LD BC, $4000
-                   RST $08
-                   DB F_READ
-
-; --- Close file
-CloseFile			LD 		A, 0
-					RST     $08
-                    DB      F_CLOSE
-
-PrepareROMs         _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
-                    AND 10111111b               ;
-                    LD E, A                     ;
-                    _SETREGB REG_DEVCONTROL     ;
-                    CALL ClearScreen
       
-                    ; Lets disable Timex Mode and set all attributes to black     
-                    XOR A
+;  --- Disable Timex Mode before loading any ROM to avoid writing at $6000 being visible on screen
+AfterSeek           XOR A
                     OUT (255),A                 ; Disable timex mode
                     OUT (254), A                 ; Border 0
 
+
+
+
+ReadROMPages        LD B, (IY+1)                ; Get number of slots for this ROM. B will count the number of slots left to save
+                    LD E, 8                     ; SRAM slot for System ROM 0 is slot 7 with MASTERMAPPER, the following ROM slots are 9, 10 and 11, so E will point to next SRAM slot to use
+RomPagesLoop        PUSH BC
+                    PUSH DE
+                    
+
+; --- read a 16K block ROM from file
+ReadROMFromFile     LD IX, $C000
+                    LD BC, $4000
+ReadROMHandler      LD A, 0                      ; the 0 is the file handler, updated above
+                    RST $08
+                    DB F_READ
+
+
+; --- Now go back to boot mode and put the ROM at C000 in the proper SRAM ROM slot
 
                     _SETREG REG_MASTERCONF, 1   ; Activate boot mode and disable DivMMC
                     _SETREG REG_MASTERMAPPER, 0   ; Make page selected at C000 be page 0, which happens to be the same page selected at C000 when boot mode is off
@@ -595,13 +605,25 @@ PrepareROMs         _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU 
                     LD DE, $6000
                     LD BC, $4000
                     LDIR                    ; Copy from C000 to 0000 (which in boot mode, is the BRAM)
-                    _SETREG REG_MASTERMAPPER, 8   ; System ROM 0
+                    POP DE                  ; restore E (slot number)
+                    _SETREGB REG_MASTERMAPPER   ; System ROM 
+                    INC E
+                    PUSH DE
                     LD HL, $6000
                     LD DE, $C000
                     LD BC, $4000
                     LDIR                    ; Copy back from BRAM to the proper slot
                     _SETREG REG_MASTERMAPPER, 0   ; Revert to normal mastermapper bank (probably not necessary)
                     _SETREG REG_MASTERCONF, 2   ; back to user mode and DivMMC Enabled
+                    POP DE
+                    POP BC
+                    DJNZ RomPagesLoop
+
+; --- Close file
+CloseFile			LD 		A, 0
+					RST     $08
+                    DB      F_CLOSE
+
 
 ; --- Now that the ROMs are at their proper places, let's go and load ROM settings
 
