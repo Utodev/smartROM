@@ -30,10 +30,9 @@
 ; the SD card instead of the RAM.
 
 
-;**************************************************************************************
-;                           VARIABLES AND DEFINES
-;**************************************************************************************
-
+;*****************************************************************************************************************************************************
+;   DEFINITIONS AND MACROS
+;*****************************************************************************************************************************************************
 
 
                 define VRAM_ADDR            $4000
@@ -62,17 +61,15 @@
                 define FA_WRITE		$02
                 define FA_CREATE_AL	$0C
 
+                define STARTLINE 0
+
 
                 INCLUDE "macros.inc"
 
-;**************************************************************************************
-;
-;                                  ROM STARTS HERE        
-;
-;
-;**************************************************************************************
 
-
+;*****************************************************************************************************************************************************
+;   MAIN
+;*****************************************************************************************************************************************************
 
 START           DI
                 LD SP, $C000
@@ -84,36 +81,41 @@ START           DI
                 CALL SetSpeed
                 CALL InitializeVars                 ; Restart this firmware variables
 
-                CALL LoadDefaultROM
 
+; ------------ Try to load ROM entries
+                CALL LoadROMEntries
+                JR C, GUIStart
+                LD L, 9                             
+                CALL LoadROM
+
+GUIStart        CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
                 CALL BootScreen
                 IM 1
                 EI
 
 Loop            JR Loop
 
-; ------- ROM FUNCTIONS ---------
-; Several useful ROM functions
-; -------------------------------
+;*****************************************************************************************************************************************************
+;   FUNCTIONS
+;*****************************************************************************************************************************************************
 
-; This routine shows the boot screen
-                define STARTLINE 0
-BootScreen      
-                CALL ClearScreen
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Shows the boot screen
+                
+BootScreen      CALL ClearScreen
                 CALL RestoreCursor
                 _WRITE "      ZX-Uno  SmartROM "
                 _WRITE FW_VERSION
                 _WRITE " - (C) Uto 2021. License: MIT"
 
-
                 LD C, 0
                 LD B, STARTLINE+1
                 CALL DrawHeaderFrame
 
-
                 ; Show Core ID
                 _PRINTAT 2, STARTLINE + 2
-                _WRITE "CoreID: "              
+                _WRITE "CoreID: "
                 CALL PrintCoreID
 
                 ;Show Timings status
@@ -147,8 +149,9 @@ BootScreenEnd   _PRINTAT 1, 21
                 _WRITE "<Break> for ROM Selection - <Edit> for Setup - <Ctrl+n> ROM #n"
                 RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints char provided at A register
 
-; Prints char provided at A register
 PrintChar       EXX
                 LD H, 0
                 LD L, A
@@ -168,8 +171,9 @@ PrintCharLoop   LD A, (HL)
                 EXX
                 RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets Turbo Speed at D
 
-; Sets Turbo Speed at D
 SetSpeed        LD A, E
                 AND 3
                 RRCA
@@ -181,12 +185,10 @@ SetSpeed        LD A, E
                 LD B, A
                 _SETREGB REG_SCANDBLCTRL
                 RET
+              
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints Zero terminated string placed pointed by top value in the stack
 
-                
-
-
-
-;Prints Zero terminated string placed pointed by top value in the stack
 PrintString     EX (SP),HL
 PrintStringLoop LD A,(HL)
                 OR A                  
@@ -198,9 +200,9 @@ PrintStringEnd  INC HL
                 EX (SP),HL
                 RET
 
-; 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Advances printing cursor one character
 
-; Advances printing cursor one character
 MoveCursorTmx   PUSH HL
                 PUSH DE
                 PUSH AF
@@ -225,7 +227,9 @@ MoveCursorExit  POP BC
                 POP HL
                 RET
 
-; Advances printing cursor one character
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Advances printing cursor one character
+
 MoveCursor      LD HL, V_PRINT_POS
                 INC (HL)
                 RET NZ
@@ -235,7 +239,8 @@ MoveCursor      LD HL, V_PRINT_POS
                 LD (HL), A
                 RET
 
-; Clears all pixels in screen area
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Clears all pixels in screen area
 ClearScreen     LD HL, VRAM_ADDR
                 LD BC, 192*32
                 CALL ClearMem
@@ -244,7 +249,8 @@ ClearScreen     LD HL, VRAM_ADDR
                 CALL ClearMem
                 RET
 
-; Clears (sets to 0, area at HL, BC length)                
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Clears (sets to 0, area at HL, BC length)                
 ClearMem        PUSH DE
                 XOR A
                 LD (HL),A
@@ -257,7 +263,9 @@ ClearMem        PUSH DE
                 RET
 
 
-; Sets Times HiResMode
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets Timex HiResMode
+
 TimexInit       _SETREG REG_DEVCONTROL, 11111011b ; Make sure bit 2, DI7FFD, is 0
                 _SETREG REG_DEVCTRL2,   11111100b ; make sure bits 0 and 1, DITIMEX and DIULAPLUS, value is 0
 
@@ -278,9 +286,9 @@ SetPalette		LD A, 24                ; Paper
                 CALL SetULAPlusReg
                 RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Writes value E to ULAPlus register A
 
-
-; Writes value E to ULAPlus register A
 SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
 				OUT (C),A
 				LD BC, ULAPLUS_DATA
@@ -288,7 +296,9 @@ SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
 				OUT (C),A
                 RET
 
-; Draws a specific full with box for header
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Draws a specific full with box for header
+
 DrawHeaderFrame CALL PrintAt
                 CALL PrintString
                 DB 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 18, 0
@@ -299,11 +309,10 @@ HeaderInner     CALL PrintString
                 CALL PrintString
                 DB 22, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 20, 0
                 RET
+             
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Draws a Box at Column C, line B, with D width and E height
 
-              
-
-
-; Draws a Box at Column C, line B, with D width and E height
 DrawBox         PUSH BC 
                 DEC D               ; Make the height and with -2, to count just the inner borders, not the corners
                 DEC D
@@ -353,23 +362,29 @@ BoxInner2Loop   LD A, ' '                 ; Filler spaces
                 LD A, 22                ; lower-left
                 CALL PrintChar
                 LD B, D
-BoxDownLoop     LD A, 21                ; Lowe border
+BoxDownLoop     LD A, 21                ; Lower border
                 CALL PrintChar
                 DJNZ BoxDownLoop
                 LD A, 20                ; lower-right
                 CALL PrintChar
                 RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ PENDING: Unpatch the ROM so the patched ROM can be used as normal ROM in case the ROMS.ZX1 file is absent
+
+UnPatchROM      RET
 
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Moves cursor n characters right, if end of line, continues in next line. Number of tabs provided at B                
 
-
-; Moves cursor n characters right, if end of line, continues in next line. Number of tabs provided at B                
 Tabs            CALL MoveCursorTmx
                 DJNZ Tabs
                 RET
 
-; Moves the cursor to column C, line B
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Moves the cursor to column C, line B
+
 PrintAt         CALL RestoreCursor
 PrintAtLoop     PUSH BC
                 LD B, 64
@@ -384,19 +399,25 @@ PrintAtLoop     PUSH BC
                 RET
 
 
-; Initializes firmware system vars when ZX-Uno starts
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Initializes firmware system vars when ZX-Uno starts
+
 InitializeVars XOR A                        
                CALL RestoreCursor       ; Now place Cursor at 0,0
                RET
 
-; Places writing position at 0,0
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Places writing position at 0,0
+
 RestoreCursor   LD DE, VRAM_ADDR
                 LD (V_PRINT_POS), DE
                 RET              
 
 
 
-; Sets a register A to value E
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets a register A to value E
+
 SetZXUNOReg     PUSH BC
                 LD BC, ZXUNO_PORT
                 OUT (C),A
@@ -405,8 +426,12 @@ SetZXUNOReg     PUSH BC
                 OUT (C),A
                 POP BC
                 RET
-                
-; Gets  value of ZXUno register
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Gets  value of ZXUno register
+
 GetZXUnoReg     PUSH BC
                 LD BC, ZXUNO_PORT
                 OUT (C),A
@@ -415,7 +440,10 @@ GetZXUnoReg     PUSH BC
                 POP BC
                 RET                                
 
-; Gets and prints the coreID
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Gets and prints the coreID
 
 PrintCoreID     LD BC, ZXUNO_PORT
                 LD A, REG_COREID
@@ -434,7 +462,11 @@ PrintCoreLoop   IN A, (C)
 CoreIDInvalid   _WRITE "Legacy"
                 RET
 
-; Checks if we are in boot mode and freezes if not
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Checks if we are in boot mode and freezes if not
+
 CheckBootMode  _GETREG REG_MASTERCONF
                AND 128
                RET Z
@@ -442,56 +474,110 @@ CheckBootMode  _GETREG REG_MASTERCONF
                DI
                HALT
 
-; Loads default ROM
-LoadDefaultROM LD HL, ROMSEtFilename
 
-; Expects ZXR file name to load pointed by HL
-LoadROM         
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Loads the entries at the Entries buffer, if /ZXUNO/ROMS.ZX1 file exists
+
+LoadROMEntries     LD IX, ROMSEtFilename
 ; --- Set default disk  
                     XOR	A  
                     RST     $08 
                     DB      M_GETSETDRV
-
 ; --- open file
                     LD      B, FA_READ   
-                    PUSH HL
-                    POP IX
+					RST     $08
+                    DB      F_OPEN      
+                    RET C
+; --- Dynamically update the F_CLOSE call later on
+                    LD (CloseFileEntries + 1),A
+
+; --- reads the entry information
+ReadEntryInfo		LD 	IX, ROMDirectory
+                    PUSH IX
+                    POP HL
+					LD BC, 4096 ; Size of the entries information
+					RST $08
+					DB  F_READ
+                    RET C
+; --- Close file
+CloseFileEntries	LD 		A, 0
+					RST     $08
+                    DB      F_CLOSE
+                    RET
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Loads the ROM at entry L
+
+LoadROM             LD H, 0
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL    ; HL * 64
+                    LD D, H
+                    LD E, L
+                    LD IY, ROMDirectory
+                    ADD IY, DE     ; Now IX Points to entry
+
+; --- open file
+                    LD      IX, ROMSEtFilename
+                    LD      B, FA_READ   
 					RST     $08
                     DB      F_OPEN      
                     RET C
 
-; --- Preserve A register, containing the file handle 
-                    LD (CloseFile+1),A
-
-
-; --- read header
-					LD 	IX, ROMHeader
-					LD BC, 64 ; Size of rom header
-					RST $08
-					DB  F_READ     
+; -- Update CloseFile so it uses the proper file handler
+                    LD (CloseFile + 1),A
+                    LD (SeekLoopHandler+1),A
 
 ; --- seek up to first ROM position
 
 					LD BC, 0   			 ; BCDE --> Offset 
-                    LD DE, $1041          ; First position after the entries blocks
-					LD IXL, 0 			 ; L=0 --> Seek from start
-					LD L, 0
+                    LD DE, 4096 + 65     ; The entries plus 65 bytes not used in the ROMS.ZX1 file
+					LD IXL, 1 			 ; IXL = 1 --> Seek from current position
 					RST	$08
 					DB	F_SEEK
                     RET C
+
+; Seek Up to expected ROM Offset, it's done by seeking 16384 bytes forward n times, once the file is at $1041, where the ROMs start
+
+SeekSlot
+; -- First we check it it's Slot 0
+                    LD E, A             ; Preserve file handler
+                    LD A, (IY + 0)      ; Get Slot Number
+                    OR A                   
+                    JR Z, ReadROM       ; Checks the OR above the LD A, if zero, it's first slot, skip loop
+                    LD A, E             ; Restore file handler
+                    LD B, (IY+0)        ; Get slot number again
+FSeekLoop           PUSH BC
+					LD BC, 0   			 ; BCDE --> Offset 
+                    LD DE, 16384         ; One seek per slot
+					LD IXL,1 			 ; L=1 --> Seek from current position
+SeekLoopHandler     LD A ,0              ; This is the file handler, that 0 is modified above just after FOPEN
+					RST	$08
+					DB	F_SEEK
+                    JR C, FSeekFail
+                    POP BC
+                    DJNZ FSeekLoop
+                    JR  ReadROM
+FSeekFail           POP BC
+                    RET                    
+
 ; --- read ROM      
-                   LD IX, $C000
+ReadROM            LD IX, $C000
                    LD BC, $4000
                    RST $08
                    DB F_READ
-; Close file
 
+; --- Close file
 CloseFile			LD 		A, 0
 					RST     $08
                     DB      F_CLOSE
 
-ActivateROM         _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
+PrepareROMs         _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
                     AND 10111111b               ;
                     LD E, A                     ;
                     _SETREGB REG_DEVCONTROL     ;
@@ -516,56 +602,130 @@ ActivateROM         _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU 
                     LDIR                    ; Copy back from BRAM to the proper slot
                     _SETREG REG_MASTERMAPPER, 0   ; Revert to normal mastermapper bank (probably not necessary)
                     _SETREG REG_MASTERCONF, 2   ; back to user mode and DivMMC Enabled
-RunROM              DI
+
+; --- Now that the ROMs are at their proper places, let's go and load ROM settings
+
+/*---------------------------------------------------------------------
+The flags included in ROMS.ZX1:
+
+ flags 1 (IY+2)
+      Bits 0-1. Machine timings: 00=48K, 01=128K, 10=Pentagon
+      Bit 2. NMI DivMMC: 0=disabled, 1=enabled
+      Bit 3. DivMMC: 0=disabled, 1=enabled
+      Bit 4. Contention: 0=disabled, 1=enabled
+      Bit 5. Keyboard issue: 0=issue 2, 1=issue 3
+  flags 2 (IY+3)
+      Bit 0. AY chip: 0=enabled, 1=disabled
+      Bit 1. 2nd AY chip (TurboSound): 0=enabled, 1=disabled
+      Bit 2. 7ffd port: 0=enabled, 1=disabled
+      Bit 3. 1ffd port: 0=enabled, 1=disabled
+      Bit 4. ROM low bit: 0=enabled, 1=disabled
+      Bit 5. ROM high bit: 0=enabled, 1=disabled
+      Bit 6. horizontal MMU in Timex: 0=disabled, 1=enabled
+      Bit 7. DivMMC and ZXMMC ports: 0=enabled, 1=disabled
+  flags 3 (IY+4)
+      Bit 0:Disable ULAPlus
+      Bit 1: Disable Timex Modes
+      Bit 2: Disable Radastan mode
+
+      Flags 2 and 3 exactly match the DEVCONTROL and DEVCTRL2 registers. Flag 1 contains values for MASTERCONF but not in the same order
+-------------------------------------------------*/
+
+SetROMSettings      LD A, (IY+3); Flags 2
+RomSetDevControl    OR 0 
+                    AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
+                    LD E, A
+                    _SETREGB REG_DEVCONTROL
+
+                    LD A, (IY+4); Flags 3
+RomSetDevCtrl2      OR 0 
+                    AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
+                    LD E, A
+                    _SETREGB REG_DEVCTRL2
+
+                    CALL PrepareMasterConf          ; Flags 1 comes with values needed in MASTERCONF, but not the same order
+RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
+                    AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
+                    LD C, A                         ; Preserve MasterConf value
+                    LD E, A
+                    _SETREGB REG_MASTERCONF
+
+RunROM              LD A, C                         ; Restore Masterconf Value
+                    AND 2                           ; Check DivMMC Enabled Bit
+                    JP Z, 0                         ; If not Enabled, just jump to 0
+                    DI                              ; Otherwise simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in at 0000 trap
                     JP 1
 
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ The ROMS.ZX1 file comes with the configuration for MASTERCONF in a different order
+; ************ than the one expected by MASTERCONF. Also, some values are the other way around, that
+; ************ is, 1 becomes 0 and viceversa. This routine sorts it out and returns the value in A
+;
+;    IN:
+;
+; Bits 0-1. Machine timings: 00=48K, 01=128K, 10=Pentagon
+; Bit 2. NMI DivMMC: 0=disabled, 1=enabled
+; Bit 3. DivMMC: 0=disabled, 1=enabled
+; Bit 4. Contention: 0=disabled, 1=enabled
+; Bit 5. Keyboard issue: 0=issue 2, 1=issue 3
+;      
+;      OUT: 7-LOCK	6-MODE1	5-DISCONT	4-MODE0	3-I2KB	2-DISNMI	1-DIVEN	0-BOOTM
 
 
 
+PrepareMasterConf   LD HL, AUX    ; We will be storing here her
+                    XOR A
+                    LD (HL),A 
+                    LD E, (IY+2) ; Flags 1
+                    LD A, E
+                    AND 00010000b   ; Contention, bit 4 IN
+                    JR NZ, CheckDivMMC  ; To keep MemoryContention active, bit 5 must be 0 as it is DISCONT (Disable Contention)
+                    SET 5, (HL)
+CheckDivMMC         LD A, E
+                    AND 00001000b   ;  DivMMC, bit 3 IN
+                    JR Z, CheckNMI  ; To keepDivMMC active, bit 1 must be 1 as it is DIVEN (DiVMMC ENabled)
+                    SET 1, (HL)
+CheckNMI            LD A, E
+                    AND 00000100b   ;  NMI, bit 2 IN
+                    JR NZ, KeyboardIssue  ; To keepDivMMC active, bit 1 must be 1 as it is DIVEN (DiVMMC ENabled)
+                    SET 2, (HL)
+KeyboardIssue       LD A, E
+                    AND 00100000b   ;  Keyboard Issue, bit 5 IN
+                    JR NZ, TimingsLow  ; the input value is negated, so if NZ we keep 0, otherwise we set
+                    SET 3, (HL)
+TimingsLow          LD A, E          ; Low bit for the timings, move from bit 0 to bit 4
+                    AND 1
+                    JR Z, TimingsHigh
+                    SET 4, (HL)
+TimingsHigh         LD A, E          ; Low bit for the timings, move from bit 0 to bit 4
+                    AND 2
+                    JR Z, CompletedMConf
+                    SET 6, (HL)
+CompletedMConf      LD A, (HL)
+                    RET                    
 
 
-; Interrupt routine handles V_FRAMES and V_SECONDS. Do not confuse V_FRAMES with FRAMES
-Interrupt       DI
-                PUSH AF
-                PUSH  HL
-                LD A, (V_FRAMES)
-                INC A
-                LD (V_FRAMES), A
-                CP 50
-                JR NZ, EndInterrupt
-                LD HL, V_SECONDS
-                INC (HL)
-                XOR A
-                LD (V_FRAMES), A        
-EndInterrupt    POP HL
-                POP AF
-                EI
-                RETI
 
-
+;*****************************************************************************************************************************************************
+;   THE FONT
+;*****************************************************************************************************************************************************
 
 
 Font                INCBIN     assets\font.bin
+
+
+;*****************************************************************************************************************************************************
+;   VARIABLES
+;*****************************************************************************************************************************************************
+
+
+; -- ROM Directory
 ROMSEtFilename      DB 'ZXUNO\ROMS.ZX1', 0
-
-; In the ROMS.ZX1 file, first there are 64 headers
-ROMHeader
-ROMHeaderStart      DB 0
-ROMHeaderLength     DB 0
-ROMHeaderFlags1     DB 0
-ROMHeaderFlags2     DB 0
-ROMHeaderFlags3     DB 0
-ROMHeaderReserved   DB 0,0,0
-ROMHeaderChecksum   DB 0,0
-ROMHeaderReserved2  DS 12
-ZXRHeaderName   DS 32
-
-
-; -------------- Variables --------------------------------------
+ROMDirectory        DS 4096
                                
                                
-;Config Vars are BIOS related variables which are saved in the config file. 
+; -- Config Vars are BIOS related variables which are saved in the config file. 
 cfgNewGraphicModes      DB 0
 cfgDivMMCEnabled        DB 0
 cfgDivMMVNMIEnabled     DB 0
@@ -577,12 +737,15 @@ cfgFrequency            DB 0
 cfgVideoOutput          DB 0
 cfgFWColorSchema        DB 0
 
-; variables for internal use
+; -- Variables for internal use
 V_PRINT_POS             DB 0
 V_RAM_SIZE              DB 0
 V_FRAMES                DB 0
 V_SECONDS               DB 0
+AUX                     DB 0
 
-
+;*****************************************************************************************************************************************************
+;   FILLER
+;*****************************************************************************************************************************************************
                         FPOS 16383; Just to fill up to 16384 bytes
                         DB 0
