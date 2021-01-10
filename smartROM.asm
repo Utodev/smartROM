@@ -40,26 +40,32 @@
                 define ZXUNO_PORT           $FC3B
                 define ZXUNO_DATA           $FE3B
                 define STACK                $C000 ;  We will place the stack just at the end of 3rd page, so we can paginate at $C000 when needed without having problems with STACK
-                define REG_MASTERCONF       0
-                define REG_MASTERMAPPER     1
+                define REG_MASTERCONF       $00
+                define REG_MASTERMAPPER     $01
                 define REG_SCANDBLCTRL      $0B
     			define REG_DEVCONTROL		$0E
 	    		define REG_DEVCTRL2			$0F
-                define REG_SCANCODE         4
+                define REG_SCANCODE         $04
+                define REG_KEYSTAT          $05
+                define REG_JOYCONF          $06
                 define REG_COREID           $FF
                 define ULAPLUS_PORT         $BF3B
                 define ULAPLUS_DATA         $FF3B
-                define FW_VERSION           "1.0"
+                define FW_VERSION           "1.0 beta"
+                define FRAMES               $5C78
+                define TOASTRACKMAPPER      $7FFD
+                define PLUS2AMAPPER         $1FFD
 
                 define M_GETSETDRV  	$89
-                define F_OPEN  		$9a
-                define F_CLOSE 		$9b
-                define F_READ  		$9d
-                define F_WRITE 		$9e
-                define F_SEEK		$9f       
-                define FA_READ 		$01
-                define FA_WRITE		$02
-                define FA_CREATE_AL	$0C
+                define F_OPEN  		    $9a
+                define F_CLOSE 		    $9b
+                define F_READ  		    $9d
+                define F_WRITE 		    $9e
+                define F_SEEK		    $9f       
+                define FA_READ 		    $01
+                define FA_WRITE		    $02
+                define FA_CREATE_AL	    $0C
+
 
                 define STARTLINE 0
 
@@ -74,18 +80,24 @@
 START           DI
                 LD SP, $C000
                 CALL TimexInit
-                CALL ClearScreen
-                CALL RestoreCursor
                 CALL CheckBootMode
                 LD E, 3
                 CALL SetSpeed
                 CALL InitializeVars                 ; Restart this firmware variables
 
 
+; --- Load Configuration
+                CALL LoadConfig
+                CALL ApplyConfig
+
+; ---  Show (C) notice
+                CALL CopyrightNotice
+
 ; ------------ Try to load ROM entries
                 CALL LoadROMEntries
                 JR C, GUIStart
-                LD L, 2                             
+                LD A, (cfgDefaultROMIndex)                             
+                LD L, A
                 CALL LoadROM
 
 GUIStart        CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
@@ -95,20 +107,39 @@ GUIStart        CALL UnPatchROM                   ; restores the current ROM to 
 
 Loop            JR Loop
 
+
+
 ;*****************************************************************************************************************************************************
 ;   FUNCTIONS
 ;*****************************************************************************************************************************************************
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Shows the boot screen
-                
-BootScreen      CALL ClearScreen
-                CALL RestoreCursor
-                _WRITE "      ZX-Uno  SmartROM "
-                _WRITE FW_VERSION
-                _WRITE " - (C) Uto 2021. License: MIT"
+; ************ Pauses for about 1 second
+Pause               LD BC, 0
+PauseLoop           BIT 0, A
+                    BIT 0, A
+                    AND 255
+                    DEC BC
+                    LD  A,C
+                    OR A, B
+                    JR NZ,PauseLoop
+                    RET
+    
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Clears the Screen and shows CopyRight notice on top
+CopyrightNotice CALL ClearScreen
+                CALL RestoreCursor
+                _WRITE "SmartROM "
+                _WRITE FW_VERSION
+                _WRITE " for ZX-Uno (C) Uto 2021."
+                RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Shows the boot screen
+               
+BootScreen      CALL CopyrightNotice
                 LD C, 0
                 LD B, STARTLINE+1
                 CALL DrawHeaderFrame
@@ -152,12 +183,12 @@ BootScreenEnd   _PRINTAT 1, 21
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Prints char provided at A register
 
-PrintChar       EXX
+PrintChar       EXX                     ; IMPORTANT: Please keep this EXX here, or if you change it, make sure you updahe the place where PrintChar routine is patched
                 LD H, 0
                 LD L, A
                 ADD HL, HL
                 ADD HL, HL
-                ADD HL, HL              ;  HL = A * 8
+                ADD HL, HL              ; HL = A * 8
                 LD DE, Font - 128       ; Points to place where chr(0) would be. The font.bin file misses the first 16 characters, so that's why -128
                 ADD HL, DE              ; Now HL points to where the character definition is.
                 LD DE, (V_PRINT_POS)
@@ -199,6 +230,21 @@ PrintStringLoop LD A,(HL)
 PrintStringEnd  INC HL
                 EX (SP),HL
                 RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints 32 characters pointed by HL
+PrintString32  LD B, 32
+PrintStr32Loop LD A,(HL)
+               PUSH BC 
+               PUSH HL
+               CALL PrintChar
+               POP HL
+               INC HL
+               POP BC
+               DJNZ  PrintStr32Loop
+               RET
+
+
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Advances printing cursor one character
@@ -480,10 +526,7 @@ CheckBootMode  _GETREG REG_MASTERCONF
 ; ************ Loads the entries at the Entries buffer, if /ZXUNO/ROMS.ZX1 file exists
 
 LoadROMEntries     LD IX, ROMSEtFilename
-; --- Set default disk  
-                    XOR	A  
-                    RST     $08 
-                    DB      M_GETSETDRV
+
 ; --- open file
                     LD      B, FA_READ   
 					RST     $08
@@ -494,8 +537,6 @@ LoadROMEntries     LD IX, ROMSEtFilename
 
 ; --- reads the entry information
 ReadEntryInfo		LD 	IX, ROMDirectory
-                    PUSH IX
-                    POP HL
 					LD BC, 4096 ; Size of the entries information
 					RST $08
 					DB  F_READ
@@ -522,6 +563,36 @@ LoadROM             LD H, 0
                     LD IY, ROMDirectory
                     ADD IY, DE     ; Now IY Points to entry
 
+; --- Print ROM name and details
+                    _PRINTAT 0, STARTLINE + 1
+                    _WRITE "ZX-Uno (C) ZX-Uno Team - http://zxuno.speccy.org"
+
+                    _PRINTAT 0, STARTLINE + 3
+                    _WRITE "Loading ROM: "
+                    LD DE, 32
+                    PUSH IY
+                    POP HL
+                    ADD HL, DE
+                    CALL PrintString32
+                    _WRITE " ("                    
+                    LD A, (IY+1)
+                    ADD A, 48
+                    CALL PrintChar
+                    _WRITE " slots)"
+
+                    _PRINTAT 0, STARTLINE + 4
+                    _WRITE "CoreID: "
+                    CALL PrintCoreID
+
+
+
+                    _PRINTAT 1, 21
+                    _WRITE "<Break> for ROM Selection - <Edit> for Setup - <Ctrl+n> ROM #n"
+
+                    CALL Pause
+                    CALL Pause
+
+                
                     _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
                     AND 10111111b               ;
                     LD E, A                     ;
@@ -668,13 +739,26 @@ RomSetDevCtrl2      OR 0
                     CALL PrepareMasterConf          ; Flags 1 comes with values needed in MASTERCONF, but not the same order
 RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
-                    LD C, A                         ; Preserve MasterConf value
-                    LD E, A
-                    _SETREGB REG_MASTERCONF
+                    LD E, A  
+                    PUSH AF                         ; Preserve MASTERCONF valus                      
+                    _SETREGB REG_MASTERCONF         
 
-RunROM              LD A, C                         ; Restore Masterconf Value
-                    AND 2                           ; Check DivMMC Enabled Bit
-                    JP Z, 0                         ; If not Enabled, just jump to 0
+
+                    LD E, 0
+                    CALL SetSpeed                   ; Back to normal Speed
+
+                    POP AF
+                    AND 2
+                    JP Z, 00000h                     ; If no DivMMC, we jump to 0000 to run System ROM 0
+
+; -- We have DivMMC active
+
+                    LD A, (IY+1)                    ; Make sure USR 0 mode is set when needed, that is, when there is more than one ROM slot
+                    DEC A                           ; A = Number of slots -1
+                    OR A                   
+;
+USR0                CALL NZ, SetUSROMode            ; And set USR 0 mode for that specific number of slots
+
                     DI                              ; Otherwise simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in at 0000 trap
                     JP 1
 
@@ -727,47 +811,166 @@ TimingsHigh         LD A, E          ; Low bit for the timings, move from bit 0 
 CompletedMConf      LD A, (HL)
                     RET                    
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Sets USR 0 mode so the ROM Starts in 48K mode and - main reason - so ESXDOS and DivMMC work fine
+; ************ A = Number of additional slots (other than the first one)
 
+
+SetUSROMode         LD D, A                       ; IMPORTANT: DON'T CHANGE THIS LD D, A, or if you do, check where this address is patched to patch it properly
+                    AND  1                        ; 1 or 3 slots more
+                    JR Z, USR0Continue
+                    LD BC, TOASTRACKMAPPER        ; If 1 or 3 slots more, we will use System ROM 1 or 3
+                    LD A,00010000b
+                    OUT (C), A
+
+USR0Continue        LD A, D                       ; If it's 3 more, we will use System ROM 3
+                    AND 2
+                    RET Z
+                    LD BC, PLUS2AMAPPER
+                    LD A, 00000100b
+                    OUT (C), A
+                    RET
+
+; --  Notice: in case it's 2 additional slots, that is, 3 in total, we will end up using System ROM 2, which is actually las slot used, so in the end
+;     this makes the ROM use the last slot created.
+                    
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Load Configuration from file
+
+; --- Set default disk  
+LoadConfig          XOR	A  
+                    RST     $08 
+                    DB      M_GETSETDRV
+
+; --- open file
+                    LD      B, FA_READ   
+					RST     $08
+                    DB      F_OPEN      
+                    RET C
+
+; --- Dynamically update the F_CLOSE call later on
+                    LD (CloseFileCfg + 1),A
+
+; --- reads the entry information
+ReadConfig  		LD 	IX, ConfigurationBEGIN
+					LD BC, ConfigurationEND - ConfigurationBEGIN
+					RST $08
+					DB  F_READ
+                    RET C
+; --- Close file
+CloseFileCfg    	LD 		A, 0
+					RST     $08
+                    DB      F_CLOSE
+                    RET
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Applies the configuration in the way as much as is possible
+
+ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the OR and AND for DevControl Are applied
+                    LD (RomSetDevControl + 1), A
+                    LD A, (cfgDevcontrolAND)
+                    LD (RomSetDevControl + 3), A
+
+                    LD A, (cfgDevctrl2OR)         ; Modify code above so the OR and AND for DevControl Are applied
+                    LD (RomSetDevCtrl2 + 1), A
+                    LD A, (cfgDevctrl2AND)
+                    LD (RomSetDevCtrl2 + 3), A
+
+                    LD A, (cfgMasterControlOR)         ; Modify code above so the OR and AND for Mastefconf Are applied
+                    LD (RomSetMasterConf + 1), A
+                    LD A, (cfgMasterControlAND)
+                    LD (RomSetMasterConf + 3), A
+
+                    LD A, (cfgSCANDBLCTRL)
+                    LD E, A
+                    _SETREGB REG_SCANDBLCTRL
+
+
+
+                    LD A, (cfgBoot128KMode)
+                    OR A
+                    JR Z, UseUsr0
+                    LD A, $C9; RET
+UseUsr0             LD A, $57; LD D, A
+                    LD (SetUSROMode), A
+
+
+                    LD A, (cfgSilentMode)
+                    OR A
+                    JR Z, UseVerboseMode
+                    LD A, $C9; RET
+UseVerboseMode      LD A, $D9; EXX
+                    LD (PrintChar), A
+
+                    RET
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Returns key or joy pressed pressed at A, following the next table:
+;
+;      O, 5, Shift+5,  CursorLeft        --> $05         ESC or  Shift+Space  -> $0A
+;      A, 6, Shift+6,  CursorDown        --> $06         F1 or Shift+1 --> $0B
+;      Q, 7, Shift+4,  CursorUp          --> $07         
+;      P, 8, Shift+8, Cursor Right       --> $08
+;      Space, 0, enter                   --> $00         No key or invalid key --> $FF
+
+GetKey          _GETREG REG_KEYSTAT   
+                LD E, A
+                AND 1
+                JR Z, NoKey
+                _GETREG REG_SCANCODE
+                LD E
+
+                
+
+NoKey           LD A, $FF
+                RET
 
 ;*****************************************************************************************************************************************************
 ;   THE FONT
 ;*****************************************************************************************************************************************************
 
-
 Font                INCBIN     assets\font.bin
-
 
 ;*****************************************************************************************************************************************************
 ;   VARIABLES
 ;*****************************************************************************************************************************************************
 
-
 ; -- ROM Directory
 ROMSEtFilename      DB 'ZXUNO\ROMS.ZX1', 0
 ROMDirectory        DS 4096
+
+; -- Config File
+CFGFilename         DB 'ZXUNO\ZXUNO.CFG',0
+
+ConfigurationBEGIN
+cfgMasterControlOR  DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
+cfgMasterControlAND DB $FF
+cfgDevcontrolOR     DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags2)
+cfgDevcontrolAND    DB $FF
+cfgDevctrl2OR       DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags3)
+cfgDevctrl2AND      DB $FF
+cfgSCANDBLCTRL      DB 0        ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
+cfgKeyMap           DB 0        ; 1 - Loads /ZXUNO/ENGLISH.KEY, 2- Loads /ZXUNO/SPECTRUM.KEY, 3 - Loads /ZXUNO/CUSTOM.CFG. Any other value loads nothing and defaults to Spanish
+cfgDefaultROMIndex  DB 9        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
+cfgSilentMode       DB 0        ; 0 - verbose, 1 - silent
+cfgDelay            DB 0        ; 0 - standard delay on boot, any other value, delay in ~seconds
+cfgBoot128KMode     DB 0        ; 0 - starst in USR mode those ROMS with DivMMC, 1 - Starts ROM normally (risky)
+cfgReserved         DS 12
+ConfigurationEND                              
                                
-                               
-; -- Config Vars are BIOS related variables which are saved in the config file. 
-cfgNewGraphicModes      DB 0
-cfgDivMMCEnabled        DB 0
-cfgDivMMVNMIEnabled     DB 0
-cfgULATiming            DB 0
-cfgKeyboardLayout       DB 0
-cfgContendedMemory      DB 0
-cfgDefaultROMIndex      DB 0
-cfgFrequency            DB 0
-cfgVideoOutput          DB 0
-cfgFWColorSchema        DB 0
+
+REVISA POR QUE LA CARGA DEL PRIMER SLOT NO FUNCIONA, CON LOS DEMÁS SÍ
+
+
 
 ; -- Variables for internal use
 V_PRINT_POS             DB 0
-V_RAM_SIZE              DB 0
-V_FRAMES                DB 0
-V_SECONDS               DB 0
 AUX                     DB 0
 
 ;*****************************************************************************************************************************************************
 ;   FILLER
 ;*****************************************************************************************************************************************************
-                        FPOS 16383; Just to fill up to 16384 bytes
-                        DB 0
+                       FPOS 16383; Just to fill up to 16384 bytes
+                       DB 0
