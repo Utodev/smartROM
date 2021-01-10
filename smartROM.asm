@@ -95,13 +95,13 @@ START           DI
 
 ; ------------ Try to load ROM entries
                 CALL LoadROMEntries
-                JR C, GUIStart
+                JR C, RunEmbeddeROM
                 LD A, (cfgDefaultROMIndex)                             
                 LD L, A
                 CALL LoadROM
 
-GUIStart        CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
-                CALL BootScreen
+RunEmbeddeROM   CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
+                
                 IM 1
                 EI
 
@@ -574,13 +574,14 @@ LoadROM             LD H, 0
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
-                    _WRITE " ("                    
+                    
+                    _PRINTAT 0, STARTLINE + 4
+                    _WRITE "Number of ROM slots: "                    
                     LD A, (IY+1)
                     ADD A, 48
                     CALL PrintChar
-                    _WRITE " slots)"
-
-                    _PRINTAT 0, STARTLINE + 4
+                    
+                    _PRINTAT 0, STARTLINE + 5
                     _WRITE "CoreID: "
                     CALL PrintCoreID
 
@@ -589,9 +590,9 @@ LoadROM             LD H, 0
                     _PRINTAT 1, 21
                     _WRITE "<Break> for ROM Selection - <Edit> for Setup - <Ctrl+n> ROM #n"
 
-                    CALL Pause
-                    CALL Pause
-
+KeyLoop              CALL GetKey
+                     OR A
+                     JR NZ, KeyLoop
                 
                     _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
                     AND 10111111b               ;
@@ -628,7 +629,7 @@ SeekSlot
                     LD E, A             ; Preserve file handler
                     LD A, (IY + 0)      ; Get Slot Number
                     OR A                   
-                    JR Z, ReadROMFromFile ; Checks the OR above the LD A, if zero, it's first slot, skip loop
+                    JR Z, AfterSeek     ; Checks the OR above the LD A, if zero, it's first slot, skip loop
                     LD A, E             ; Restore file handler
                     LD B, (IY+0)        ; Get slot number again
 FSeekLoop           PUSH BC
@@ -909,8 +910,8 @@ UseVerboseMode      LD A, $D9; EXX
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Returns key or joy pressed pressed at A, following the next table:
 ;
-;      O, 5, Shift+5,  CursorLeft        --> $05         ESC or  Shift+Space  -> $0A
-;      A, 6, Shift+6,  CursorDown        --> $06         F1 or Shift+1 --> $0B
+;      O, 5, Shift+5,  CursorLeft        --> $05         ESC  -> $0A
+;      A, 6, Shift+6,  CursorDown        --> $06         F1 --> $0B
 ;      Q, 7, Shift+4,  CursorUp          --> $07         
 ;      P, 8, Shift+8, Cursor Right       --> $08
 ;      Space, 0, enter                   --> $00         No key or invalid key --> $FF
@@ -919,13 +920,110 @@ GetKey          _GETREG REG_KEYSTAT
                 LD E, A
                 AND 1
                 JR Z, NoKey
-                _GETREG REG_SCANCODE
-                LD E
-
                 
+                XOR A
+                LD C, A                 ; C will be zero if not extended key, 1 if extended                               
+                _GETREG REG_SCANCODE
+                CP $E0
+                JR NZ, GetKey1
+                _GETREG REG_SCANCODE
+                LD C, 1                 ; It's a extended key
+                OR A
 
+; -- Check if key pressed is one of the valid ones    
+
+GetKey1         CP $05 ; F1 
+                JR NZ, GetKey2
+                LD A, $0B
+                RET
+                
+GetKey2         CP $76 ; ESC
+                JR NZ, GetKey3
+                LD A, $0A
+                RET
+
+; -- Now the intro/toggle ones
+
+GetKey3         CP $29 ; SPACE
+                JR NZ, GetKey4
+IntroKey        XOR A
+                RET
+
+GetKey4         CP $45 ; 0
+                JR Z, IntroKey
+
+GetKey5         CP $5A ; ENTER
+                JR Z, IntroKey
+
+; --  Now the "Right" ones
+GetKey6         CP $3E ; 8
+                JR NZ, GetKey7
+RightKey        LD A, $08
+                RET
+
+GetKey7         CP $4D ; P                
+                JR Z, RightKey
+
+GetKey8         CP $74 ; Right arrow (extended)
+                JR NZ, GetKey9
+                LD A, C     ; It's extended
+                AND 1
+                JR Z, RightKey
+
+; --  Now the "Left" ones                
+
+GetKey9         CP $3E ; 5
+                JR NZ, GetKey10
+LeftKey         LD A, $05
+                RET
+
+GetKey10        CP $44 ; O
+                JR Z, LeftKey
+
+GetKey11        CP $6B ; Left arrow (extended)
+                JR NZ, GetKey12
+                LD A, C     ; It's extended
+                AND 1
+                JR Z, LeftKey
+
+
+; --  Now the "Up" ones                
+
+GetKey12        CP $3D ; 7
+                JR NZ, GetKey13
+UpKey           LD A, $07
+                RET
+
+GetKey13        CP $15 ; Q
+                JR Z, UpKey
+
+GetKey14        CP $75 ; Up arrow (extended)
+                JR NZ, GetKey15
+                LD A, C     ; It's extended
+                AND 1
+                JR Z, UpKey
+
+; --  Now the "Down" ones                
+
+GetKey15        CP $36 ; 6
+                JR NZ, GetKey16
+DownKey         LD A, $07
+                RET
+
+GetKey16        CP $1C ; A
+                JR Z, DownKey
+
+GetKey17        CP $72  ; Up arrow (extended)
+                JR NZ, GetKey18
+                LD A, C     ; It's extended
+                AND 1
+                JR Z, DownKey
+
+GetKey18
 NoKey           LD A, $FF
                 RET
+
+
 
 ;*****************************************************************************************************************************************************
 ;   THE FONT
@@ -953,16 +1051,13 @@ cfgDevctrl2OR       DB 0        ; When a ROM file is loaded, its setting will pa
 cfgDevctrl2AND      DB $FF
 cfgSCANDBLCTRL      DB 0        ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
 cfgKeyMap           DB 0        ; 1 - Loads /ZXUNO/ENGLISH.KEY, 2- Loads /ZXUNO/SPECTRUM.KEY, 3 - Loads /ZXUNO/CUSTOM.CFG. Any other value loads nothing and defaults to Spanish
-cfgDefaultROMIndex  DB 9        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
+cfgDefaultROMIndex  DB 0        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
 cfgSilentMode       DB 0        ; 0 - verbose, 1 - silent
 cfgDelay            DB 0        ; 0 - standard delay on boot, any other value, delay in ~seconds
 cfgBoot128KMode     DB 0        ; 0 - starst in USR mode those ROMS with DivMMC, 1 - Starts ROM normally (risky)
 cfgReserved         DS 12
 ConfigurationEND                              
                                
-
-REVISA POR QUE LA CARGA DEL PRIMER SLOT NO FUNCIONA, CON LOS DEMÁS SÍ
-
 
 
 ; -- Variables for internal use
