@@ -66,6 +66,28 @@
                 define FA_WRITE		    $02
                 define FA_CREATE_AL	    $0C
 
+                define KEY_1            $01
+                define KEY_2            $02
+                define KEY_3            $03
+                define KEY_4            $04
+                define KEY_5            $05
+                define KEY_6            $06
+                define KEY_7            $07
+                define KEY_8            $08
+                define KEY_9            $09
+                define KEY_0            $00
+
+                define KEY_Q            $17
+                define KEY_A            $16
+                define KEY_O            $15
+                define KEY_P            $18
+
+                define KEY_SPACE        $0A
+                define KEY_ENTER        $0B
+                define KEY_M            $20
+                define NOKEY            $FF
+
+
 
                 define STARTLINE 0
 
@@ -89,6 +111,9 @@ START           DI
 ; --- Load Configuration
                 CALL LoadConfig
                 CALL ApplyConfig
+
+; ---- Load Keymap file if exists
+                CALL LoadKeyMap                
 
 ; ---  Show (C) notice
                 CALL CopyrightNotice
@@ -136,49 +161,6 @@ CopyrightNotice CALL ClearScreen
                 _WRITE " for ZX-Uno (C) Uto 2021."
                 RET
 
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Shows the boot screen
-               
-BootScreen      CALL CopyrightNotice
-                LD C, 0
-                LD B, STARTLINE+1
-                CALL DrawHeaderFrame
-
-                ; Show Core ID
-                _PRINTAT 2, STARTLINE + 2
-                _WRITE "CoreID: "
-                CALL PrintCoreID
-
-                ;Show Timings status
-                _PRINTAT 2, STARTLINE+3
-                _WRITE "ULA Timing: Auto"
-
-                ;Show DivMMC mode
-                _PRINTAT 34, STARTLINE+3
-                _WRITE "DivMMC: Auto"
-
-                ;Show New graphic modes
-                _PRINTAT 2, STARTLINE+4
-                _WRITE "New graphic modes: Auto"
-
-                ;Show Keyboard mode
-                _PRINTAT 34, STARTLINE+4
-                _WRITE "Keyboard layout: Spectrum"
-
-                ;Show  NMI-DiVMMC Status
-                _PRINTAT 2, STARTLINE+5
-                _WRITE "NMI-DivMMC: Auto"
-
-                ;Show Contended Memory Status
-                _PRINTAT 34, STARTLINE+5
-                _WRITE "Contended memory: Auto"
-
-                _PRINTAT 22, STARTLINE+7
-                _WRITE "http://zxuno.speccy.org"
-
-BootScreenEnd   _PRINTAT 0, 21
-                _WRITE "Press <Space> for ROM Selection - <Enter> for Setup"
-                RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Prints char provided at A register
@@ -357,7 +339,7 @@ SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Draws a specific full with box for header
+; ************ Draws a specific full width box for header
 
 DrawHeaderFrame CALL PrintAt
                 CALL PrintString
@@ -490,7 +472,7 @@ SetZXUNOReg     PUSH BC
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Gets  value of ZXUno register
+; ************ Gets  value of ZXUno register at A
 
 GetZXUnoReg     PUSH BC
                 LD BC, ZXUNO_PORT
@@ -530,14 +512,16 @@ CoreIDInvalid   _WRITE "Legacy"
 CheckBootMode  _GETREG REG_MASTERCONF
                AND 128
                RET Z
-               _WRITE "ZX-Uno MASTERCONF should have LOCK = 0"              
+               _PRINTAT 0, 22
+               _WRITE "Critical ERROR: ZX-Uno MASTERCONF should have LOCK = 0"              
                DI
                HALT
 
-
-
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Loads the entries at the Entries buffer, if /ZXUNO/ROMS.ZX1 file exists
+
+
+
 
 LoadROMEntries     LD IX, ROMSEtFilename
 
@@ -559,6 +543,19 @@ ReadEntryInfo		LD 	IX, ROMDirectory
 CloseFileEntries	LD 		A, 0
 					RST     $08
                     DB      F_CLOSE
+
+; -- Determine last valid entry
+                    LD E, 0                    ; E will contain last valid entry
+                    LD HL, ROMDirectory + 64    ; Points to second entry, number of slots
+ValidEntryLoop      LD A, (HL)
+                    LD BC, 64
+                    ADD HL, BC
+                    OR A
+                    JR Z, FoundLast
+                    INC E
+                    JR ValidEntryLoop
+FoundLast           LD A, E
+                    LD (LAST_VALID_ENTRY), A
                     RET
 
 
@@ -581,64 +578,113 @@ LoadROM             PUSH HL                 ; Preserve L entry
 ; --- Print ROM name and details
                     _PRINTAT 0, STARTLINE + 1
                     _WRITE "ZX-Uno (C) ZX-Uno Team - http://zxuno.speccy.org"
+                    _PRINTAT 0, STARTLINE + 2
+                    _WRITE "CoreID: "
+                    CALL PrintCoreID
 
-                    _PRINTAT 0, STARTLINE + 3
-                    _WRITE "Loading ROM: "
+                    _PRINTAT 0, STARTLINE + 4
+                    _WRITE "ROM: ["
+                    POP HL
+                    PUSH HL
+                    LD A, L
+                    CALL DivByTen ; Reminder in A and Quotient in D
+                    PUSH AF
+                    LD A, D
+                    ADD '0'
+                    CALL PrintChar
+                    POP AF
+                    ADD '0'
+                    CALL PrintChar
+                    _WRITE "] "
                     LD DE, 32
                     PUSH IY
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
+                    _WRITE "   "
+                    _INVERSE 1
+                    _WRITE "QAOP to select ROM"
                     
-                    _PRINTAT 0, STARTLINE + 4
-                    _WRITE "Number of ROM slots: "                    
-                    LD A, (IY+1)
-                    ADD A, 48
-                    CALL PrintChar
+                    _PRINTAT 0, 22
+                    _WRITE "Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10)"
+                    _INVERSE 0
+
+                    LD HL, 20000
+KeyLoop             CALL GetKey
+                    CP $FF                 
+                    JR NZ, KeyPressed
+                    DEC HL
+                    LD A, H
+                    OR L                    
+                    JR NZ, KeyLoop
+                    LD A, (KEY_HAS_BEEN_PRESSED)
+                    OR A
+                    JR NZ, KeyLoop
+                    LD A, $FF
+
+KeyPressed          PUSH AF
+                    LD A, 1
+                    LD (KEY_HAS_BEEN_PRESSED), A
+                    POP AF
+
+                    CP KEY_P
+                    JR NZ, KeyPressed2
+                    POP HL                     ; For cleaning purposes
+                    LD A, (LAST_VALID_ENTRY)
+                    CP L
+                    JP Z, LoadROM
+                    INC L
+                    JP LoadROM
                     
-                    _PRINTAT 0, STARTLINE + 5
-                    _WRITE "CoreID: "
-                    CALL PrintCoreID
+KeyPressed2         CP KEY_ENTER            ; Boot Options
+                    JR NZ, KeyPressed3
+                    CALL BootOptions
+                    POP HL                     ; Restore L Value to load same ROM with different options
+                    JP LoadROM
+
+KeyPressed3         CP $0A ; Keys 0-9                     
+                    JR NC, KeyPressed4
+                    POP HL                     ; For cleaning purposes
+                    OR A
+                    JR NZ, ChangeROM
+                    LD A, 10                   ; Button 0 => ROM 10
+ChangeROM           LD L, A            
+                    JP LoadROM
+
+KeyPressed4         CP KEY_O
+                    JR NZ, KeyPressed5
+                    POP HL
+                    LD A, L
+                    OR A 
+                    JP Z, LoadROM
+                    DEC L
+                    JP LoadROM
+
+KeyPressed5         CP KEY_Q
+PressQ              JP NZ, KeyPressed6
+                    POP HL
+                    LD A, L
+                    SUB 10  
+                    LD L, A
+                    JP NC, LoadROM              ; It's checking after the SUB, as LD does not alter the flags
+                    LD L, 0
+                    JP LoadROM
+
+KeyPressed6         CP KEY_A                      
+                    JR NZ, KeyPressed7
+                    POP HL
+                    LD A, L
+                    ADD A, 10
+                    LD L, A
+                    LD A, (LAST_VALID_ENTRY)       
+                    CP L
+                    JP NC, LoadROM              ; It's checking after the CP, as LD does not alter the flags
+                    LD A, (LAST_VALID_ENTRY)
+                    LD L, A
+                    JP LoadROM
 
 
-
-                    _PRINTAT 1, 21
-                    _WRITE "<Space> for ROM Selection - <Enter> for boot Settings - <Ctrl+n> ROM #n"
-
-
-                     LD HL, 20000
-KeyLoop              CALL GetKey
-                     CP $FF                 
-                     JR NZ, KeyPressed
-                     DEC HL
-                     LD A, H
-                     OR L                    
-                     JR NZ, KeyLoop
-                     POP AF
-                     LD A, $FF
-
-KeyPressed           CP $0A  ; Space
-                     JR NZ, KeyPressed2
-                     POP HL                     ; For cleaning purposes
-                     CALL ROMMenu 
-                     JP LoadROM
-
-KeyPressed2          CP $0B  ; Enter            ; Boot Options
-                     JR NZ, KeyPressed3
-                     CALL BootOptions
-                     POP HL                     ; Restore L Value to load same ROM with different options
-                     JP LoadROM
-
-KeyPressed3          CP $0A ;0-9                     ; 
-                     JR NC, KeyPressed4
-                     POP HL                     ; For cleaning purposes
-                     OR A
-                     JR NZ, ChangeROM
-                     LD A, 10                   ; Button 0 => ROM 10
-ChangeROM            LD L, A            
-                     JP LoadROM
-
-KeyPressed4
+KeyPressed7
 
 
 
@@ -698,7 +744,7 @@ FSeekFail           POP BC
       
 ;  --- Disable Timex Mode before loading any ROM to avoid writing at $6000 being visible on screen
 AfterSeek           XOR A
-                    OUT (255),A                 ; Disable timex mode
+                    OUT (255), A                 ; Disable timex mode
                     OUT (254), A                 ; Border 0
 
 
@@ -932,11 +978,12 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     LD A, (cfgMasterControlAND)
                     LD (RomSetMasterConf + 3), A
 
+
                     LD A, (cfgSCANDBLCTRL)
+                    AND 00111111b                   ;  Remove the Turbo part
+                    OR  11000000b                   ;  Set 28Mhz Speed
                     LD E, A
                     _SETREGB REG_SCANDBLCTRL
-
-
 
                     LD A, (cfgBoot128KMode)
                     OR A
@@ -958,9 +1005,36 @@ UseVerboseMode      LD A, $D9; EXX
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Shows a menu of ROMs to load, returns slot chosen at L
 
-ROMMenu             LD A, 2
-                    OUT (254), A
-                    LD L, 19
+ROMMenu             call ClearScreen
+                    CALL RestoreCursor
+                    LD E, L             ; E points to current selectd ROM
+                    LD A, 0             ; A points to current first ROM in visible are
+
+                    LD HL, ROMDirectory + 32 ; First ROM Name
+                    LD B, 0             ; FOR LOOP
+ROMListLoop         LD C, 16
+                    PUSH BC
+                    PUSH HL
+                    CALL PrintAt
+                    POP HL
+                    PUSH HL
+                    CALL PrintString32
+                    POP HL
+                    POP BC
+                    LD DE, 64
+                    ADD HL, DE
+                    INC B
+                    CP 24
+                    JR NC, ROMListLoop
+
+MenuWaitKey         CALL GetKey
+                    CP $FF
+                    JR Z, MenuWaitKey
+
+                    CP $0B ; Enter
+                    RET Z
+                    JR MenuWaitKey
+
                     RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -968,35 +1042,86 @@ ROMMenu             LD A, 2
 
 BootOptions         RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Divides A by 10 and returns the remainder in A and the quotient in D^***
+DivByTen				LD 	D, A			; Does A / 10
+						LD 	E, 10			; At this point do H / 10
+						LD 	B, 8
+						XOR 	A				; A = 0, Carry Flag = 0
+DivByTenLoop			SLA	D
+						RLA			
+						CP	E		
+						JR	C, DivByTenNoSub
+						SUB	E		
+						INC	D		
+DivByTenNoSub			DJNZ DivByTenLoop
+						RET				;A= remainder, D = quotient
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Loads key map from /ZXUNO/KEYMAP.ZX1 is existis
+
+LoadKeyMap          LD IX, KEYMAPFilename
+
+; --- open file
+                    LD      B, FA_READ   
+					RST     $08
+                    DB      F_OPEN      
+                    RET C
+; --- Dynamically update the F_CLOSE call later on
+                    LD (CloseFileKeyMap + 1),A
+
+; --- reads the entry information
+ReadEntryInfo		LD 	IX, ROMDirectory            ; Used as temporaty location
+					LD BC, 4096 ; Size of the entries information
+					RST $08
+					DB  F_READ
+                    RET C
+; --- Close file
+CloseFileKeyMap	    LD 		A, 0
+					RST     $08
+                    DB      F_CLOSE
+
+; Loads the KEY MAP
+                    LD BC, ZXUNO_PORT
+                    LD A, REG_KEYMAP
+                    OUT (C), A
+                    LD HL, ROMDirectory
+                    LD B, 16                         ; 16 times
+OuterLoop           PUSH BC
+                    LD B, 0                          ; 256 time  (total, 16x256 = 4096)
+InnerLoop           PUSH BC
+                    LD A, (HL)
+                    LD BC, ZXUNO_DATA
+                    OUT (C), A
+                    POP BC
+                    DJNZ InnerLoop
+                    POP BC
+                    DJNZ OuterLoop
+                    RET
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Returns key or joy pressed pressed at A, following the next table:
 ;
-;      1                                 --> $01
-;      2                                 --> $02
-;      3                                 --> $03
-;      4                                 --> $04
-;      O, 5, Shift+5,  CursorLeft        --> $05         Space  -> $0A
-;      A, 6, Shift+6,  CursorDown        --> $06         Enter  --> $0B
-;      Q, 7, Shift+4,  CursorUp          --> $07         
-;      P, 8, Shift+8, Cursor Right       --> $08
-;      9                                 --> $09
-;      M, 0,                             --> $00         No key or invalid key --> $FF
+;      1                   --> $01        O      --> $15
+;      2                   --> $02        P      --> $18
+;      3                   --> $03        Q      --> $17
+;      4                   --> $04        A      --> $16
+;      5, CursorLeft       --> $05        Space  --> $0A
+;      6, CursorDown       --> $06        Enter  --> $0B
+;      7, CursorUp         --> $07        M      --> $20  
+;      8, Cursor Right     --> $08
+;      9                   --> $09
+;      0                   --> $00         No key or invalid key --> $FF
 
-GetKey          LD E, 0         ; E Keeps the status of whether Caps Shift is pressed
-
-                LD BC,  $FEFF; V, C, X, Z, Caps Shift
-                IN A,(C)
-                AND 1
-                JR NZ, GetKey2      
-Shift           LD E, 1         ; Caps Shift Pressed
+GetKey          
 
 GetKey2         LD BC,  $7FFE; B, N, M, Symbol Shift, Space
                 IN A,(C)
                 LD D, A     ; Preserve value
                 AND 4
-                JR Z, ActionPreesed    ; M
+                JR Z, MPressed    ; M
                 LD A, D
                 AND 1
                 JR Z, SpacePressed
@@ -1010,34 +1135,34 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 IN A,(C)
                 LD D, A     ; Preserve value
                 AND 1
-                JR Z, RightPressed ; P
+                JP Z, PPressed ; P
                 LD A, D
                 AND 2
-                JR Z, LeftPressed ; O
+                JR Z, OPressed ; O
 
                 LD BC, $EFFE ; 6, 7, 8, 9, 0
                 IN A,(C)
                 LD D, A     ; Preserve value
                 AND 1
-                JR Z, ActionPreesed ; 0
+                JR Z, ZeroPressed ; 0
                 LD A, D
                 AND 2
                 JR Z, NinePressed ; 9
                 LD A, D
                 AND 4
-                JR Z, RightPressed ; 8
+                JR Z, EightPressed ; 8
                 LD A, D
                 AND 8
-                JR Z, UpPressed  ; 7
+                JR Z, SevenPressed  ; 7
                 LD A, D
                 AND 16
-                JR Z, DownPressed ; 6
+                JR Z, SixPressed ; 6
 
                 LD BC, $F7FE;  5, 4, 3, 2, 1
                 IN A,(C)
                 LD D, A
                 AND 16
-                JR Z, LeftPressed ; 5
+                JR Z, FivePressed ; 5
                 LD A, D
                 AND 8
                 JR Z, FourPressed
@@ -1055,40 +1180,50 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 LD BC, 64510; T, R, E, W, Q
                 IN A,(C)
                 AND 1
-                JR Z, UpPressed ; Q
+                JR Z, QPressed ; Q
               
                 LD BC, 65022 ; G, F, D, S, A
                 IN A,(C)
                 AND 1
-                JR Z, DownPressed ; A
+                JR Z, APressed ; A
 
 ; -- No Valid Keys
                 LD A, $FF
                 RET
 
-SpacePressed    LD A, $0A
+SpacePressed    LD A, KEY_SPACE
                 RET
-EnterPressed    LD A, $0B
+EnterPressed    LD A, KEY_ENTER
                 RET             
-ActionPreesed   XOR A
+MPressed        LD A, KEY_M
                 RET
-OnePressed      LD A, $01
+OnePressed      LD A, KEY_1
                 RET
-TwoPressed      LD A, $02
+TwoPressed      LD A, KEY_2
                 RET                
-ThreePressed    LD A, $03
+ThreePressed    LD A, KEY_3
                 RET                
-FourPressed     LD A, $04
+FourPressed     LD A, KEY_4
                 RET                
-LeftPressed     LD A, $05
+FivePressed     LD A, KEY_5
                 RET
-DownPressed     LD A, $06
+SixPressed      LD A, KEY_6
                 RET
-UpPressed       LD A, $07
+SevenPressed    LD A, KEY_7
                 RET
-RightPressed    LD A, $08
+EightPressed    LD A, KEY_8
                 RET
-NinePressed     LD A, $09
+NinePressed     LD A, KEY_9
+                RET
+ZeroPressed     LD A, KEY_0
+                RET                
+QPressed        LD A, KEY_Q
+                RET
+APressed        LD A, KEY_A
+                RET
+OPressed        LD A, KEY_O
+                RET                
+PPressed        LD A, KEY_P
                 RET
 
 
@@ -1106,6 +1241,10 @@ Font                INCBIN     assets\font.bin
 ROMSEtFilename      DB 'ZXUNO\ROMS.ZX1', 0
 ROMDirectory        DS 4096
 
+; -- Keymap
+KEYMAPFilename      DB 'ZXUNO\KEYMAP.ZX1', 0
+
+
 ; -- Config File
 CFGFilename         DB 'ZXUNO\ZXUNO.CFG',0
 
@@ -1117,12 +1256,11 @@ cfgDevcontrolAND    DB $FF
 cfgDevctrl2OR       DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags3)
 cfgDevctrl2AND      DB $FF
 cfgSCANDBLCTRL      DB 0        ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
-cfgKeyMap           DB 0        ; 1 - Loads /ZXUNO/ENGLISH.KEY, 2- Loads /ZXUNO/SPECTRUM.KEY, 3 - Loads /ZXUNO/CUSTOM.CFG. Any other value loads nothing and defaults to Spanish
 cfgDefaultROMIndex  DB 0        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
 cfgSilentMode       DB 0        ; 0 - verbose, 1 - silent
 cfgDelay            DB 0        ; 0 - standard delay on boot, any other value, delay in ~seconds
 cfgBoot128KMode     DB 0        ; 0 - starst in USR mode those ROMS with DivMMC, 1 - Starts ROM normally (risky)
-cfgReserved         DS 12
+cfgReserved         DS 13
 ConfigurationEND                              
                                
 
@@ -1130,6 +1268,8 @@ ConfigurationEND
 ; -- Variables for internal use
 V_PRINT_POS             DB 0
 AUX                     DB 0
+LAST_VALID_ENTRY        DB 0
+KEY_HAS_BEEN_PRESSED    DB 0
 
 ;*****************************************************************************************************************************************************
 ;   FILLER
