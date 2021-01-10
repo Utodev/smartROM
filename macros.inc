@@ -37,3 +37,8 @@
                 CALL DrawBox
                 ENDM
 
+                MACRO _INVERSE mode
+                LD A, mode
+                CALL SetInverseMode
+                ENDM
+

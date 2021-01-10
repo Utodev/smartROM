@@ -176,8 +176,8 @@ BootScreen      CALL CopyrightNotice
                 _PRINTAT 22, STARTLINE+7
                 _WRITE "http://zxuno.speccy.org"
 
-BootScreenEnd   _PRINTAT 1, 21
-                _WRITE "<Break> for ROM Selection - <Edit> for Setup - <Ctrl+n> ROM #n"
+BootScreenEnd   _PRINTAT 0, 21
+                _WRITE "Press <Space> for ROM Selection - <Enter> for Setup"
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -194,6 +194,7 @@ PrintChar       EXX                     ; IMPORTANT: Please keep this EXX here, 
                 LD DE, (V_PRINT_POS)
                 LD B, 8
 PrintCharLoop   LD A, (HL)
+Inverse         XOR 0
                 LD (DE), A
                 INC HL
                 INC D                   ; Point to next row in screen
@@ -201,6 +202,19 @@ PrintCharLoop   LD A, (HL)
                 CALL MoveCursorTmx    ; Update cursor position                    
                 EXX
                 RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets Inverse mode for PrintChar (A=1 inverse, A=0 normal)
+
+SetInverseMode  OR A
+                JR NZ, IsInverse
+                XOR A
+                LD (Inverse+1), A ; XOR 0
+                RET
+IsInverse       LD A, $FF         
+                LD (Inverse+1), A ; XOR FF
+                RET
+
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Sets Turbo Speed at D
@@ -551,7 +565,8 @@ CloseFileEntries	LD 		A, 0
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Loads the ROM at entry L
 
-LoadROM             LD H, 0
+LoadROM             PUSH HL                 ; Preserve L entry
+                    LD H, 0
                     ADD HL, HL
                     ADD HL, HL
                     ADD HL, HL
@@ -588,12 +603,46 @@ LoadROM             LD H, 0
 
 
                     _PRINTAT 1, 21
-                    _WRITE "<Break> for ROM Selection - <Edit> for Setup - <Ctrl+n> ROM #n"
+                    _WRITE "<Space> for ROM Selection - <Enter> for boot Settings - <Ctrl+n> ROM #n"
 
+
+                     LD HL, 20000
 KeyLoop              CALL GetKey
-                     OR A
+                     CP $FF                 
+                     JR NZ, KeyPressed
+                     DEC HL
+                     LD A, H
+                     OR L                    
                      JR NZ, KeyLoop
-                
+                     POP AF
+                     LD A, $FF
+
+KeyPressed           CP $0A  ; Space
+                     JR NZ, KeyPressed2
+                     POP HL                     ; For cleaning purposes
+                     CALL ROMMenu 
+                     JP LoadROM
+
+KeyPressed2          CP $0B  ; Enter            ; Boot Options
+                     JR NZ, KeyPressed3
+                     CALL BootOptions
+                     POP HL                     ; Restore L Value to load same ROM with different options
+                     JP LoadROM
+
+KeyPressed3          CP $0A ;0-9                     ; 
+                     JR NC, KeyPressed4
+                     POP HL                     ; For cleaning purposes
+                     OR A
+                     JR NZ, ChangeROM
+                     LD A, 10                   ; Button 0 => ROM 10
+ChangeROM            LD L, A            
+                     JP LoadROM
+
+KeyPressed4
+
+
+
+ContinueLoad        POP HL                      ; Restore L-slot value, just for cleaning
                     _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
                     AND 10111111b               ;
                     LD E, A                     ;
@@ -906,123 +955,141 @@ UseVerboseMode      LD A, $D9; EXX
 
                     RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Shows a menu of ROMs to load, returns slot chosen at L
+
+ROMMenu             LD A, 2
+                    OUT (254), A
+                    LD L, 19
+                    RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Shows boot options
+
+BootOptions         RET
+
+
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Returns key or joy pressed pressed at A, following the next table:
 ;
-;      O, 5, Shift+5,  CursorLeft        --> $05         ESC  -> $0A
-;      A, 6, Shift+6,  CursorDown        --> $06         F1 --> $0B
+;      1                                 --> $01
+;      2                                 --> $02
+;      3                                 --> $03
+;      4                                 --> $04
+;      O, 5, Shift+5,  CursorLeft        --> $05         Space  -> $0A
+;      A, 6, Shift+6,  CursorDown        --> $06         Enter  --> $0B
 ;      Q, 7, Shift+4,  CursorUp          --> $07         
 ;      P, 8, Shift+8, Cursor Right       --> $08
-;      Space, 0, enter                   --> $00         No key or invalid key --> $FF
+;      9                                 --> $09
+;      M, 0,                             --> $00         No key or invalid key --> $FF
 
-GetKey          _GETREG REG_KEYSTAT   
-                LD E, A
+GetKey          LD E, 0         ; E Keeps the status of whether Caps Shift is pressed
+
+                LD BC,  $FEFF; V, C, X, Z, Caps Shift
+                IN A,(C)
                 AND 1
-                JR Z, NoKey
-                
-                XOR A
-                LD C, A                 ; C will be zero if not extended key, 1 if extended                               
-                _GETREG REG_SCANCODE
-                CP $E0
-                JR NZ, GetKey1
-                _GETREG REG_SCANCODE
-                LD C, 1                 ; It's a extended key
-                OR A
+                JR NZ, GetKey2      
+Shift           LD E, 1         ; Caps Shift Pressed
 
-; -- Check if key pressed is one of the valid ones    
-
-GetKey1         CP $05 ; F1 
-                JR NZ, GetKey2
-                LD A, $0B
-                RET
-                
-GetKey2         CP $76 ; ESC
-                JR NZ, GetKey3
-                LD A, $0A
-                RET
-
-; -- Now the intro/toggle ones
-
-GetKey3         CP $29 ; SPACE
-                JR NZ, GetKey4
-IntroKey        XOR A
-                RET
-
-GetKey4         CP $45 ; 0
-                JR Z, IntroKey
-
-GetKey5         CP $5A ; ENTER
-                JR Z, IntroKey
-
-; --  Now the "Right" ones
-GetKey6         CP $3E ; 8
-                JR NZ, GetKey7
-RightKey        LD A, $08
-                RET
-
-GetKey7         CP $4D ; P                
-                JR Z, RightKey
-
-GetKey8         CP $74 ; Right arrow (extended)
-                JR NZ, GetKey9
-                LD A, C     ; It's extended
+GetKey2         LD BC,  $7FFE; B, N, M, Symbol Shift, Space
+                IN A,(C)
+                LD D, A     ; Preserve value
+                AND 4
+                JR Z, ActionPreesed    ; M
+                LD A, D
                 AND 1
-                JR Z, RightKey
+                JR Z, SpacePressed
 
-; --  Now the "Left" ones                
-
-GetKey9         CP $3E ; 5
-                JR NZ, GetKey10
-LeftKey         LD A, $05
-                RET
-
-GetKey10        CP $44 ; O
-                JR Z, LeftKey
-
-GetKey11        CP $6B ; Left arrow (extended)
-                JR NZ, GetKey12
-                LD A, C     ; It's extended
+GetKey3         LD BC, $BFFE; H, J, K, L, Enter
+                IN A,(C)
                 AND 1
-                JR Z, LeftKey
-
-
-; --  Now the "Up" ones                
-
-GetKey12        CP $3D ; 7
-                JR NZ, GetKey13
-UpKey           LD A, $07
-                RET
-
-GetKey13        CP $15 ; Q
-                JR Z, UpKey
-
-GetKey14        CP $75 ; Up arrow (extended)
-                JR NZ, GetKey15
-                LD A, C     ; It's extended
+                JR Z, EnterPressed ; Enter
+                     
+                LD BC, $DFFE; Y, U, I, O, P
+                IN A,(C)
+                LD D, A     ; Preserve value
                 AND 1
-                JR Z, UpKey
+                JR Z, RightPressed ; P
+                LD A, D
+                AND 2
+                JR Z, LeftPressed ; O
 
-; --  Now the "Down" ones                
-
-GetKey15        CP $36 ; 6
-                JR NZ, GetKey16
-DownKey         LD A, $07
-                RET
-
-GetKey16        CP $1C ; A
-                JR Z, DownKey
-
-GetKey17        CP $72  ; Up arrow (extended)
-                JR NZ, GetKey18
-                LD A, C     ; It's extended
+                LD BC, $EFFE ; 6, 7, 8, 9, 0
+                IN A,(C)
+                LD D, A     ; Preserve value
                 AND 1
-                JR Z, DownKey
+                JR Z, ActionPreesed ; 0
+                LD A, D
+                AND 2
+                JR Z, NinePressed ; 9
+                LD A, D
+                AND 4
+                JR Z, RightPressed ; 8
+                LD A, D
+                AND 8
+                JR Z, UpPressed  ; 7
+                LD A, D
+                AND 16
+                JR Z, DownPressed ; 6
 
-GetKey18
-NoKey           LD A, $FF
+                LD BC, $F7FE;  5, 4, 3, 2, 1
+                IN A,(C)
+                LD D, A
+                AND 16
+                JR Z, LeftPressed ; 5
+                LD A, D
+                AND 8
+                JR Z, FourPressed
+                LD A, D
+                AND 4
+                JR Z, ThreePressed
+                LD A, D
+                AND 2
+                JR Z, TwoPressed
+                LD A, D
+                AND 1
+                JR Z, OnePressed
+
+ 
+                LD BC, 64510; T, R, E, W, Q
+                IN A,(C)
+                AND 1
+                JR Z, UpPressed ; Q
+              
+                LD BC, 65022 ; G, F, D, S, A
+                IN A,(C)
+                AND 1
+                JR Z, DownPressed ; A
+
+; -- No Valid Keys
+                LD A, $FF
                 RET
 
+SpacePressed    LD A, $0A
+                RET
+EnterPressed    LD A, $0B
+                RET             
+ActionPreesed   XOR A
+                RET
+OnePressed      LD A, $01
+                RET
+TwoPressed      LD A, $02
+                RET                
+ThreePressed    LD A, $03
+                RET                
+FourPressed     LD A, $04
+                RET                
+LeftPressed     LD A, $05
+                RET
+DownPressed     LD A, $06
+                RET
+UpPressed       LD A, $07
+                RET
+RightPressed    LD A, $08
+                RET
+NinePressed     LD A, $09
+                RET
 
 
 ;*****************************************************************************************************************************************************
