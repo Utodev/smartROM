@@ -889,12 +889,17 @@ USR0Continue        LD A, D                       ; If it's 3 more, we will use 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Save Configuration from file
 
-; --- Set default disk  
+SaveConfig               
+; -- Get Screen settings so they are saved with config
 
-; --- open file
-SaveConfig          LD IX,  CFGFilename
+                    _GETREG SCANDBLCTRL
+                    AND 00111111b                   ; Remove turbo bits
+                    LD (cfgSCANDBLCTRL),A
+
+; --- open file					
+                    LD IX,  CFGFilename
                     LD      B, FA_CREATE_AL
-					RST     $08
+                    RST     $08
                     DB      F_OPEN      
                     RET C
 
