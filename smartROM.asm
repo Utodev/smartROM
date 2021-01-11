@@ -64,7 +64,6 @@
                 define F_WRITE 		    $9e
                 define F_SEEK		    $9f       
                 define FA_READ 		    $01
-                define FA_WRITE		    $02
                 define FA_CREATE_AL	    $0C
 
                 define KEY_1            $01
@@ -82,6 +81,10 @@
                 define KEY_A            $16
                 define KEY_O            $15
                 define KEY_P            $18
+
+                define KEY_D            $30
+                define KEY_F            $31
+                define KEY_R            $32
 
                 define KEY_SPACE        $0A
                 define KEY_ENTER        $0B
@@ -104,8 +107,7 @@ START           DI
                 LD SP, $C000
                 CALL TimexInit
                 CALL CheckBootMode
-                LD E, 3
-                CALL SetSpeed
+                CALL SetTurboSpeed
                 CALL InitializeVars                 ; Restart this firmware variables
 
 
@@ -200,20 +202,25 @@ IsInverse       LD A, $FF
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Sets Turbo Speed at D
+; ************ Sets Turbo Speed
 
-SetSpeed        LD A, E
-                AND 3
-                RRCA
-                RRCA
-                LD D, A
-                _GETREG REG_SCANDBLCTRL
+SetTurboSpeed   _GETREG REG_SCANDBLCTRL
                 AND 00111111b
-                OR D
+                OR  11000000b
                 LD E, A
                 _SETREGB REG_SCANDBLCTRL
                 RET
-              
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets  Normal Speed
+
+SetNormalSpeed  _GETREG REG_SCANDBLCTRL
+                AND 00111111b
+                LD E, A
+                _SETREGB REG_SCANDBLCTRL
+                RET
+
+
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Prints Zero terminated string placed pointed by top value in the stack
 
@@ -338,79 +345,7 @@ SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
 				LD A, E
 				OUT (C),A
                 RET
-
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Draws a specific full width box for header
-
-DrawHeaderFrame CALL PrintAt
-                CALL PrintString
-                DB 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 18, 0
-                LD B, 4
-HeaderInner     CALL PrintString
-                DB 23, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 19, 0
-                DJNZ HeaderInner
-                CALL PrintString
-                DB 22, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 20, 0
-                RET
-             
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Draws a Box at Column C, line B, with D width and E height
-
-DrawBox         PUSH BC 
-                DEC D               ; Make the height and with -2, to count just the inner borders, not the corners
-                DEC D
-                DEC E
-                DEC E
-                PUSH DE
-                CALL PrintAt        ; Place at position
-                POP DE
-                ;Draw upper border
-                LD A, 16                ; up-left coner
-                CALL PrintChar
-                LD B, D
-BoxUpLoop       LD A, 17                ; top norder
-                CALL PrintChar
-                DJNZ BoxUpLoop
-                LD A, 18                ; Up-right border
-                CALL PrintChar
-                
-
-                ; Draw inner border
-                LD  H, E                ; H used for loop instead of B
-BoxInnerLoop    POP BC
-                INC B
-                PUSH BC                 ; Point to Next line and preserve it
-                PUSH DE
-                PUSH HL
-                CALL PrintAt
-                POP HL
-                POP DE
-                LD A, 23                 ;Left border
-                CALL PrintChar
-                LD B, D
-BoxInner2Loop   LD A, ' '                 ; Filler spaces
-                CALL PrintChar
-                DJNZ BoxInner2Loop
-                LD A, 19                ;Right Border
-                CALL PrintChar
-                DEC H
-                JR NZ, BoxInnerLoop 
-
-                ;Draw lower border
-                POP BC
-                INC B                   ; Move cursor once again
-                PUSH DE
-                CALL PrintAt                               
-                POP  DE
-                LD A, 22                ; lower-left
-                CALL PrintChar
-                LD B, D
-BoxDownLoop     LD A, 21                ; Lower border
-                CALL PrintChar
-                DJNZ BoxDownLoop
-                LD A, 20                ; lower-right
-                CALL PrintChar
-                RET
+        
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ PENDING: Unpatch the ROM so the patched ROM can be used as normal ROM in case the ROMS.ZX1 file is absent
@@ -564,8 +499,6 @@ FoundLast           LD A, E
 ; ************ Loads the ROM at entry L
 
 LoadROM             PUSH HL                 ; Preserve L entry
-                    LD A, 3
-                    CALL SetSpeed
                     POP HL
                     PUSH HL                 ; Preserve L entry again
                     LD H, 0
@@ -581,13 +514,15 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     ADD IY, DE     ; Now IY Points to entry
 
 ; --- Print ROM name and details
+                    CALL SetTurboSpeed
+
                     _PRINTAT 0, STARTLINE + 1
                     _WRITE "ZX-Uno Copyleft ZX-Uno Team - http://zxuno.speccy.org"
                     _PRINTAT 0, STARTLINE + 2
                     _WRITE "CoreID: "
                     CALL PrintCoreID
 
-                    _PRINTAT 0, STARTLINE + 4
+                    _PRINTAT 0, STARTLINE + 7
                     _WRITE "ROM: ["
                     POP HL
                     PUSH HL
@@ -606,18 +541,27 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
-                    _WRITE "  "
+                    _PRINTAT 21, STARTLINE + 18
                     _INVERSE 1
                     _WRITE " QAOP to select ROM "
-                    
+
+                    _INVERSE 0
+                    _PRINTAT 7, STARTLINE + 20
+                    _WRITE " <Enter> to select ROM - <Space> for ROM options "
+
                     _PRINTAT 0, 22
                     _WRITE " Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10) "
-                    _INVERSE 0
 
-                    LD A, 1
-                    CALL SetSpeed
+                    CALL SetNormalSpeed
 
-                    LD HL, 40000                 ; It will be some kind of timer, although when a key is pressed then timeout doesn't happen (65536 loops)
+ReleaseKey          CALL GetKey                 ;Wait until key is released
+                    CP NO_KEY                   
+                    JR NZ, ReleaseKey
+
+
+                    LD L, 0                 ; It will be some kind of timer, although when a key is pressed then timeout doesn't happen 
+                    LD A, (cfgDelay)
+                    LD H, A
 KeyLoop             CALL GetKey
                     CP NO_KEY
                     JR NZ, KeyPressed
@@ -630,28 +574,25 @@ KeyLoop             CALL GetKey
                     JR NZ, KeyLoop
                     LD A, NO_KEY
 
-KeyPressed          PUSH AF
+KeyPressed          PUSH AF                     ; c
                     LD A, 1
                     LD (KEY_HAS_BEEN_PRESSED), A
                     POP AF
 
-                    CP KEY_P
-                    JR NZ, KeyPressed2
-                    POP HL                     ; For cleaning purposes
-                    LD A, (LAST_VALID_ENTRY)
-                    CP L
-                    JP Z, LoadROM
-                    INC L
-                    JP LoadROM
                     
-KeyPressed2         CP KEY_ENTER            ; Boot Options
+KeyPressed2         CP KEY_SPACE            ; Boot Options
                     JR NZ, KeyPressed3
+                    CALL ClearScreen
                     CALL BootOptions
-                    POP HL                     ; Restore L Value to load same ROM with different options
-                    JP LoadROM
+                    JP ContinueLoad
 
-KeyPressed3         CP $0A ; Keys 0-9                     
-                    JR NC, KeyPressed4
+KeyPressed3         CP KEY_ENTER            ; Normal Boot
+                    JR NZ, KeyPressed4
+                    JP ContinueLoad
+
+
+KeyPressed4         CP $0A ; Keys 0-9                     
+                    JR NC, KeyPressed5
                     POP HL                     ; For cleaning purposes
                     OR A
                     JR NZ, ChangeROM
@@ -659,17 +600,9 @@ KeyPressed3         CP $0A ; Keys 0-9
 ChangeROM           LD L, A            
                     JP LoadROM
 
-KeyPressed4         CP KEY_O
-                    JR NZ, KeyPressed5
-                    POP HL
-                    LD A, L
-                    OR A 
-                    JP Z, LoadROM
-                    DEC L
-                    JP LoadROM
 
 KeyPressed5         CP KEY_Q
-PressQ              JP NZ, KeyPressed6
+                    JP NZ, KeyPressed6
                     POP HL
                     LD A, L
                     SUB 10  
@@ -691,8 +624,25 @@ KeyPressed6         CP KEY_A
                     LD L, A
                     JP LoadROM
 
+KeyPressed7         CP KEY_O
+                    JR NZ, KeyPressed8
+                    POP HL
+                    LD A, L
+                    OR A 
+                    JP Z, LoadROM
+                    DEC L
+                    JP LoadROM
 
-KeyPressed7
+KeyPressed8         CP KEY_P
+                    JR NZ, KeyPressed9
+                    POP HL                     ; For cleaning purposes
+                    LD A, (LAST_VALID_ENTRY)
+                    CP L
+                    JP Z, LoadROM
+                    INC L
+                    JP LoadROM
+
+KeyPressed9         JP ReleaseKey
 
 
 
@@ -847,9 +797,7 @@ RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     PUSH AF                         ; Preserve MASTERCONF valus                      
                     _SETREGB REG_MASTERCONF         
 
-
-                    LD E, 0
-                    CALL SetSpeed                   ; Back to normal Speed
+                    CALL SetNormalSpeed                   ; Back to normal Speed
 
                     POP AF
                     AND 2
@@ -937,7 +885,37 @@ USR0Continue        LD A, D                       ; If it's 3 more, we will use 
 
 ; --  Notice: in case it's 2 additional slots, that is, 3 in total, we will end up using System ROM 2, which is actually las slot used, so in the end
 ;     this makes the ROM use the last slot created.
-                    
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Save Configuration from file
+
+; --- Set default disk  
+
+; --- open file
+SaveConfig          LD IX,  CFGFilename
+                    LD      B, FA_CREATE_AL
+					RST     $08
+                    DB      F_OPEN      
+                    RET C
+
+; --- Dynamically update the F_CLOSE call later on
+                    LD (CloseFileCfgSave + 1),A
+
+; --- reads the entry information
+WriteConfig  		LD 	IX, ConfigurationBEGIN
+					LD BC, ConfigurationEND - ConfigurationBEGIN
+					RST $08
+					DB  F_WRITE
+                    RET C
+; --- Close file
+CloseFileCfgSave  	LD 		A, 0
+					RST     $08
+                    DB      F_CLOSE
+                    RET
+
+
+
+
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Load Configuration from file
 
@@ -946,7 +924,8 @@ LoadConfig          XOR	A
                     RST     $08 
                     DB      M_GETSETDRV
 
-; --- open file
+; --- open file     
+                    LD IX,  CFGFilename
                     LD      B, FA_READ   
 					RST     $08
                     DB      F_OPEN      
@@ -1011,7 +990,59 @@ UseVerboseMode      LD A, $D9; EXX
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Shows boot options
 
-BootOptions         RET
+BootOptions             CALL SetTurboSpeed
+
+                        _INVERSE 1
+                        _PRINTAT 14,8
+                        _WRITE "                                    "
+                        _PRINTAT 14,9
+                        _WRITE " <Intro> for normal boot            "
+                        _PRINTAT 14,10
+                        _WRITE " <Space> to Cancel                  "
+                        _PRINTAT 14,11
+                        _WRITE " <R> Boot as rooted.                "              
+                        _PRINTAT 14,12
+                        _WRITE " <D> Set ROM as default and boot    " 
+                        _PRINTAT 14,13
+                        _WRITE " <F> Force 128K ROM (no USR 0 mode) "
+                        _PRINTAT 14,14
+                        _WRITE "                                    "
+                        _INVERSE 0
+
+                        CALL SetNormalSpeed
+
+
+WaitKeyLoopBoot         CALL GetKey                                     ; First wait until space is released (to avoid to be triggered twice)
+                        CP KEY_SPACE
+                        JR Z, WaitKeyLoopBoot
+
+WaitKeyLoopBoot2        CALL GetKey                                     ; No wait for a key to be pressed
+                        CP NO_KEY
+                        JR Z, WaitKeyLoopBoot2
+
+CancelBootOptions       CP KEY_SPACE
+                        JR NZ, SetDefaultROM
+                        CALL ClearScreen
+                        CALL CopyrightNotice
+                        POP BC                                          ; Clear return address from stack
+                        POP HL                                          ; Recover Selected ROM index at L
+                        JP LoadROM
+
+SetDefaultROM           CP KEY_D
+                        JR NZ, Force128KMode
+                        POP BC                                          ; Pick return address
+                        POP HL
+                        PUSH HL                                         ; Get and restore L, index of ROM
+                        PUSH BC                                         ; Restore return address
+                        LD A, L
+                        LD (cfgDefaultROMIndex), A                      ; Save default ROM in settings
+                        CALL SaveConfig                                 ; Save Settings to SD
+                        RET
+
+Force128KMode                        
+
+
+                        JR WaitKeyLoopBoot
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Divides A by 10 and returns the remainder in A and the quotient in D^***
@@ -1092,7 +1123,7 @@ GetKey2         LD BC,  $7FFE; B, N, M, Symbol Shift, Space
                 IN A,(C)
                 LD D, A     ; Preserve value
                 AND 4
-                JR Z, MPressed    ; M
+                JP Z, MPressed    ; M
                 LD A, D
                 AND 1
                 JR Z, SpacePressed
@@ -1109,7 +1140,7 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 JP Z, PPressed ; P
                 LD A, D
                 AND 2
-                JR Z, OPressed ; O
+                JP Z, OPressed ; O
 
                 LD BC, $EFFE ; 6, 7, 8, 9, 0
                 IN A,(C)
@@ -1150,13 +1181,24 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
  
                 LD BC, 64510; T, R, E, W, Q
                 IN A,(C)
+                LD D, A
                 AND 1
                 JR Z, QPressed ; Q
+                LD A, D
+                AND 8
+                JR Z, RPressed ; R
               
                 LD BC, 65022 ; G, F, D, S, A
                 IN A,(C)
+                LD D, A
                 AND 1
                 JR Z, APressed ; A
+                LD A, D
+                AND 4
+                JR Z, DPressed ; D
+                LD A, D
+                AND 8
+                JR Z, FPressed ; F
 
 ; -- No Valid Keys
                 LD A, NO_KEY
@@ -1196,6 +1238,13 @@ OPressed        LD A, KEY_O
                 RET                
 PPressed        LD A, KEY_P
                 RET
+DPressed        LD A, KEY_D
+                RET
+FPressed        LD A, KEY_F
+                RET
+RPressed        LD A, KEY_R
+                RET
+
 
 
 ;*****************************************************************************************************************************************************
@@ -1217,7 +1266,7 @@ KEYMAPFilename      DB 'ZXUNO\KEYMAP.ZX1', 0
 
 
 ; -- Config File
-CFGFilename         DB 'ZXUNO\ZXUNO.CFG',0
+CFGFilename         DB 'ZXUNO\SETTINGS.ZX1',0
 
 ConfigurationBEGIN
 cfgMasterControlOR  DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
@@ -1229,7 +1278,7 @@ cfgDevctrl2AND      DB $FF
 cfgSCANDBLCTRL      DB 0        ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
 cfgDefaultROMIndex  DB 0        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
 cfgSilentMode       DB 0        ; 0 - verbose, 1 - silent
-cfgDelay            DB 0        ; 0 - standard delay on boot, any other value, delay in ~seconds
+cfgDelay            DB 10       ; 0 - standard delay on boot, any other value, delay in ~seconds
 cfgBoot128KMode     DB 0        ; 0 - starst in USR mode those ROMS with DivMMC, 1 - Starts ROM normally (risky)
 cfgReserved         DS 13
 ConfigurationEND                              
