@@ -49,6 +49,7 @@
                 define REG_KEYSTAT          $05
                 define REG_JOYCONF          $06
                 define REG_COREID           $FF
+                define REG_KEYMAP           $07
                 define ULAPLUS_PORT         $BF3B
                 define ULAPLUS_DATA         $FF3B
                 define FW_VERSION           "1.0 beta"
@@ -85,7 +86,7 @@
                 define KEY_SPACE        $0A
                 define KEY_ENTER        $0B
                 define KEY_M            $20
-                define NOKEY            $FF
+                define NO_KEY           $FF
 
 
 
@@ -209,7 +210,7 @@ SetSpeed        LD A, E
                 _GETREG REG_SCANDBLCTRL
                 AND 00111111b
                 OR D
-                LD B, A
+                LD E, A
                 _SETREGB REG_SCANDBLCTRL
                 RET
               
@@ -563,6 +564,10 @@ FoundLast           LD A, E
 ; ************ Loads the ROM at entry L
 
 LoadROM             PUSH HL                 ; Preserve L entry
+                    LD A, 3
+                    CALL SetSpeed
+                    POP HL
+                    PUSH HL                 ; Preserve L entry again
                     LD H, 0
                     ADD HL, HL
                     ADD HL, HL
@@ -577,7 +582,7 @@ LoadROM             PUSH HL                 ; Preserve L entry
 
 ; --- Print ROM name and details
                     _PRINTAT 0, STARTLINE + 1
-                    _WRITE "ZX-Uno (C) ZX-Uno Team - http://zxuno.speccy.org"
+                    _WRITE "ZX-Uno Copyleft ZX-Uno Team - http://zxuno.speccy.org"
                     _PRINTAT 0, STARTLINE + 2
                     _WRITE "CoreID: "
                     CALL PrintCoreID
@@ -601,17 +606,20 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
-                    _WRITE "   "
+                    _WRITE "  "
                     _INVERSE 1
-                    _WRITE "QAOP to select ROM"
+                    _WRITE " QAOP to select ROM "
                     
                     _PRINTAT 0, 22
-                    _WRITE "Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10)"
+                    _WRITE " Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10) "
                     _INVERSE 0
 
-                    LD HL, 20000
+                    LD A, 1
+                    CALL SetSpeed
+
+                    LD HL, 40000                 ; It will be some kind of timer, although when a key is pressed then timeout doesn't happen (65536 loops)
 KeyLoop             CALL GetKey
-                    CP $FF                 
+                    CP NO_KEY
                     JR NZ, KeyPressed
                     DEC HL
                     LD A, H
@@ -620,7 +628,7 @@ KeyLoop             CALL GetKey
                     LD A, (KEY_HAS_BEEN_PRESSED)
                     OR A
                     JR NZ, KeyLoop
-                    LD A, $FF
+                    LD A, NO_KEY
 
 KeyPressed          PUSH AF
                     LD A, 1
@@ -992,49 +1000,12 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
 UseUsr0             LD A, $57; LD D, A
                     LD (SetUSROMode), A
 
-
                     LD A, (cfgSilentMode)
                     OR A
                     JR Z, UseVerboseMode
                     LD A, $C9; RET
 UseVerboseMode      LD A, $D9; EXX
                     LD (PrintChar), A
-
-                    RET
-
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-; ************ Shows a menu of ROMs to load, returns slot chosen at L
-
-ROMMenu             call ClearScreen
-                    CALL RestoreCursor
-                    LD E, L             ; E points to current selectd ROM
-                    LD A, 0             ; A points to current first ROM in visible are
-
-                    LD HL, ROMDirectory + 32 ; First ROM Name
-                    LD B, 0             ; FOR LOOP
-ROMListLoop         LD C, 16
-                    PUSH BC
-                    PUSH HL
-                    CALL PrintAt
-                    POP HL
-                    PUSH HL
-                    CALL PrintString32
-                    POP HL
-                    POP BC
-                    LD DE, 64
-                    ADD HL, DE
-                    INC B
-                    CP 24
-                    JR NC, ROMListLoop
-
-MenuWaitKey         CALL GetKey
-                    CP $FF
-                    JR Z, MenuWaitKey
-
-                    CP $0B ; Enter
-                    RET Z
-                    JR MenuWaitKey
-
                     RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1069,10 +1040,10 @@ LoadKeyMap          LD IX, KEYMAPFilename
                     DB      F_OPEN      
                     RET C
 ; --- Dynamically update the F_CLOSE call later on
-                    LD (CloseFileKeyMap + 1),A
+                    LD (CloseFileKeyMap + 1), A
 
 ; --- reads the entry information
-ReadEntryInfo		LD 	IX, ROMDirectory            ; Used as temporaty location
+ReadkeyMap  		LD 	IX, ROMDirectory            ; Used as temporaty location
 					LD BC, 4096 ; Size of the entries information
 					RST $08
 					DB  F_READ
@@ -1188,7 +1159,7 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 JR Z, APressed ; A
 
 ; -- No Valid Keys
-                LD A, $FF
+                LD A, NO_KEY
                 RET
 
 SpacePressed    LD A, KEY_SPACE
