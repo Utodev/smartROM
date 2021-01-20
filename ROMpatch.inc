@@ -13,7 +13,8 @@ MEMCHECKADDR          equ $11DA
 PatchStart
 ; First copy this code to RAM, we will run from there
 
-            LD HL, PatchStartCopy
+Mover
+            LD HL, $3900 + PatchStartCopy - Mover
             LD DE, $6000
             LD BC, PatchEnd - PatchStartCopy
             LDIR
@@ -45,12 +46,12 @@ PatchStartCopy
 			LD   (BANKM),A      ; update the system variable (very important)
 			OUT  (C),A          ; make the switch						
 
-; ------------ Jump to smarROM
+; ------------ Jump to smartROM
             EI
             JP SMARTROMADDR
 PatchEnd
 
-; ----------------- Thi is the patch to avoid memory check
+; ----------------- This is the patch to avoid memory check
 PatchMemCheck LD HL, $FFFF
               JP $11FF
 

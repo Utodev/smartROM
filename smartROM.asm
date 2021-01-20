@@ -52,10 +52,15 @@
                 define REG_KEYMAP           $07
                 define ULAPLUS_PORT         $BF3B
                 define ULAPLUS_DATA         $FF3B
-                define FW_VERSION           "1.0 beta"
                 define FRAMES               $5C78
                 define TOASTRACKMAPPER      $7FFD
                 define PLUS2AMAPPER         $1FFD
+                define PATCHADDR            $3900
+                define ROMBASICENTRY        $1293
+                define MEMCHECKADDR         $11DA
+                define BANKM                $5B5C
+
+                define FW_VERSION           "release A (Atic Atac)"
 
                 define M_GETSETDRV  	$89
                 define F_OPEN  		    $9a
@@ -111,6 +116,14 @@ START           DI
                 CALL InitializeVars                 ; Restart this firmware variables
 
 
+;Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
+
+                _GETREG REG_DEVCONTROL      ; 
+                AND 10111111b               ;
+                LD E, A                     ;
+                _SETREGB REG_DEVCONTROL     ;
+
+
 ; --- Load Configuration
                 CALL LoadConfig
                 CALL ApplyConfig
@@ -126,14 +139,50 @@ START           DI
                 JR C, RunEmbeddeROM
                 LD A, (cfgDefaultROMIndex)                             
                 LD L, A
-                CALL LoadROM
+                JP LoadROM
 
-RunEmbeddeROM   CALL UnPatchROM                   ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
-                
-                IM 1
-                EI
 
-Loop            JR Loop
+RunEmbeddeROM   _PRINTAT 0, 3
+                _WRITE "Unable to find ROMS.ZX1 at /ZXUNO/ folder"
+                _PRINTAT 0, 4
+                _WRITE "Press <enter> to load embedded ROM"
+
+
+
+
+EmbeddedKeyLoop CALL GetKey
+                CP KEY_ENTER
+                JR NZ, EmbeddedKeyLoop
+
+EmbeddedGo      XOR A
+                OUT (255), A                 ; Disable timex mode
+                OUT (254), A                 ; Border 0
+
+                CALL SetNormalSpeed                   ; Back to normal Speed
+
+                CALL UnPatchROM                      ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
+
+
+; -- Set the device so it becomes a 128K +2A with a 48K ROM with DivMMC active and NMI
+                _SETREG REG_DEVCONTROL, 0            ; Everything enabled but Timex MMU
+                _SETREG REG_DEVCTRL2, 7              ; Disable extra modes
+
+; ------------ Page In Back System ROM 1 (48K ROM)
+
+                LD   BC,$7FFD       ; I/O address of horizontal ROM/RAM switch
+                LD   A,(BANKM)      ; get current switch state
+                OR   $10            ; System ROM 1
+                LD   (BANKM),A      ; update the system variable (very important)
+                OUT  (C),A          ; make the switch						
+
+                _SETREG REG_MASTERCONF, $82          ; Enable DivMMC, Lock, and get out of boot mode
+
+
+
+; -- And launch
+                DI
+                JP 1
+
 
 
 
@@ -336,6 +385,8 @@ SetPalette		LD A, 24                ; Paper
                 CALL SetULAPlusReg
                 RET
 
+
+
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Writes value E to ULAPlus register A
 
@@ -348,9 +399,33 @@ SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
         
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ PENDING: Unpatch the ROM so the patched ROM can be used as normal ROM in case the ROMS.ZX1 file is absent
+; ************  Unpatch the ROM so the patched ROM can be used as normal ROM in case the ROMS.ZX1 file is absent
 
-UnPatchROM      RET
+UnPatchROM      _SETREG REG_MASTERCONF, 1    ; MasterMapper mode
+                _SETREG REG_MASTERMAPPER, 9  ; System ROM 1
+; --- UnPatch the launch code at PATCHADDR
+                LD HL, PATCHADDR + $C000
+                LD A, $FF
+                LD (HL), A
+                LD DE, PATCHADDR + 1 + $C000
+                LD BC, $48F                 ; Size minus 1 of the whole FFs area in the 48K ROM 
+                
+
+; -- Restore the original CALL to show "(C) 1982" that was replaced with the boot code
+                LD HL, $0D6B
+                ;LD HL, $0C0A
+                LD (ROMBASICENTRY + $C000 ), HL
+
+; -- Restore  the ROM memory check that was removed to speed up
+
+                LD HL, $6B62
+                LD (MEMCHECKADDR+ $C000), HL
+                LD HL, $0236
+                LD (MEMCHECKADDR + 2 + $C000), HL
+                LD HL, $BC2B
+                LD (MEMCHECKADDR + 4 + $C000), HL
+                _SETREG REG_MASTERCONF, 2    ;  Back to normal mode
+                RET
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -547,7 +622,7 @@ LoadROM             PUSH HL                 ; Preserve L entry
 
                     _INVERSE 0
                     _PRINTAT 7, STARTLINE + 20
-                    _WRITE " <Enter> to select ROM - <Space> for ROM options "
+                    _WRITE "   <Enter> normal boot - <Space> boot options "
 
                     _PRINTAT 0, 22
                     _WRITE " Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10) "
@@ -573,18 +648,19 @@ KeyLoop             CALL GetKey
                     OR A
                     JR NZ, KeyLoop
                     LD A, NO_KEY
+                    JR KeyNotPressed
 
-KeyPressed          PUSH AF                     ; c
+KeyPressed          PUSH AF                   ; c
                     LD A, 1
                     LD (KEY_HAS_BEEN_PRESSED), A
                     POP AF
 
                     
-KeyPressed2         CP KEY_SPACE            ; Boot Options
+KeyNotPressed       CP KEY_SPACE            ; Boot Options
                     JR NZ, KeyPressed3
                     CALL ClearScreen
-                    CALL BootOptions
-                    JP ContinueLoad
+                    JP BootOptions
+                    
 
 KeyPressed3         CP KEY_ENTER            ; Normal Boot
                     JR NZ, KeyPressed4
@@ -601,18 +677,9 @@ ChangeROM           LD L, A
                     JP LoadROM
 
 
-KeyPressed5         CP KEY_Q
-                    JP NZ, KeyPressed6
-                    POP HL
-                    LD A, L
-                    SUB 10  
-                    LD L, A
-                    JP NC, LoadROM              ; It's checking after the SUB, as LD does not alter the flags
-                    LD L, 0
-                    JP LoadROM
 
-KeyPressed6         CP KEY_A                      
-                    JR NZ, KeyPressed7
+KeyPressed5         CP KEY_Q                      
+                    JR NZ, KeyPressed6
                     POP HL
                     LD A, L
                     ADD A, 10
@@ -623,6 +690,17 @@ KeyPressed6         CP KEY_A
                     LD A, (LAST_VALID_ENTRY)
                     LD L, A
                     JP LoadROM
+
+KeyPressed6         CP KEY_A
+                    JP NZ, KeyPressed7
+                    POP HL
+                    LD A, L
+                    SUB 10  
+                    LD L, A
+                    JP NC, LoadROM              ; It's checking after the SUB, as LD does not alter the flags
+                    LD L, 0
+                    JP LoadROM
+
 
 KeyPressed7         CP KEY_O
                     JR NZ, KeyPressed8
@@ -642,15 +720,14 @@ KeyPressed8         CP KEY_P
                     INC L
                     JP LoadROM
 
-KeyPressed9         JP ReleaseKey
 
+
+KeyPressed9         LD A ,(KEY_HAS_BEEN_PRESSED)
+                    OR A
+                    JP NZ, ReleaseKey
 
 
 ContinueLoad        POP HL                      ; Restore L-slot value, just for cleaning
-                    _GETREG REG_DEVCONTROL      ; Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
-                    AND 10111111b               ;
-                    LD E, A                     ;
-                    _SETREGB REG_DEVCONTROL     ;
                     CALL ClearScreen            ; Also clear the screen before loading
 
 
@@ -708,7 +785,7 @@ AfterSeek           XOR A
 
 
 
-ReadROMPages        LD B, (IY+1)                ; Get number of slots for this ROM. B will count the number of slots left to save
+ReadROMPages        LD B, (IY+1)                ; Get number of slots for this ROM. B will count the number of slots left to load
                     LD E, 8                     ; SRAM slot for System ROM 0 is slot 7 with MASTERMAPPER, the following ROM slots are 9, 10 and 11, so E will point to next SRAM slot to use
 RomPagesLoop        PUSH BC
                     PUSH DE
@@ -731,7 +808,7 @@ ReadROMHandler      LD A, 0                      ; the 0 is the file handler, up
                     LD BC, $4000
                     LDIR                    ; Copy from C000 to 0000 (which in boot mode, is the BRAM)
                     POP DE                  ; restore E (slot number)
-                    _SETREGB REG_MASTERMAPPER   ; System ROM 
+                    _SETREGB REG_MASTERMAPPER  
                     INC E
                     PUSH DE
                     LD HL, $6000
@@ -743,6 +820,29 @@ ReadROMHandler      LD A, 0                      ; the 0 is the file handler, up
                     POP DE
                     POP BC
                     DJNZ RomPagesLoop
+
+; --- Now fill the empty System ROM slots. 
+                    _SETREG REG_MASTERCONF, 1   ; Activate boot mode and disable DivMMC
+
+CloneROMs           LD A, (IY+1)             ;If ROM uses just one slot, we copy the same ROM to all SystemROM banks (0-3, SRAM 8-11 iN ZX-Uno)
+                    CP 1
+                    JR NZ, Not1SlotROM
+                    LD BC, $0809
+                    CALL CopyROMBank
+                    LD BC, $080A
+                    CALL CopyROMBank
+                    LD BC, $080B
+                    CALL CopyROMBank
+                    JR FourSlots
+
+Not1SlotROM         CP 2                       ;If ROM uses just two slots, we copy rom at slot 0 to slot 2 and from slot 1 to slot 3 (In ZXUno SRAM 8 to 10 and 9 to 11)
+                    JR NZ, FourSlots
+                    LD BC, $080A
+                    CALL CopyROMBank
+                    LD BC, $090B
+                    CALL CopyROMBank
+
+FourSlots           _SETREG REG_MASTERCONF, 2   ; back to user mode and DivMMC Enabled
 
 ; --- Close file
 CloseFile			LD 		A, 0
@@ -794,7 +894,7 @@ RomSetDevCtrl2      OR 0
 RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
                     LD E, A  
-                    PUSH AF                         ; Preserve MASTERCONF valus                      
+                    PUSH AF                         ; Preserve MASTERCONF value                      
                     _SETREGB REG_MASTERCONF         
 
                     CALL SetNormalSpeed                   ; Back to normal Speed
@@ -803,13 +903,9 @@ RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     AND 2
                     JP Z, 00000h                     ; If no DivMMC, we jump to 0000 to run System ROM 0
 
-; -- We have DivMMC active
+; -- Set USR0 mode
 
-                    LD A, (IY+1)                    ; Make sure USR 0 mode is set when needed, that is, when there is more than one ROM slot
-                    DEC A                           ; A = Number of slots -1
-                    OR A                   
-;
-USR0                CALL NZ, SetUSROMode            ; And set USR 0 mode for that specific number of slots
+USR0                CALL  SetUSROMode               
 
                     DI                              ; Otherwise simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in at 0000 trap
                     JP 1
@@ -864,22 +960,16 @@ CompletedMConf      LD A, (HL)
                     RET                    
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-; ************ Sets USR 0 mode so the ROM Starts in 48K mode and - main reason - so ESXDOS and DivMMC work fine
-; ************ A = Number of additional slots (other than the first one)
+; ************ Sets USR 0 mode byy choosing System ROM 3
 
-
-SetUSROMode         LD D, A                       ; IMPORTANT: DON'T CHANGE THIS LD D, A, or if you do, check where this address is patched to patch it properly
-                    AND  1                        ; 1 or 3 slots more
-                    JR Z, USR0Continue
-                    LD BC, TOASTRACKMAPPER        ; If 1 or 3 slots more, we will use System ROM 1 or 3
+SetUSROMode         LD BC, TOASTRACKMAPPER       
                     LD A,00010000b
+Usr0Patch1          AND $FF                                 ; This may be replaced by AND 0 above to make function chose ROM 0 (no USR0 mode)
                     OUT (C), A
 
-USR0Continue        LD A, D                       ; If it's 3 more, we will use System ROM 3
-                    AND 2
-                    RET Z
                     LD BC, PLUS2AMAPPER
                     LD A, 00000100b
+Usr0Patch2          AND $FF                                 ; This may be replaced by AND 0 above to make function chose ROM 0 (no USR0 mode)
                     OUT (C), A
                     RET
 
@@ -892,7 +982,7 @@ USR0Continue        LD A, D                       ; If it's 3 more, we will use 
 SaveConfig               
 ; -- Get Screen settings so they are saved with config
 
-                    _GETREG SCANDBLCTRL
+                    _GETREG REG_SCANDBLCTRL         ; This is temporary, just to get if the user changes using Scroll Lock
                     AND 00111111b                   ; Remove turbo bits
                     LD (cfgSCANDBLCTRL),A
 
@@ -951,6 +1041,26 @@ CloseFileCfg    	LD 		A, 0
                     DB      F_CLOSE
                     RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Copies a ZXUNO BANK from bank at B register to bank at C register using $4000 bytes at $6000
+
+CopyROMBank         PUSH BC
+                    LD E, B
+                     _SETREGB REG_MASTERMAPPER   ; Make page selected at C000 be page 0, which happens to be the same page selected at C000 when boot mode is off
+                    LD HL, $C000
+                    LD DE, $6000
+                    LD BC, $4000
+                    LDIR        
+                    POP BC
+                    LD E, C
+                     _SETREGB REG_MASTERMAPPER   ; Make page selected at C000 be page 0, which happens to be the same page selected at C000 when boot mode is off
+                    LD HL, $6000
+                    LD DE, $C000
+                    LD BC, $4000
+                    LDIR     
+                    RET   
+                    
+
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Applies the configuration in the way as much as is possible
@@ -980,17 +1090,26 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     LD A, (cfgBoot128KMode)
                     OR A
                     JR Z, UseUsr0
-                    LD A, $C9; RET
-UseUsr0             LD A, $57; LD D, A
-                    LD (SetUSROMode), A
+                    XOR A
+                    LD (Usr0Patch1+1), A
+                    LD (Usr0Patch2+1), A
+                    JR CheckSilentMode
+UseUsr0             LD A, $FF
+                    LD (Usr0Patch1+1), A
+                    LD (Usr0Patch2+1), A
 
-                    LD A, (cfgSilentMode)
+CheckSilentMode     LD A, (cfgSilentMode)
                     OR A
                     JR Z, UseVerboseMode
                     LD A, $C9; RET
+                    LD (PrintChar), A
+                    RET
 UseVerboseMode      LD A, $D9; EXX
                     LD (PrintChar), A
                     RET
+
+
+
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Shows boot options
@@ -999,27 +1118,27 @@ BootOptions             CALL SetTurboSpeed
 
                         _INVERSE 1
                         _PRINTAT 14,8
-                        _WRITE "                                    "
+                        _WRITE "                                     "
                         _PRINTAT 14,9
-                        _WRITE " <Intro> for normal boot            "
+                        _WRITE " <Space> to Cancel                   "
                         _PRINTAT 14,10
-                        _WRITE " <Space> to Cancel                  "
+                        _WRITE " <Intro> Normal boot                 "
                         _PRINTAT 14,11
-                        _WRITE " <R> Boot as rooted.                "              
+                        _WRITE " <D> Normal boot and make default    " 
                         _PRINTAT 14,12
-                        _WRITE " <D> Set ROM as default and boot    " 
+                        _WRITE " <R> Rooted boot                     "              
                         _PRINTAT 14,13
-                        _WRITE " <F> Force 128K ROM (no USR 0 mode) "
+                        _WRITE " <F> Force 128K mode (for 128K ROMs) "
                         _PRINTAT 14,14
-                        _WRITE "                                    "
+                        _WRITE "                                     " 
                         _INVERSE 0
 
                         CALL SetNormalSpeed
 
 
 WaitKeyLoopBoot         CALL GetKey                                     ; First wait until space is released (to avoid to be triggered twice)
-                        CP KEY_SPACE
-                        JR Z, WaitKeyLoopBoot
+                        CP NO_KEY
+                        JR NZ, WaitKeyLoopBoot
 
 WaitKeyLoopBoot2        CALL GetKey                                     ; No wait for a key to be pressed
                         CP NO_KEY
@@ -1029,22 +1148,35 @@ CancelBootOptions       CP KEY_SPACE
                         JR NZ, SetDefaultROM
                         CALL ClearScreen
                         CALL CopyrightNotice
-                        POP BC                                          ; Clear return address from stack
                         POP HL                                          ; Recover Selected ROM index at L
                         JP LoadROM
 
 SetDefaultROM           CP KEY_D
-                        JR NZ, Force128KMode
-                        POP BC                                          ; Pick return address
+                        JR NZ, NormalBoot
                         POP HL
                         PUSH HL                                         ; Get and restore L, index of ROM
-                        PUSH BC                                         ; Restore return address
                         LD A, L
                         LD (cfgDefaultROMIndex), A                      ; Save default ROM in settings
                         CALL SaveConfig                                 ; Save Settings to SD
-                        RET
+                        LD A, KEY_ENTER                                 ; To force it to enter next "entry"
 
-Force128KMode                        
+NormalBoot              CP KEY_ENTER                                    ; Execute the ROM
+                        JR NZ, Force128KMode
+NormalBootGo            POP HL
+                        JP ContinueLoad                        
+
+Force128KMode           CP KEY_F
+                        JR NZ, RootedBoot
+                        XOR A
+                        LD (Usr0Patch1+1),A
+                        LD (Usr0Patch2+1),A                             ; Disables USR 0 mode by making the function set System ROM 0
+                        JR NormalBootGo
+
+RootedBoot              CP KEY_R
+                        JR NZ, WaitKeyLoopBoot
+                        XOR A
+                        LD (RomSetMasterConf+1), A                      ; Disables LOCK but in MasterConf
+                        JR NormalBootGo
 
 
                         JR WaitKeyLoopBoot
@@ -1274,20 +1406,20 @@ KEYMAPFilename      DB 'ZXUNO\KEYMAP.ZX1', 0
 CFGFilename         DB 'ZXUNO\SETTINGS.ZX1',0
 
 ConfigurationBEGIN
-cfgMasterControlOR  DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
+cfgMasterControlOR  DB 0         ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
 cfgMasterControlAND DB $FF
-cfgDevcontrolOR     DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags2)
+cfgDevcontrolOR     DB 0         ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags2)
 cfgDevcontrolAND    DB $FF
-cfgDevctrl2OR       DB 0        ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags3)
-cfgDevctrl2AND      DB $FF
-cfgSCANDBLCTRL      DB 0        ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
-cfgDefaultROMIndex  DB 0        ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
-cfgSilentMode       DB 0        ; 0 - verbose, 1 - silent
-cfgDelay            DB 10       ; 0 - standard delay on boot, any other value, delay in ~seconds
-cfgBoot128KMode     DB 0        ; 0 - starst in USR mode those ROMS with DivMMC, 1 - Starts ROM normally (risky)
-cfgReserved         DS 13
+cfgDevctrl2OR       DB 0         ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags3)
+cfgDevctrl2AND      DB $FF 
+cfgSCANDBLCTRL      DB 0         ; Saves the SCANDBLCTRL value, but the turbo bits will be ignored and always set to 00
+cfgDefaultROMIndex  DB 0         ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
+cfgSilentMode       DB 0         ; 0 - verbose, 1 - silent
+cfgDelay            DB 46        ; cfgValue * 256 = number of loops in ROM selection if Key not pressed before loading default ROM
+cfgBoot128KMode     DB 0
+cfgJOYCONF          DB 00100001b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
+cfgReserved         DS 12
 ConfigurationEND                              
-                               
 
 
 ; -- Variables for internal use
