@@ -223,5 +223,6 @@ ESXDOSRom             INCBIN ASSETS\ESXMMC.BIN
                       FPOS 16383; Just to fill up to 16384 bytes
                       DB 0
                       ELSE 
+ESXDOSRom                      
                       ENDIF
     

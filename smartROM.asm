@@ -21,14 +21,13 @@
 ;
 ; And there is when a problem poped up: in boot mode, at least in ZEsarUX that is essential for debugging, you cannot use the 0000-3FFF are as a temporary buffer, as "somewhere else", because
 ; it's not writable, so the other 16K slot available, as smartROM code was at 8000h, is 4000-7FFF. That works, you can use that segment as temporary buffer and everything works, but it has a side
-; effect: when you use that area as a buffer the content is shown in screen, which of course procudes just random content. It was not terrible, but I prefered not to have it, so what I have done
-; is making the code run at A000-BFFF, which is only 8K, but it should be enough, that way I have the 16K from 6000 to 9FFF free to use as temporary buffer, as somewhere else, and the screen area
+; effect: when you use that area as a buffer the content is shown in screen, which of course produces just random content. It was not terrible, but I prefered not to have it, so what I have done
+; is making the code run at A000-BFFF, which is only 8K, but it should be enough, that way I have the 16K from 6000 to 9FFF free to use as temporary buffer, as "somewhere else", and the screen area
 ; is not affected, as it uses not even  half of the 4000-7FFF bank.
 
 ; If we ever need the SmartROM be larger than 8K, then it will have to be moved to 8000h again, and make the screen artifacts appear, unless another solution, like trying to use the 128K pagination
 ; together with the MASTERMAPPER mode, if that is even possible, to obtain more RAM in boot mode. Take in mind though, that 8K is way a lot considering things like the keyboard map can be stored in
 ; the SD card instead of the RAM.
-
 
 ;*****************************************************************************************************************************************************
 ;   DEFINITIONS AND MACROS
@@ -829,18 +828,18 @@ CloneROMs           LD A, (IY+1)             ;If ROM uses just one slot, we copy
                     JR NZ, Not1SlotROM
                     LD BC, $0809
                     CALL CopyROMBank
-                    LD BC, $080A
-                    CALL CopyROMBank
-                    LD BC, $080B
-                    CALL CopyROMBank
+                    LD C, $0A
+                    CALL CopyRomBankB
+                    LD C, $0B
+                    CALL CopyRomBankB
                     JR FourSlots
 
 Not1SlotROM         CP 2                       ;If ROM uses just two slots, we copy rom at slot 0 to slot 2 and from slot 1 to slot 3 (In ZXUno SRAM 8 to 10 and 9 to 11)
                     JR NZ, FourSlots
                     LD BC, $080A
                     CALL CopyROMBank
-                    LD BC, $090B
-                    CALL CopyROMBank
+                    LD C, $0B
+                    CALL CopyRomBankB
 
 FourSlots           _SETREG REG_MASTERCONF, 2   ; back to user mode and DivMMC Enabled
 
@@ -893,6 +892,7 @@ RomSetDevCtrl2      OR 0
                     CALL PrepareMasterConf          ; Flags 1 comes with values needed in MASTERCONF, but not the same order
 RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
+
                     LD E, A  
                     PUSH AF                         ; Preserve MASTERCONF value                      
                     _SETREGB REG_MASTERCONF         
@@ -907,7 +907,7 @@ RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
 
 USR0                CALL  SetUSROMode               
 
-                    DI                              ; Otherwise simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in at 0000 trap
+                    DI                              ; Simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in once more at 0000 trap
                     JP 1
 
 
@@ -964,12 +964,9 @@ CompletedMConf      LD A, (HL)
 
 SetUSROMode         LD BC, TOASTRACKMAPPER       
                     LD A,00010000b
-Usr0Patch1          AND $FF                                 ; This may be replaced by AND 0 above to make function chose ROM 0 (no USR0 mode)
                     OUT (C), A
-
                     LD BC, PLUS2AMAPPER
                     LD A, 00000100b
-Usr0Patch2          AND $FF                                 ; This may be replaced by AND 0 above to make function chose ROM 0 (no USR0 mode)
                     OUT (C), A
                     RET
 
@@ -1043,6 +1040,7 @@ CloseFileCfg    	LD 		A, 0
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Copies a ZXUNO BANK from bank at B register to bank at C register using $4000 bytes at $6000
+; ************ A Seconday entry at CopyRomBankB allows copying what is at $6000 to C000. Used to copy same thing several times
 
 CopyROMBank         PUSH BC
                     LD E, B
@@ -1052,12 +1050,13 @@ CopyROMBank         PUSH BC
                     LD BC, $4000
                     LDIR        
                     POP BC
-                    LD E, C
+CopyRomBankB        LD E, C
                      _SETREGB REG_MASTERMAPPER   ; Make page selected at C000 be page 0, which happens to be the same page selected at C000 when boot mode is off
                     LD HL, $6000
                     LD DE, $C000
                     LD BC, $4000
                     LDIR     
+                     _SETREG REG_MASTERMAPPER, 0 
                     RET   
                     
 
@@ -1086,17 +1085,6 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     OR  11000000b                   ;  Set 28Mhz Speed
                     LD E, A
                     _SETREGB REG_SCANDBLCTRL
-
-                    LD A, (cfgBoot128KMode)
-                    OR A
-                    JR Z, UseUsr0
-                    XOR A
-                    LD (Usr0Patch1+1), A
-                    LD (Usr0Patch2+1), A
-                    JR CheckSilentMode
-UseUsr0             LD A, $FF
-                    LD (Usr0Patch1+1), A
-                    LD (Usr0Patch2+1), A
 
 CheckSilentMode     LD A, (cfgSilentMode)
                     OR A
@@ -1128,8 +1116,6 @@ BootOptions             CALL SetTurboSpeed
                         _PRINTAT 14,12
                         _WRITE " <R> Rooted boot                     "              
                         _PRINTAT 14,13
-                        _WRITE " <F> Force 128K mode (for 128K ROMs) "
-                        _PRINTAT 14,14
                         _WRITE "                                     " 
                         _INVERSE 0
 
@@ -1161,16 +1147,10 @@ SetDefaultROM           CP KEY_D
                         LD A, KEY_ENTER                                 ; To force it to enter next "entry"
 
 NormalBoot              CP KEY_ENTER                                    ; Execute the ROM
-                        JR NZ, Force128KMode
+                        JR NZ, RootedBoot
 NormalBootGo            POP HL
                         JP ContinueLoad                        
 
-Force128KMode           CP KEY_F
-                        JR NZ, RootedBoot
-                        XOR A
-                        LD (Usr0Patch1+1),A
-                        LD (Usr0Patch2+1),A                             ; Disables USR 0 mode by making the function set System ROM 0
-                        JR NormalBootGo
 
 RootedBoot              CP KEY_R
                         JR NZ, WaitKeyLoopBoot
@@ -1416,9 +1396,8 @@ cfgSCANDBLCTRL      DB 0         ; Saves the SCANDBLCTRL value, but the turbo bi
 cfgDefaultROMIndex  DB 0         ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
 cfgSilentMode       DB 0         ; 0 - verbose, 1 - silent
 cfgDelay            DB 46        ; cfgValue * 256 = number of loops in ROM selection if Key not pressed before loading default ROM
-cfgBoot128KMode     DB 0
 cfgJOYCONF          DB 00100001b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
-cfgReserved         DS 12
+cfgReserved         DS 13
 ConfigurationEND                              
 
 

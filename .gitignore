@@ -2,6 +2,6 @@ symbols.a80
 *.bin
 *.rom
 assets/*
-make.sh
 notes.txt
 tools/*
+*.hex
