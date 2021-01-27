@@ -4,6 +4,10 @@
 
                        output "bootloader_copy_bram_to_sram.bin"
 
+
+                      ;define USE_SDRAM 1    ; Uncomment this line to generate code compatible with SDRAM  (does not use Turbo mode)
+
+
 ZXUNOADDR             equ 0FC3Bh
 ZXUNODATA             equ 0FD3Bh
 MAPPER128K            equ 7FFDh
@@ -23,30 +27,36 @@ CHECK48               equ $E4
                       di
                       ;Comprobar si la ROM de 128K está presente en la pantalla principal
 
-                      ;paso 1. Conmutar a 28 MHz
-                      xor a
+                      LD A, 1
                       out ($FE),A
                       
                       
+                      IFNDEF USE_SDRAM    
                       ld bc,ZXUNOADDR
                       ld a,SCANDBLCTRL
                       out (c),a
                       inc b
                       in a,(c)
-                      or 0c0h     ;28 MHz para ir rapidito
+                      or 0c0h     ;28 MHz para ir rapidito, pero solo si no usamos SDRAM, que peta
                       out (c),a
+                      ENDIF
 
                       // Voy a chequear si la ROM que me viene de 48K es válida
+                      ld bc,ZXUNOADDR     ; Mapeo la shadow RAm que es donde vendría la ROM de 48K
+                      ld a,MASTERMAPPER   
+                      out (c),a
+                      inc b
+                      ld a,7   
+                      out (c),a
+
                       IFDEF ZESARUX
-                        ld hl,8000h         ; EN ZEsarUX la tengo en 8000h
-                      ELSE
-                        ld bc,ZXUNOADDR     ; Y en maquina real en la shadow RAM (SRAM page 7)
-                        ld a,MASTERMAPPER   
-                        out (c),a
-                        inc b
-                        ld a,7   
-                        ld hl, $C000
+                        ld hl,$8000         ; En ZesarUX no me viene en la shadow RAM sino en 8000h, así que la copio a C000
+                        ld de,$C000         ; para que a partir de aqui el código sea siempre igual
+                        ld bc,$4000        
+                        ldir
                       ENDIF
+
+                      ld hl, $C000
                       xor a
                       ld b,a
 BucleChecksum         add a,(hl)
@@ -57,6 +67,9 @@ BucleChecksum         add a,(hl)
 
                        ;paso 2. Copia de ROMs a su sitio
                       
+                      LD A, 6
+                      out ($FE),A
+
 
 ; Uto -> Parchea la ROM de 48K
 
@@ -64,7 +77,7 @@ BucleChecksum         add a,(hl)
                       ; del boootloader a PATCHADDR para su ejecución. PATCHADDR está en la zona de la ROM
                       ; del 48K que está llena de FFs
                       ld hl, ROMPatch
-                      ld de, PATCHADDR + $8000
+                      ld de, PATCHADDR + $C000
                       ld bc, ROMPatchEnd- ROMPatch   
                       ldir               
 
@@ -72,16 +85,18 @@ BucleChecksum         add a,(hl)
                       ; va a tener siempre 48K de RAM direccionable, parcheamos esa rutina para que no la haga  y salga con sus 48K (última 
                       ; dirección válida FFFFh)
                       LD HL, PatchMemCheck
-                      LD DE, MEMCHECKADDR + $8000
+                      LD DE, MEMCHECKADDR + $C000
                       LD BC, 6
                       LDIR
 
                       ; Finalmente, metemos un salto a nuestro parche principal en el momento que se va a pintar el (C) 1982, lo hacemos dejando
                       ; el CALL en lugar de cambiarlo a un JP, lo cual en teoría permitiría volver aquí.
                       LD HL, PATCHADDR 
-                      LD (ROMBASICENTRY + $8000), HL
-                    
-
+                      LD (ROMBASICENTRY + $C000), HL
+                  
+                      LD A, 3
+                      out ($FE),A
+                  
 ; Continua el código original de McLeod
 
                       ; Copio la SmartROM a los bancos 0 y 2
@@ -104,63 +119,46 @@ BucleChecksum         add a,(hl)
                       ld bc,$4000
                       ldir
 
-
-                    IFDEF ZESARUX               ; With ZEsarUX --zxuno-initial-64k feature, the 48K ROM piece of ROM is at 8000h  already, not at the Shadow Screen
-                      ld bc,ZXUNODATA
-                      ld a,9   ;banco ROM 1
-                      out (c),a
-                      ld hl,8000h
-                      ld de,0c000h
-                      ld bc,4000h
-                      ldir
-
-                      ld bc,ZXUNODATA
-                      ld a,11  ;banco ROM 3
-                      out (c),a
-                      ld hl,8000h
-                      ld de,0c000h
-                      ld bc,4000h
-                      ldir
-                     ELSE                           ; Si es la maquina real, la segunda pieza de la ROM está en la shadow Screen
-                     
                       ld bc,ZXUNODATA
                       ld a,7   ;shadow screen           ; la paginamos la shadow screen en C000
                       out (c),a
-                      ld hl,0c000h
-                      ld de,4000h                       ; copiamos a un sitio fuera del ultimo banco de 16KB como buffer temporal
-                      ld bc,4000h
+                      ld hl,$c000
+                      ld de,$4000                       ; copiamos a un sitio fuera del ultimo banco de 16KB como buffer temporal
+                      ld bc,$4000
                       ldir
 
                       ld bc,ZXUNODATA                   ; Y la copiamos al banco de System ROM 1 y 3
                       ld a,9   ;banco ROM 1
                       out (c),a
-                      ld hl,4000h
-                      ld de,0c000h
-                      ld bc,4000h
+                      ld hl,$4000
+                      ld de,$c000
+                      ld bc,$4000
                       ldir
 
                       ld bc,ZXUNODATA
                       ld a,11  ;banco ROM 3
                       out (c),a
-                      ld hl,4000h
-                      ld de,0c000h
-                      ld bc,4000h
+                      ld hl,$4000
+                      ld de,$c000
+                      ld bc,$4000
                       ldir
-                    ENDIF
 
                       ld bc,ZXUNODATA               ; Colocamos el ESXDOS en su sitio también
                       ld a,12  ;banco ESXDOS
                       out (c),a
                       ld hl,ESXDOSRom
-                      ld de,0c000h
-                      ld bc,2000h
+                      ld de,$c000
+                      ld bc,$2000
                       ldir
+
+                      LD A, 5
+                      out ($FE),A
 
 
 NoArranqueInicial      ;paso 3. Preparar la fase en RAM
                       
                       ld hl,UltimaFaseEnRAM
-                      ld de,8000h
+                      ld de,$8000
                       ld bc,LongUltimaFase
                       ldir
 
@@ -187,9 +185,9 @@ UltimaFaseEnRAM       ;paso 4. Configuramos máquina
 
                       ld a,80h    ;16 páginas de 8KB cada una + CONMEM
 BucleEraseDivMMC      out (DIVIDECTRL),a
-                      ld hl,2000h
-                      ld de,2001h
-                      ld bc,1FFFh
+                      ld hl,$2000
+                      ld de,$2001
+                      ld bc,$1FFF
                       ld (hl),l
                       ldir
                       inc a
@@ -209,6 +207,8 @@ BucleEraseDivMMC      out (DIVIDECTRL),a
                       and 3Fh     ;echamos el freno y volvemos a los 3.5 MHz
                       out (c),a
 
+                      LD A, 2
+                      out ($FE),A
 
                       jp 0
 LongUltimaFase        equ $-UltimaFaseEnRAM

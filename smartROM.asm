@@ -3,6 +3,7 @@
 
                 OUTPUT  smartROM.bin
                 define SMARTROMADDR       $A000
+                ;define USE_SDRAM 1    ; Uncomment this line to generate code compatible with SDRAM  (does not use Turbo mode)
                 ORG SMARTROMADDR                           ; Code is place at the middle of third 16K page
 
 ; Why at A000?
@@ -108,6 +109,8 @@
 ;*****************************************************************************************************************************************************
 
 START           DI
+                LD A, 7
+                OUT ($FE), A
                 LD SP, $C000
                 CALL TimexInit
                 CALL CheckBootMode
@@ -252,11 +255,13 @@ IsInverse       LD A, $FF
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Sets Turbo Speed
 
-SetTurboSpeed   _GETREG REG_SCANDBLCTRL
+SetTurboSpeed   IFNDEF USE_SDRAM
+                _GETREG REG_SCANDBLCTRL
                 AND 00111111b
                 OR  11000000b
                 LD E, A
                 _SETREGB REG_SCANDBLCTRL
+                ENDIF
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -1082,7 +1087,9 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
 
                     LD A, (cfgSCANDBLCTRL)
                     AND 00111111b                   ;  Remove the Turbo part
+                    IFNDEF USE_SDRAM
                     OR  11000000b                   ;  Set 28Mhz Speed
+                    ENDIF
                     LD E, A
                     _SETREGB REG_SCANDBLCTRL
 

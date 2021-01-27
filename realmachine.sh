@@ -22,4 +22,6 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 cat smartROM.bin assets/48.rom > 128.bin
 tools/bin2hex 128.bin
 tools/bin2hex bootloader_copy_bram_to_sram.bin
+mv 128.hex /d/PC-FPGA/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/common/uto_128en.hex
+mv bootloader_copy_bram_to_sram.hex /d/PC-FPGA/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/common/uto_bootloader_copy_bram_to_sram.hex
 
