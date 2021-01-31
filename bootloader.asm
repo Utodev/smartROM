@@ -63,7 +63,7 @@
                       define BANKM                $5B5C    ; System Variable
 
 
-                      define M_GETSETDRV  	      $89             ; ESXDOS functions and parameters
+                      define M_GETSETDRV  	      $89      ; ESXDOS functions and parameters
                       define F_OPEN  		          $9a
                       define F_CLOSE 		          $9b
                       define F_READ  		          $9d
@@ -204,7 +204,7 @@ NoZesarUXRestart
                       LD (ROMBASICENTRY + $C000), HL
                   
                   
-                      ; No wplace the patched 48K ROM at the proper sytem rom slots
+                      ; Now place the patched 48K ROM at the proper sytem rom slots
 
                       ld hl,$c000
                       ld de,$4000                       ; use $4000 as temporary buffer
@@ -233,7 +233,7 @@ NoZesarUXRestart
 
                       JR CantRecover                 ; No need to check if the ROMs are in bank slots 13 and 14, we have already loaded them
 
-; ----  Step 3  - prepare las phase in RAM
+; ----  Step 3  - prepare last phase in RAM
 NoArranqueInicial
 
 
@@ -312,7 +312,7 @@ BucleEraseDivMMC      out (DIVIDECTRL),a
                       xor a
                       out (DIVIDECTRL),a
 
-                      ;paso 6. Volvemos a 3.5 MHz y arrancamos ROM normal de 128K (con DivMMC)
+; -- Step 6 - Go back to 3.5MHz and launch ROM with DivMMC support
                       _SETREG REG_SCANDBLCTRL, 0
 
                       JP 0
