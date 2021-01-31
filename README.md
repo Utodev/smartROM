@@ -17,13 +17,35 @@ Once you have the core installed, you will need:
 
 Now that everything is in, boot yout device. You should see the usual ESXDOS loading screen (make sure you get OK for all opcions but maybe RTC.SYS), and then you will see the SmartROM showing up.
 
-Possile errors
-==============
+Possible errors
+===============
 
 - If you get a message about SmartROM not found make sure you have put SMARTROM.ZX1 file in the ZXUNO folder of the SD card.
 - If you get a message about not ROMs file, please make sure you put the ROMS.ZX1 file  in the ZXUNO folder of the SD card.
 - If every time you choose a ROM file the same one it's loaded, then make sure when ESXDOS starts all SYS files load OK (if RTC.SYS fails it doesn't matter, check the others). If not, make sure you put the proper ESXDOs BIN/SYS/TMP files in the SD card. Version of ESXDOS must be 0.8.8.
 - If you choose 128K models but you get booted in 48K mode, please have in mind ESXDOS and DivMMC work like that, the computer starts in "USR 0 mode", which means even if it's a 128K computer and games or utilities can access the extra RAM, AY chip, etc. the boot is made with the 48K ROM active.
+- If you are using VGA video output you probably see nothing. Press ScrollLock key to change video output to VGA.
 
 
+Technical information for developers
+====================================
+Changes in the core:
+
+McLeod_Ideafix already had created a core for ZX-Uno tha wasn't needing a flash memory, it was very simple though, and could only boot as Spectrum +2A in USR 0 mode. The change made in the core just replaces the bootloader with one that, instead of loading that ROM and booting, patches it (assumes is a toastrack 32K ROM) to do the following:
+
+1) Skip the RAM test
+2) Don't set the LOCK bit in the MASTERCONF register (ZX-Uno)
+2) Start a routine which will try to find a file named SMARTROM.ZX1 at the ZXUNO folder of the SD and load it. If not, then it unpatches the ROM and runs just as McLeod's core
+
+The core itself has been changed by adding a new "define" in the common/config.vh file, "USE SMARTROM". If that one is defined and "define LOAD_ROM_FROM_FLASH_OPTION" is commented, the SmartROM core will be generated.
+
+The SmartROM:
+
+The SmartROM is the code loaded by the patched ROM, and runs at A000h. It presents a menu of options and manages to allow the user to choose different ROMs among other things. It takes advantage on being loaded *after* ESXDOS, so it can use ESXDOS to load and save files from the SD card. The code of the SmartROM is complex, but it's well commented and has been made to be readable as much as possible. Same goes for the booloader code. Probably.. surely, it is not optimized code. At this moment there is no need of more speed nor more space so it's left like that because it's prioritary for the author to keep readability over speed or space.
+
+Greetings
+=========
+
+Copyright and License
+=====================
 
