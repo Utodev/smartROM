@@ -37,7 +37,7 @@ McLeod_Ideafix already had created a core for ZX-Uno tha wasn't needing a flash 
 2) Don't set the LOCK bit in the MASTERCONF register (ZX-Uno)
 2) Start a routine which will try to find a file named SMARTROM.ZX1 at the ZXUNO folder of the SD and load it. If not, then it unpatches the ROM and runs just as McLeod's core
 
-The core itself has been changed by adding a new "define" in the common/config.vh file, "USE SMARTROM". If that one is defined and "define LOAD_ROM_FROM_FLASH_OPTION" is commented, the SmartROM core will be generated.
+The core itself has been changed by adding a new "define" in the common/config.vh file, "USE SMARTROM". If that one is defined and "define LOAD_ROM_FROM_FLASH_OPTION" is commented, the SmartROM core will be generated when synthetized. Also, some changes have been made to the common/rom.v file, so instead loading the usual bootloader_copy_bram_to_sram.hex, it takes smartrom_bootloader_and_esxdos.hex, which is an hex file containing the concatenated bootloader.asm result and the ESXMMC.BIN file from ESXDOS. Please notice the original McLeod code used two different files, one for the bootloader and one for ESXDOS, this fork doesn't.
 
 The SmartROM:
 
@@ -46,6 +46,15 @@ The SmartROM is the code loaded by the patched ROM, and runs at A000h. It presen
 Greetings
 =========
 
+Greetings: a big thanks to McLeod_ideafix, whose support made this possible. Also a big thanks to Cesar Hernández, because his help with ZEsarUX emulator and custom feature to load the ZXUno RAm made this possible in a reasonable time. Also, many thanks to Antonio Villena and Fernando Mosquera for their support with firmware issues and for help getting ZX-Uno core synthesized. Finally, thanks to Andrew Owen for the ideas, and their valuable information about ULAPlus.
+
+
 Copyright and License
 =====================
+
+The bootloader.asm file is (C) Jose Manuel Rodriguez (McLeod_ideafix) and Carlos Sánchez (Uto) and it's made public under the GPLv3 license.
+
+The SmartROM.asm file is (C) Carlo Sánchez (Uto) and it's made public under the GPLv3 license.
+
+The core files are (C) ZX Uno Team, and I guess the few lines Uto changed are also (C) Uto, but well, cough cough... not much :-)
 
