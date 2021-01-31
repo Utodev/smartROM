@@ -891,7 +891,6 @@ RomSetDevControl    OR 0
 ; Bit 5. Keyboard issue: 0=issue 2, 1=issue 3
 ;      
 ;      OUT: 7-LOCK	6-MODE1	5-DISCONT	4-MODE0	3-I2KB	2-DISNMI	1-DIVEN	0-BOOTM
-;00111101  128K, NMI Duvmmc,  Dicmmv, Contencion, issue 3
 
 
 PrepareMasterConf   LD HL, AUX    ; We will be storing here her
