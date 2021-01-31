@@ -1,0 +1,3127 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Sun Jan 31 14:36:11 2021
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "ear" LOCATE = SITE "P94" LEVEL 1;
+COMP "b<0>" LOCATE = SITE "P88" LEVEL 1;
+COMP "b<1>" LOCATE = SITE "P92" LEVEL 1;
+COMP "b<2>" LOCATE = SITE "P93" LEVEL 1;
+COMP "g<0>" LOCATE = SITE "P82" LEVEL 1;
+COMP "g<1>" LOCATE = SITE "P83" LEVEL 1;
+COMP "g<2>" LOCATE = SITE "P84" LEVEL 1;
+COMP "r<0>" LOCATE = SITE "P79" LEVEL 1;
+COMP "r<1>" LOCATE = SITE "P80" LEVEL 1;
+COMP "r<2>" LOCATE = SITE "P81" LEVEL 1;
+COMP "dabd" LOCATE = SITE "P46" LEVEL 1;
+COMP "stdn" LOCATE = SITE "P66" LEVEL 1;
+COMP "wsbd" LOCATE = SITE "P57" LEVEL 1;
+COMP "dataps2" LOCATE = SITE "P98" LEVEL 1;
+COMP "flash_clk" LOCATE = SITE "P70" LEVEL 1;
+COMP "uart_reset" LOCATE = SITE "P26" LEVEL 1;
+COMP "clkbd" LOCATE = SITE "P50" LEVEL 1;
+COMP "hsync" LOCATE = SITE "P87" LEVEL 1;
+COMP "joyup" LOCATE = SITE "P1" LEVEL 1;
+COMP "stdnb" LOCATE = SITE "P67" LEVEL 1;
+COMP "vsync" LOCATE = SITE "P85" LEVEL 1;
+COMP "sd_cs_n" LOCATE = SITE "P59" LEVEL 1;
+COMP "sd_miso" LOCATE = SITE "P78" LEVEL 1;
+COMP "sd_mosi" LOCATE = SITE "P74" LEVEL 1;
+COMP "joybtn2" LOCATE = SITE "P8" LEVEL 1;
+COMP "joyfire" LOCATE = SITE "P2" LEVEL 1;
+COMP "joyleft" LOCATE = SITE "P6" LEVEL 1;
+COMP "joydown" LOCATE = SITE "P5" LEVEL 1;
+COMP "sram_addr<0>" LOCATE = SITE "P141" LEVEL 1;
+COMP "sram_addr<1>" LOCATE = SITE "P139" LEVEL 1;
+COMP "sram_addr<2>" LOCATE = SITE "P137" LEVEL 1;
+COMP "sram_addr<3>" LOCATE = SITE "P134" LEVEL 1;
+COMP "sram_addr<4>" LOCATE = SITE "P133" LEVEL 1;
+COMP "sram_addr<5>" LOCATE = SITE "P120" LEVEL 1;
+COMP "sram_addr<6>" LOCATE = SITE "P118" LEVEL 1;
+COMP "sram_addr<7>" LOCATE = SITE "P116" LEVEL 1;
+COMP "sram_addr<8>" LOCATE = SITE "P114" LEVEL 1;
+COMP "sram_addr<9>" LOCATE = SITE "P112" LEVEL 1;
+COMP "uart_rx" LOCATE = SITE "P12" LEVEL 1;
+COMP "uart_tx" LOCATE = SITE "P16" LEVEL 1;
+COMP "testled" LOCATE = SITE "P11" LEVEL 1;
+COMP "sram_data<0>" LOCATE = SITE "P132" LEVEL 1;
+COMP "sram_data<1>" LOCATE = SITE "P127" LEVEL 1;
+COMP "sram_data<2>" LOCATE = SITE "P124" LEVEL 1;
+COMP "sram_data<3>" LOCATE = SITE "P123" LEVEL 1;
+COMP "sram_data<4>" LOCATE = SITE "P115" LEVEL 1;
+COMP "sram_data<5>" LOCATE = SITE "P117" LEVEL 1;
+COMP "sram_data<6>" LOCATE = SITE "P119" LEVEL 1;
+COMP "sram_data<7>" LOCATE = SITE "P126" LEVEL 1;
+COMP "audio_out_left" LOCATE = SITE "P10" LEVEL 1;
+COMP "clk50mhz" LOCATE = SITE "P55" LEVEL 1;
+PIN clk50mhz_pin<0> = BEL "clk50mhz" PINNAME PAD;
+PIN "clk50mhz_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "flash_cs_n" LOCATE = SITE "P38" LEVEL 1;
+COMP "flash_miso" LOCATE = SITE "P65" LEVEL 1;
+COMP "flash_mosi" LOCATE = SITE "P64" LEVEL 1;
+COMP "mousedata" LOCATE = SITE "P97" LEVEL 1;
+COMP "clkps2" LOCATE = SITE "P99" LEVEL 1;
+COMP "sd_clk" LOCATE = SITE "P75" LEVEL 1;
+COMP "sram_we_n" LOCATE = SITE "P121" LEVEL 1;
+COMP "midi_out" LOCATE = SITE "P43" LEVEL 1;
+COMP "joyright" LOCATE = SITE "P7" LEVEL 1;
+COMP "sram_addr<10>" LOCATE = SITE "P104" LEVEL 1;
+COMP "sram_addr<11>" LOCATE = SITE "P102" LEVEL 1;
+COMP "sram_addr<12>" LOCATE = SITE "P101" LEVEL 1;
+COMP "sram_addr<20>" LOCATE = SITE "P143" LEVEL 1;
+COMP "sram_addr<13>" LOCATE = SITE "P100" LEVEL 1;
+COMP "sram_addr<14>" LOCATE = SITE "P111" LEVEL 1;
+COMP "sram_addr<15>" LOCATE = SITE "P131" LEVEL 1;
+COMP "sram_addr<16>" LOCATE = SITE "P138" LEVEL 1;
+COMP "sram_addr<17>" LOCATE = SITE "P140" LEVEL 1;
+COMP "sram_addr<18>" LOCATE = SITE "P142" LEVEL 1;
+COMP "sram_addr<19>" LOCATE = SITE "P105" LEVEL 1;
+COMP "mouseclk" LOCATE = SITE "P95" LEVEL 1;
+COMP "uart_rts" LOCATE = SITE "P22" LEVEL 1;
+COMP "audio_out_right" LOCATE = SITE "P9" LEVEL 1;
+PIN la_maquina/la_ula/Madd_n06091_pins<92> = BEL
+        "la_maquina/la_ula/Madd_n06091" PINNAME CLK;
+PIN la_maquina/la_ula/Maddsub_n0513_pins<92> = BEL
+        "la_maquina/la_ula/Maddsub_n0513" PINNAME CLK;
+PIN la_maquina/dos_ays/ay2/Mram_lin2log11_pins<22> = BEL
+        "la_maquina/dos_ays/ay2/Mram_lin2log11" PINNAME CLKA;
+PIN la_maquina/dos_ays/ay2/Mram_lin2log11_pins<23> = BEL
+        "la_maquina/dos_ays/ay2/Mram_lin2log11" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1" PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3_pins<28> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3_pins<29> = BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3" PINNAME CLKB;
+PIN la_maquina/la_ula/palette/Mram_lut1_pins<22> = BEL
+        "la_maquina/la_ula/palette/Mram_lut1" PINNAME CLKA;
+PIN la_maquina/la_ula/palette/Mram_lut1_pins<23> = BEL
+        "la_maquina/la_ula/palette/Mram_lut1" PINNAME CLKB;
+PIN la_maquina/el_teclado/traductor/Mram_keymap2_pins<22> = BEL
+        "la_maquina/el_teclado/traductor/Mram_keymap2" PINNAME CLKA;
+PIN la_maquina/el_teclado/traductor/Mram_keymap2_pins<23> = BEL
+        "la_maquina/el_teclado/traductor/Mram_keymap2" PINNAME CLKB;
+PIN la_maquina/el_teclado/traductor/Mram_keymap1_pins<22> = BEL
+        "la_maquina/el_teclado/traductor/Mram_keymap1" PINNAME CLKA;
+PIN la_maquina/el_teclado/traductor/Mram_keymap1_pins<23> = BEL
+        "la_maquina/el_teclado/traductor/Mram_keymap1" PINNAME CLKB;
+PIN la_maquina/cassette_digital/Mram_pulse1_pins<20> = BEL
+        "la_maquina/cassette_digital/Mram_pulse1" PINNAME CLKA;
+PIN la_maquina/cassette_digital/Mram_pulse1_pins<21> = BEL
+        "la_maquina/cassette_digital/Mram_pulse1" PINNAME CLKB;
+PIN la_maquina/cassette_digital/Mram_pulse0_pins<20> = BEL
+        "la_maquina/cassette_digital/Mram_pulse0" PINNAME CLKA;
+PIN la_maquina/cassette_digital/Mram_pulse0_pins<21> = BEL
+        "la_maquina/cassette_digital/Mram_pulse0" PINNAME CLKB;
+PIN salida_vga/memscan/Mram_scan_pins<22> = BEL "salida_vga/memscan/Mram_scan"
+        PINNAME CLKA;
+PIN salida_vga/memscan/Mram_scan_pins<23> = BEL "salida_vga/memscan/Mram_scan"
+        PINNAME CLKB;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem8_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem8" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem7_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem7" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem6_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem6" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem5_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem5" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem4_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem4" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem3_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem3" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem2_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem2" PINNAME CLKA;
+PIN la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem1_pins<14> = BEL
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem1" PINNAME CLKA;
+TIMEGRP relojes_maestros_reconfiguracion_pll_clk0_bufgin = BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_10" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_9" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_8" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_7" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_6" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_5" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_4" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_3" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_2" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_1" BEL
+        "la_maquina/audio_mix/audio_dac_left/SigmaLatch_0" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_10" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_9" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_8" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_7" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_6" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_5" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_4" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_3" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_2" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_1" BEL
+        "la_maquina/audio_mix/audio_dac_right/SigmaLatch_0" BEL
+        "la_maquina/dos_ays/ay1/envelope_sample_seq_4" BEL
+        "la_maquina/dos_ays/ay1/envelope_sample_seq_3" BEL
+        "la_maquina/dos_ays/ay1/envelope_sample_seq_2" BEL
+        "la_maquina/dos_ays/ay1/envelope_sample_seq_1" BEL
+        "la_maquina/dos_ays/ay1/envelope_sample_seq_0" BEL
+        "la_maquina/dos_ays/ay2/envelope_sample_seq_4" BEL
+        "la_maquina/dos_ays/ay2/envelope_sample_seq_3" BEL
+        "la_maquina/dos_ays/ay2/envelope_sample_seq_2" BEL
+        "la_maquina/dos_ays/ay2/envelope_sample_seq_1" BEL
+        "la_maquina/dos_ays/ay2/envelope_sample_seq_0" BEL
+        "la_maquina/audio_mix/audio_dac_left/DACout" BEL
+        "la_maquina/audio_mix/audio_dac_right/DACout" BEL
+        "la_maquina/capreg/memreport_0" BEL "la_maquina/capreg/memreport_1"
+        BEL "la_maquina/dos_ays/ay1/period_b_11" BEL
+        "la_maquina/dos_ays/ay1/period_b_10" BEL
+        "la_maquina/dos_ays/ay1/period_b_9" BEL
+        "la_maquina/dos_ays/ay1/period_b_8" BEL
+        "la_maquina/dos_ays/ay1/period_b_7" BEL
+        "la_maquina/dos_ays/ay1/period_b_6" BEL
+        "la_maquina/dos_ays/ay1/period_b_5" BEL
+        "la_maquina/dos_ays/ay1/period_b_4" BEL
+        "la_maquina/dos_ays/ay1/period_b_3" BEL
+        "la_maquina/dos_ays/ay1/period_b_2" BEL
+        "la_maquina/dos_ays/ay1/period_b_1" BEL
+        "la_maquina/dos_ays/ay1/period_b_0" BEL
+        "la_maquina/dos_ays/ay1/period_c_11" BEL
+        "la_maquina/dos_ays/ay1/period_c_10" BEL
+        "la_maquina/dos_ays/ay1/period_c_9" BEL
+        "la_maquina/dos_ays/ay1/period_c_8" BEL
+        "la_maquina/dos_ays/ay1/period_c_7" BEL
+        "la_maquina/dos_ays/ay1/period_c_6" BEL
+        "la_maquina/dos_ays/ay1/period_c_5" BEL
+        "la_maquina/dos_ays/ay1/period_c_4" BEL
+        "la_maquina/dos_ays/ay1/period_c_3" BEL
+        "la_maquina/dos_ays/ay1/period_c_2" BEL
+        "la_maquina/dos_ays/ay1/period_c_1" BEL
+        "la_maquina/dos_ays/ay1/period_c_0" BEL
+        "la_maquina/dos_ays/ay1/period_a_11" BEL
+        "la_maquina/dos_ays/ay1/period_a_10" BEL
+        "la_maquina/dos_ays/ay1/period_a_9" BEL
+        "la_maquina/dos_ays/ay1/period_a_8" BEL
+        "la_maquina/dos_ays/ay1/period_a_7" BEL
+        "la_maquina/dos_ays/ay1/period_a_6" BEL
+        "la_maquina/dos_ays/ay1/period_a_5" BEL
+        "la_maquina/dos_ays/ay1/period_a_4" BEL
+        "la_maquina/dos_ays/ay1/period_a_3" BEL
+        "la_maquina/dos_ays/ay1/period_a_2" BEL
+        "la_maquina/dos_ays/ay1/period_a_1" BEL
+        "la_maquina/dos_ays/ay1/period_a_0" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_15" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_14" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_13" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_12" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_11" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_10" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_9" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_8" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_7" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_6" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_5" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_4" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_3" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_2" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_1" BEL
+        "la_maquina/dos_ays/ay1/envelope_period_0" BEL
+        "la_maquina/dos_ays/ay2/period_a_11" BEL
+        "la_maquina/dos_ays/ay2/period_a_10" BEL
+        "la_maquina/dos_ays/ay2/period_a_9" BEL
+        "la_maquina/dos_ays/ay2/period_a_8" BEL
+        "la_maquina/dos_ays/ay2/period_a_7" BEL
+        "la_maquina/dos_ays/ay2/period_a_6" BEL
+        "la_maquina/dos_ays/ay2/period_a_5" BEL
+        "la_maquina/dos_ays/ay2/period_a_4" BEL
+        "la_maquina/dos_ays/ay2/period_a_3" BEL
+        "la_maquina/dos_ays/ay2/period_a_2" BEL
+        "la_maquina/dos_ays/ay2/period_a_1" BEL
+        "la_maquina/dos_ays/ay2/period_a_0" BEL
+        "la_maquina/dos_ays/ay2/period_b_11" BEL
+        "la_maquina/dos_ays/ay2/period_b_10" BEL
+        "la_maquina/dos_ays/ay2/period_b_9" BEL
+        "la_maquina/dos_ays/ay2/period_b_8" BEL
+        "la_maquina/dos_ays/ay2/period_b_7" BEL
+        "la_maquina/dos_ays/ay2/period_b_6" BEL
+        "la_maquina/dos_ays/ay2/period_b_5" BEL
+        "la_maquina/dos_ays/ay2/period_b_4" BEL
+        "la_maquina/dos_ays/ay2/period_b_3" BEL
+        "la_maquina/dos_ays/ay2/period_b_2" BEL
+        "la_maquina/dos_ays/ay2/period_b_1" BEL
+        "la_maquina/dos_ays/ay2/period_b_0" BEL
+        "la_maquina/dos_ays/ay2/period_c_11" BEL
+        "la_maquina/dos_ays/ay2/period_c_10" BEL
+        "la_maquina/dos_ays/ay2/period_c_9" BEL
+        "la_maquina/dos_ays/ay2/period_c_8" BEL
+        "la_maquina/dos_ays/ay2/period_c_7" BEL
+        "la_maquina/dos_ays/ay2/period_c_6" BEL
+        "la_maquina/dos_ays/ay2/period_c_5" BEL
+        "la_maquina/dos_ays/ay2/period_c_4" BEL
+        "la_maquina/dos_ays/ay2/period_c_3" BEL
+        "la_maquina/dos_ays/ay2/period_c_2" BEL
+        "la_maquina/dos_ays/ay2/period_c_1" BEL
+        "la_maquina/dos_ays/ay2/period_c_0" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_15" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_14" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_13" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_12" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_11" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_10" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_9" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_8" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_7" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_6" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_5" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_4" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_3" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_2" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_1" BEL
+        "la_maquina/dos_ays/ay2/envelope_period_0" BEL
+        "la_maquina/audio_mix/specdrum_signed_7" BEL
+        "la_maquina/audio_mix/specdrum_signed_6" BEL
+        "la_maquina/audio_mix/specdrum_signed_5" BEL
+        "la_maquina/audio_mix/specdrum_signed_4" BEL
+        "la_maquina/audio_mix/specdrum_signed_3" BEL
+        "la_maquina/audio_mix/specdrum_signed_2" BEL
+        "la_maquina/audio_mix/specdrum_signed_1" BEL
+        "la_maquina/audio_mix/specdrum_signed_0" BEL
+        "la_maquina/audio_mix/beeper_signed_7" BEL
+        "la_maquina/audio_mix/beeper_signed_6" BEL
+        "la_maquina/audio_mix/beeper_signed_5" BEL
+        "la_maquina/audio_mix/beeper_signed_3" BEL
+        "la_maquina/audio_mix/beeper_signed_2" BEL
+        "la_maquina/audio_mix/beeper_signed_0" BEL
+        "la_maquina/audio_mix/mixer_7" BEL "la_maquina/audio_mix/mixer_6" BEL
+        "la_maquina/audio_mix/mixer_5" BEL "la_maquina/audio_mix/mixer_4" BEL
+        "la_maquina/audio_mix/mixer_3" BEL "la_maquina/audio_mix/mixer_2" BEL
+        "la_maquina/audio_mix/mixer_1" BEL "la_maquina/audio_mix/mixer_0" BEL
+        "la_maquina/audio_mix/beeper_7" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_7" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_6" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_5" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_4" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_3" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_2" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_1" BEL
+        "la_maquina/dos_ays/ay1/reg_port_a_0" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_7" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_6" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_5" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_4" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_3" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_2" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_1" BEL
+        "la_maquina/dos_ays/ay1/reg_port_b_0" BEL
+        "la_maquina/dos_ays/ay1/regaddr_7" BEL
+        "la_maquina/dos_ays/ay1/regaddr_6" BEL
+        "la_maquina/dos_ays/ay1/regaddr_5" BEL
+        "la_maquina/dos_ays/ay1/regaddr_4" BEL
+        "la_maquina/dos_ays/ay1/regaddr_3" BEL
+        "la_maquina/dos_ays/ay1/regaddr_2" BEL
+        "la_maquina/dos_ays/ay1/regaddr_1" BEL
+        "la_maquina/dos_ays/ay1/regaddr_0" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_7" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_6" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_5" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_4" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_3" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_2" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_1" BEL
+        "la_maquina/dos_ays/ay1/enable_chan_0" BEL
+        "la_maquina/dos_ays/ay1/noise_period_4" BEL
+        "la_maquina/dos_ays/ay1/noise_period_3" BEL
+        "la_maquina/dos_ays/ay1/noise_period_2" BEL
+        "la_maquina/dos_ays/ay1/noise_period_1" BEL
+        "la_maquina/dos_ays/ay1/noise_period_0" BEL
+        "la_maquina/dos_ays/ay1/ampmode_a" BEL
+        "la_maquina/dos_ays/ay1/ampmode_b" BEL
+        "la_maquina/dos_ays/ay1/ampmode_c" BEL
+        "la_maquina/dos_ays/ay1/amp_b_3" BEL "la_maquina/dos_ays/ay1/amp_b_2"
+        BEL "la_maquina/dos_ays/ay1/amp_b_1" BEL
+        "la_maquina/dos_ays/ay1/amp_b_0" BEL "la_maquina/dos_ays/ay1/amp_c_3"
+        BEL "la_maquina/dos_ays/ay1/amp_c_2" BEL
+        "la_maquina/dos_ays/ay1/amp_c_1" BEL "la_maquina/dos_ays/ay1/amp_c_0"
+        BEL "la_maquina/dos_ays/ay1/amp_a_3" BEL
+        "la_maquina/dos_ays/ay1/amp_a_2" BEL "la_maquina/dos_ays/ay1/amp_a_1"
+        BEL "la_maquina/dos_ays/ay1/amp_a_0" BEL
+        "la_maquina/dos_ays/ay1/envelope_shape_3" BEL
+        "la_maquina/dos_ays/ay1/envelope_shape_2" BEL
+        "la_maquina/dos_ays/ay1/envelope_shape_1" BEL
+        "la_maquina/dos_ays/ay1/envelope_shape_0" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_7" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_6" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_5" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_3" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_2" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_1" BEL
+        "la_maquina/dos_ays/ay2/reg_port_a_0" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_7" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_6" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_5" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_3" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_1" BEL
+        "la_maquina/dos_ays/ay2/reg_port_b_0" BEL
+        "la_maquina/dos_ays/ay2/regaddr_7" BEL
+        "la_maquina/dos_ays/ay2/regaddr_6" BEL
+        "la_maquina/dos_ays/ay2/regaddr_5" BEL
+        "la_maquina/dos_ays/ay2/regaddr_4" BEL
+        "la_maquina/dos_ays/ay2/regaddr_3" BEL
+        "la_maquina/dos_ays/ay2/regaddr_2" BEL
+        "la_maquina/dos_ays/ay2/regaddr_1" BEL
+        "la_maquina/dos_ays/ay2/regaddr_0" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_7" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_6" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_5" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_4" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_3" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_2" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_1" BEL
+        "la_maquina/dos_ays/ay2/enable_chan_0" BEL
+        "la_maquina/dos_ays/ay2/ampmode_a" BEL
+        "la_maquina/dos_ays/ay2/ampmode_b" BEL
+        "la_maquina/dos_ays/ay2/noise_period_4" BEL
+        "la_maquina/dos_ays/ay2/noise_period_3" BEL
+        "la_maquina/dos_ays/ay2/noise_period_2" BEL
+        "la_maquina/dos_ays/ay2/noise_period_1" BEL
+        "la_maquina/dos_ays/ay2/noise_period_0" BEL
+        "la_maquina/dos_ays/ay2/ampmode_c" BEL
+        "la_maquina/dos_ays/ay2/amp_a_3" BEL "la_maquina/dos_ays/ay2/amp_a_2"
+        BEL "la_maquina/dos_ays/ay2/amp_a_1" BEL
+        "la_maquina/dos_ays/ay2/amp_a_0" BEL "la_maquina/dos_ays/ay2/amp_b_3"
+        BEL "la_maquina/dos_ays/ay2/amp_b_2" BEL
+        "la_maquina/dos_ays/ay2/amp_b_1" BEL "la_maquina/dos_ays/ay2/amp_b_0"
+        BEL "la_maquina/dos_ays/ay2/amp_c_3" BEL
+        "la_maquina/dos_ays/ay2/amp_c_2" BEL "la_maquina/dos_ays/ay2/amp_c_1"
+        BEL "la_maquina/dos_ays/ay2/amp_c_0" BEL
+        "la_maquina/dos_ays/ay2/envelope_shape_3" BEL
+        "la_maquina/dos_ays/ay2/envelope_shape_2" BEL
+        "la_maquina/dos_ays/ay2/envelope_shape_1" BEL
+        "la_maquina/dos_ays/ay2/envelope_shape_0" BEL
+        "la_maquina/audio_mix/midi_left_signed_10" BEL
+        "la_maquina/audio_mix/midi_left_signed_9" BEL
+        "la_maquina/audio_mix/midi_left_signed_8" BEL
+        "la_maquina/audio_mix/midi_left_signed_7" BEL
+        "la_maquina/audio_mix/midi_left_signed_6" BEL
+        "la_maquina/audio_mix/midi_left_signed_5" BEL
+        "la_maquina/audio_mix/midi_left_signed_4" BEL
+        "la_maquina/audio_mix/midi_left_signed_3" BEL
+        "la_maquina/audio_mix/midi_left_signed_2" BEL
+        "la_maquina/audio_mix/midi_left_signed_1" BEL
+        "la_maquina/audio_mix/midi_left_signed_0" BEL
+        "la_maquina/audio_mix/midi_right_signed_10" BEL
+        "la_maquina/audio_mix/midi_right_signed_9" BEL
+        "la_maquina/audio_mix/midi_right_signed_8" BEL
+        "la_maquina/audio_mix/midi_right_signed_7" BEL
+        "la_maquina/audio_mix/midi_right_signed_6" BEL
+        "la_maquina/audio_mix/midi_right_signed_5" BEL
+        "la_maquina/audio_mix/midi_right_signed_4" BEL
+        "la_maquina/audio_mix/midi_right_signed_3" BEL
+        "la_maquina/audio_mix/midi_right_signed_2" BEL
+        "la_maquina/audio_mix/midi_right_signed_1" BEL
+        "la_maquina/audio_mix/midi_right_signed_0" BEL
+        "la_maquina/dos_ays/ay1/channel_a_7" BEL
+        "la_maquina/dos_ays/ay1/channel_a_6" BEL
+        "la_maquina/dos_ays/ay1/channel_a_5" BEL
+        "la_maquina/dos_ays/ay1/channel_a_4" BEL
+        "la_maquina/dos_ays/ay1/channel_a_3" BEL
+        "la_maquina/dos_ays/ay1/channel_a_2" BEL
+        "la_maquina/dos_ays/ay1/channel_a_1" BEL
+        "la_maquina/dos_ays/ay1/channel_a_0" BEL
+        "la_maquina/dos_ays/ay1/channel_b_7" BEL
+        "la_maquina/dos_ays/ay1/channel_b_6" BEL
+        "la_maquina/dos_ays/ay1/channel_b_5" BEL
+        "la_maquina/dos_ays/ay1/channel_b_4" BEL
+        "la_maquina/dos_ays/ay1/channel_b_3" BEL
+        "la_maquina/dos_ays/ay1/channel_b_2" BEL
+        "la_maquina/dos_ays/ay1/channel_b_1" BEL
+        "la_maquina/dos_ays/ay1/channel_b_0" BEL
+        "la_maquina/dos_ays/ay2/channel_a_7" BEL
+        "la_maquina/dos_ays/ay2/channel_a_6" BEL
+        "la_maquina/dos_ays/ay2/channel_a_5" BEL
+        "la_maquina/dos_ays/ay2/channel_a_4" BEL
+        "la_maquina/dos_ays/ay2/channel_a_3" BEL
+        "la_maquina/dos_ays/ay2/channel_a_2" BEL
+        "la_maquina/dos_ays/ay2/channel_a_1" BEL
+        "la_maquina/dos_ays/ay2/channel_a_0" BEL
+        "la_maquina/dos_ays/ay2/channel_b_7" BEL
+        "la_maquina/dos_ays/ay2/channel_b_6" BEL
+        "la_maquina/dos_ays/ay2/channel_b_5" BEL
+        "la_maquina/dos_ays/ay2/channel_b_4" BEL
+        "la_maquina/dos_ays/ay2/channel_b_3" BEL
+        "la_maquina/dos_ays/ay2/channel_b_2" BEL
+        "la_maquina/dos_ays/ay2/channel_b_1" BEL
+        "la_maquina/dos_ays/ay2/channel_b_0" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_11" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_10" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_9" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_8" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_7" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_6" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_5" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_4" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_3" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_2" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_1" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_a_0" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_11" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_10" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_9" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_8" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_7" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_6" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_5" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_4" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_3" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_2" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_1" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_b_0" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_11" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_10" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_9" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_8" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_7" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_6" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_5" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_4" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_3" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_2" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_1" BEL
+        "la_maquina/dos_ays/ay1/counter_tone_c_0" BEL
+        "la_maquina/dos_ays/ay1/counter_noise_4" BEL
+        "la_maquina/dos_ays/ay1/counter_noise_3" BEL
+        "la_maquina/dos_ays/ay1/counter_noise_2" BEL
+        "la_maquina/dos_ays/ay1/counter_noise_1" BEL
+        "la_maquina/dos_ays/ay1/counter_noise_0" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_16" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_15" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_14" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_13" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_12" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_11" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_10" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_9" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_8" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_7" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_6" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_5" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_4" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_3" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_2" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_1" BEL
+        "la_maquina/dos_ays/ay1/noise_shiftreg_0" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_11" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_10" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_9" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_8" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_7" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_6" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_5" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_4" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_3" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_2" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_1" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_b_0" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_11" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_10" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_9" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_8" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_7" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_6" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_5" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_4" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_3" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_2" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_1" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_c_0" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_11" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_10" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_9" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_8" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_7" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_6" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_5" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_4" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_3" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_2" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_1" BEL
+        "la_maquina/dos_ays/ay2/counter_tone_a_0" BEL
+        "la_maquina/dos_ays/ay2/counter_noise_4" BEL
+        "la_maquina/dos_ays/ay2/counter_noise_3" BEL
+        "la_maquina/dos_ays/ay2/counter_noise_2" BEL
+        "la_maquina/dos_ays/ay2/counter_noise_1" BEL
+        "la_maquina/dos_ays/ay2/counter_noise_0" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_16" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_15" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_14" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_13" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_12" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_11" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_10" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_9" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_8" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_7" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_6" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_5" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_4" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_3" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_2" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_1" BEL
+        "la_maquina/dos_ays/ay2/noise_shiftreg_0" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_15" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_14" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_13" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_12" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_11" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_10" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_9" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_8" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_7" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_6" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_5" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_4" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_3" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_2" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_1" BEL
+        "la_maquina/dos_ays/ay1/divprescaler_0" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_15" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_14" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_13" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_12" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_11" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_10" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_9" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_8" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_7" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_6" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_5" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_4" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_3" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_2" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_1" BEL
+        "la_maquina/dos_ays/ay1/counter_envelope_0" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_a_3" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_a_2" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_a_1" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_a_0" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_b_3" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_b_2" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_b_1" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_b_0" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_c_3" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_c_2" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_c_1" BEL
+        "la_maquina/dos_ays/ay1/linear_chan_c_0" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_15" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_14" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_13" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_12" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_11" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_10" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_9" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_8" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_7" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_6" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_5" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_4" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_3" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_2" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_1" BEL
+        "la_maquina/dos_ays/ay2/divprescaler_0" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_15" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_14" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_13" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_12" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_11" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_10" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_9" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_8" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_7" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_6" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_5" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_4" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_3" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_2" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_1" BEL
+        "la_maquina/dos_ays/ay2/counter_envelope_0" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_a_3" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_a_2" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_a_1" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_a_0" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_c_3" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_c_2" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_c_1" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_c_0" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_b_3" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_b_2" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_b_1" BEL
+        "la_maquina/dos_ays/ay2/linear_chan_b_0" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_7" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_6" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_5" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_4" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_3" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_2" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_1" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_ctrl_0" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_6" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_5" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_4" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_3" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_2" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_1" BEL
+        "la_maquina/bootrom_rom_y_ram/mastermapper_0" BEL
+        "la_maquina/bootrom_rom_y_ram/disable_cont" BEL
+        "la_maquina/bootrom_rom_y_ram/timing_mode_1" BEL
+        "la_maquina/bootrom_rom_y_ram/issue2_keyboard" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_nmi_is_disabled" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_is_enabled" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_5" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_4" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_3" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_2" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_1" BEL
+        "la_maquina/bootrom_rom_y_ram/bank128_0" BEL
+        "la_maquina/bootrom_rom_y_ram/bankplus3_2" BEL
+        "la_maquina/bootrom_rom_y_ram/bankplus3_1" BEL
+        "la_maquina/bootrom_rom_y_ram/bankplus3_0" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_7" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_6" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_5" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_4" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_3" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_2" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_1" BEL
+        "la_maquina/bootrom_rom_y_ram/timex_mmu_0" BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/inst_LPM_FF1" BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/we2_n_dly" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/state_FSM_FFd1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/state_FSM_FFd2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/cntbits_2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/cntbits_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/cntbits_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/state_FSM_FFd3" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_3" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_4" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_5" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_6" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/rdata_7" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_3" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_4" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_5" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_6" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_7" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_8" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_9" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_10" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_11" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_12" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_13" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_14" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_15" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_16" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_17" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_18" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_19" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_20" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_21" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_22" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/timeoutcnt_23" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/ps2clk_synchr_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_3" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_4" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_5" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_6" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/shiftreg_7" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_2" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_3" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_4" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_5" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_6" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_7" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_8" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_9" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_10" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_11" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_12" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_13" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_14" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_15" BEL
+        "la_maquina/el_teclado/kbstatus_dout_1" BEL
+        "la_maquina/el_teclado/kbstatus_dout_2" BEL
+        "la_maquina/el_teclado/kbstatus_dout_7" BEL
+        "la_maquina/el_teclado/kbstatus_dout_3" BEL
+        "la_maquina/el_raton/escritura_a_raton/state_FSM_FFd1" BEL
+        "la_maquina/el_raton/escritura_a_raton/state_FSM_FFd2" BEL
+        "la_maquina/el_raton/escritura_a_raton/cntbits_2" BEL
+        "la_maquina/el_raton/escritura_a_raton/cntbits_1" BEL
+        "la_maquina/el_raton/escritura_a_raton/cntbits_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/state_FSM_FFd3" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_1" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_2" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_3" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_4" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_5" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_6" BEL
+        "la_maquina/el_raton/escritura_a_raton/rdata_7" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_1" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_2" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_3" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_4" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_5" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_6" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_7" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_8" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_9" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_10" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_11" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_12" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_13" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_14" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_15" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_16" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_17" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_18" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_19" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_20" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_21" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_22" BEL
+        "la_maquina/el_raton/escritura_a_raton/timeoutcnt_23" BEL
+        "la_maquina/el_raton/escritura_a_raton/ps2clk_synchr_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_1" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_2" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_3" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_4" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_5" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_6" BEL
+        "la_maquina/el_raton/escritura_a_raton/shiftreg_7" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_1" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_2" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_3" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_4" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_5" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_6" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_7" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_8" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_9" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_10" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_11" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_12" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_13" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_14" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_15" BEL
+        "la_maquina/el_raton/mousestatus_dout_7" BEL
+        "la_maquina/el_raton/mousestatus_dout_3" BEL
+        "relojes_maestros/pll_option_stored_2" BEL
+        "relojes_maestros/pll_option_stored_1" BEL
+        "relojes_maestros/pll_option_stored_0" BEL
+        "relojes_maestros/pulso_reconf_7" BEL
+        "relojes_maestros/pulso_reconf_6" BEL
+        "relojes_maestros/pulso_reconf_5" BEL
+        "relojes_maestros/pulso_reconf_4" BEL
+        "relojes_maestros/pulso_reconf_3" BEL
+        "relojes_maestros/pulso_reconf_2" BEL
+        "relojes_maestros/pulso_reconf_1" BEL
+        "relojes_maestros/pulso_reconf_0" BEL
+        "relojes_maestros/reconfiguracion_pll/BUFG_CLK0" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_15" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_8" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_7" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/iocnt_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/iocnt_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/iocnt_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcidx_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dstidx_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/mode_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/mode_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_a_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cnttransfers_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/cntpreescaler_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/state_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/state_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/state_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dst_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/src_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addrtoreach_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/preescaler_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_15" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_14" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_13" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_12" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_11" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_10" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_9" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_8" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/transferlength_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/select_addr_to_reach" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/returnstate_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/returnstate_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcdst_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/srcdst_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_dout_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_7" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_6" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_5" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_4" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_3" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_2" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_1" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/WR_n_i" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/MReq_Inhibit" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/Req_Inhibit" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/TState_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/TState_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/TState_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/A_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/DO_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrC_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrC_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrC_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ALU_Op_r_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ALU_Op_r_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ALU_Op_r_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ALU_Op_r_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Read_To_Reg_r_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Read_To_Reg_r_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Read_To_Reg_r_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Read_To_Reg_r_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Read_To_Reg_r_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Save_ALU_r" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrB_r_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrB_r_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrB_r_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrA_r_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrA_r_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegAddrA_r_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycles_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycles_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycles_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IStatus_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IStatus_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Arith16_r" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ACC_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PC_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/SP_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/XY_State_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/XY_State_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/R_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycle_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycle_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/MCycle_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Auto_Wait_t2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ISet_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/ISet_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Auto_Wait_t1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Pre_XY_F_M_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Pre_XY_F_M_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Pre_XY_F_M_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RegBusA_r_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusReq_s" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/No_BTR" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/PreserveC_r" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Z16_r" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/RFSH_n" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Fp_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Ap_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_0_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_7_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_5_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_4_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_6_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_3_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_2_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_7_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_6_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsL_1_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_4_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_3_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_5_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_1_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_0_0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Regs/RegsH_2_0" PIN
+        "la_maquina/la_ula/Madd_n06091_pins<92>" BEL
+        "la_maquina/la_ula/FlashCounter_4" BEL
+        "la_maquina/la_ula/FlashCounter_3" BEL
+        "la_maquina/la_ula/FlashCounter_2" BEL
+        "la_maquina/la_ula/FlashCounter_1" BEL
+        "la_maquina/la_ula/FlashCounter_0" PIN
+        "la_maquina/la_ula/Maddsub_n0513_pins<92>" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_6" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_5" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_4" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_3" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_2" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_1" BEL
+        "la_maquina/la_ula/dram_row_for_ula_snow_0" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_6" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_5" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_4" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_3" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_2" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_1" BEL
+        "la_maquina/la_ula/latched_row_from_first_burst_0" BEL
+        "la_maquina/la_ula/CA_4" BEL "la_maquina/la_ula/CA_3" BEL
+        "la_maquina/la_ula/CA_2" BEL "la_maquina/la_ula/CA_1" BEL
+        "la_maquina/la_ula/CA_0" BEL "la_maquina/la_ula/AttrPlusOutput_15" BEL
+        "la_maquina/la_ula/AttrPlusOutput_14" BEL
+        "la_maquina/la_ula/AttrPlusOutput_13" BEL
+        "la_maquina/la_ula/AttrPlusOutput_12" BEL
+        "la_maquina/la_ula/AttrPlusOutput_11" BEL
+        "la_maquina/la_ula/AttrPlusOutput_10" BEL
+        "la_maquina/la_ula/AttrPlusOutput_9" BEL
+        "la_maquina/la_ula/AttrPlusOutput_8" BEL
+        "la_maquina/la_ula/AttrOutput_7" BEL "la_maquina/la_ula/AttrOutput_6"
+        BEL "la_maquina/la_ula/AttrOutput_5" BEL
+        "la_maquina/la_ula/AttrOutput_4" BEL "la_maquina/la_ula/AttrOutput_3"
+        BEL "la_maquina/la_ula/AttrOutput_2" BEL
+        "la_maquina/la_ula/AttrOutput_1" BEL "la_maquina/la_ula/AttrOutput_0"
+        BEL "la_maquina/la_ula/lastdatatoradasoffset_7" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_6" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_5" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_4" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_3" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_2" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_1" BEL
+        "la_maquina/la_ula/lastdatatoradasoffset_0" BEL
+        "la_maquina/la_ula/PaletteReg_6" BEL "la_maquina/la_ula/PaletteReg_5"
+        BEL "la_maquina/la_ula/PaletteReg_4" BEL
+        "la_maquina/la_ula/PaletteReg_3" BEL "la_maquina/la_ula/PaletteReg_2"
+        BEL "la_maquina/la_ula/PaletteReg_1" BEL
+        "la_maquina/la_ula/PaletteReg_0" BEL
+        "la_maquina/la_ula/BitmapSerializer_7" BEL
+        "la_maquina/la_ula/BitmapSerializer_6" BEL
+        "la_maquina/la_ula/BitmapSerializer_5" BEL
+        "la_maquina/la_ula/BitmapSerializer_4" BEL
+        "la_maquina/la_ula/BitmapSerializer_3" BEL
+        "la_maquina/la_ula/BitmapSerializer_2" BEL
+        "la_maquina/la_ula/BitmapSerializer_1" BEL
+        "la_maquina/la_ula/BitmapSerializer_0" BEL
+        "la_maquina/la_ula/BorderColorDelayed_5" BEL
+        "la_maquina/la_ula/BorderColorDelayed_4" BEL
+        "la_maquina/la_ula/BorderColorDelayed_3" BEL
+        "la_maquina/la_ula/radasoffset_13" BEL
+        "la_maquina/la_ula/radasoffset_12" BEL
+        "la_maquina/la_ula/radasoffset_11" BEL
+        "la_maquina/la_ula/radasoffset_10" BEL
+        "la_maquina/la_ula/radasoffset_9" BEL
+        "la_maquina/la_ula/radasoffset_8" BEL
+        "la_maquina/la_ula/radasoffset_7" BEL
+        "la_maquina/la_ula/radasoffset_6" BEL
+        "la_maquina/la_ula/radasoffset_5" BEL
+        "la_maquina/la_ula/radasoffset_4" BEL
+        "la_maquina/la_ula/radasoffset_3" BEL
+        "la_maquina/la_ula/radasoffset_2" BEL
+        "la_maquina/la_ula/radasoffset_1" BEL
+        "la_maquina/la_ula/radasoffset_0" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_15" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_14" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_13" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_12" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_11" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_10" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_9" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_8" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_7" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_6" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_5" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_4" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_3" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_2" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_1" BEL
+        "la_maquina/la_ula/BitmapSerializerHR_0" BEL
+        "la_maquina/la_ula/TimexConfigReg_7" BEL
+        "la_maquina/la_ula/TimexConfigReg_6" BEL
+        "la_maquina/la_ula/TimexConfigReg_5" BEL
+        "la_maquina/la_ula/TimexConfigReg_4" BEL
+        "la_maquina/la_ula/TimexConfigReg_3" BEL
+        "la_maquina/la_ula/TimexConfigReg_2" BEL
+        "la_maquina/la_ula/TimexConfigReg_1" BEL
+        "la_maquina/la_ula/TimexConfigReg_0" BEL "la_maquina/la_ula/mic" BEL
+        "la_maquina/la_ula/spk" BEL "la_maquina/la_ula/Border_2" BEL
+        "la_maquina/la_ula/Border_1" BEL "la_maquina/la_ula/Border_0" BEL
+        "la_maquina/la_ula/radasborderpalettehalf" BEL
+        "la_maquina/la_ula/radaspixelpalettequarter_1" BEL
+        "la_maquina/la_ula/radaspixelpalettequarter_0" BEL
+        "la_maquina/la_ula/RadasCtrl_1" BEL "la_maquina/la_ula/RadasCtrl_0"
+        BEL "la_maquina/la_ula/vinitpen_8" BEL "la_maquina/la_ula/vinitpen_7"
+        BEL "la_maquina/la_ula/vinitpen_6" BEL "la_maquina/la_ula/vinitpen_5"
+        BEL "la_maquina/la_ula/vinitpen_4" BEL "la_maquina/la_ula/vinitpen_3"
+        BEL "la_maquina/la_ula/vinitpen_2" BEL "la_maquina/la_ula/vinitpen_1"
+        BEL "la_maquina/la_ula/vinit128k_8" BEL
+        "la_maquina/la_ula/vinit128k_7" BEL "la_maquina/la_ula/vinit128k_6"
+        BEL "la_maquina/la_ula/vinit128k_5" BEL
+        "la_maquina/la_ula/vinit128k_4" BEL "la_maquina/la_ula/vinit128k_3"
+        BEL "la_maquina/la_ula/vinit128k_2" BEL
+        "la_maquina/la_ula/vinit128k_1" BEL "la_maquina/la_ula/hinit128k_8"
+        BEL "la_maquina/la_ula/hinit128k_7" BEL
+        "la_maquina/la_ula/hinit128k_6" BEL "la_maquina/la_ula/hinit128k_5"
+        BEL "la_maquina/la_ula/hinit128k_4" BEL
+        "la_maquina/la_ula/hinit128k_3" BEL "la_maquina/la_ula/hinit128k_2"
+        BEL "la_maquina/la_ula/hinit128k_1" BEL "la_maquina/la_ula/hinitpen_8"
+        BEL "la_maquina/la_ula/hinitpen_7" BEL "la_maquina/la_ula/hinitpen_6"
+        BEL "la_maquina/la_ula/hinitpen_5" BEL "la_maquina/la_ula/hinitpen_4"
+        BEL "la_maquina/la_ula/hinitpen_3" BEL "la_maquina/la_ula/hinitpen_2"
+        BEL "la_maquina/la_ula/hinitpen_1" BEL "la_maquina/la_ula/vinit48k_8"
+        BEL "la_maquina/la_ula/vinit48k_7" BEL "la_maquina/la_ula/vinit48k_6"
+        BEL "la_maquina/la_ula/vinit48k_5" BEL "la_maquina/la_ula/vinit48k_4"
+        BEL "la_maquina/la_ula/vinit48k_3" BEL "la_maquina/la_ula/vinit48k_2"
+        BEL "la_maquina/la_ula/vinit48k_1" BEL "la_maquina/la_ula/hinit48k_8"
+        BEL "la_maquina/la_ula/hinit48k_7" BEL "la_maquina/la_ula/hinit48k_6"
+        BEL "la_maquina/la_ula/hinit48k_5" BEL "la_maquina/la_ula/hinit48k_4"
+        BEL "la_maquina/la_ula/hinit48k_3" BEL "la_maquina/la_ula/hinit48k_2"
+        BEL "la_maquina/la_ula/hinit48k_1" BEL "la_maquina/la_ula/clkhalf14"
+        BEL "la_maquina/la_ula/BitmapData_7" BEL
+        "la_maquina/la_ula/BitmapData_6" BEL "la_maquina/la_ula/BitmapData_5"
+        BEL "la_maquina/la_ula/BitmapData_4" BEL
+        "la_maquina/la_ula/BitmapData_3" BEL "la_maquina/la_ula/BitmapData_2"
+        BEL "la_maquina/la_ula/BitmapData_1" BEL
+        "la_maquina/la_ula/BitmapData_0" BEL "la_maquina/la_ula/AttrData_7"
+        BEL "la_maquina/la_ula/AttrData_6" BEL "la_maquina/la_ula/AttrData_5"
+        BEL "la_maquina/la_ula/AttrData_4" BEL "la_maquina/la_ula/AttrData_3"
+        BEL "la_maquina/la_ula/AttrData_2" BEL "la_maquina/la_ula/AttrData_1"
+        BEL "la_maquina/la_ula/AttrData_0" BEL
+        "la_maquina/la_ula/radaspadding_7" BEL
+        "la_maquina/la_ula/radaspadding_6" BEL
+        "la_maquina/la_ula/radaspadding_5" BEL
+        "la_maquina/la_ula/radaspadding_4" BEL
+        "la_maquina/la_ula/radaspadding_3" BEL
+        "la_maquina/la_ula/radaspadding_2" BEL
+        "la_maquina/la_ula/radaspadding_1" BEL
+        "la_maquina/la_ula/radaspadding_0" BEL "la_maquina/la_ula/syncs/hc_8"
+        BEL "la_maquina/la_ula/syncs/hc_7" BEL "la_maquina/la_ula/syncs/hc_6"
+        BEL "la_maquina/la_ula/syncs/hc_5" BEL "la_maquina/la_ula/syncs/hc_4"
+        BEL "la_maquina/la_ula/syncs/hc_3" BEL "la_maquina/la_ula/syncs/hc_2"
+        BEL "la_maquina/la_ula/syncs/hc_1" BEL "la_maquina/la_ula/syncs/hc_0"
+        BEL "la_maquina/la_ula/syncs/vc_8" BEL "la_maquina/la_ula/syncs/vc_7"
+        BEL "la_maquina/la_ula/syncs/vc_6" BEL "la_maquina/la_ula/syncs/vc_5"
+        BEL "la_maquina/la_ula/syncs/vc_4" BEL "la_maquina/la_ula/syncs/vc_3"
+        BEL "la_maquina/la_ula/syncs/vc_2" BEL "la_maquina/la_ula/syncs/vc_1"
+        BEL "la_maquina/la_ula/syncs/vc_0" BEL
+        "la_maquina/la_ula/syncs/end_count_v_FSM_FFd1" BEL
+        "la_maquina/la_ula/syncs/end_count_v_FSM_FFd2" BEL
+        "la_maquina/la_ula/syncs/end_count_h_FSM_FFd1" BEL
+        "la_maquina/la_ula/syncs/hc_sync_8" BEL
+        "la_maquina/la_ula/syncs/hc_sync_7" BEL
+        "la_maquina/la_ula/syncs/hc_sync_6" BEL
+        "la_maquina/la_ula/syncs/hc_sync_5" BEL
+        "la_maquina/la_ula/syncs/hc_sync_4" BEL
+        "la_maquina/la_ula/syncs/hc_sync_3" BEL
+        "la_maquina/la_ula/syncs/hc_sync_2" BEL
+        "la_maquina/la_ula/syncs/hc_sync_1" BEL
+        "la_maquina/la_ula/syncs/vc_sync_8" BEL
+        "la_maquina/la_ula/syncs/vc_sync_7" BEL
+        "la_maquina/la_ula/syncs/vc_sync_6" BEL
+        "la_maquina/la_ula/syncs/vc_sync_5" BEL
+        "la_maquina/la_ula/syncs/vc_sync_4" BEL
+        "la_maquina/la_ula/syncs/vc_sync_3" BEL
+        "la_maquina/la_ula/syncs/vc_sync_2" BEL
+        "la_maquina/la_ula/syncs/vc_sync_1" BEL
+        "la_maquina/la_ula/syncs/vc_sync_0" BEL
+        "la_maquina/la_ula/syncs/end_hblank_2" BEL
+        "la_maquina/la_ula/syncs/end_hblank_1" BEL
+        "la_maquina/la_ula/syncs/vcint_7" BEL
+        "la_maquina/la_ula/syncs/end_hcint_7" BEL
+        "la_maquina/la_ula/syncs/end_hcint_6" BEL
+        "la_maquina/la_ula/syncs/begin_vsync_5" BEL
+        "la_maquina/addr_reg_zxuno/raddr_7" BEL
+        "la_maquina/addr_reg_zxuno/raddr_6" BEL
+        "la_maquina/addr_reg_zxuno/raddr_5" BEL
+        "la_maquina/addr_reg_zxuno/raddr_4" BEL
+        "la_maquina/addr_reg_zxuno/raddr_3" BEL
+        "la_maquina/addr_reg_zxuno/raddr_2" BEL
+        "la_maquina/addr_reg_zxuno/raddr_1" BEL
+        "la_maquina/addr_reg_zxuno/raddr_0" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_2" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_0" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_7" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_6" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_2" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/dout_0" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_7" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_5" BEL
+        "la_maquina/el_teclado/traductor/state_FSM_FFd1" BEL
+        "la_maquina/el_teclado/traductor/state_FSM_FFd2" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_11" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_10" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_9" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_8" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_7" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_6" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_5" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_4" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_3" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_2" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_1" BEL
+        "la_maquina/el_teclado/traductor/cpuaddr_0" BEL
+        "la_maquina/el_teclado/traductor/state_FSM_FFd3" BEL
+        "la_maquina/el_teclado/traductor/state_FSM_FFd4" BEL
+        "la_maquina/el_teclado/traductor/keycol2_4" BEL
+        "la_maquina/el_teclado/traductor/keycol2_3" BEL
+        "la_maquina/el_teclado/traductor/keycol2_2" BEL
+        "la_maquina/el_teclado/traductor/keycol2_1" BEL
+        "la_maquina/el_teclado/traductor/keycol2_0" BEL
+        "la_maquina/el_teclado/traductor/keyrow2_2" BEL
+        "la_maquina/el_teclado/traductor/keyrow2_1" BEL
+        "la_maquina/el_teclado/traductor/keyrow2_0" BEL
+        "la_maquina/el_teclado/traductor/keycol1_4" BEL
+        "la_maquina/el_teclado/traductor/keycol1_3" BEL
+        "la_maquina/el_teclado/traductor/keycol1_2" BEL
+        "la_maquina/el_teclado/traductor/keycol1_1" BEL
+        "la_maquina/el_teclado/traductor/keycol1_0" BEL
+        "la_maquina/el_teclado/traductor/keyrow1_2" BEL
+        "la_maquina/el_teclado/traductor/keyrow1_1" BEL
+        "la_maquina/el_teclado/traductor/keyrow1_0" BEL
+        "la_maquina/el_teclado/traductor/dout_7" BEL
+        "la_maquina/el_teclado/traductor/dout_6" BEL
+        "la_maquina/el_teclado/traductor/dout_5" BEL
+        "la_maquina/el_teclado/traductor/dout_4" BEL
+        "la_maquina/el_teclado/traductor/dout_3" BEL
+        "la_maquina/el_teclado/traductor/dout_2" BEL
+        "la_maquina/el_teclado/traductor/dout_1" BEL
+        "la_maquina/el_teclado/traductor/dout_0" BEL
+        "la_maquina/el_teclado/traductor/row_7_39" BEL
+        "la_maquina/el_teclado/traductor/row_7_38" BEL
+        "la_maquina/el_teclado/traductor/row_7_37" BEL
+        "la_maquina/el_teclado/traductor/row_7_36" BEL
+        "la_maquina/el_teclado/traductor/row_7_35" BEL
+        "la_maquina/el_teclado/traductor/row_7_34" BEL
+        "la_maquina/el_teclado/traductor/row_7_33" BEL
+        "la_maquina/el_teclado/traductor/row_7_32" BEL
+        "la_maquina/el_teclado/traductor/row_7_31" BEL
+        "la_maquina/el_teclado/traductor/row_7_30" BEL
+        "la_maquina/el_teclado/traductor/row_7_29" BEL
+        "la_maquina/el_teclado/traductor/row_7_28" BEL
+        "la_maquina/el_teclado/traductor/row_7_27" BEL
+        "la_maquina/el_teclado/traductor/row_7_26" BEL
+        "la_maquina/el_teclado/traductor/row_7_25" BEL
+        "la_maquina/el_teclado/traductor/row_7_24" BEL
+        "la_maquina/el_teclado/traductor/row_7_23" BEL
+        "la_maquina/el_teclado/traductor/row_7_22" BEL
+        "la_maquina/el_teclado/traductor/row_7_21" BEL
+        "la_maquina/el_teclado/traductor/row_7_20" BEL
+        "la_maquina/el_teclado/traductor/row_7_19" BEL
+        "la_maquina/el_teclado/traductor/row_7_18" BEL
+        "la_maquina/el_teclado/traductor/row_7_17" BEL
+        "la_maquina/el_teclado/traductor/row_7_16" BEL
+        "la_maquina/el_teclado/traductor/row_7_15" BEL
+        "la_maquina/el_teclado/traductor/row_7_14" BEL
+        "la_maquina/el_teclado/traductor/row_7_13" BEL
+        "la_maquina/el_teclado/traductor/row_7_12" BEL
+        "la_maquina/el_teclado/traductor/row_7_11" BEL
+        "la_maquina/el_teclado/traductor/row_7_10" BEL
+        "la_maquina/el_teclado/traductor/row_7_9" BEL
+        "la_maquina/el_teclado/traductor/row_7_8" BEL
+        "la_maquina/el_teclado/traductor/row_7_7" BEL
+        "la_maquina/el_teclado/traductor/row_7_6" BEL
+        "la_maquina/el_teclado/traductor/row_7_5" BEL
+        "la_maquina/el_teclado/traductor/row_7_4" BEL
+        "la_maquina/el_teclado/traductor/row_7_3" BEL
+        "la_maquina/el_teclado/traductor/row_7_2" BEL
+        "la_maquina/el_teclado/traductor/row_7_1" BEL
+        "la_maquina/el_teclado/traductor/row_7_0" BEL
+        "la_maquina/el_teclado/traductor/addr_10" BEL
+        "la_maquina/el_teclado/traductor/addr_9" BEL
+        "la_maquina/el_teclado/traductor/addr_8" BEL
+        "la_maquina/el_teclado/traductor/addr_7" BEL
+        "la_maquina/el_teclado/traductor/addr_6" BEL
+        "la_maquina/el_teclado/traductor/addr_5" BEL
+        "la_maquina/el_teclado/traductor/addr_4" BEL
+        "la_maquina/el_teclado/traductor/addr_3" BEL
+        "la_maquina/el_teclado/traductor/addr_2" BEL
+        "la_maquina/el_teclado/traductor/addr_1" BEL
+        "la_maquina/el_teclado/traductor/addr_0" BEL
+        "la_maquina/el_raton/lectura_de_raton/state_FSM_FFd1" BEL
+        "la_maquina/el_raton/lectura_de_raton/state_FSM_FFd2" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_23" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_22" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_21" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_20" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_19" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_18" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_17" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_16" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_15" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_14" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_13" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_12" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_11" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_10" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_9" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_8" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_7" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_6" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_5" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_4" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_3" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_2" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_1" BEL
+        "la_maquina/el_raton/lectura_de_raton/timeoutcnt_0" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_7" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_6" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_5" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_4" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_3" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_2" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_1" BEL
+        "la_maquina/el_raton/lectura_de_raton/scancode_0" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_7" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_6" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_5" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_4" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_3" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_2" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_1" BEL
+        "la_maquina/el_raton/lectura_de_raton/key_0" BEL
+        "la_maquina/el_raton/lectura_de_raton/ps2dat_synchr_1" BEL
+        "la_maquina/el_raton/lectura_de_raton/ps2dat_synchr_0" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/state_FSM_FFd1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/state_FSM_FFd2" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_23" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_22" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_21" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_20" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_19" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_18" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_17" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_16" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_15" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_14" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_13" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_12" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_11" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_10" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_9" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_8" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_7" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_6" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_5" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_4" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_3" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_2" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/timeoutcnt_0" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_7" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_6" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_5" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_4" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_3" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_2" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/scancode_0" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_7" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_6" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_5" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_4" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_3" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_2" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/key_0" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/ps2dat_synchr_1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/ps2dat_synchr_0" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_12" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_11" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_10" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_9" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_4" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_3" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_2" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_fnt_0" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_255" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_254" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_253" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_252" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_251" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_250" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_249" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_248" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_247" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_246" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_245" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_244" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_243" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_242" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_241" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_240" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_239" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_238" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_237" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_236" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_235" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_234" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_233" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_232" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_231" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_230" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_229" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_228" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_227" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_226" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_225" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_224" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_223" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_222" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_221" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_220" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_219" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_218" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_217" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_216" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_215" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_214" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_213" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_212" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_211" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_210" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_209" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_208" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_207" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_206" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_205" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_204" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_203" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_202" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_201" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_200" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_199" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_198" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_197" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_196" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_195" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_194" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_193" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_192" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_191" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_190" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_189" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_188" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_186" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_185" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_184" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_183" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_182" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_181" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_179" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_178" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_177" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_175" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_174" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_173" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_172" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_171" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_170" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_169" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_168" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_167" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_166" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_165" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_164" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_163" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_162" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_161" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_160" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_159" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_158" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_157" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_156" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_155" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_154" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_153" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_152" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_151" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_150" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_148" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_147" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_146" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_145" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_144" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_143" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_142" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_141" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_140" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_139" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_138" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_137" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_136" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_135" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_134" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_133" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_132" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_131" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_130" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_129" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_128" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_127" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_126" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_125" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_124" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_123" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_122" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_121" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_120" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_119" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_118" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_117" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_116" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_115" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_114" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_113" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_112" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_111" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_110" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_109" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_108" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_107" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_106" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_105" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_104" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_103" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_102" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_101" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_100" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_99" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_98" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_97" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_96" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_95" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_94" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_93" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_92" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_91" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_90" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_89" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_88" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_87" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_86" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_85" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_84" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_83" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_82" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_81" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_80" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_79" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_78" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_77" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_76" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_75" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_74" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_73" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_72" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_71" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_70" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_69" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_68" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_67" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_66" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_65" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_64" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_63" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_62" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_61" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_60" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_59" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_58" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_57" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_56" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_55" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_54" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_53" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_52" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_51" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_50" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_49" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_48" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_47" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_46" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_45" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_44" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_43" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_42" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_41" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_40" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_39" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_38" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_37" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_36" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_35" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_34" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_33" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_32" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_31" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_30" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_29" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_28" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_27" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_26" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_25" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_24" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_23" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_22" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_21" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_20" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_19" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_18" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_17" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_16" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_15" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_14" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_13" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_12" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_11" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_9" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_8" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_6" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_5" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_4" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_2" BEL
+        "la_maquina/el_teclado/teclado_limpio/keybstat_0" BEL
+        "la_maquina/el_teclado/teclado_limpio/kbclean" BEL
+        "la_maquina/los_joysticks/cont_autofire_2" BEL
+        "la_maquina/los_joysticks/cont_autofire_1" BEL
+        "la_maquina/los_joysticks/cont_autofire_0" BEL
+        "la_maquina/los_joysticks/edge_detect" BEL
+        "la_maquina/los_joysticks/joyconf_7" BEL
+        "la_maquina/los_joysticks/joyconf_6" BEL
+        "la_maquina/los_joysticks/joyconf_5" BEL
+        "la_maquina/los_joysticks/joyconf_4" BEL
+        "la_maquina/los_joysticks/joyconf_3" BEL
+        "la_maquina/los_joysticks/joyconf_2" BEL
+        "la_maquina/los_joysticks/joyconf_1" BEL
+        "la_maquina/los_joysticks/joyconf_0" BEL
+        "la_maquina/identificacion_del_core/textindx_3" BEL
+        "la_maquina/identificacion_del_core/textindx_2" BEL
+        "la_maquina/identificacion_del_core/textindx_1" BEL
+        "la_maquina/identificacion_del_core/textindx_0" BEL
+        "la_maquina/identificacion_del_core/dout_6" BEL
+        "la_maquina/identificacion_del_core/dout_5" BEL
+        "la_maquina/identificacion_del_core/dout_4" BEL
+        "la_maquina/identificacion_del_core/dout_3" BEL
+        "la_maquina/identificacion_del_core/dout_1" BEL
+        "la_maquina/identificacion_del_core/dout_0" BEL
+        "la_maquina/device_enables/devoptions_7" BEL
+        "la_maquina/device_enables/devoptions_6" BEL
+        "la_maquina/device_enables/devoptions_4" BEL
+        "la_maquina/device_enables/devoptions_2" BEL
+        "la_maquina/device_enables/devoptions_1" BEL
+        "la_maquina/device_enables/devoptions_0" BEL
+        "la_maquina/device_enables/devopts2_7" BEL
+        "la_maquina/device_enables/devopts2_6" BEL
+        "la_maquina/device_enables/devopts2_5" BEL
+        "la_maquina/device_enables/devopts2_4" BEL
+        "la_maquina/device_enables/devopts2_3" BEL
+        "la_maquina/device_enables/devopts2_2" BEL
+        "la_maquina/device_enables/devopts2_1" BEL
+        "la_maquina/device_enables/devopts2_0" BEL
+        "la_maquina/control_scandoubler/scandblctrl_4" BEL
+        "la_maquina/control_scandoubler/scandblctrl_3" BEL
+        "la_maquina/control_scandoubler/scandblctrl_2" BEL
+        "la_maquina/control_scandoubler/scandblctrl_0" BEL
+        "la_maquina/control_scandoubler/cpu_speed_reg_3" BEL
+        "la_maquina/control_scandoubler/cpu_speed_reg_2" BEL
+        "la_maquina/control_scandoubler/scandblctrl_6" BEL
+        "la_maquina/control_scandoubler/scandblctrl_7" BEL
+        "la_maquina/control_scandoubler/scandblctrl_1" BEL
+        "la_maquina/control_scandoubler/scandblctrl_5" BEL
+        "la_maquina/control_scandoubler/kbd_change_video_edge_detect" BEL
+        "la_maquina/control_rasterint/raster_8th_bit" BEL
+        "la_maquina/control_rasterint/raster_enable" BEL
+        "la_maquina/control_rasterint/vretrace_disable" BEL
+        "la_maquina/control_rasterint/rasterline_reg_7" BEL
+        "la_maquina/control_rasterint/rasterline_reg_6" BEL
+        "la_maquina/control_rasterint/rasterline_reg_5" BEL
+        "la_maquina/control_rasterint/rasterline_reg_4" BEL
+        "la_maquina/control_rasterint/rasterline_reg_3" BEL
+        "la_maquina/control_rasterint/rasterline_reg_2" BEL
+        "la_maquina/control_rasterint/rasterline_reg_1" BEL
+        "la_maquina/control_rasterint/rasterline_reg_0" BEL
+        "la_maquina/el_raton/traductor_raton/state_FSM_FFd1" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_7" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_6" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_5" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_4" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_3" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_2" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_1" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_y_0" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_7" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_6" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_5" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_4" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_3" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_2" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_1" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_x_0" BEL
+        "la_maquina/el_raton/traductor_raton/state_FSM_FFd2" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_buttons_2" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_buttons_1" BEL
+        "la_maquina/el_raton/traductor_raton/kmouse_buttons_0" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_7" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_6" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_5" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_4" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_3" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_2" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_1" BEL
+        "la_maquina/el_raton/traductor_raton/deltax_0" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_7" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_6" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_5" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_4" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_3" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_2" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_1" BEL
+        "la_maquina/el_raton/traductor_raton/deltay_0" BEL
+        "la_maquina/the_specdrum/specdrum_out_7" BEL
+        "la_maquina/the_specdrum/specdrum_out_6" BEL
+        "la_maquina/the_specdrum/specdrum_out_5" BEL
+        "la_maquina/the_specdrum/specdrum_out_4" BEL
+        "la_maquina/the_specdrum/specdrum_out_3" BEL
+        "la_maquina/the_specdrum/specdrum_out_2" BEL
+        "la_maquina/the_specdrum/specdrum_out_1" BEL
+        "la_maquina/the_specdrum/specdrum_out_0" BEL
+        "la_maquina/cassette_digital/countbits_3" BEL
+        "la_maquina/cassette_digital/countbits_2" BEL
+        "la_maquina/cassette_digital/countbits_1" BEL
+        "la_maquina/cassette_digital/countbits_0" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd1" BEL
+        "la_maquina/cassette_digital/pulsecounter_15" BEL
+        "la_maquina/cassette_digital/pulsecounter_14" BEL
+        "la_maquina/cassette_digital/pulsecounter_13" BEL
+        "la_maquina/cassette_digital/pulsecounter_12" BEL
+        "la_maquina/cassette_digital/pulsecounter_11" BEL
+        "la_maquina/cassette_digital/pulsecounter_10" BEL
+        "la_maquina/cassette_digital/pulsecounter_9" BEL
+        "la_maquina/cassette_digital/pulsecounter_8" BEL
+        "la_maquina/cassette_digital/pulsecounter_7" BEL
+        "la_maquina/cassette_digital/pulsecounter_6" BEL
+        "la_maquina/cassette_digital/pulsecounter_5" BEL
+        "la_maquina/cassette_digital/pulsecounter_4" BEL
+        "la_maquina/cassette_digital/pulsecounter_3" BEL
+        "la_maquina/cassette_digital/pulsecounter_2" BEL
+        "la_maquina/cassette_digital/pulsecounter_1" BEL
+        "la_maquina/cassette_digital/pulsecounter_0" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd3" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd4" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd2" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd6" BEL
+        "la_maquina/cassette_digital/state_FSM_FFd5" BEL
+        "la_maquina/cassette_digital/lblock_31" BEL
+        "la_maquina/cassette_digital/lblock_0" BEL
+        "la_maquina/cassette_digital/lblock_1" BEL
+        "la_maquina/cassette_digital/lblock_2" BEL
+        "la_maquina/cassette_digital/numberofbits_30" BEL
+        "la_maquina/cassette_digital/lblock_3" BEL
+        "la_maquina/cassette_digital/lblock_4" BEL
+        "la_maquina/cassette_digital/lblock_5" BEL
+        "la_maquina/cassette_digital/lblock_6" BEL
+        "la_maquina/cassette_digital/lblock_7" BEL
+        "la_maquina/cassette_digital/lblock_8" BEL
+        "la_maquina/cassette_digital/lblock_9" BEL
+        "la_maquina/cassette_digital/lblock_10" BEL
+        "la_maquina/cassette_digital/lblock_11" BEL
+        "la_maquina/cassette_digital/lblock_12" BEL
+        "la_maquina/cassette_digital/lblock_13" BEL
+        "la_maquina/cassette_digital/lblock_14" BEL
+        "la_maquina/cassette_digital/lblock_15" BEL
+        "la_maquina/cassette_digital/lblock_16" BEL
+        "la_maquina/cassette_digital/lblock_17" BEL
+        "la_maquina/cassette_digital/lblock_18" BEL
+        "la_maquina/cassette_digital/lblock_19" BEL
+        "la_maquina/cassette_digital/lblock_20" BEL
+        "la_maquina/cassette_digital/lblock_21" BEL
+        "la_maquina/cassette_digital/lblock_22" BEL
+        "la_maquina/cassette_digital/lblock_23" BEL
+        "la_maquina/cassette_digital/lblock_24" BEL
+        "la_maquina/cassette_digital/lblock_25" BEL
+        "la_maquina/cassette_digital/lblock_26" BEL
+        "la_maquina/cassette_digital/lblock_27" BEL
+        "la_maquina/cassette_digital/lblock_28" BEL
+        "la_maquina/cassette_digital/lblock_29" BEL
+        "la_maquina/cassette_digital/lblock_30" BEL
+        "la_maquina/cassette_digital/numberofbits_0" BEL
+        "la_maquina/cassette_digital/numberofbits_1" BEL
+        "la_maquina/cassette_digital/numberofbits_2" BEL
+        "la_maquina/cassette_digital/numberofbits_3" BEL
+        "la_maquina/cassette_digital/numberofbits_4" BEL
+        "la_maquina/cassette_digital/numberofbits_5" BEL
+        "la_maquina/cassette_digital/numberofbits_6" BEL
+        "la_maquina/cassette_digital/numberofbits_7" BEL
+        "la_maquina/cassette_digital/numberofbits_8" BEL
+        "la_maquina/cassette_digital/numberofbits_9" BEL
+        "la_maquina/cassette_digital/numberofbits_10" BEL
+        "la_maquina/cassette_digital/numberofbits_11" BEL
+        "la_maquina/cassette_digital/numberofbits_12" BEL
+        "la_maquina/cassette_digital/numberofbits_13" BEL
+        "la_maquina/cassette_digital/numberofbits_14" BEL
+        "la_maquina/cassette_digital/numberofbits_15" BEL
+        "la_maquina/cassette_digital/numberofbits_16" BEL
+        "la_maquina/cassette_digital/numberofbits_17" BEL
+        "la_maquina/cassette_digital/numberofbits_18" BEL
+        "la_maquina/cassette_digital/numberofbits_19" BEL
+        "la_maquina/cassette_digital/numberofbits_20" BEL
+        "la_maquina/cassette_digital/numberofbits_21" BEL
+        "la_maquina/cassette_digital/numberofbits_22" BEL
+        "la_maquina/cassette_digital/numberofbits_23" BEL
+        "la_maquina/cassette_digital/numberofbits_24" BEL
+        "la_maquina/cassette_digital/numberofbits_25" BEL
+        "la_maquina/cassette_digital/numberofbits_26" BEL
+        "la_maquina/cassette_digital/numberofbits_27" BEL
+        "la_maquina/cassette_digital/numberofbits_28" BEL
+        "la_maquina/cassette_digital/numberofbits_29" BEL
+        "la_maquina/cassette_digital/databyte_7" BEL
+        "la_maquina/cassette_digital/databyte_6" BEL
+        "la_maquina/cassette_digital/databyte_5" BEL
+        "la_maquina/cassette_digital/databyte_4" BEL
+        "la_maquina/cassette_digital/databyte_3" BEL
+        "la_maquina/cassette_digital/databyte_2" BEL
+        "la_maquina/cassette_digital/databyte_1" BEL
+        "la_maquina/cassette_digital/databyte_0" BEL
+        "la_maquina/cassette_digital/duration_0" BEL
+        "la_maquina/cassette_digital/durationextrapulse_0" BEL
+        "la_maquina/cassette_digital/a_20" BEL
+        "la_maquina/cassette_digital/a_19" BEL
+        "la_maquina/cassette_digital/a_18" BEL
+        "la_maquina/cassette_digital/a_17" BEL
+        "la_maquina/cassette_digital/a_16" BEL
+        "la_maquina/cassette_digital/a_15" BEL
+        "la_maquina/cassette_digital/a_14" BEL
+        "la_maquina/cassette_digital/a_13" BEL
+        "la_maquina/cassette_digital/a_12" BEL
+        "la_maquina/cassette_digital/a_11" BEL
+        "la_maquina/cassette_digital/a_10" BEL
+        "la_maquina/cassette_digital/a_9" BEL
+        "la_maquina/cassette_digital/a_8" BEL
+        "la_maquina/cassette_digital/a_7" BEL
+        "la_maquina/cassette_digital/a_6" BEL
+        "la_maquina/cassette_digital/a_5" BEL
+        "la_maquina/cassette_digital/a_4" BEL
+        "la_maquina/cassette_digital/a_3" BEL
+        "la_maquina/cassette_digital/a_2" BEL
+        "la_maquina/cassette_digital/a_1" BEL
+        "la_maquina/cassette_digital/a_0" BEL
+        "la_maquina/cassette_digital/durationextrapulse_1" BEL
+        "la_maquina/cassette_digital/indexpulse_4" BEL
+        "la_maquina/cassette_digital/indexpulse_3" BEL
+        "la_maquina/cassette_digital/indexpulse_2" BEL
+        "la_maquina/cassette_digital/indexpulse_1" BEL
+        "la_maquina/cassette_digital/indexpulse_0" BEL
+        "la_maquina/cassette_digital/cduration_33" BEL
+        "la_maquina/cassette_digital/cduration_32" BEL
+        "la_maquina/cassette_digital/cduration_31" BEL
+        "la_maquina/cassette_digital/cduration_30" BEL
+        "la_maquina/cassette_digital/cduration_29" BEL
+        "la_maquina/cassette_digital/cduration_28" BEL
+        "la_maquina/cassette_digital/cduration_27" BEL
+        "la_maquina/cassette_digital/cduration_26" BEL
+        "la_maquina/cassette_digital/cduration_25" BEL
+        "la_maquina/cassette_digital/cduration_24" BEL
+        "la_maquina/cassette_digital/cduration_23" BEL
+        "la_maquina/cassette_digital/cduration_22" BEL
+        "la_maquina/cassette_digital/cduration_21" BEL
+        "la_maquina/cassette_digital/cduration_20" BEL
+        "la_maquina/cassette_digital/cduration_19" BEL
+        "la_maquina/cassette_digital/cduration_18" BEL
+        "la_maquina/cassette_digital/cduration_17" BEL
+        "la_maquina/cassette_digital/cduration_16" BEL
+        "la_maquina/cassette_digital/cduration_15" BEL
+        "la_maquina/cassette_digital/cduration_14" BEL
+        "la_maquina/cassette_digital/cduration_13" BEL
+        "la_maquina/cassette_digital/cduration_12" BEL
+        "la_maquina/cassette_digital/cduration_11" BEL
+        "la_maquina/cassette_digital/cduration_10" BEL
+        "la_maquina/cassette_digital/cduration_9" BEL
+        "la_maquina/cassette_digital/cduration_8" BEL
+        "la_maquina/cassette_digital/cduration_7" BEL
+        "la_maquina/cassette_digital/cduration_6" BEL
+        "la_maquina/cassette_digital/cduration_5" BEL
+        "la_maquina/cassette_digital/cduration_4" BEL
+        "la_maquina/cassette_digital/cduration_3" BEL
+        "la_maquina/cassette_digital/cduration_2" BEL
+        "la_maquina/cassette_digital/cduration_1" BEL
+        "la_maquina/cassette_digital/cduration_0" BEL
+        "la_maquina/cassette_digital/duration_16" BEL
+        "la_maquina/cassette_digital/duration_17" BEL
+        "la_maquina/cassette_digital/duration_18" BEL
+        "la_maquina/cassette_digital/duration_19" BEL
+        "la_maquina/cassette_digital/duration_20" BEL
+        "la_maquina/cassette_digital/duration_21" BEL
+        "la_maquina/cassette_digital/duration_22" BEL
+        "la_maquina/cassette_digital/duration_23" BEL
+        "la_maquina/cassette_digital/duration_24" BEL
+        "la_maquina/cassette_digital/duration_25" BEL
+        "la_maquina/cassette_digital/duration_26" BEL
+        "la_maquina/cassette_digital/duration_27" BEL
+        "la_maquina/cassette_digital/duration_28" BEL
+        "la_maquina/cassette_digital/duration_29" BEL
+        "la_maquina/cassette_digital/duration_30" BEL
+        "la_maquina/cassette_digital/durationextrapulse_2" BEL
+        "la_maquina/cassette_digital/durationextrapulse_3" BEL
+        "la_maquina/cassette_digital/durationextrapulse_4" BEL
+        "la_maquina/cassette_digital/durationextrapulse_5" BEL
+        "la_maquina/cassette_digital/durationextrapulse_6" BEL
+        "la_maquina/cassette_digital/durationextrapulse_7" BEL
+        "la_maquina/cassette_digital/durationextrapulse_8" BEL
+        "la_maquina/cassette_digital/durationextrapulse_9" BEL
+        "la_maquina/cassette_digital/durationextrapulse_10" BEL
+        "la_maquina/cassette_digital/durationextrapulse_11" BEL
+        "la_maquina/cassette_digital/durationextrapulse_12" BEL
+        "la_maquina/cassette_digital/durationextrapulse_13" BEL
+        "la_maquina/cassette_digital/durationextrapulse_14" BEL
+        "la_maquina/cassette_digital/durationextrapulse_15" BEL
+        "la_maquina/cassette_digital/tag_address_20" BEL
+        "la_maquina/cassette_digital/tag_address_19" BEL
+        "la_maquina/cassette_digital/tag_address_18" BEL
+        "la_maquina/cassette_digital/tag_address_17" BEL
+        "la_maquina/cassette_digital/tag_address_16" BEL
+        "la_maquina/cassette_digital/tag_address_15" BEL
+        "la_maquina/cassette_digital/tag_address_14" BEL
+        "la_maquina/cassette_digital/tag_address_13" BEL
+        "la_maquina/cassette_digital/tag_address_12" BEL
+        "la_maquina/cassette_digital/tag_address_11" BEL
+        "la_maquina/cassette_digital/tag_address_10" BEL
+        "la_maquina/cassette_digital/tag_address_9" BEL
+        "la_maquina/cassette_digital/tag_address_8" BEL
+        "la_maquina/cassette_digital/tag_address_7" BEL
+        "la_maquina/cassette_digital/tag_address_6" BEL
+        "la_maquina/cassette_digital/tag_address_5" BEL
+        "la_maquina/cassette_digital/tag_address_4" BEL
+        "la_maquina/cassette_digital/tag_address_3" BEL
+        "la_maquina/cassette_digital/tag_address_2" BEL
+        "la_maquina/cassette_digital/tag_address_1" BEL
+        "la_maquina/cassette_digital/tag_address_0" BEL
+        "la_maquina/cassette_digital/vdeckprev_1" BEL
+        "la_maquina/cassette_digital/vdeckprev_0" BEL
+        "la_maquina/cassette_digital/duration_1" BEL
+        "la_maquina/cassette_digital/duration_2" BEL
+        "la_maquina/cassette_digital/duration_3" BEL
+        "la_maquina/cassette_digital/duration_4" BEL
+        "la_maquina/cassette_digital/duration_5" BEL
+        "la_maquina/cassette_digital/duration_6" BEL
+        "la_maquina/cassette_digital/duration_7" BEL
+        "la_maquina/cassette_digital/duration_8" BEL
+        "la_maquina/cassette_digital/duration_9" BEL
+        "la_maquina/cassette_digital/duration_10" BEL
+        "la_maquina/cassette_digital/duration_11" BEL
+        "la_maquina/cassette_digital/duration_12" BEL
+        "la_maquina/cassette_digital/duration_13" BEL
+        "la_maquina/cassette_digital/duration_14" BEL
+        "la_maquina/cassette_digital/duration_15" BEL
+        "la_maquina/cassette_digital/vdeckctrl_1" BEL
+        "la_maquina/cassette_digital/vdeckctrl_0" BEL
+        "la_maquina/cassette_digital/numberpulse0_4" BEL
+        "la_maquina/cassette_digital/numberpulse0_3" BEL
+        "la_maquina/cassette_digital/numberpulse0_2" BEL
+        "la_maquina/cassette_digital/numberpulse0_1" BEL
+        "la_maquina/cassette_digital/numberpulse0_0" BEL
+        "la_maquina/cassette_digital/numberpulse1_4" BEL
+        "la_maquina/cassette_digital/numberpulse1_3" BEL
+        "la_maquina/cassette_digital/numberpulse1_2" BEL
+        "la_maquina/cassette_digital/numberpulse1_1" BEL
+        "la_maquina/cassette_digital/numberpulse1_0" BEL
+        "la_maquina/cassette_digital/edjump_1" BEL
+        "la_maquina/cassette_digital/edjump_0" BEL
+        "la_maquina/cassette_digital/edstop_1" BEL
+        "la_maquina/cassette_digital/edstop_0" BEL
+        "la_maquina/cassette_digital/edplay_1" BEL
+        "la_maquina/cassette_digital/edplay_0" BEL
+        "la_maquina/cassette_digital/tag_7" BEL
+        "la_maquina/cassette_digital/tag_6" BEL
+        "la_maquina/cassette_digital/tag_5" BEL
+        "la_maquina/cassette_digital/tag_4" BEL
+        "la_maquina/cassette_digital/tag_3" BEL
+        "la_maquina/cassette_digital/tag_2" BEL
+        "la_maquina/cassette_digital/tag_1" BEL
+        "la_maquina/cassette_digital/tag_0" BEL
+        "la_maquina/i2s_midi/right_out_15" BEL
+        "la_maquina/i2s_midi/right_out_14" BEL
+        "la_maquina/i2s_midi/right_out_13" BEL
+        "la_maquina/i2s_midi/right_out_12" BEL
+        "la_maquina/i2s_midi/right_out_11" BEL
+        "la_maquina/i2s_midi/right_out_10" BEL
+        "la_maquina/i2s_midi/right_out_9" BEL
+        "la_maquina/i2s_midi/right_out_8" BEL
+        "la_maquina/i2s_midi/right_out_7" BEL
+        "la_maquina/i2s_midi/right_out_6" BEL
+        "la_maquina/i2s_midi/right_out_5" BEL
+        "la_maquina/i2s_midi/left_out_15" BEL
+        "la_maquina/i2s_midi/left_out_14" BEL
+        "la_maquina/i2s_midi/left_out_13" BEL
+        "la_maquina/i2s_midi/left_out_12" BEL
+        "la_maquina/i2s_midi/left_out_11" BEL
+        "la_maquina/i2s_midi/left_out_10" BEL "la_maquina/i2s_midi/left_out_9"
+        BEL "la_maquina/i2s_midi/left_out_8" BEL
+        "la_maquina/i2s_midi/left_out_7" BEL "la_maquina/i2s_midi/left_out_6"
+        BEL "la_maquina/i2s_midi/left_out_5" BEL "la_maquina/i2s_midi/sreg_16"
+        BEL "la_maquina/i2s_midi/sreg_15" BEL "la_maquina/i2s_midi/sreg_14"
+        BEL "la_maquina/i2s_midi/sreg_13" BEL "la_maquina/i2s_midi/sreg_12"
+        BEL "la_maquina/i2s_midi/sreg_11" BEL "la_maquina/i2s_midi/sreg_10"
+        BEL "la_maquina/i2s_midi/sreg_9" BEL "la_maquina/i2s_midi/sreg_8" BEL
+        "la_maquina/i2s_midi/sreg_7" BEL "la_maquina/i2s_midi/sreg_6" BEL
+        "la_maquina/i2s_midi/sreg_5" BEL "la_maquina/i2s_midi/sreg_4" BEL
+        "la_maquina/i2s_midi/sreg_3" BEL "la_maquina/i2s_midi/sreg_2" BEL
+        "la_maquina/i2s_midi/sreg_1" BEL "la_maquina/i2s_midi/sreg_0" BEL
+        "la_maquina/i2s_midi/scks_prev" BEL "la_maquina/i2s_midi/sck_synch_1"
+        BEL "la_maquina/i2s_midi/sck_synch_0" BEL
+        "la_maquina/i2s_midi/sd_synch_1" BEL "la_maquina/i2s_midi/sd_synch_0"
+        BEL "la_maquina/i2s_midi/ws_synch_1" BEL
+        "la_maquina/i2s_midi/ws_synch_0" BEL "salida_vga/addrvideo_10" BEL
+        "salida_vga/addrvideo_9" BEL "salida_vga/addrvideo_8" BEL
+        "salida_vga/addrvideo_7" BEL "salida_vga/addrvideo_6" BEL
+        "salida_vga/addrvideo_5" BEL "salida_vga/addrvideo_4" BEL
+        "salida_vga/addrvideo_3" BEL "salida_vga/addrvideo_2" BEL
+        "salida_vga/addrvideo_1" BEL "salida_vga/addrvideo_0" BEL
+        "salida_vga/totalhor_9" BEL "salida_vga/totalhor_8" BEL
+        "salida_vga/totalhor_7" BEL "salida_vga/totalhor_6" BEL
+        "salida_vga/totalhor_5" BEL "salida_vga/totalhor_4" BEL
+        "salida_vga/totalhor_3" BEL "salida_vga/totalhor_2" BEL
+        "salida_vga/totalhor_1" BEL "salida_vga/totalhor_0" BEL
+        "salida_vga/addrvga_9" BEL "salida_vga/addrvga_8" BEL
+        "salida_vga/addrvga_7" BEL "salida_vga/addrvga_6" BEL
+        "salida_vga/addrvga_5" BEL "salida_vga/addrvga_4" BEL
+        "salida_vga/addrvga_3" BEL "salida_vga/addrvga_2" BEL
+        "salida_vga/addrvga_1" BEL "salida_vga/addrvga_0" BEL
+        "salida_vga/hsync_ext_n_prev" BEL "salida_vga/hsync_ext_n_prev2" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_status_after_m1" BEL
+        "la_maquina/bootrom_rom_y_ram/masterconf_frozen" BEL
+        "la_maquina/bootrom_rom_y_ram/initial_boot_mode" BEL
+        "la_maquina/bootrom_rom_y_ram/timing_mode_0" BEL
+        "la_maquina/el_teclado/reading_kbstatus" BEL
+        "la_maquina/el_raton/reading_mousestatus" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/read_in_progress" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/data_received" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/addr_is_reached" BEL
+        "la_maquina/addr_reg_zxuno/rregaddr_changed" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_4" BEL
+        "la_maquina/el_raton/lectura_de_raton/rkb_interrupt" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/regextended_FSM_FFd2" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/regreleased_FSM_FFd2" BEL
+        "la_maquina/device_enables/devoptions_5" BEL
+        "la_maquina/device_enables/devoptions_3" BEL "salida_vga/cntvsync_15"
+        BEL "salida_vga/cntvsync_14" BEL "salida_vga/cntvsync_13" BEL
+        "salida_vga/cntvsync_12" BEL "salida_vga/cntvsync_11" BEL
+        "salida_vga/cntvsync_10" BEL "salida_vga/cntvsync_9" BEL
+        "salida_vga/cntvsync_8" BEL "salida_vga/cntvsync_7" BEL
+        "salida_vga/cntvsync_6" BEL "salida_vga/cntvsync_5" BEL
+        "salida_vga/cntvsync_4" BEL "salida_vga/cntvsync_3" BEL
+        "salida_vga/cntvsync_2" BEL "salida_vga/cntvsync_1" BEL
+        "salida_vga/cntvsync_0" BEL "salida_vga/vsync_vga" BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<0>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<1>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<2>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<3>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<4>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<5>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<6>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT<7>_FRB"
+        BEL
+        "la_maquina/audio_mix/Madd_ay1_cha_signed[10]_ay2_cha_signed[10]_add_18_OUT_cy<7>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<0>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<1>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<2>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<3>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<4>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<5>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<6>_FRB"
+        BEL
+        "la_maquina/audio_mix/ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT<7>_FRB"
+        BEL
+        "la_maquina/audio_mix/Madd_ay1_chb_signed[10]_ay2_chb_signed[10]_add_20_OUT_cy<7>_FRB"
+        BEL "la_maquina/la_ula/syncs/Result<1>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<2>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<3>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<4>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<5>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<6>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<7>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<8>1_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<1>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<2>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<3>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<4>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<5>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<6>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<7>_FRB" BEL
+        "la_maquina/la_ula/syncs/Result<8>_FRB" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB5" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB0" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB1" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB2" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB3" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB4" BEL
+        "la_maquina/la_ula/CancelContention_cycle_before_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_2_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_0_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_7_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_7_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_7_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_7_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_6_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_6_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_6_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_4_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_4_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_4_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_4_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_4_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_4_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_4_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_3_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_3_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_3_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_15_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_15_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_15_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_14_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_14_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_12_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_12_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_11_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_11_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_10_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_9_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_9_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_8_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_7_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_1_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_7_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_7_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_7_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_7_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_6_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_6_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_6_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_4_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_4_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_4_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_0_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_0_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_0_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_0_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_0_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_3_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_3_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_2_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_2_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_1_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_1_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_1_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_0_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_0_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_3_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_3_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_3_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_2_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_2_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_1_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_1_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_1_BRB5" BEL
+        "la_maquina/audio_mix/beeper_6_BRB1" BEL
+        "la_maquina/audio_mix/beeper_6_BRB2" BEL
+        "la_maquina/audio_mix/beeper_6_BRB3" BEL
+        "la_maquina/audio_mix/beeper_6_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_5_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB17" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB19" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB21" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB21" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_5_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_5_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusA_5_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_13_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_13_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/WZ_5_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_5_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_5_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusB_5_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB0" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB2" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_0_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_6_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_4_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_4_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_4_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_4_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_4_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_3_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_3_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_3_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_3_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_3_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_2_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_2_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_2_BRB5" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_2_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_1_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_1_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_1_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_1_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_1_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB22" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB23" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB19" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB21" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB22" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB23" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_4_BRB25" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB24" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB25" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB26" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB27" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB29" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB30" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_3_BRB31" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB4" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB17" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB17" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB19" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB23" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB24" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB10" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB17" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_5_BRB19" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB6" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB18" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB22" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB26" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB27" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB29" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB25" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB27" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_6_BRB29" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB31" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB32" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB33" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_0_BRB34" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_2_BRB23" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_7_BRB16" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB7" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB8" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB9" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB13" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IR_0_BRB16" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_6_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_6_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_6_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_4_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_4_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_4_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_3_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_3_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_3_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_2_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_2_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_2_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_1_BRB3" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_1_BRB4" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_1_BRB5" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/data_from_miso_BRB0" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/data_from_miso_BRB1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/data_from_miso_BRB2" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/data_from_miso_BRB3" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB11" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB12" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_7_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_2_BRB0" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_2_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/F_2_BRB2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB14" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB15" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB20" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB21" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB22" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB23" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/DI_Reg_1_BRB24" BEL
+        "la_maquina/dos_ays/ay_select" BEL "la_maquina/dos_ays/ay1/tone_a" BEL
+        "la_maquina/dos_ays/ay1/tone_b" BEL
+        "la_maquina/dos_ays/ay1/tone_noise" BEL
+        "la_maquina/dos_ays/ay1/tone_c" BEL "la_maquina/dos_ays/ay2/tone_a"
+        BEL "la_maquina/dos_ays/ay2/tone_b" BEL
+        "la_maquina/dos_ays/ay2/tone_c" BEL
+        "la_maquina/dos_ays/ay2/tone_noise" BEL
+        "la_maquina/el_teclado/kbstatus_dout_0" BEL
+        "la_maquina/el_raton/mousestatus_dout_0" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_mreq_n" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/busrq_n" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_iorq_n" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_wr_n" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/dma_rd_n" BEL
+        "la_maquina/el_z80_con_su_dma/la_dma/hilo" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/MREQ" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/RD" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/IORQ_n_i" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/Reset_s" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IntE_FF1" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Halt_FF" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IntE_FF2" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/NMI_s" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/M1_n" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BusAck" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IntCycle" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/I_RXDD" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/XY_Ind" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/Alternate" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/FChanged" BEL
+        "la_maquina/la_ula/ConfigReg" BEL "la_maquina/la_ula/ffbitmapofs" BEL
+        "la_maquina/cassette_digital/play_enabled" BEL
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/inst_LPM_FF" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/IncDecZ" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/OldNMI_n" BEL
+        "la_maquina/la_ula/CancelContention" BEL
+        "la_maquina/la_ula/MayContend_n" BEL
+        "la_maquina/cacharros_con_spi/flashpincs" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/regreleased_FSM_FFd1" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/regextended_FSM_FFd1" BEL
+        "la_maquina/el_teclado/funciones_especiales/video_output_change" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_nmi" BEL
+        "la_maquina/el_teclado/funciones_especiales/user_reset" BEL
+        "la_maquina/el_teclado/funciones_especiales/master_reset" BEL
+        "la_maquina/el_teclado/funciones_especiales/ctrl_pressed" BEL
+        "la_maquina/el_teclado/funciones_especiales/shift_pressed" BEL
+        "la_maquina/el_teclado/funciones_especiales/joyfire" BEL
+        "la_maquina/el_teclado/funciones_especiales/joyright" BEL
+        "la_maquina/el_teclado/funciones_especiales/joyleft" BEL
+        "la_maquina/el_teclado/funciones_especiales/joydown" BEL
+        "la_maquina/el_teclado/funciones_especiales/joyup" BEL
+        "la_maquina/cassette_digital/next_pulse" BEL
+        "la_maquina/i2s_midi/wss_prev" BEL "salida_vga/addrvga_10" BEL
+        "salida_vga/scaneffect" BEL
+        "la_maquina/dos_ays/ay2/env_shape_first_period" BEL
+        "la_maquina/bootrom_rom_y_ram/divmmc_is_paged" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/busy" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/error" BEL
+        "la_maquina/el_raton/escritura_a_raton/busy" BEL
+        "la_maquina/el_raton/escritura_a_raton/error" BEL
+        "la_maquina/el_teclado/lectura_de_teclado/rkb_interrupt" BEL
+        "la_maquina/identificacion_del_core/reading" BEL
+        "la_maquina/control_scandoubler/ff_toggle_turbo" BEL
+        "la_maquina/dos_ays/ay1/env_shape_first_period" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/NMICycle" BEL
+        "la_maquina/el_z80_con_su_dma/el_z80/TheCPU/u0/BTR_r" BEL
+        "la_maquina/la_ula/snow_is_about_to_happen" BEL
+        "la_maquina/cacharros_con_spi/sdpincs" BEL
+        "la_maquina/el_teclado/traductor/key_is_pending" BEL
+        "la_maquina/cassette_digital/pulse" BEL
+        "la_maquina/la_ula/offset_reg_accessed" BEL
+        "la_maquina/cacharros_con_spi/flashpincs_1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_0_1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_7_1" BEL
+        "la_maquina/cacharros_con_spi/sdpincs_1" PIN
+        "la_maquina/dos_ays/ay2/Mram_lin2log11_pins<22>" PIN
+        "la_maquina/dos_ays/ay2/Mram_lin2log11_pins<23>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram16_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram15_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram14_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram12_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram11_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram13_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram10_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram9_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram7_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram6_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram8_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram5_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram4_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram2_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram1_pins<29>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3_pins<28>" PIN
+        "la_maquina/bootrom_rom_y_ram/toda_la_ram/Mram_vram3_pins<29>" PIN
+        "la_maquina/la_ula/palette/Mram_lut1_pins<22>" PIN
+        "la_maquina/la_ula/palette/Mram_lut1_pins<23>" PIN
+        "la_maquina/el_teclado/traductor/Mram_keymap2_pins<22>" PIN
+        "la_maquina/el_teclado/traductor/Mram_keymap2_pins<23>" PIN
+        "la_maquina/el_teclado/traductor/Mram_keymap1_pins<22>" PIN
+        "la_maquina/el_teclado/traductor/Mram_keymap1_pins<23>" PIN
+        "la_maquina/cassette_digital/Mram_pulse1_pins<20>" PIN
+        "la_maquina/cassette_digital/Mram_pulse1_pins<21>" PIN
+        "la_maquina/cassette_digital/Mram_pulse0_pins<20>" PIN
+        "la_maquina/cassette_digital/Mram_pulse0_pins<21>" PIN
+        "salida_vga/memscan/Mram_scan_pins<22>" PIN
+        "salida_vga/memscan/Mram_scan_pins<23>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem8_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem7_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem6_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem5_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem4_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem3_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem2_pins<14>" PIN
+        "la_maquina/bootrom_rom_y_ram_boot_rom/Mram_mem1_pins<14>" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/count_0_1_1" BEL
+        "la_maquina/cacharros_con_spi/mi_spi/spireg_7_1_1" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/Mshreg_edgedetect_0" BEL
+        "la_maquina/el_teclado/escritura_a_teclado/edgedetect_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/Mshreg_edgedetect_0" BEL
+        "la_maquina/el_raton/escritura_a_raton/edgedetect_0" BEL
+        "la_maquina/audio_mix/Mshreg_right_6" BEL
+        "la_maquina/audio_mix/right_6" BEL
+        "la_maquina/audio_mix/Mshreg_right_8" BEL
+        "la_maquina/audio_mix/right_8" BEL
+        "la_maquina/audio_mix/Mshreg_right_5" BEL
+        "la_maquina/audio_mix/right_5" BEL
+        "la_maquina/audio_mix/Mshreg_right_7" BEL
+        "la_maquina/audio_mix/right_7" BEL
+        "la_maquina/audio_mix/Mshreg_right_3" BEL
+        "la_maquina/audio_mix/right_3" BEL
+        "la_maquina/audio_mix/Mshreg_right_2" BEL
+        "la_maquina/audio_mix/right_2" BEL
+        "la_maquina/audio_mix/Mshreg_right_4" BEL
+        "la_maquina/audio_mix/right_4" BEL
+        "la_maquina/audio_mix/Mshreg_right_0" BEL
+        "la_maquina/audio_mix/right_0" BEL
+        "la_maquina/audio_mix/Mshreg_left_8" BEL "la_maquina/audio_mix/left_8"
+        BEL "la_maquina/audio_mix/Mshreg_right_1" BEL
+        "la_maquina/audio_mix/right_1" BEL
+        "la_maquina/audio_mix/Mshreg_left_6" BEL "la_maquina/audio_mix/left_6"
+        BEL "la_maquina/audio_mix/Mshreg_left_7" BEL
+        "la_maquina/audio_mix/left_7" BEL "la_maquina/audio_mix/Mshreg_left_3"
+        BEL "la_maquina/audio_mix/left_3" BEL
+        "la_maquina/audio_mix/Mshreg_left_5" BEL "la_maquina/audio_mix/left_5"
+        BEL "la_maquina/audio_mix/Mshreg_left_4" BEL
+        "la_maquina/audio_mix/left_4" BEL "la_maquina/audio_mix/Mshreg_left_1"
+        BEL "la_maquina/audio_mix/left_1" BEL
+        "la_maquina/audio_mix/Mshreg_left_0" BEL "la_maquina/audio_mix/left_0"
+        BEL "la_maquina/audio_mix/Mshreg_left_2" BEL
+        "la_maquina/audio_mix/left_2" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_10" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_10" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_2" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_2" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_12" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_12" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_4" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_4" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_6" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_6" BEL
+        "la_maquina/enables_de_todos_los_relojes/Mshreg_divclk_14" BEL
+        "la_maquina/enables_de_todos_los_relojes/divclk_14" BEL
+        "la_maquina/la_ula/palette/Mram_lut8/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut8/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut7/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut7/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut9/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut9/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut5/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut5/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut4/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut4/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut6/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut6/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut2/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut2/DP" BEL
+        "la_maquina/la_ula/palette/Mram_lut3/SP" BEL
+        "la_maquina/la_ula/palette/Mram_lut3/DP";
+PIN relojes_maestros/reconfiguracion_pll/PLL_ADV_inst_pins<9> = BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_ADV_inst" PINNAME DCLK;
+PIN relojes_maestros/reconfiguracion_pll/PLL_ADV_inst_pins<2> = BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_ADV_inst" PINNAME CLKIN1;
+TIMEGRP clk50mhz = BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_7" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_6" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_5" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_4" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_3" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_2" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_1" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_addr_0" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/state_count_4" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/state_count_3" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/state_count_2" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/state_count_1" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/state_count_0" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/current_state_FSM_FFd2"
+        BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/current_state_FSM_FFd3"
+        BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/current_state_FSM_FFd1"
+        BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/current_state_FSM_FFd4"
+        BEL "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DADDR_4" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DADDR_3" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DADDR_2" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DADDR_1" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DADDR_0" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_36" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_35" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_34" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_33" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_32" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_31" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_30" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_29" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_28" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_27" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_26" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_25" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_24" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_23" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_22" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_21" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_20" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_19" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_18" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_17" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_16" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_15" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_14" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_13" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_12" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_11" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_10" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_9" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_8" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_7" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_6" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_5" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_4" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_3" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_2" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_1" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/rom_do_0" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_15" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_14" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_13" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_12" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_11" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_10" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_9" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_8" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_7" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_6" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_5" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_4" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_3" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_2" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_1" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DI_0" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DEN" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/DWE" BEL
+        "relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/RST_PLL" BEL
+        "clk50mhz_IBUF_BUFG" PIN
+        "relojes_maestros/reconfiguracion_pll/PLL_ADV_inst_pins<9>" PIN
+        "relojes_maestros/reconfiguracion_pll/PLL_ADV_inst_pins<2>";
+TS_clk50 = PERIOD TIMEGRP "clk50mhz" 20 ns HIGH 50%;
+TS_relojes_maestros_reconfiguracion_pll_clk0_bufgin = PERIOD TIMEGRP
+        "relojes_maestros_reconfiguracion_pll_clk0_bufgin" TS_clk50 / 0.56
+        HIGH 50%;
+SCHEMATIC END;
+

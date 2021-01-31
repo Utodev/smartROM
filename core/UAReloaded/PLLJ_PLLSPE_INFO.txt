@@ -1,0 +1,5 @@
+PLL_Name	relojes:relojes_inst|altpll:altpll_component|relojes_altpll:auto_generated|pll1
+PLLJITTER	29
+PLLSPEmax	84
+PLLSPEmin	-53
+

@@ -1,7 +1,10 @@
 symbols.a80
+symbolsboot.a80
+symbolssmart.a80
 *.bin
 *.rom
 assets/*
 notes.txt
 tools/*
 *.hex
+*.ZX1

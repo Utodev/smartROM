@@ -1,0 +1,563 @@
+`timescale 1ns / 1ns
+`default_nettype none
+
+
+//    This file is part of the ZXUNO Spectrum core. 
+//    Creation date is 02:28:18 2014-02-06 by Miguel Angel Rodriguez Jodar
+//    (c)2014-2020 ZXUNO association.
+//    ZXUNO official repository: http://svn.zxuno.com/svn/zxuno
+//    Username: guest   Password: zxuno
+//    Github repository for this core: https://github.com/mcleod-ideafix/zxuno_spectrum_core
+//
+//    ZXUNO Spectrum core is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    ZXUNO Spectrum core is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with the ZXUNO Spectrum core.  If not, see <https://www.gnu.org/licenses/>.
+//
+//    Any distributed copy of this file must keep this notice intact.
+//    
+//    8/10/2020 Port to ZX NEXT by Fernando Mosquera - Benitoss
+
+module tld_zxuno_UAReloaded (
+   input wire clk50mhz,
+
+   output wire [2:0] r,
+   output wire [2:0] g,
+   output wire [2:0] b,
+   output wire hsync,
+   output wire vsync,
+   input wire ear,
+   inout wire clkps2,
+   inout wire dataps2,
+   inout wire mouseclk,
+   inout wire mousedata,
+   output wire audio_out_left,
+   output wire audio_out_right,
+
+   //HDMI
+	
+   output wire [3:0] hdmi_p_o,
+   output wire [3:0] hdmi_n_o,
+
+
+   //output wire midi_out,
+   //input wire clkbd,
+   //input wire wsbd,
+   //input wire dabd,    
+
+   //output wire uart_tx,
+   //input wire uart_rx,
+   //output wire uart_rts,
+   //output wire uart_reset,
+
+   //output wire stdn,
+   //output wire stdnb,
+   
+   output wire [20:0] sram_addr,
+   inout wire [7:0] sram_data,
+   output wire sram_we_n,
+   output wire [3:0] ram_ce_n_o,
+   
+   output wire flash_cs_n,
+   output wire flash_clk,
+   output wire flash_mosi,
+   input wire flash_miso,
+
+//   input wire joy_data,
+//   output wire joy_clk,
+//   output wire joy_load_n,
+
+   input wire  joyup,
+   input wire  joydown,
+   input wire  joyleft,
+   input wire  joyright,
+   input wire  joyfire,
+   output wire joyp7_o,
+   input wire  joyfire2,
+   output wire joysel_o,
+
+  // Matrix keyboard
+   output wire   [7:0]keyb_row_o, 
+   input wire    [6:0]keyb_col_i,
+
+  // Buttons
+   input wire  btn_divmmc_n_i,
+   input wire  btn_multiface_n_i,
+   input wire  btn_reset_n_i,
+
+   output wire sd_cs_n,    
+   output wire sd_clk,     
+   output wire sd_mosi,    
+   input wire sd_miso,
+
+   output wire flashled,
+   output wire sdled
+   );
+
+   wire sysclk;
+	wire CLK_14;
+	wire CLK_HDMI;
+   wire [2:0] pll_frequency_option;
+   
+   clock_generator relojes_maestros
+   (// Clock in ports
+    .CLK_IN1            (clk50mhz),
+    .pll_option         (pll_frequency_option),
+    // Clock out ports
+    .sysclk             (sysclk),
+	 .CLK_14             (CLK_14),
+	 .CLK_HDMI           (CLK_HDMI)
+    );
+
+   wire [2:0] ri, gi, bi, ro, go, bo;
+   wire hsync_pal, vsync_pal, csync_pal;
+	wire hblank_rgb, vblank_rgb;
+	wire hblank_vga, vblank_vga;
+	wire vga_enable, scanlines_enable;
+   wire clk14en_tovga;
+   
+   wire joy1up, joy1down, joy1left, joy1right, joy1fire1, joy1fire2;
+   wire joy2up, joy2down, joy2left, joy2right, joy2fire1, joy2fire2;
+
+   wire [20:0] sram_addr_int;
+   assign sram_addr = sram_addr_int[18:0];
+	
+	wire [8:0] left;
+   wire [8:0] right;
+  	
+//   joydecoder decodificador_joysticks (
+//    .clk(sysclk),
+//    .joy_data(joy_data),
+//    .joy_latch_megadrive(1'b1),
+//    .joy_clk(joy_clk),
+//    .joy_load_n(joy_load_n),
+//    .joy1up(joy1up),
+//    .joy1down(joy1down),
+//    .joy1left(joy1left),
+//    .joy1right(joy1right),
+//    .joy1fire1(joy1fire1),
+//    .joy1fire2(joy1fire2),
+//    .joy1fire3(),
+//    .joy1start(),
+//    .joy2up(joy2up),
+//    .joy2down(joy2down),
+//    .joy2left(joy2left),
+//    .joy2right(joy2right),
+//    .joy2fire1(joy2fire1),
+//    .joy2fire2(joy2fire2),
+//    .joy2fire3(),
+//    .joy2start()    
+//   );   
+
+   wire [7:0]kbdrow;
+   wire [4:0]kbdcol_membrane;
+	
+   zxuno #(.FPGA_MODEL(3'b010), .MASTERCLK(28000000)) la_maquina (
+    .sysclk(sysclk),
+    .power_on_reset_n(1'b1),  // sólo para simulación. Para implementacion, dejar a 1
+    .r(ri),
+    .g(gi),
+    .b(bi),
+    .hsync(hsync_pal),
+    .vsync(vsync_pal),
+    .csync(csync_pal),
+	 .hblank(hblank_rgb),
+	 .vblank(vblank_rgb),
+    .clkps2(clkps2),
+    .dataps2(dataps2),
+	 .kbdrow(kbdrow),
+	 .kbdcol_membrane( keyb_col_i_q[4:0] ),
+	 .nmi_button_n   (btn_divmmc_n_i),
+	 .reset_master_button_n (btn_reset_n_i),
+	 .reset_button_n (btn_multiface_n_i),
+    .ear_ext(~ear),  // negada porque el hardware tiene un transistor inversor
+    .audio_out_left(audio_out_left),
+    .audio_out_right(audio_out_right),
+    
+	 .left(left),
+    .right(right),
+	 
+    .midi_out(),
+    .clkbd(1'b0),
+    .wsbd(1'b0),
+    .dabd(1'b0),
+    
+    .uart_tx(),
+    .uart_rx(1'b1),
+    .uart_rts(),
+
+    .sram_addr(sram_addr_int),
+    .sram_data(sram_data),
+    .sram_we_n(sram_we_n),
+    
+    .flash_cs_n(flash_cs_n),
+    .flash_clk(flash_clk),
+    .flash_di(flash_mosi),
+    .flash_do(flash_miso),
+    
+    .sd_cs_n(sd_cs_n),
+    .sd_clk(sd_clk),
+    .sd_mosi(sd_mosi),
+    .sd_miso(sd_miso),
+    
+     .joy1up    (joy1_i[0]),
+    .joy1down  (joy1_i[1]),
+    .joy1left  (joy1_i[2]),
+    .joy1right (joy1_i[3]),
+    .joy1fire1 (joy1_i[4]),
+    .joy1fire2 (joy1_i[5]),    
+	 
+    .joy2up    (joy2_i[0]),
+    .joy2down  (joy2_i[1]),
+    .joy2left  (joy2_i[2]),
+    .joy2right (joy2_i[3]),
+    .joy2fire1 (joy2_i[4]),
+    .joy2fire2 (joy2_i[5]),   
+
+    .mouseclk(mouseclk),
+    .mousedata(mousedata),
+    
+    .clk14en_tovga(clk14en_tovga),
+    .vga_enable(vga_enable),
+    .scanlines_enable(scanlines_enable),
+    .freq_option(pll_frequency_option),
+    
+    .ad724_xtal(),
+    .ad724_mode(),
+    .ad724_enable_gencolorclk()
+    );
+
+	vga_scandoubler #(.CLKVIDEO(14000)) salida_vga (
+		.clk(sysclk),
+    .clkcolor4x(1'b1),
+    .clk14en(clk14en_tovga),
+    .enable_scandoubling(vga_enable),
+    .disable_scaneffect(~scanlines_enable),
+		.ri(ri),
+		.gi(gi),
+		.bi(bi),
+		.hsync_ext_n(hsync_pal),
+		.vsync_ext_n(vsync_pal),
+		.hblank_ext_n(hblank_rgb),
+      .vblank_ext_n(vblank_rgb),
+    .csync_ext_n(csync_pal),
+		.ro(ro),
+		.go(go),
+		.bo(bo),
+		.hsync(hsync),
+		.vsync(vsync),
+		.hblank(hblank_vga),
+      .vblank(vblank_vga)
+   );	 
+   
+	assign ram_ce_n_o = 4'b1110;    
+   assign flashled = flash_cs_n;
+   assign sdled = sd_cs_n;
+   //assign uart_reset = 1'bz;
+   
+//   assign r = {ro, ro};
+//   assign g = {go, go};
+//   assign b = {bo, bo};
+   
+	assign r = ro;
+   assign g = go;
+   assign b = bo;
+   
+	//	-- joystick multiplex
+   reg joysel_s;
+   reg  [5:0] joy1_s;
+	reg  [5:0] joy2_s;
+	wire [5:0] joy1_i;
+	wire [5:0] joy2_i;	
+	
+	
+	
+	
+	
+	// Divisor de relojes
+  reg [8:0] delay_count;
+  reg CLK_28_MEMBRANE_EN;
+  wire ena_x;
+  
+  always @ (posedge sysclk) begin
+      delay_count <= delay_count + 1'b1;       
+  end
+  
+  
+  
+  //complete scan every 2.5 scanlines (0.018ms per row)
+  always @ (posedge sysclk) begin
+		if (delay_count == {1'b1, 8'hFF})
+			CLK_28_MEMBRANE_EN <= 1'b1; 
+		else
+		   CLK_28_MEMBRANE_EN <= 1'b0;
+  end 
+    
+	assign ena_x = delay_count[5];  // clk a 28/ 2^6 = 437.5 Khz 
+		
+	always @(posedge ena_x) begin
+	   joysel_s = ~joysel_s;
+		if (joysel_s==1'b1) 
+		     joy1_s <= {joyfire2, joyfire, joyright, joyleft, joydown, joyup};
+		else  
+			  joy2_s <= {joyfire2, joyfire, joyright, joyleft, joydown, joyup};
+	end
+	
+ assign joyp7_o  = 1'b1;
+ assign joysel_o = joysel_s;
+//  assign joysel_o = 1'b0;
+ assign joy1_i = joy1_s; 
+ assign joy2_i = joy2_s;
+//  assign joy1_i = {joyfire2, joyfire, joyright, joyleft, joydown, joyup}; //6'b111111;
+//  assign joy2_i = 6'b111111;
+
+
+ 
+
+  // HDMI
+
+   wire zxn_video_50_60; 
+   wire zxn_hdmi_reset;
+  
+   integer h_visible_s= 719;
+   integer hsync_start_s = 731;
+   integer hsync_end_s = 795;
+   integer hcnt_end_s = 863;
+   integer v_visible_s =575;
+   integer vsync_start_s =580;
+   integer vsync_end_s = 585;
+   integer vcnt_end_s = 624;
+   
+	
+//   signal toHDMI_rgb             : std_logic_vector(8 downto 0);
+//   signal toHDMI_hsync           : std_logic;
+//   signal toHDMI_vsync           : std_logic;
+//   signal toHDMI_blank           : std_logic;
+//   
+//   signal tdms_r                 : std_logic_vector(9 downto 0);
+//   signal tdms_g                 : std_logic_vector(9 downto 0);
+//   signal tdms_b                 : std_logic_vector(9 downto 0);
+//   
+//   signal zxn_video_50_60        : std_logic;
+ 
+ // -- Modeline "720x576 @ 50hz"  27    720   732   796   864   576   581   586   625 
+    
+//   always @ (zxn_video_50_60) begin  
+//      if (zxn_video_50_60 == 1'b0) begin
+//      
+//         // 50 Hz
+//         
+//         h_visible_s    <= 720 - 1;
+//         hsync_start_s  <= 732 - 1;
+//         hsync_end_s    <= 796 - 1;
+//         hcnt_end_s     <= 864 - 1;
+//
+//         v_visible_s    <= 576 - 1;
+//         vsync_start_s  <= 581 - 1;
+//         vsync_end_s    <= 586 - 1;
+//         vcnt_end_s     <= 625 - 2;
+//			
+//      end  else   begin
+//
+//        //60 Hz
+//      
+//         h_visible_s    <= 720 - 1;
+//         hsync_start_s  <= 736 - 1;
+//         hsync_end_s    <= 798 - 1;
+//         hcnt_end_s     <= 858 - 1;
+//         //  --
+//         v_visible_s    <= 480 - 1;
+//         vsync_start_s  <= 489 - 1;
+//         vsync_end_s    <= 495 - 1;
+//         vcnt_end_s     <= 525 - 2;
+//      end
+//   end
+
+    wire [2:0] zxn_video_mode;
+	 assign  zxn_video_mode = 3'b000; 
+  
+    wire [8:0] toHDMI_rgb;
+	 wire       toHDMI_hsync;
+	 wire       toHDMI_vsync;
+	 wire       toHDMI_blank;
+  
+    hdmi_frame 
+//	 #(
+//     // config values
+//      .h_visible   (h_visible_s),
+//      .hsync_start (hsync_start_s),
+//      .hsync_end   (hsync_end_s),
+//      .hcnt_end    (hcnt_end_s),
+//      //
+//      .v_visible   (v_visible_s),
+//      .vsync_start (vsync_start_s),
+//      .vsync_end   (vsync_end_s),
+//      .vcnt_end    (vcnt_end_s)
+//	 )
+	 hdmi_frame 
+    (
+      .clock_i     (CLK_14),
+      .clock2x_i   (sysclk),
+      .reset_i     (1'b0),
+      .scanlines_i (2'b00),
+      .rgb_i       ({ri,gi,bi}),
+      .hsync_i     (hsync_pal),
+      .vsync_i     (vsync_pal),
+      .hblank_n_i  (hblank_rgb),
+      .vblank_n_i  (vblank_rgb),
+      .timing_i    (zxn_video_mode),
+      
+//      //outputs
+      .rgb_o       (toHDMI_rgb),
+      .hsync_o     (toHDMI_hsync),
+      .vsync_o     (toHDMI_vsync),
+      .blank_o     (toHDMI_blank)
+      
+      // config values 
+//      .h_visible   (h_visible_s),
+//      .hsync_start (hsync_start_s),
+//      .hsync_end   (hsync_end_s),
+//      .hcnt_end    (hcnt_end_s),
+//      //
+//      .v_visible   (v_visible_s),
+//      .vsync_start (vsync_start_s),
+//      .vsync_end   (vsync_end_s),
+//      .vcnt_end    (vcnt_end_s)
+     );
+ 
+ 
+ 
+ 
+ 
+// assign hdmi_p_o  = 4'bz;
+// assign hdmi_n_o  = 4'bz;
+  
+ wire [9:0]tdms_r_s;
+ wire [9:0]tdms_g_s;
+ wire [9:0]tdms_b_s;
+  
+// HDMI
+		hdmi #(
+			.FREQ	(28000000),	// pixel clock frequency 
+			.FS	(32000),		// audio sample rate - should be 32000, 41000 or 48000 = 48KHz
+			.CTS	(28000),		// CTS = Freq(pixclk) * N / (128 * Fs)
+			.N		(4096)		// N = 128 * Fs /1000,  128 * Fs /1500 <= N <= 128 * Fs /300 (Check HDMI spec 7.2 for details)
+		) 
+		hdmi (
+			.I_CLK_PIXEL	  (sysclk),
+			.I_R				  ({toHDMI_rgb[8:6], toHDMI_rgb[8:6], toHDMI_rgb[8:7]}),
+			.I_G				  ({toHDMI_rgb[5:3], toHDMI_rgb[5:3], toHDMI_rgb[5:4]}),
+			.I_B				  ({toHDMI_rgb[2:0], toHDMI_rgb[2:0], toHDMI_rgb[2:1]}),
+			.I_BLANK			  (toHDMI_blank),
+			.I_HSYNC			  (toHDMI_hsync),
+			.I_VSYNC			  (toHDMI_vsync),
+			// PCM audio
+			.I_AUDIO_ENABLE (1'b1),
+			.I_AUDIO_PCM_L  ({2'b0,left,left[8:4]}),
+			.I_AUDIO_PCM_R	 ({2'b0,right,right[8:4]}),
+			// TMDS parallel pixel synchronous outputs (serialize LSB first)
+			.O_RED			 (tdms_r_s),
+			.O_GREEN			 (tdms_g_s),
+			.O_BLUE			 (tdms_b_s)
+		);
+//
+		hdmi_out_xilinx hdmi_out
+      (
+			.clock_pixel_i  (sysclk),
+			.clock_tdms_i	 (CLK_HDMI),
+			.red_i			 (tdms_r_s),
+			.green_i			 (tdms_g_s),
+			.blue_i			 (tdms_b_s),
+			.tmds_out_p		 (hdmi_p_o),
+			.tmds_out_n		 (hdmi_n_o)
+		); 
+ 
+// Matrix keyboard
+   
+	 
+   reg [6:0]keyb_col_i_0;
+   reg [6:0]keyb_col_i_q;
+	
+   always @ (negedge sysclk) begin
+         keyb_col_i_0 <= keyb_col_i;
+   end
+   
+   always @ (posedge sysclk) begin
+         keyb_col_i_q <= keyb_col_i_0;
+   end
+
+
+ /// Membrane
+ 
+ wire  [4:0]membrane_col;
+// wire  [7:0]membrane_rows;
+
+	
+ reg reset_poweron;
+	
+// membrane keyboard
+   
+//   membrane_mod membrane_mod
+//   (
+//      .i_CLK 		(sysclk),
+//      .i_CLK_EN    (CLK_28_MEMBRANE_EN),
+//      
+//      .i_reset     (reset_poweron),
+//      
+//      .i_rows      (key_row_filtered),
+//      .o_cols      (membrane_col),
+//      
+//      .o_membrane_rows   (membrane_rows),   // 0 = active, 1 = Z
+//      .i_membrane_cols   (keyb_col_i_q),
+//      
+//      .i_cancel_extended_entries  (zxn_cancel_extended_entries),
+//      .o_extended_keys            (zxn_extended_keys)
+//   );	
+ 
+ reg [7:0]keyb_row;
+ assign keyb_row_o = keyb_row;
+ 	
+ always @ (posedge sysclk) begin
+      if (kbdrow[0] == 1'b0)
+         keyb_row[0] <= 1'b0;
+      else 			 
+			keyb_row[0] <= 1'bZ;
+		if (kbdrow[1] == 1'b0)
+         keyb_row[1] <= 1'b0;
+      else 			 
+			keyb_row[1] <= 1'bZ;
+		if (kbdrow[2] == 1'b0)
+         keyb_row[2]<= 1'b0;
+      else 			 
+			keyb_row[2] <= 1'bZ;
+		if (kbdrow[3] == 1'b0)
+         keyb_row[3] <= 1'b0;
+      else 			 
+			keyb_row[3] <= 1'bZ;
+		if (kbdrow[4] == 1'b0)
+         keyb_row[4] <= 1'b0;
+      else 			 
+			keyb_row[4] <= 1'bZ;
+		if (kbdrow[5] == 1'b0)
+         keyb_row[5] <= 1'b0;
+      else 			 
+			keyb_row[5] <= 1'bZ;
+		if (kbdrow[6] == 1'b0)
+         keyb_row[6] <= 1'b0;
+      else 			 
+			keyb_row[6] <= 1'bZ;
+		if (kbdrow[7] == 1'b0)
+         keyb_row[7] <= 1'b0;
+      else 			 
+			keyb_row[7] <= 1'bZ;
+ end
+ 
+endmodule

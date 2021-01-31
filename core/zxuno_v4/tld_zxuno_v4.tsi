@@ -1,0 +1,82 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+ 
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -filter
+G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4/iseconfig/filter.filter
+-intstyle ise -v 3 -tsi tld_zxuno_v4.tsi -timegroups -a -s 2 -n 3 -fastpaths
+-xml tld_zxuno_v4.twx tld_zxuno_v4.ncd -o tld_zxuno_v4.twr tld_zxuno_v4.pcf
+-ucf pines_zxuno_v4.ucf
+
+
+Design file:              tld_zxuno_v4.ncd
+Physical constraint file: tld_zxuno_v4.pcf
+Report level:             timespec interaction report
+--------------------------------------------------------------------------------
+********************************************************************************
+*                                                                              *
+* This timing constraint interaction report can be used to understand which    *
+* timing constraints take precedence when two or more timing constraints cover *
+* a common set of timing paths.                                                *
+*                                                                              *
+* Constraint coverage over a set of paths is based on the following precedence *
+* order (lowest to highest precedence):                                        *
+*                                                                              *
+*   Unconstrained path analysis                                                *
+*   PERIOD or FREQUENCY, allclocknets                                          *
+*   PERIOD or FREQUENCY, time group                                            *
+*   PERIOD or FREQUENCY, net                                                   *
+*   OFFSET IN/OUT, global                                                      *
+*   OFFSET IN/OUT, time group                                                  *
+*   OFFSET IN/OUT, pad                                                         *
+*   MAXDELAY path, with pre-defined FROM and TO groups                         *
+*   MAXDELAY path, with user-defined FROM or TO group                          *
+*   MAXDELAY path, with user-defined FROM and TO groups                        *
+*   MAXDELAY path, with intermediate (THRU) points                             *
+*   PATH definition                                                            *
+*   TIG path                                                                   *
+*                                                                              *
+* When two or more timing constraints have the same precedence, an optional    *
+* PRIORITY qualifier can be used to identify the constraint that should take   *
+* precedence for path coverage. If no PRIORITY qualifier exists, the last      *
+* constraint encountered in the constraint file will take precedence.          *
+*                                                                              *
+* The following report lists constraints interactions, where lower-priority    *
+* constraints had paths removed due to higher-priority constraints. For each   *
+* interaction, the higher-priority constraint and number of paths removed are  *
+* listed.                                                                      *
+*                                                                              *
+* In addition, if two or more interacting constraints have a similar type, a   *
+* set of potential constraint consolidations may be reported. It may be        *
+* possible to reduce the memory and runtime required for timing analysis by    *
+* combining similar constraints.                                               *
+*                                                                              *
+* A clock domain overlap report will be produced when multiple                 *
+* period/frequency constraints are defined to cover the same synchronous       *
+* destination elements. This overlap report displays the set of overlapping    *
+* constraints in precedence order (lowest to highest precedence) along with    *
+* the list of synchronous destination elements shared by those constraints.    *
+* The destination elements are listed using their logical resource name        *
+* followed parenthetically by their physical resource name and physical clock  *
+* pin name.                                                                    *
+*                                                                              *
+* The clock domain overlap report can be used to detect and correct            *
+* overlapping constraint specifications that may be unintentionally altering   *
+* the desired clock domain membership and resultant timing analysis of a       *
+* design.                                                                      *
+*                                                                              *
+********************************************************************************
+
+Constraint Interaction Report
+=============================
+
+
+Clock Domain Overlap Report
+===========================
+
+No overlap to report.
+
+
+Timespec interaction analysis completed Sun Jan 31 14:37:18 2021
+--------------------------------------------------------------------------------
+

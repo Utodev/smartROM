@@ -1,7 +1,7 @@
 ; Greetings: Antonio Villena and @mcleod_idefix for all the help. Andrew Owen for help with ULAPlus details and differences between standard and ZXUno implementation
 ;            César Hernández Baño for ZEsarUX debugger, absolutely needed for debugging this software.
 
-                OUTPUT  smartROM.bin
+                OUTPUT  SMARTROM.ZX1
                 define SMARTROMADDR       $A000
                 ;define USE_SDRAM 1    ; Uncomment this line to generate code compatible with SDRAM  (does not use Turbo mode)
                 ORG SMARTROMADDR                           ; Code is place at the middle of third 16K page
@@ -35,6 +35,10 @@
 ;*****************************************************************************************************************************************************
 
 
+
+                define FW_VERSION           "release A (Atic Atac)"
+
+
                 define VRAM_ADDR            $4000
                 define VRAM_ATTR_ADDR       $5800
                 define ZXUNO_PORT           $FC3B
@@ -56,11 +60,10 @@
                 define TOASTRACKMAPPER      $7FFD
                 define PLUS2AMAPPER         $1FFD
                 define PATCHADDR            $3900
+                define PATCHRUNADDR         $6000
                 define ROMBASICENTRY        $1293
                 define MEMCHECKADDR         $11DA
                 define BANKM                $5B5C
-
-                define FW_VERSION           "release A (Atic Atac)"
 
                 define M_GETSETDRV  	$89
                 define F_OPEN  		    $9a
@@ -109,21 +112,11 @@
 ;*****************************************************************************************************************************************************
 
 START           DI
-                LD A, 7
-                OUT ($FE), A
                 LD SP, $C000
                 CALL TimexInit
                 CALL CheckBootMode
                 CALL SetTurboSpeed
                 CALL InitializeVars                 ; Restart this firmware variables
-
-
-;Patch to make  sure Timex MMU is disabled, as somehow ZEsarUX bug (v 9.1) ignores mastermapper if it is active
-
-                _GETREG REG_DEVCONTROL      ; 
-                AND 10111111b               ;
-                LD E, A                     ;
-                _SETREGB REG_DEVCONTROL     ;
 
 
 ; --- Load Configuration
@@ -137,55 +130,37 @@ START           DI
                 CALL CopyrightNotice
 
 ; ------------ Try to load ROM entries
+                OR A
                 CALL LoadROMEntries
-                JR C, RunEmbeddeROM
+                JR C, NoROMSZX1
                 LD A, (cfgDefaultROMIndex)                             
                 LD L, A
                 JP LoadROM
 
 
-RunEmbeddeROM   _PRINTAT 0, 3
+NoROMSZX1       PUSH AF  ; Preserve error
+
+
+                _PRINTAT 0, 3
                 _WRITE "Unable to find ROMS.ZX1 at /ZXUNO/ folder"
                 _PRINTAT 0, 4
-                _WRITE "Press <enter> to load embedded ROM"
+                _WRITE "Please either include SMARTROM.ZX1 and ROMS.ZX1 or none of them."
+                _PRINTAT 0, 5 
+                _WRITE "ESXDOS Error: "
 
+                POP AF   ; Restore error
+                
+                CALL DivByTen ; Reminder in A and Quotient in D
+                LD E, A
+                LD A, D
+                ADD '0'
+                CALL PrintChar
+                LD A, E
+                ADD '0'
+                CALL PrintChar
 
-
-
-EmbeddedKeyLoop CALL GetKey
-                CP KEY_ENTER
-                JR NZ, EmbeddedKeyLoop
-
-EmbeddedGo      XOR A
-                OUT (255), A                 ; Disable timex mode
-                OUT (254), A                 ; Border 0
-
-                CALL SetNormalSpeed                   ; Back to normal Speed
-
-                CALL UnPatchROM                      ; restores the current ROM to the original 48K ROM, so it can be started if no ROMS.ZX1 file is present
-
-
-; -- Set the device so it becomes a 128K +2A with a 48K ROM with DivMMC active and NMI
-                _SETREG REG_DEVCONTROL, 0            ; Everything enabled but Timex MMU
-                _SETREG REG_DEVCTRL2, 7              ; Disable extra modes
-
-; ------------ Page In Back System ROM 1 (48K ROM)
-
-                LD   BC,$7FFD       ; I/O address of horizontal ROM/RAM switch
-                LD   A,(BANKM)      ; get current switch state
-                OR   $10            ; System ROM 1
-                LD   (BANKM),A      ; update the system variable (very important)
-                OUT  (C),A          ; make the switch						
-
-                _SETREG REG_MASTERCONF, $82          ; Enable DivMMC, Lock, and get out of boot mode
-
-
-
-; -- And launch
-                DI
-                JP 1
-
-
+                DI          
+                HALT            ; Die (unless NMI comes)
 
 
 ;*****************************************************************************************************************************************************
@@ -369,8 +344,8 @@ ClearMem        PUSH DE
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Sets Timex HiResMode
 
-TimexInit       _SETREG REG_DEVCONTROL, 11111011b ; Make sure bit 2, DI7FFD, is 0
-                _SETREG REG_DEVCTRL2,   11111100b ; make sure bits 0 and 1, DITIMEX and DIULAPLUS, value is 0
+TimexInit       _SETREG REG_DEVCONTROL, 0 ; Make sure bit 2, DI7FFD, is 0
+                _SETREG REG_DEVCTRL2,   0 ; make sure bits 0 and 1, DITIMEX and DIULAPLUS, value is 0
 
                 LD A, 00111110b 			  ; Enable Timex mode (HiRes)
         		OUT (255),A
@@ -407,12 +382,15 @@ SetULAPlusReg   LD BC, ULAPLUS_PORT     ; Set paper to RGB 00000000
 
 UnPatchROM      _SETREG REG_MASTERCONF, 1    ; MasterMapper mode
                 _SETREG REG_MASTERMAPPER, 9  ; System ROM 1
+
+
 ; --- UnPatch the launch code at PATCHADDR
                 LD HL, PATCHADDR + $C000
                 LD A, $FF
                 LD (HL), A
                 LD DE, PATCHADDR + 1 + $C000
                 LD BC, $48F                 ; Size minus 1 of the whole FFs area in the 48K ROM 
+                LDIR
                 
 
 ; -- Restore the original CALL to show "(C) 1982" that was replaced with the boot code
@@ -472,31 +450,6 @@ RestoreCursor   LD DE, VRAM_ADDR
 
 
 
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Sets a register A to value E
-
-SetZXUNOReg     PUSH BC
-                LD BC, ZXUNO_PORT
-                OUT (C),A
-                INC B
-                LD  A, E
-                OUT (C),A
-                POP BC
-                RET
-
-
-
-; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Gets  value of ZXUno register at A
-
-GetZXUnoReg     PUSH BC
-                LD BC, ZXUNO_PORT
-                OUT (C),A
-                INC B
-                IN A, (C)
-                POP BC
-                RET                                
-
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -538,7 +491,8 @@ CheckBootMode  _GETREG REG_MASTERCONF
 
 
 
-LoadROMEntries     LD IX, ROMSEtFilename
+LoadROMEntries      CALL SetDRV
+                    LD IX, ROMSETFilename
 
 ; --- open file
                     LD      B, FA_READ   
@@ -736,7 +690,8 @@ ContinueLoad        POP HL                      ; Restore L-slot value, just for
 
 
 ; --- open file
-                    LD      IX, ROMSEtFilename
+                    CALL SetDRV
+                    LD      IX, ROMSETFilename
                     LD      B, FA_READ   
 					RST     $08
                     DB      F_OPEN      
@@ -766,6 +721,7 @@ SeekSlot
                     JR Z, AfterSeek     ; Checks the OR above the LD A, if zero, it's first slot, skip loop
                     LD A, E             ; Restore file handler
                     LD B, (IY+0)        ; Get slot number again
+                   
 FSeekLoop           PUSH BC
 					LD BC, 0   			 ; BCDE --> Offset 
                     LD DE, 16384         ; One seek per slot
@@ -778,6 +734,7 @@ SeekLoopHandler     LD A ,0              ; This is the file handler, that 0 is m
                     DJNZ FSeekLoop
                     JR  AfterSeek
 FSeekFail           POP BC
+                    POP IY
                     RET                    
 
       
@@ -793,7 +750,6 @@ ReadROMPages        LD B, (IY+1)                ; Get number of slots for this R
                     LD E, 8                     ; SRAM slot for System ROM 0 is slot 7 with MASTERMAPPER, the following ROM slots are 9, 10 and 11, so E will point to next SRAM slot to use
 RomPagesLoop        PUSH BC
                     PUSH DE
-                    
 
 ; --- read a 16K block ROM from file
 ReadROMFromFile     LD IX, $C000
@@ -832,19 +788,19 @@ CloneROMs           LD A, (IY+1)             ;If ROM uses just one slot, we copy
                     CP 1
                     JR NZ, Not1SlotROM
                     LD BC, $0809
-                    CALL CopyROMBank
+                    CALL CopyROMBank    ; SRAM 08 --> SRAM 09
                     LD C, $0A
-                    CALL CopyRomBankB
+                    CALL CopyROMBankB   ; ---> SRAM 0A
                     LD C, $0B
-                    CALL CopyRomBankB
+                    CALL CopyROMBankB   ; ----> RAM 0B
                     JR FourSlots
 
 Not1SlotROM         CP 2                       ;If ROM uses just two slots, we copy rom at slot 0 to slot 2 and from slot 1 to slot 3 (In ZXUno SRAM 8 to 10 and 9 to 11)
                     JR NZ, FourSlots
-                    LD BC, $080A
+                    LD BC, $080A        ; ----> SRAM 08 --> SRAM 0A
                     CALL CopyROMBank
-                    LD C, $0B
-                    CALL CopyRomBankB
+                    LD BC, $090B        ;  ----> SRAM 09 --> SRAM 0B
+                    CALL CopyROMBank
 
 FourSlots           _SETREG REG_MASTERCONF, 2   ; back to user mode and DivMMC Enabled
 
@@ -882,13 +838,7 @@ The flags included in ROMS.ZX1:
       Flags 2 and 3 exactly match the DEVCONTROL and DEVCTRL2 registers. Flag 1 contains values for MASTERCONF but not in the same order
 -------------------------------------------------*/
 
-SetROMSettings      LD A, (IY+3); Flags 2
-RomSetDevControl    OR 0 
-                    AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
-                    LD E, A
-                    _SETREGB REG_DEVCONTROL
-
-                    LD A, (IY+4); Flags 3
+SetROMSettings      LD A, (IY+4); Flags 3
 RomSetDevCtrl2      OR 0 
                     AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
                     LD E, A
@@ -897,20 +847,31 @@ RomSetDevCtrl2      OR 0
                     CALL PrepareMasterConf          ; Flags 1 comes with values needed in MASTERCONF, but not the same order
 RomSetMasterConf    OR  10000000b                   ; Make sure LOCK is active
                     AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
-
-                    LD E, A  
                     PUSH AF                         ; Preserve MASTERCONF value                      
-                    _SETREGB REG_MASTERCONF         
+
+; --- Determine if we need to SET USR0 mode or normal mode
+USR0                AND 2
+                    CALL Z, ClearUSROMode
+                    JR SettingsContinue
+                    CALL SetUSROMode
+
+; --- Now set DEVCOntrol, it can be done earlier because DI1FFD and	DI7FFD may be set so ROM paging may be impossible , so this have to be done alway after setting USR0 mode or not.
+SettingsContinue
+                    LD A, (IY+3); Flags 2
+RomSetDevControl    OR 0 
+                    AND $FF                         ; This AND and OR may be modified above to force specific settings and ignoring the ROM settings
+                    LD E, A
+                    _SETREGB REG_DEVCONTROL
+
 
                     CALL SetNormalSpeed                   ; Back to normal Speed
 
                     POP AF
+                    LD E, A
+                    _SETREGB REG_MASTERCONF               ;  Now, finally, get the MASTERCONF VALUE 
+
                     AND 2
                     JP Z, 00000h                     ; If no DivMMC, we jump to 0000 to run System ROM 0
-
-; -- Set USR0 mode
-
-USR0                CALL  SetUSROMode               
 
                     DI                              ; Simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in once more at 0000 trap
                     JP 1
@@ -930,7 +891,7 @@ USR0                CALL  SetUSROMode
 ; Bit 5. Keyboard issue: 0=issue 2, 1=issue 3
 ;      
 ;      OUT: 7-LOCK	6-MODE1	5-DISCONT	4-MODE0	3-I2KB	2-DISNMI	1-DIVEN	0-BOOTM
-
+;00111101  128K, NMI Duvmmc,  Dicmmv, Contencion, issue 3
 
 
 PrepareMasterConf   LD HL, AUX    ; We will be storing here her
@@ -969,11 +930,24 @@ CompletedMConf      LD A, (HL)
 
 SetUSROMode         LD BC, TOASTRACKMAPPER       
                     LD A,00010000b
+                    
                     OUT (C), A
                     LD BC, PLUS2AMAPPER
                     LD A, 00000100b
                     OUT (C), A
                     RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Clears USR 0 mode byy choosing System ROM 0
+
+ClearUSROMode       LD BC, TOASTRACKMAPPER       
+                    LD A,00000000b
+                    OUT (C), A
+                    LD BC, PLUS2AMAPPER
+                    LD A, 00000000b
+                    OUT (C), A
+                    RET
+
 
 ; --  Notice: in case it's 2 additional slots, that is, 3 in total, we will end up using System ROM 2, which is actually las slot used, so in the end
 ;     this makes the ROM use the last slot created.
@@ -988,7 +962,8 @@ SaveConfig
                     AND 00111111b                   ; Remove turbo bits
                     LD (cfgSCANDBLCTRL),A
 
-; --- open file					
+; --- open file	   
+                    CALL SetDRV
                     LD IX,  CFGFilename
                     LD      B, FA_CREATE_AL
                     RST     $08
@@ -1011,15 +986,18 @@ CloseFileCfgSave  	LD 		A, 0
                     RET
 
 
-
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************* Selects DISK
+SetDRV              XOR	A  
+                    RST     $08 
+                    DB      M_GETSETDRV
+                    RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Load Configuration from file
 
 ; --- Set default disk  
-LoadConfig          XOR	A  
-                    RST     $08 
-                    DB      M_GETSETDRV
+LoadConfig          CALL SetDRV
 
 ; --- open file     
                     LD IX,  CFGFilename
@@ -1045,7 +1023,7 @@ CloseFileCfg    	LD 		A, 0
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Copies a ZXUNO BANK from bank at B register to bank at C register using $4000 bytes at $6000
-; ************ A Seconday entry at CopyRomBankB allows copying what is at $6000 to C000. Used to copy same thing several times
+; ************ A Seconday entry at CopyROMBankB allows copying what is at $6000 to C000. Used to copy same thing several times
 
 CopyROMBank         PUSH BC
                     LD E, B
@@ -1055,7 +1033,7 @@ CopyROMBank         PUSH BC
                     LD BC, $4000
                     LDIR        
                     POP BC
-CopyRomBankB        LD E, C
+CopyROMBankB        LD E, C
                      _SETREGB REG_MASTERMAPPER   ; Make page selected at C000 be page 0, which happens to be the same page selected at C000 when boot mode is off
                     LD HL, $6000
                     LD DE, $C000
@@ -1168,6 +1146,33 @@ RootedBoot              CP KEY_R
 
                         JR WaitKeyLoopBoot
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Sets a register A to value E
+
+SetZXUNOReg     PUSH BC
+                LD BC, ZXUNO_PORT
+                OUT (C),A
+                INC B
+                LD  A, E
+                OUT (C),A
+                POP BC
+                RET
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Gets  value of ZXUno register at A
+
+GetZXUnoReg     PUSH BC
+                LD BC, ZXUNO_PORT
+                OUT (C),A
+                INC B
+                IN A, (C)
+                POP BC
+                RET                                
+
+
+
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Divides A by 10 and returns the remainder in A and the quotient in D^***
 DivByTen				LD 	D, A			; Does A / 10
@@ -1187,7 +1192,8 @@ DivByTenNoSub			DJNZ DivByTenLoop
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Loads key map from /ZXUNO/KEYMAP.ZX1 is existis
 
-LoadKeyMap          LD IX, KEYMAPFilename
+LoadKeyMap          CALL SetDRV
+                    LD IX, KEYMAPFilename
 
 ; --- open file
                     LD      B, FA_READ   
@@ -1382,18 +1388,18 @@ Font                INCBIN     assets\font.bin
 ;*****************************************************************************************************************************************************
 
 ; -- ROM Directory
-ROMSEtFilename      DB 'ZXUNO\ROMS.ZX1', 0
+ROMSETFilename      DB '/ZXUNO/ROMS.ZX1', 0
 ROMDirectory        DS 4096
 
 ; -- Keymap
-KEYMAPFilename      DB 'ZXUNO\KEYMAP.ZX1', 0
+KEYMAPFilename      DB '/ZXUNO/KEYMAP.ZX1', 0
 
 
 ; -- Config File
-CFGFilename         DB 'ZXUNO\SETTINGS.ZX1',0
+CFGFilename         DB '/ZXUNO/SETTINGS.ZX1',0
 
 ConfigurationBEGIN
-cfgMasterControlOR  DB 0         ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
+cfgMasterControlOR  DB $80;      ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags1)
 cfgMasterControlAND DB $FF
 cfgDevcontrolOR     DB 0         ; When a ROM file is loaded, its setting will pass through this OR and AND masks (flags2)
 cfgDevcontrolAND    DB $FF
@@ -1413,6 +1419,7 @@ V_PRINT_POS             DB 0
 AUX                     DB 0
 LAST_VALID_ENTRY        DB 0
 KEY_HAS_BEEN_PRESSED    DB 0
+ESXDOSDrive             DB $FF
 
 ;*****************************************************************************************************************************************************
 ;   FILLER
