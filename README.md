@@ -52,7 +52,7 @@ Greetings: a big thanks to McLeod_ideafix, whose support made this possible. Als
 Copyright and License
 =====================
 
-The bootloader.asm file is (C) Jose Manuel Rodriguez (McLeod_ideafix) and Carlos Sánchez (Uto) and it's made public under the GPLv3 license.
+The bootloader.asm file is (C) Miguel Angel Rodriguez (McLeod_ideafix) and Carlos Sánchez (Uto) and it's made public under the GPLv3 license.
 
 The SmartROM.asm file is (C) Carlo Sánchez (Uto) and it's made public under the GPLv3 license.
 
