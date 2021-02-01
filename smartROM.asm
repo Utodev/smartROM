@@ -36,7 +36,7 @@
 
 
 
-                define FW_VERSION           "release A (Atic Atac)"
+                define FW_VERSION           "release B (Bomb Jack)"
 
 
                 define VRAM_ADDR            $4000
