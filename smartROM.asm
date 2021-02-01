@@ -1072,6 +1072,10 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     LD E, A
                     _SETREGB REG_SCANDBLCTRL
 
+                    LD A, (cfgJOYCONF)
+                    LD E, A
+                    _SETREGB REG_JOYCONF
+
 CheckSilentMode     LD A, (cfgSilentMode)
                     OR A
                     JR Z, UseVerboseMode
