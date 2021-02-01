@@ -233,7 +233,9 @@ IsInverse       LD A, $FF
 SetTurboSpeed   IFNDEF USE_SDRAM
                 _GETREG REG_SCANDBLCTRL
                 AND 00111111b
+                IFNDEF USE_SDRAM
                 OR  11000000b
+                ENDIF
                 LD E, A
                 _SETREGB REG_SCANDBLCTRL
                 ENDIF
