@@ -56,5 +56,5 @@ The bootloader.asm file is (C) Miguel Angel Rodriguez (McLeod_ideafix) and Carlo
 
 The SmartROM.asm file is (C) Carlo Sánchez (Uto) and it's made public under the GPLv3 license.
 
-The core files are (C) ZX Uno Team, and I guess the few lines Uto changed are also (C) Uto, but well, cough cough... not much :-)
+The core files are (C) ZX Uno Team, and I guess the few lines Uto changed are also (C) Uto, but well, cough cough... not much :-). It's also released under the GPLv3 license.
 
