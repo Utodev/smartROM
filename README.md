@@ -10,7 +10,7 @@ Setup
 =====
 Once you have the core installed, you will need:
 
-1) Get an SD card and put BIN/SYS/TMP folders from ESXDOS 0.8.8 in it
+1) Get an SD card and put BIN, SYS and TMP folders from ESXDOS 0.8.8 in it
 2) Also, create a folder named "ZXUNO" and put SMARTROM.ZX1 in there (it's at the "binaries" folder of this repository). 
 3) If your device uses a real Spectrum keyboard, or you use a non Spanish PS/2 keyboard, you make also copy any of the keymap files in the binaries/keymaps folders, and put the one you choose at the ZXUNO folder. Rename it to KEYMAP.ZX1 if you want it to be loaded.
 4) Obtain a ROMS.ZX1 file from any ZX-Uno distribuition, or export the ROMS.ZX1 from the original ZX-Uno BIOS. Put the file at the ZXUNO folder too. Please notice the use of some ROMS may require you to license/purchase them.
