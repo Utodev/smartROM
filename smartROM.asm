@@ -52,6 +52,7 @@
                 define REG_SCANCODE         $04
                 define REG_KEYSTAT          $05
                 define REG_JOYCONF          $06
+                define REG_AD724            $FB
                 define REG_COREID           $FF
                 define REG_KEYMAP           $07
                 define ULAPLUS_PORT         $BF3B
@@ -97,6 +98,11 @@
                 define KEY_SPACE        $0A
                 define KEY_ENTER        $0B
                 define KEY_M            $20
+                define KEY_K            $21
+                define KEY_C            $22
+                define KEY_S            $23
+
+
                 define NO_KEY           $FF
 
 
@@ -180,6 +186,136 @@ PauseLoop           BIT 0, A
                     JR NZ,PauseLoop
                     RET
     
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the value of scanlines setting
+ChangeScanlines     _GETREG REG_SCANDBLCTRL
+                    XOR 2
+                    LD E, A
+                    LD (cfgSCANDBLCTRL), A
+                    _SETREGB REG_SCANDBLCTRL
+                    RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the value of scanlines setting
+ChangeCsync         _GETREG REG_SCANDBLCTRL
+                    XOR $20
+                    LD E, A
+                    LD (cfgSCANDBLCTRL), A
+                    _SETREGB REG_SCANDBLCTRL
+                    RET
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the frequency
+ChangeFreq          _GETREG REG_SCANDBLCTRL
+                    AND $1C
+                    SRA A
+                    SRA A
+                    LD B, 8
+                    CALL RotateAcc
+                    SLA A
+                    SLA A
+                    PUSH AF
+                    _GETREG REG_SCANDBLCTRL
+                    AND $E3
+                    POP DE
+                    OR D
+                    LD E, A
+                    LD (cfgSCANDBLCTRL), A
+                    _SETREGB REG_SCANDBLCTRL
+                    RET
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the video mode
+ChangeVideoMode     _GETREG REG_AD724           ; Get video mode
+                    AND 1
+                    LD H, A
+                    _GETREG REG_SCANDBLCTRL
+                    AND 1
+                    SLA A
+                    OR H
+                    LD B, 3
+                    CALL RotateAcc
+          
+                    PUSH AF
+                    AND 1
+                    _GETREG REG_AD724
+                    AND $FE
+                    POP DE
+                    PUSH DE
+                    OR D
+                    LD (cfgAD724), A
+                    LD E, A
+                    _SETREGB REG_AD724
+                    POP AF
+                    AND 2
+                    SRA A
+                    PUSH AF
+                    _GETREG REG_SCANDBLCTRL
+                    AND $FE
+                    POP DE
+                    OR D
+                    LD E, A
+                    LD (cfgSCANDBLCTRL), A
+                    _SETREGB REG_SCANDBLCTRL
+                    RET
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the Setting for keyboard Joystick
+ChangeKeyJoy    _GETREG REG_JOYCONF
+                AND $0F
+                CALL ChangeJoy
+                PUSH AF
+                _GETREG REG_JOYCONF
+                AND $F0
+                POP DE
+                OR D
+                LD (cfgJOYCONF), A
+                LD E,A
+                _SETREGB REG_JOYCONF
+                RET
+                
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes the Setting for DB9 Joystick
+ChangeDB9Joy    _GETREG REG_JOYCONF
+                AND $F0
+                SRA A
+                SRA A
+                SRA A
+                SRA A
+                CALL ChangeJoy
+                SLA A
+                SLA A
+                SLA A
+                SLA A
+                PUSH AF
+                _GETREG REG_JOYCONF
+                AND $0F
+                POP DE
+                OR D
+                LD (cfgJOYCONF), A
+                LD E,A
+                _SETREGB REG_JOYCONF
+                RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Changes any Joystick Setting from 0 to 6
+ChangeJoy       LD B, 6
+                CALL RotateAcc
+                RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Increments A by 1, if A = B, then clears A (set to zero)
+RotateAcc       INC A
+                CP B
+                RET NZ
+                XOR A
+                RET
+                
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Clears the Screen and shows CopyRight notice on top
@@ -253,19 +389,14 @@ SetNormalSpeed  _GETREG REG_SCANDBLCTRL
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Writes how joysticks are configured
-WriteJoyConf    _WRITE "<D> DB9 JOYSTICK: "
+WriteJoyConf    _WRITE "<K> DB9 JOYSTICK: "
                 LD A, (cfgJOYCONF)
                 AND $07
                 CALL WriteJoyType
-                _WRITE " Auto-fire: "
-                LD A, (cfgJOYCONF)
-                AND $08
-                CALL WriteAutoFire
-                LD B, 21
+                LD B, 36
                 CALL Tabs
-
-                
-                _WRITE "<K> KEY JOYSTICK: "
+               
+                _WRITE "<D> KEY JOYSTICK: "
                 LD A, (cfgJOYCONF)
                 AND $70
                 SRA A
@@ -273,25 +404,20 @@ WriteJoyConf    _WRITE "<D> DB9 JOYSTICK: "
                 SRA A
                 SRA A
                 CALL WriteJoyType
-                _WRITE " Auto-fire: "
-                LD A, (cfgJOYCONF)
-                AND $80
-                CALL WriteAutoFire
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Writes autofire status depending on Z flag
+; ************ Writes On if flag Z is NZ, Off if Z
 
-WriteAutoFire  JR NZ, AutofireOn
+WriteOnOff     JR NZ, WriteOn
                _WRITE "Off"
                RET
-AutofireOn     _WRITE "On"
+WriteOn        _WRITE "On "
                RET 
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Writes Joystick Type
-
 WriteJoyType   LD HL, JoyTable
                CALL PrintIndexedTable
                RET
@@ -663,23 +789,56 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     _WRITE "          "
                     _INVERSE 0
 
-                    _PRINTAT 0, STARTLINE +16
-                    _WRITE "----------------------------------------------------------------"
-                    _PRINTAT 0, STARTLINE +18
+                    _PRINTAT 0, STARTLINE +17
+                    _WRITE "- Global Settings ----------------------------------------------"
+                    _PRINTAT 0, STARTLINE +19
                     LD A, (cfgJOYCONF)
                     CALL WriteJoyConf
-                    _PRINTAT 0, STARTLINE + 20
-                    _WRITE "<m> MODE: VGA     <s> Sync: PAL"
+
                     _PRINTAT 0, STARTLINE + 21
-                    _WRITE "<f> FREQ: 60.05   <c> Scanlines: Off" ; Fake values for now
+                    _WRITE "<M> MODE: " ;
+                    _GETREG REG_AD724           ; Get video mode
+                    AND 1
+                    LD H, A
+                    _GETREG REG_SCANDBLCTRL
+                    AND 1
+                    SLA A
+                    OR H
+                    LD HL, VideModeTable
+                    CALL PrintIndexedTable
+
+                    _PRINTAT 32, STARTLINE + 21
+                    _WRITE "<C> CSYNC: " 
+                    _GETREG REG_SCANDBLCTRL
+                    AND $20
+                    JR Z, CsyncCont
+                    LD A, 1
+CsyncCont           LD HL, CsyncTable
+                    CALL PrintIndexedTable
+                    
+                    _PRINTAT 0, STARTLINE + 22
+                    _WRITE "<F> FREQ (Hz): "
+                    _GETREG REG_SCANDBLCTRL
+                    AND $1C
+                    SRA A
+                    SRA A
+                    LD HL, FreqTable
+                    CALL PrintIndexedTable
+                    
+                    _PRINTAT 32, STARTLINE + 22
+                    _WRITE "<S> VGA Scanlines: "
+                    _GETREG REG_SCANDBLCTRL
+                    AND 2
+                    CALL WriteOnOff
+                    
 
                     _PRINTAT 0, STARTLINE + 10
-                    _WRITE "<QAOP> to select ROM "
+                    _WRITE "<Q A O P> to select ROM "
                     _PRINTAT 0, STARTLINE + 12
-                    _WRITE "<Enter> normal boot - <Space> boot options "
+                    _WRITE "<Enter> for normal boot - <Space> for boot options "
 
                     _PRINTAT 0, STARTLINE + 14
-                    _WRITE "Press keys <0> to <9> to pick ROMs #1 to #10 (0 selects ROM #10) "
+                    _WRITE "Keys <1> to <0> select ROMs #1 to #10"
 
                     CALL SetNormalSpeed
 
@@ -774,9 +933,49 @@ KeyPressed8         CP KEY_P
                     INC L
                     JP LoadROM
 
+KeyPressed9         CP KEY_K                    ; Keyboard Joystick
+                    JR NZ, KeyPressed10
+                    POP HL                     
+                    CALL ChangeKeyJoy
+                    CALL SaveConfig
+                    JP LoadROM       
 
+KeyPressed10        CP KEY_D                    ; DB9 Joystick
+                    JR NZ, KeyPressed11
+                    POP HL                     
+                    CALL ChangeDB9Joy
+                    CALL SaveConfig
+                    JP LoadROM       
 
-KeyPressed9         LD A ,(KEY_HAS_BEEN_PRESSED)
+KeyPressed11        CP KEY_S                    ; Scanlines
+                    JR NZ, KeyPressed12
+                    POP HL                     
+                    CALL ChangeScanlines
+                    CALL SaveConfig
+                    JP LoadROM       
+
+KeyPressed12        CP KEY_C                    ; Csync
+                    JR NZ, KeyPressed13
+                    POP HL                     
+                    CALL ChangeCsync
+                    CALL SaveConfig
+                    JP LoadROM       
+
+KeyPressed13        CP KEY_F                    ; Frequency
+                    JR NZ, KeyPressed14
+                    POP HL                     
+                    CALL ChangeFreq
+                    CALL SaveConfig
+                    JP LoadROM       
+
+KeyPressed14        CP KEY_M                    ; Video Mode
+                    JR NZ, KeyPressedEnd         
+                    POP HL                     
+                    CALL ChangeVideoMode
+                    CALL SaveConfig
+                    JP LoadROM       
+
+KeyPressedEnd       LD A ,(KEY_HAS_BEEN_PRESSED)
                     OR A
                     JP NZ, ReleaseKey
 
@@ -1157,6 +1356,10 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     LD A, (cfgMasterControlAND)
                     LD (RomSetMasterConf + 3), A
 
+                    LD A, (cfgAD724)
+                    LD E, A
+                    _SETREGB REG_AD724
+
 
                     LD A, (cfgSCANDBLCTRL)
                     AND 00111111b                   ;  Remove the Turbo part
@@ -1333,18 +1536,7 @@ InnerLoop           PUSH BC
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-; ************ Returns key or joy pressed pressed at A, following the next table:
-;
-;      1                   --> $01        O      --> $15
-;      2                   --> $02        P      --> $18
-;      3                   --> $03        Q      --> $17
-;      4                   --> $04        A      --> $16
-;      5, CursorLeft       --> $05        Space  --> $0A
-;      6, CursorDown       --> $06        Enter  --> $0B
-;      7, CursorUp         --> $07        M      --> $20  
-;      8, Cursor Right     --> $08
-;      9                   --> $09
-;      0                   --> $00         No key or invalid key --> $FF
+; ************ Returns key or joy pressed pressed at A or $FF if no valid key pressed
 
 GetKey          
 
@@ -1355,12 +1547,16 @@ GetKey2         LD BC,  $7FFE; B, N, M, Symbol Shift, Space
                 JP Z, MPressed    ; M
                 LD A, D
                 AND 1
-                JR Z, SpacePressed
+                JP Z, SpacePressed
 
 GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 IN A,(C)
+                LD D, A
                 AND 1
-                JR Z, EnterPressed ; Enter
+                JP Z, EnterPressed ; Enter
+                LD A, D
+                AND 4
+                JP Z, KPressed      ; K
                      
                 LD BC, $DFFE; Y, U, I, O, P
                 IN A,(C)
@@ -1375,10 +1571,10 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 IN A,(C)
                 LD D, A     ; Preserve value
                 AND 1
-                JR Z, ZeroPressed ; 0
+                JP Z, ZeroPressed ; 0
                 LD A, D
                 AND 2
-                JR Z, NinePressed ; 9
+                JP Z, NinePressed ; 9
                 LD A, D
                 AND 4
                 JR Z, EightPressed ; 8
@@ -1428,6 +1624,14 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 LD A, D
                 AND 8
                 JR Z, FPressed ; F
+                LD A, D
+                AND 2
+                JR Z, SPressed ; S
+
+                LD BC, $FEFE ; Z, X, C, V, B
+                IN A,(C)
+                AND 8
+                JR Z, CPressed   ; C
 
 ; -- No Valid Keys
                 LD A, NO_KEY
@@ -1473,6 +1677,12 @@ FPressed        LD A, KEY_F
                 RET
 RPressed        LD A, KEY_R
                 RET
+KPressed        LD A, KEY_K
+                RET                
+SPressed        LD A, KEY_S
+                RET                
+CPressed        LD A, KEY_C
+                RET                
 
 
 
@@ -1510,7 +1720,8 @@ cfgDefaultROMIndex  DB 0         ; Rom Index (not the slot, the index in the ROM
 cfgSilentMode       DB 0         ; 0 - verbose, 1 - silent
 cfgDelay            DB 46        ; cfgValue * 256 = number of loops in ROM selection if Key not pressed before loading default ROM
 cfgJOYCONF          DB 00010000b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
-cfgReserved         DS 13
+cfgAD724            DB 0         ; Value for NTSC/PAL
+cfgReserved         DS 12
 ConfigurationEND                              
 
 ; Tables
@@ -1521,6 +1732,30 @@ JoyTable            DB 11
                     DB "Sinclair 2",0
                     DB "Protek    ",0
                     DB "Fuller    ",0
+
+VideModeTable       DB 5
+                    DB "PAL ",0
+                    DB "NTSC",0
+                    DB "VGA ",0
+
+CsyncTable          DB 9
+                    DB "Spectrum",0
+                    DB "PAL     ",0
+
+FreqTable           DB 5
+                    DB "50  ",0
+                    DB "51  ",0
+                    DB "53.5",0
+                    DB "55.8",0
+                    DB "57.4",0
+                    DB "59.5",0
+                    DB "61.8",0
+                    DB "63.8",0
+
+
+
+
+
 
 ; -- Variables for internal use
 V_PRINT_POS             DB 0
