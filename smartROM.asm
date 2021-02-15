@@ -252,6 +252,80 @@ SetNormalSpeed  _GETREG REG_SCANDBLCTRL
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Writes how joysticks are configured
+WriteJoyConf    _WRITE "<D> DB9 JOYSTICK: "
+                LD A, (cfgJOYCONF)
+                AND $07
+                CALL WriteJoyType
+                _WRITE " Auto-fire: "
+                LD A, (cfgJOYCONF)
+                AND $08
+                CALL WriteAutoFire
+                LD B, 21
+                CALL Tabs
+
+                
+                _WRITE "<K> KEY JOYSTICK: "
+                LD A, (cfgJOYCONF)
+                AND $70
+                SRA A
+                SRA A
+                SRA A
+                SRA A
+                CALL WriteJoyType
+                _WRITE " Auto-fire: "
+                LD A, (cfgJOYCONF)
+                AND $80
+                CALL WriteAutoFire
+                RET
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Writes autofire status depending on Z flag
+
+WriteAutoFire  JR NZ, AutofireOn
+               _WRITE "Off"
+               RET
+AutofireOn     _WRITE "On"
+               RET 
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Writes Joystick Type
+
+WriteJoyType   LD HL, JoyTable
+               CALL PrintIndexedTable
+               RET
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints the zero terminated string pointed by HL
+
+PrintStringHL       LD A, (HL)
+                    OR A
+                    RET Z
+                    CALL PrintChar
+                    INC HL
+                    JR PrintStringHL
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints the nth string in a table of fixed width pointed by HL
+
+PrintIndexedTable   LD E, A
+                    LD D, 0
+                    LD B, (HL) ; First value in the table is the width of each element
+                    INC HL
+IndexTableLoop      ADD HL, DE
+                    DJNZ IndexTableLoop
+PrintIndexCont      CALL PrintStringHL
+                    RET
+
+
+
+
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Prints Zero terminated string placed pointed by top value in the stack
 
 PrintString     EX (SP),HL
@@ -545,8 +619,15 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     ADD HL, HL    ; HL * 64
                     LD D, H
                     LD E, L
-                    LD IY, ROMDirectory
-                    ADD IY, DE     ; Now IY Points to entry
+                    LD HL, ROMDirectory
+                    
+                    ADD HL, DE     ; Now HL Points to entry
+                    LD DE, RomDirectoryEntry
+                    LD BC, 64
+                    LDIR            ; Copy to RomDirectoryEntry
+                    
+                    LD IY, RomDirectoryEntry    ; IY points to the entry
+
 
 ; --- Print ROM name and details
                     CALL SetTurboSpeed
@@ -556,9 +637,11 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     _PRINTAT 0, STARTLINE + 2
                     _WRITE "CoreID: "
                     CALL PrintCoreID
-
-                    _PRINTAT 0, STARTLINE + 7
-                    _WRITE "ROM: ["
+                    _INVERSE 1
+                    _PRINTAT 0, STARTLINE + 5
+                    _WRITE "                                                                "
+                    _PRINTAT 0, STARTLINE + 6
+                    _WRITE "       ROM: ["
                     POP HL
                     PUSH HL
                     LD A, L
@@ -576,16 +659,27 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
-                    _PRINTAT 21, STARTLINE + 18
-                    _INVERSE 1
-                    _WRITE " QAOP to select ROM "
-
+                    _WRITE "                                                                     "
+                    _WRITE "          "
                     _INVERSE 0
-                    _PRINTAT 7, STARTLINE + 20
-                    _WRITE "   <Enter> normal boot - <Space> boot options "
 
-                    _PRINTAT 0, 22
-                    _WRITE " Press keys 0 to 9 to select ROMs #1 to #10 (0 selects ROM #10) "
+                    _PRINTAT 0, STARTLINE +16
+                    _WRITE "----------------------------------------------------------------"
+                    _PRINTAT 0, STARTLINE +18
+                    LD A, (cfgJOYCONF)
+                    CALL WriteJoyConf
+                    _PRINTAT 0, STARTLINE + 20
+                    _WRITE "<m> MODE: VGA     <s> Sync: PAL"
+                    _PRINTAT 0, STARTLINE + 21
+                    _WRITE "<f> FREQ: 60.05   <c> Scanlines: Off" ; Fake values for now
+
+                    _PRINTAT 0, STARTLINE + 10
+                    _WRITE "<QAOP> to select ROM "
+                    _PRINTAT 0, STARTLINE + 12
+                    _WRITE "<Enter> normal boot - <Space> boot options "
+
+                    _PRINTAT 0, STARTLINE + 14
+                    _WRITE "Press keys <0> to <9> to pick ROMs #1 to #10 (0 selects ROM #10) "
 
                     CALL SetNormalSpeed
 
@@ -1386,7 +1480,7 @@ RPressed        LD A, KEY_R
 ;   THE FONT
 ;*****************************************************************************************************************************************************
 
-Font                INCBIN     assets\font.bin
+Font                INCBIN     binaries\font.fnt
 
 ;*****************************************************************************************************************************************************
 ;   VARIABLES
@@ -1394,7 +1488,8 @@ Font                INCBIN     assets\font.bin
 
 ; -- ROM Directory
 ROMSETFilename      DB '/ZXUNO/ROMS.ZX1', 0
-ROMDirectory        DS 4096
+ROMDirectory        EQU $C000
+RomDirectoryEntry   DS 64
 
 ; -- Keymap
 KEYMAPFilename      DB '/ZXUNO/KEYMAP.ZX1', 0
@@ -1414,10 +1509,18 @@ cfgSCANDBLCTRL      DB 0         ; Saves the SCANDBLCTRL value, but the turbo bi
 cfgDefaultROMIndex  DB 0         ; Rom Index (not the slot, the index in the ROMS.ZX1 "directory")
 cfgSilentMode       DB 0         ; 0 - verbose, 1 - silent
 cfgDelay            DB 46        ; cfgValue * 256 = number of loops in ROM selection if Key not pressed before loading default ROM
-cfgJOYCONF          DB 00100001b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
+cfgJOYCONF          DB 00010000b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
 cfgReserved         DS 13
 ConfigurationEND                              
 
+; Tables
+JoyTable            DB 11
+                    DB "Disabled  ",0
+                    DB "Kempston  ",0
+                    DB "Sinclair 1",0
+                    DB "Sinclair 2",0
+                    DB "Protek    ",0
+                    DB "Fuller    ",0
 
 ; -- Variables for internal use
 V_PRINT_POS             DB 0
