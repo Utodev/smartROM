@@ -3,7 +3,6 @@
 
                 OUTPUT  SMARTROM.ZX1
                 define SMARTROMADDR       $A000
-                ;define USE_SDRAM 1    ; Uncomment this line to generate code compatible with SDRAM  (does not use Turbo mode)
                 ORG SMARTROMADDR                           ; Code is place at the middle of third 16K page
 
 ; Why at A000?
@@ -141,7 +140,7 @@ START           DI
                 JR C, NoROMSZX1
                 LD A, (cfgDefaultROMIndex)                             
                 LD L, A
-                JP LoadROM
+                JP MainMenu
 
 
 NoROMSZX1       PUSH AF  ; Preserve error
@@ -190,8 +189,8 @@ PauseLoop           BIT 0, A
 ; ************ Changes the value of scanlines setting
 ChangeScanlines     _GETREG REG_SCANDBLCTRL
                     XOR 2
-                    LD E, A
                     LD (cfgSCANDBLCTRL), A
+                    LD E, A
                     _SETREGB REG_SCANDBLCTRL
                     RET
 
@@ -199,8 +198,8 @@ ChangeScanlines     _GETREG REG_SCANDBLCTRL
 ; ************ Changes the value of scanlines setting
 ChangeCsync         _GETREG REG_SCANDBLCTRL
                     XOR $20
-                    LD E, A
                     LD (cfgSCANDBLCTRL), A
+                    LD E, A
                     _SETREGB REG_SCANDBLCTRL
                     RET
 
@@ -209,8 +208,8 @@ ChangeCsync         _GETREG REG_SCANDBLCTRL
 ; ************ Changes the frequency
 ChangeFreq          _GETREG REG_SCANDBLCTRL
                     AND $1C
-                    SRA A
-                    SRA A
+                    SRL A
+                    SRL A
                     LD B, 8
                     CALL RotateAcc
                     SLA A
@@ -239,26 +238,30 @@ ChangeVideoMode     _GETREG REG_AD724           ; Get video mode
                     LD B, 3
                     CALL RotateAcc
           
-                    PUSH AF
+                    PUSH AF     ; preserve value of whole A register
+
+                    ; Now set the AD724 bit #0 with the value of A bit #0
                     AND 1
+                    PUSH AF     ; Preserve just last bit
                     _GETREG REG_AD724
                     AND $FE
                     POP DE
-                    PUSH DE
                     OR D
                     LD (cfgAD724), A
                     LD E, A
                     _SETREGB REG_AD724
-                    POP AF
+
+                    ; Now set the VGA setting in SCANDBCLTRL bit #0 with the value of A bit #1
+                    POP AF          ; recover value
                     AND 2
-                    SRA A
-                    PUSH AF
+                    SRL A
+                    PUSH AF         ; preserve just last bit
                     _GETREG REG_SCANDBLCTRL
                     AND $FE
                     POP DE
                     OR D
-                    LD E, A
                     LD (cfgSCANDBLCTRL), A
+                    LD E, A
                     _SETREGB REG_SCANDBLCTRL
                     RET
 
@@ -283,10 +286,10 @@ ChangeKeyJoy    _GETREG REG_JOYCONF
 ; ************ Changes the Setting for DB9 Joystick
 ChangeDB9Joy    _GETREG REG_JOYCONF
                 AND $F0
-                SRA A
-                SRA A
-                SRA A
-                SRA A
+                SRL A
+                SRL A
+                SRL A
+                SRL A
                 CALL ChangeJoy
                 SLA A
                 SLA A
@@ -366,15 +369,11 @@ IsInverse       LD A, $FF
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Sets Turbo Speed
 
-SetTurboSpeed   IFNDEF USE_SDRAM
-                _GETREG REG_SCANDBLCTRL
+SetTurboSpeed   _GETREG REG_SCANDBLCTRL
                 AND 00111111b
-                IFNDEF USE_SDRAM
                 OR  11000000b
-                ENDIF
                 LD E, A
                 _SETREGB REG_SCANDBLCTRL
-                ENDIF
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -399,10 +398,10 @@ WriteJoyConf    _WRITE "<K> DB9 JOYSTICK: "
                 _WRITE "<D> KEY JOYSTICK: "
                 LD A, (cfgJOYCONF)
                 AND $70
-                SRA A
-                SRA A
-                SRA A
-                SRA A
+                SRL A
+                SRL A
+                SRL A
+                SRL A
                 CALL WriteJoyType
                 RET
 
@@ -729,47 +728,26 @@ FoundLast           LD A, E
                     LD (LAST_VALID_ENTRY), A
                     RET
 
-
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Loads the ROM at entry L
+; ************ Prints the whole Firmware main Screen
 
-LoadROM             PUSH HL                 ; Preserve L entry
-                    POP HL
-                    PUSH HL                 ; Preserve L entry again
-                    LD H, 0
-                    ADD HL, HL
-                    ADD HL, HL
-                    ADD HL, HL
-                    ADD HL, HL
-                    ADD HL, HL
-                    ADD HL, HL    ; HL * 64
-                    LD D, H
-                    LD E, L
-                    LD HL, ROMDirectory
-                    
-                    ADD HL, DE     ; Now HL Points to entry
-                    LD DE, RomDirectoryEntry
-                    LD BC, 64
-                    LDIR            ; Copy to RomDirectoryEntry
-                    
-                    LD IY, RomDirectoryEntry    ; IY points to the entry
-
-
-; --- Print ROM name and details
-                    CALL SetTurboSpeed
-
-                    _PRINTAT 0, STARTLINE + 1
+PrintFWMenu         PUSH HL     ; Preserve current selected ROM
+                    ;-- header
+                     _PRINTAT 0, STARTLINE + 1
                     _WRITE "ZX-Uno Copyleft ZX-Uno Team - http://zxuno.speccy.org"
                     _PRINTAT 0, STARTLINE + 2
                     _WRITE "CoreID: "
                     CALL PrintCoreID
+
+                    ; -- the selected ROM name
                     _INVERSE 1
                     _PRINTAT 0, STARTLINE + 5
                     _WRITE "                                                                "
                     _PRINTAT 0, STARTLINE + 6
                     _WRITE "       ROM: ["
-                    POP HL
-                    PUSH HL
+
+                    POP HL          ; Bring back  the currently selected ROM entry
+
                     LD A, L
                     CALL DivByTen ; Reminder in A and Quotient in D
                     PUSH AF
@@ -789,10 +767,12 @@ LoadROM             PUSH HL                 ; Preserve L entry
                     _WRITE "          "
                     _INVERSE 0
 
+                    ; -- The global settings section
+
                     _PRINTAT 0, STARTLINE +17
                     _WRITE "- Global Settings ----------------------------------------------"
                     _PRINTAT 0, STARTLINE +19
-                    LD A, (cfgJOYCONF)
+                    _GETREG REG_JOYCONF
                     CALL WriteJoyConf
 
                     _PRINTAT 0, STARTLINE + 21
@@ -820,8 +800,8 @@ CsyncCont           LD HL, CsyncTable
                     _WRITE "<F> FREQ (Hz): "
                     _GETREG REG_SCANDBLCTRL
                     AND $1C
-                    SRA A
-                    SRA A
+                    SRL A
+                    SRL A
                     LD HL, FreqTable
                     CALL PrintIndexedTable
                     
@@ -831,7 +811,7 @@ CsyncCont           LD HL, CsyncTable
                     AND 2
                     CALL WriteOnOff
                     
-
+                    ; -- the instructions
                     _PRINTAT 0, STARTLINE + 10
                     _WRITE "<Q A O P> to select ROM "
                     _PRINTAT 0, STARTLINE + 12
@@ -839,15 +819,48 @@ CsyncCont           LD HL, CsyncTable
 
                     _PRINTAT 0, STARTLINE + 14
                     _WRITE "Keys <1> to <0> select ROMs #1 to #10"
+                    
+                    RET
 
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ On entry, L register points to the entry in the ROMS.ZX1 that would be loaded
+
+MainMenu            PUSH HL                 ; Preserve L entry
+                    LD H, 0
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL
+                    ADD HL, HL    ; HL * 64
+                    LD D, H
+                    LD E, L
+                    LD HL, ROMDirectory
+                    
+                    ADD HL, DE     ; Now HL Points to entry
+                    LD DE, RomDirectoryEntry
+                    LD BC, 64
+                    LDIR            ; Copy the current selecte ROM directory entry to a safe place (RomDirectoryEntry)
+                    
+                    LD IY, RomDirectoryEntry    ; IY points to the safe place for convenience
+
+
+; --- Print ROM name and details
+                    CALL SetTurboSpeed
+                    POP HL                      ; Get L (current selected ROM entry)
+                    PUSH HL                     ; Preserve it again at the stack
+                    CALL PrintFWMenu
                     CALL SetNormalSpeed
 
-ReleaseKey          CALL GetKey                 ;Wait until key is released
+
+ReleaseKey          CALL GetKey                 ;Wait until no key is pressed
                     CP NO_KEY                   
                     JR NZ, ReleaseKey
 
 
-                    LD L, 0                 ; It will be some kind of timer, although when a key is pressed then timeout doesn't happen 
+; Wait until a key is pressed, or default wait time passes
+                    LD L, 0                 
                     LD A, (cfgDelay)
                     LD H, A
 KeyLoop             CALL GetKey
@@ -857,16 +870,16 @@ KeyLoop             CALL GetKey
                     LD A, H
                     OR L                    
                     JR NZ, KeyLoop
-                    LD A, (KEY_HAS_BEEN_PRESSED)
+                    LD A, (KEY_HAS_BEEN_PRESSED)            ; if any key is pressed, then timeout can't happen anymore
                     OR A
                     JR NZ, KeyLoop
                     LD A, NO_KEY
-                    JR KeyNotPressed
+                    JR KeyNotPressed                        ; Timeout happened
 
-KeyPressed          PUSH AF                   ; c
+KeyPressed          PUSH AF                                 ;  Preserve pressed key
                     LD A, 1
-                    LD (KEY_HAS_BEEN_PRESSED), A
-                    POP AF
+                    LD (KEY_HAS_BEEN_PRESSED), A            ; Mark that a key has been pressed
+                    POP AF                                  ; restore it
 
                     
 KeyNotPressed       CP KEY_SPACE            ; Boot Options
@@ -877,111 +890,102 @@ KeyNotPressed       CP KEY_SPACE            ; Boot Options
 
 KeyPressed3         CP KEY_ENTER            ; Normal Boot
                     JR NZ, KeyPressed4
-                    JP ContinueLoad
+                    JP LoadROM
 
 
 KeyPressed4         CP $0A ; Keys 0-9                     
                     JR NC, KeyPressed5
-                    POP HL                     ; For cleaning purposes
                     OR A
                     JR NZ, ChangeROM
                     LD A, 10                   ; Button 0 => ROM 10
 ChangeROM           LD L, A            
-                    JP LoadROM
+                    JP MainMenu
 
 
 
-KeyPressed5         CP KEY_Q                      
+KeyPressed5         POP HL                      ; Restore HL from stack, so the ROM entry selected is available at L for the QAOP options
+
+                    CP KEY_Q                      
                     JR NZ, KeyPressed6
-                    POP HL
                     LD A, L
                     ADD A, 10
                     LD L, A
                     LD A, (LAST_VALID_ENTRY)       
                     CP L
-                    JP NC, LoadROM              ; It's checking after the CP, as LD does not alter the flags
+                    JP NC, MainMenu              ; It's checking after the CP, as LD does not alter the flags
                     LD A, (LAST_VALID_ENTRY)
                     LD L, A
-                    JP LoadROM
+                    JP MainMenu
 
 KeyPressed6         CP KEY_A
                     JP NZ, KeyPressed7
-                    POP HL
                     LD A, L
                     SUB 10  
                     LD L, A
-                    JP NC, LoadROM              ; It's checking after the SUB, as LD does not alter the flags
+                    JP NC, MainMenu              ; It's checking after the SUB, as LD does not alter the flags
                     LD L, 0
-                    JP LoadROM
+                    JP MainMenu
 
 
 KeyPressed7         CP KEY_O
                     JR NZ, KeyPressed8
-                    POP HL
                     LD A, L
                     OR A 
-                    JP Z, LoadROM
+                    JP Z, MainMenu
                     DEC L
-                    JP LoadROM
+                    JP MainMenu
 
 KeyPressed8         CP KEY_P
                     JR NZ, KeyPressed9
-                    POP HL                     ; For cleaning purposes
                     LD A, (LAST_VALID_ENTRY)
                     CP L
-                    JP Z, LoadROM
+                    JP Z, MainMenu
                     INC L
-                    JP LoadROM
+                    JP MainMenu
+
+                    ; -- THe settings
 
 KeyPressed9         CP KEY_K                    ; Keyboard Joystick
                     JR NZ, KeyPressed10
-                    POP HL                     
                     CALL ChangeKeyJoy
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressed10        CP KEY_D                    ; DB9 Joystick
                     JR NZ, KeyPressed11
-                    POP HL                     
                     CALL ChangeDB9Joy
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressed11        CP KEY_S                    ; Scanlines
                     JR NZ, KeyPressed12
-                    POP HL                     
                     CALL ChangeScanlines
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressed12        CP KEY_C                    ; Csync
                     JR NZ, KeyPressed13
-                    POP HL                     
                     CALL ChangeCsync
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressed13        CP KEY_F                    ; Frequency
                     JR NZ, KeyPressed14
-                    POP HL                     
                     CALL ChangeFreq
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressed14        CP KEY_M                    ; Video Mode
                     JR NZ, KeyPressedEnd         
-                    POP HL                     
                     CALL ChangeVideoMode
                     CALL SafeSaveConfig
-                    JP LoadROM       
+                    JP MainMenu       
 
 KeyPressedEnd       LD A ,(KEY_HAS_BEEN_PRESSED)
                     OR A
                     JP NZ, ReleaseKey
 
-
-ContinueLoad        POP HL                      ; Restore L-slot value, just for cleaning
-                    CALL ClearScreen            ; Also clear the screen before loading
+LoadROM             CALL ClearScreen            ; Also clear the screen before loading
 
 
 ; --- open file
@@ -1264,12 +1268,6 @@ SafeSaveConfig      PUSH HL
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Save Configuration to file
 SaveConfig               
-; -- Get Screen settings so they are saved with config
-
-                    _GETREG REG_SCANDBLCTRL         ; This is temporary, just to get if the user changes using Scroll Lock
-                    AND 00111111b                   ; Remove turbo bits
-                    LD (cfgSCANDBLCTRL),A
-
 ; --- open file	   
                     CALL SetDRV
                     LD IX,  CFGFilename
@@ -1377,11 +1375,10 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
 
                     LD A, (cfgSCANDBLCTRL)
                     AND 00111111b                   ;  Remove the Turbo part
-                    IFNDEF USE_SDRAM
                     OR  11000000b                   ;  Set 28Mhz Speed
-                    ENDIF
-                    LD E, A
-                    _SETREGB REG_SCANDBLCTRL
+                    LD (cfgSCANDBLCTRL),A
+                    LD E, A                        
+                    _SETREGB REG_SCANDBLCTRL        
 
                     LD A, (cfgJOYCONF)
                     LD E, A
@@ -1434,9 +1431,9 @@ WaitKeyLoopBoot2        CALL GetKey                                     ; No wai
 CancelBootOptions       CP KEY_SPACE
                         JR NZ, SetDefaultROM
                         CALL ClearScreen
-                        CALL CopyrightNotice
+                        ;CALL CopyrightNotice
                         POP HL                                          ; Recover Selected ROM index at L
-                        JP LoadROM
+                        JP MainMenu
 
 SetDefaultROM           CP KEY_D
                         JR NZ, NormalBoot
@@ -1449,18 +1446,15 @@ SetDefaultROM           CP KEY_D
 
 NormalBoot              CP KEY_ENTER                                    ; Execute the ROM
                         JR NZ, RootedBoot
-NormalBootGo            POP HL
-                        JP ContinueLoad                        
+
+NormalBootGo            JP LoadROM
 
 
 RootedBoot              CP KEY_R
                         JR NZ, WaitKeyLoopBoot
                         XOR A
-                        LD (RomSetMasterConf+1), A                      ; Disables LOCK but in MasterConf
+                        LD (RomSetMasterConf+1), A                      ; Disables LOCK bit in MasterConf
                         JR NormalBootGo
-
-
-                        JR WaitKeyLoopBoot
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Sets a register A to value E
@@ -1503,7 +1497,6 @@ DivByTenLoop			SLA	D
 						INC	D		
 DivByTenNoSub			DJNZ DivByTenLoop
 						RET				;A= remainder, D = quotient
-
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ; ************ Loads key map from /ZXUNO/KEYMAP.ZX1 is existis

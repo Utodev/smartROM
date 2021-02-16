@@ -28,7 +28,6 @@
                        output "bootloader.bin"
 
 
-                      define USE_SDRAM 1    ; Uncomment this line to generate code compatible with SDRAM  (does not use Turbo mode)
 
 
                       define ZXUNO_PORT           $FC3B
@@ -100,7 +99,6 @@ START                 DI
                       EXX
 
                                            
-                      IFNDEF USE_SDRAM      ; if no a SDRAM machine, speed up
                       ld bc,ZXUNO_PORT
                       ld a,REG_SCANDBLCTRL
                       out (c),a
@@ -108,7 +106,6 @@ START                 DI
                       in a,(c)
                       or 0c0h             ;28 MHz 
                       out (c),a
-                      ENDIF
 
 
 
