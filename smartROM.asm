@@ -937,42 +937,42 @@ KeyPressed9         CP KEY_K                    ; Keyboard Joystick
                     JR NZ, KeyPressed10
                     POP HL                     
                     CALL ChangeKeyJoy
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressed10        CP KEY_D                    ; DB9 Joystick
                     JR NZ, KeyPressed11
                     POP HL                     
                     CALL ChangeDB9Joy
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressed11        CP KEY_S                    ; Scanlines
                     JR NZ, KeyPressed12
                     POP HL                     
                     CALL ChangeScanlines
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressed12        CP KEY_C                    ; Csync
                     JR NZ, KeyPressed13
                     POP HL                     
                     CALL ChangeCsync
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressed13        CP KEY_F                    ; Frequency
                     JR NZ, KeyPressed14
                     POP HL                     
                     CALL ChangeFreq
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressed14        CP KEY_M                    ; Video Mode
                     JR NZ, KeyPressedEnd         
                     POP HL                     
                     CALL ChangeVideoMode
-                    CALL SaveConfig
+                    CALL SafeSaveConfig
                     JP LoadROM       
 
 KeyPressedEnd       LD A ,(KEY_HAS_BEEN_PRESSED)
@@ -1241,14 +1241,28 @@ ClearUSROMode       LD BC, TOASTRACKMAPPER
                     LD A, 00000000b
                     OUT (C), A
                     RET
-
-
 ; --  Notice: in case it's 2 additional slots, that is, 3 in total, we will end up using System ROM 2, which is actually las slot used, so in the end
 ;     this makes the ROM use the last slot created.
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-; ************ Save Configuration from file
+; ************ Save Configuration to file preservir records
+SafeSaveConfig      PUSH HL
+                    PUSH DE
+                    PUSH BC
+                    PUSH AF
+                    PUSH IY
+                    PUSH IX
+                    CALL SaveConfig
+                    POP IX
+                    POP IY
+                    POP AF
+                    POP BC
+                    POP DE
+                    POP HL
+                    RET
 
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+; ************ Save Configuration to file
 SaveConfig               
 ; -- Get Screen settings so they are saved with config
 
