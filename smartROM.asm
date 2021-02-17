@@ -51,7 +51,6 @@
                 define REG_SCANCODE         $04
                 define REG_KEYSTAT          $05
                 define REG_JOYCONF          $06
-                define REG_AD724            $FB
                 define REG_COREID           $FF
                 define REG_KEYMAP           $07
                 define ULAPLUS_PORT         $BF3B
@@ -85,29 +84,27 @@
                 define KEY_9            $09
                 define KEY_0            $00
 
-                define KEY_Q            $17
                 define KEY_A            $16
                 define KEY_O            $15
+                define KEY_Q            $17
                 define KEY_P            $18
+
+                define KEY_SPACE        $0A
+                define KEY_ENTER        $0B
+
+                define KEY_M            $20
+                define KEY_K            $21
+                define KEY_C            $22
+                define KEY_S            $23
+                define KEY_G            $24
 
                 define KEY_D            $30
                 define KEY_F            $31
                 define KEY_R            $32
 
-                define KEY_SPACE        $0A
-                define KEY_ENTER        $0B
-                define KEY_M            $20
-                define KEY_K            $21
-                define KEY_C            $22
-                define KEY_S            $23
-
-
                 define NO_KEY           $FF
 
-
-
                 define STARTLINE 0
-
 
                 INCLUDE "macros.inc"
 
@@ -228,38 +225,8 @@ ChangeFreq          _GETREG REG_SCANDBLCTRL
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Changes the video mode
-ChangeVideoMode     _GETREG REG_AD724           ; Get video mode
-                    AND 1
-                    LD H, A
-                    _GETREG REG_SCANDBLCTRL
-                    AND 1
-                    SLA A
-                    OR H
-                    LD B, 3
-                    CALL RotateAcc
-          
-                    PUSH AF     ; preserve value of whole A register
-
-                    ; Now set the AD724 bit #0 with the value of A bit #0
-                    AND 1
-                    PUSH AF     ; Preserve just last bit
-                    _GETREG REG_AD724
-                    AND $FE
-                    POP DE
-                    OR D
-                    LD (cfgAD724), A
-                    LD E, A
-                    _SETREGB REG_AD724
-
-                    ; Now set the VGA setting in SCANDBCLTRL bit #0 with the value of A bit #1
-                    POP AF          ; recover value
-                    AND 2
-                    SRL A
-                    PUSH AF         ; preserve just last bit
-                    _GETREG REG_SCANDBLCTRL
-                    AND $FE
-                    POP DE
-                    OR D
+ChangeVideoMode     _GETREG REG_SCANDBLCTRL
+                    XOR 1
                     LD (cfgSCANDBLCTRL), A
                     LD E, A
                     _SETREGB REG_SCANDBLCTRL
@@ -800,13 +767,8 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
 
                     _PRINTAT 0, STARTLINE + 20
                     _WRITE "<M> MODE: " ;
-                    _GETREG REG_AD724           ; Get video mode
-                    AND 1
-                    LD H, A
                     _GETREG REG_SCANDBLCTRL
                     AND 1
-                    SLA A
-                    OR H
                     LD HL, VideModeTable
                     CALL PrintIndexedTable
 
@@ -829,7 +791,7 @@ CsyncCont           LD HL, CsyncTable
                     CALL PrintIndexedTable
                     
                     _PRINTAT 32, STARTLINE + 21
-                    _WRITE "<S> VGA Scanlines: "
+                    _WRITE "<S> Scanlines (VGA): "
                     _GETREG REG_SCANDBLCTRL
                     AND 2
                     CALL WriteOnOff
@@ -842,14 +804,10 @@ CsyncCont           LD HL, CsyncTable
                     _PRINTAT 0, STARTLINE + 23
                     _WRITE "[SCANDBCTRL "
                     _GETREG REG_SCANDBLCTRL
-                    CALL PrintAº
+                    CALL PrintA
                     _WRITE "] [JOYCONF: "
                     _GETREG REG_JOYCONF
                     CALL PrintA
-                    _WRITE "] [AD724: "
-                    _GETREG REG_AD724
-                    CALL PrintA
-                    _WRITE "]"
                    
                     RET
 
@@ -857,7 +815,7 @@ CsyncCont           LD HL, CsyncTable
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ On entry, L register points to the entry in the ROMS.ZX1 that would be loaded
 
-MainMenu            PUSH HL                 ; Preserve L entry
+MainMenu            PUSH HL
                     LD H, 0
                     ADD HL, HL
                     ADD HL, HL
@@ -926,12 +884,12 @@ KeyPressed3         CP KEY_ENTER            ; Normal Boot
 
 KeyPressed4         CP $0A ; Keys 0-9                     
                     JR NC, KeyPressed5
+                    POP HL                     ; For cleaning purposes
                     OR A
                     JR NZ, ChangeROM
-                    LD A, 10                   ; Button 0 => ROM 10
+                    LD A, 10                   ; Button 0 => ROM 10                   
 ChangeROM           LD L, A            
                     JP MainMenu
-
 
 
 KeyPressed5         POP HL                      ; Restore HL from stack, so the ROM entry selected is available at L for the QAOP options
@@ -943,7 +901,7 @@ KeyPressed5         POP HL                      ; Restore HL from stack, so the 
                     LD L, A
                     LD A, (LAST_VALID_ENTRY)       
                     CP L
-                    JP NC, MainMenu              ; It's checking after the CP, as LD does not alter the flags
+                    JP NC, MainMenu          ; It's checking after the CP, as LD does not alter the flags
                     LD A, (LAST_VALID_ENTRY)
                     LD L, A
                     JP MainMenu
@@ -976,52 +934,62 @@ KeyPressed8         CP KEY_P
 
                     ; -- THe settings
 
-KeyPressed9         CP KEY_D                    ; DB9 Joystick
+KeyPressed9         PUSH HL
+
+                    CP KEY_D                    ; DB9 Joystick
                     JR NZ, KeyPressed10
                     CALL ChangeKeyJoy
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu       
 
 KeyPressed10        CP KEY_K                    ; Keyboard Joystick
                     JR NZ, KeyPressed11
                     CALL ChangeDB9Joy
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu       
 
 KeyPressed11        CP KEY_S                    ; Scanlines
                     JR NZ, KeyPressed12
                     CALL ChangeScanlines
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu       
 
 KeyPressed12        CP KEY_C                    ; Csync
                     JR NZ, KeyPressed13
                     CALL ChangeCsync
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu       
 
 KeyPressed13        CP KEY_F                    ; Frequency
                     JR NZ, KeyPressed14
                     CALL ChangeFreq
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu       
 
 KeyPressed14        CP KEY_M                    ; Video Mode
                     JR NZ, KeyPressed15         
                     CALL ChangeVideoMode
                     CALL SafeSaveConfig
+                    POP HL
                     JP MainMenu   
 
-KeyPressed15        CP KEY_R                    ; Debug Mode
+KeyPressed15        CP KEY_G                    ; Debug Mode
                     JR NZ, KeyPressedEnd         
                     LD A, 1
                     LD (DEBUGMODE), A
+                    POP HL
                     JP MainMenu   
 
 
-KeyPressedEnd       LD A ,(KEY_HAS_BEEN_PRESSED)
+KeyPressedEnd       POP HL
+                    LD A ,(KEY_HAS_BEEN_PRESSED)
                     OR A
-                    JP NZ, ReleaseKey
+                    JP NZ, MainMenu
 
 ; From this point we really are going to load a ROM
 LoadROM             CALL ClearScreen            ; Also clear the screen before loading
@@ -1407,11 +1375,6 @@ ApplyConfig         LD A, (cfgDevcontrolOR)         ; Modify code above so the O
                     LD A, (cfgMasterControlAND)
                     LD (RomSetMasterConf + 3), A
 
-                    LD A, (cfgAD724)
-                    LD E, A
-                    _SETREGB REG_AD724
-
-
                     LD A, (cfgSCANDBLCTRL)
                     AND 00111111b                   ;  Remove the Turbo part
                     OR  11000000b                   ;  Set 28Mhz Speed
@@ -1470,7 +1433,7 @@ WaitKeyLoopBoot2        CALL GetKey                                     ; No wai
 CancelBootOptions       CP KEY_SPACE
                         JR NZ, SetDefaultROM
                         CALL ClearScreen
-                        ;CALL CopyrightNotice
+                        CALL CopyrightNotice
                         POP HL                                          ; Recover Selected ROM index at L
                         JP MainMenu
 
@@ -1623,7 +1586,7 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 JP Z, NinePressed ; 9
                 LD A, D
                 AND 4
-                JR Z, EightPressed ; 8
+                JP Z, EightPressed ; 8
                 LD A, D
                 AND 8
                 JR Z, SevenPressed  ; 7
@@ -1673,6 +1636,9 @@ GetKey3         LD BC, $BFFE; H, J, K, L, Enter
                 LD A, D
                 AND 2
                 JR Z, SPressed ; S
+                LD A, D
+                AND 16
+                JR Z, GPressed ; G
 
                 LD BC, $FEFE ; Z, X, C, V, B
                 IN A,(C)
@@ -1728,7 +1694,9 @@ KPressed        LD A, KEY_K
 SPressed        LD A, KEY_S
                 RET                
 CPressed        LD A, KEY_C
-                RET                
+                RET             
+GPressed        LD A, KEY_G
+                RET
 
 
 
@@ -1766,8 +1734,7 @@ cfgDefaultROMIndex  DB 0         ; Rom Index (not the slot, the index in the ROM
 cfgSilentMode       DB 0         ; 0 - verbose, 1 - silent
 cfgDelay            DB 46        ; cfgValue * 256 = number of loops in ROM selection if Key not pressed before loading default ROM
 cfgJOYCONF          DB 00010000b ; value for Joystick Configuration, defaults to Sinclair1 for DB9 and Kempston for PC Keyboard Cursors
-cfgAD724            DB 0         ; Value for NTSC/PAL
-cfgReserved         DS 12
+cfgReserved         DS 13
 ConfigurationEND                              
 
 ; Tables
@@ -1779,10 +1746,9 @@ JoyTable            DB 11
                     DB "Protek    ",0
                     DB "Fuller    ",0
 
-VideModeTable       DB 5
-                    DB "PAL ",0
-                    DB "NTSC",0
-                    DB "VGA ",0
+VideModeTable       DB 4
+                    DB "RGB",0
+                    DB "VGA",0
 
 CsyncTable          DB 9
                     DB "Spectrum",0
