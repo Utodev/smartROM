@@ -331,6 +331,20 @@ CopyrightNotice CALL ClearScreen
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints binary value of the number contained in A
+PrintA         LD B, 8
+PrintALoop     SLA A
+               PUSH AF
+               JR C, PrintOne
+               LD A, '0' 
+PrintAPrint    CALL PrintChar
+               POP AF
+               DJNZ PrintALoop
+               RET
+PrintOne       LD A, '1' 
+               JR PrintAPrint
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Prints char provided at A register
 
 PrintChar       EXX                     ; IMPORTANT: Please keep this EXX here, or if you change it, make sure you updahe the place where PrintChar routine is patched
@@ -388,14 +402,14 @@ SetNormalSpeed  _GETREG REG_SCANDBLCTRL
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ; ************ Writes how joysticks are configured
-WriteJoyConf    _WRITE "<K> DB9 JOYSTICK: "
+WriteJoyConf    _WRITE "<D> DB9 JOYSTICK: "
                 LD A, (cfgJOYCONF)
                 AND $07
                 CALL WriteJoyType
                 LD B, 36
                 CALL Tabs
                
-                _WRITE "<D> KEY JOYSTICK: "
+                _WRITE "<K> KEY JOYSTICK: "
                 LD A, (cfgJOYCONF)
                 AND $70
                 SRL A
@@ -732,6 +746,8 @@ FoundLast           LD A, E
 ; ************ Prints the whole Firmware main Screen
 
 PrintFWMenu         PUSH HL     ; Preserve current selected ROM
+
+                   
                     ;-- header
                      _PRINTAT 0, STARTLINE + 1
                     _WRITE "ZX-Uno Copyleft ZX-Uno Team - http://zxuno.speccy.org"
@@ -767,15 +783,22 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
                     _WRITE "          "
                     _INVERSE 0
 
+                    ; -- the instructions
+                    _PRINTAT 0, STARTLINE + 10
+                    _WRITE "<Q A O P> to select ROM - Keys <1> to <0> select ROMs #1 to #10"
+                    _PRINTAT 0, STARTLINE + 12
+                    _WRITE "<Enter> for normal boot - <Space> for boot options "
+
+
                     ; -- The global settings section
 
-                    _PRINTAT 0, STARTLINE +17
+                    _PRINTAT 0, STARTLINE +16
                     _WRITE "- Global Settings ----------------------------------------------"
-                    _PRINTAT 0, STARTLINE +19
+                    _PRINTAT 0, STARTLINE +18
                     _GETREG REG_JOYCONF
                     CALL WriteJoyConf
 
-                    _PRINTAT 0, STARTLINE + 21
+                    _PRINTAT 0, STARTLINE + 20
                     _WRITE "<M> MODE: " ;
                     _GETREG REG_AD724           ; Get video mode
                     AND 1
@@ -787,7 +810,7 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
                     LD HL, VideModeTable
                     CALL PrintIndexedTable
 
-                    _PRINTAT 32, STARTLINE + 21
+                    _PRINTAT 32, STARTLINE + 20
                     _WRITE "<C> CSYNC: " 
                     _GETREG REG_SCANDBLCTRL
                     AND $20
@@ -796,7 +819,7 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
 CsyncCont           LD HL, CsyncTable
                     CALL PrintIndexedTable
                     
-                    _PRINTAT 0, STARTLINE + 22
+                    _PRINTAT 0, STARTLINE + 21
                     _WRITE "<F> FREQ (Hz): "
                     _GETREG REG_SCANDBLCTRL
                     AND $1C
@@ -805,21 +828,29 @@ CsyncCont           LD HL, CsyncTable
                     LD HL, FreqTable
                     CALL PrintIndexedTable
                     
-                    _PRINTAT 32, STARTLINE + 22
+                    _PRINTAT 32, STARTLINE + 21
                     _WRITE "<S> VGA Scanlines: "
                     _GETREG REG_SCANDBLCTRL
                     AND 2
                     CALL WriteOnOff
                     
-                    ; -- the instructions
-                    _PRINTAT 0, STARTLINE + 10
-                    _WRITE "<Q A O P> to select ROM "
-                    _PRINTAT 0, STARTLINE + 12
-                    _WRITE "<Enter> for normal boot - <Space> for boot options "
+                    ; Debug mode
+                    LD A, (DEBUGMODE)
+                    OR A
+                    RET Z
 
-                    _PRINTAT 0, STARTLINE + 14
-                    _WRITE "Keys <1> to <0> select ROMs #1 to #10"
-                    
+                    _PRINTAT 0, STARTLINE + 23
+                    _WRITE "[SCANDBCTRL "
+                    _GETREG REG_SCANDBLCTRL
+                    CALL PrintAº
+                    _WRITE "] [JOYCONF: "
+                    _GETREG REG_JOYCONF
+                    CALL PrintA
+                    _WRITE "] [AD724: "
+                    _GETREG REG_AD724
+                    CALL PrintA
+                    _WRITE "]"
+                   
                     RET
 
 
@@ -945,13 +976,13 @@ KeyPressed8         CP KEY_P
 
                     ; -- THe settings
 
-KeyPressed9         CP KEY_K                    ; Keyboard Joystick
+KeyPressed9         CP KEY_D                    ; DB9 Joystick
                     JR NZ, KeyPressed10
                     CALL ChangeKeyJoy
                     CALL SafeSaveConfig
                     JP MainMenu       
 
-KeyPressed10        CP KEY_D                    ; DB9 Joystick
+KeyPressed10        CP KEY_K                    ; Keyboard Joystick
                     JR NZ, KeyPressed11
                     CALL ChangeDB9Joy
                     CALL SafeSaveConfig
@@ -976,15 +1007,23 @@ KeyPressed13        CP KEY_F                    ; Frequency
                     JP MainMenu       
 
 KeyPressed14        CP KEY_M                    ; Video Mode
-                    JR NZ, KeyPressedEnd         
+                    JR NZ, KeyPressed15         
                     CALL ChangeVideoMode
                     CALL SafeSaveConfig
-                    JP MainMenu       
+                    JP MainMenu   
+
+KeyPressed15        CP KEY_R                    ; Debug Mode
+                    JR NZ, KeyPressedEnd         
+                    LD A, 1
+                    LD (DEBUGMODE), A
+                    JP MainMenu   
+
 
 KeyPressedEnd       LD A ,(KEY_HAS_BEEN_PRESSED)
                     OR A
                     JP NZ, ReleaseKey
 
+; From this point we really are going to load a ROM
 LoadROM             CALL ClearScreen            ; Also clear the screen before loading
 
 
@@ -1770,6 +1809,7 @@ AUX                     DB 0
 LAST_VALID_ENTRY        DB 0
 KEY_HAS_BEEN_PRESSED    DB 0
 ESXDOSDrive             DB $FF
+DEBUGMODE               DB 0
 
 ;*****************************************************************************************************************************************************
 ;   FILLER
