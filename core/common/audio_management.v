@@ -106,9 +106,7 @@ module panner_and_mixer (
  
   // --- OUTPUTs ---
   output wire output_left,
-  output wire output_right,
-  output reg [8:0] left,
-  output reg [8:0] right
+  output wire output_right
   );
 
 `include "config.vh"
@@ -148,7 +146,7 @@ module panner_and_mixer (
   
   reg [10:0] mixleft = 11'h000;
   reg [10:0] mixright = 11'h000;
-//  reg [8:0] left, right;
+  reg [8:0] left, right;
 //  reg [7:0] compressor[0:2047];
 //  initial $readmemh ("curva_compress.hex", compressor);
   

@@ -479,7 +479,7 @@ PatchMemCheck       LD HL, $FFFF
                       IFDEF ZESARUX
                       ;FPOS 512
                       ;ORG 512
-ESXDOSRom             INCBIN ASSETS\ESXMMC.BIN
+ESXDOSRom             INCBIN assets/ESXMMC.BIN
                       FPOS 16383; Just to fill up to 16384 bytes
                       DB 0
                       ELSE 

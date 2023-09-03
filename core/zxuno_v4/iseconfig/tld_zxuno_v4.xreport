@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-01-31T14:02:48</DateModified>
+  <DateModified>2021-02-23T21:57:24</DateModified>
   <ModuleName>tld_zxuno_v4</ModuleName>
-  <SummaryTimeStamp>2021-01-28T16:26:03</SummaryTimeStamp>
-  <SavedFilePath>G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4/iseconfig/tld_zxuno_v4.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4\</ImplementationReportsDirectory>
-  <DateInitialized>2021-01-26T23:01:30</DateInitialized>
+  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SavedFilePath>G:/zxuno_v4/iseconfig/tld_zxuno_v4.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>G:/zxuno_v4\</ImplementationReportsDirectory>
+  <DateInitialized>2021-02-23T17:49:31</DateInitialized>
   <EnableMessageFiltering>true</EnableMessageFiltering>
  </header>
  <body>

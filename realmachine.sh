@@ -24,6 +24,6 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 cat bootloader.bin assets/ESXMMC.BIN > allboot.bin     
 tools/bin2hex allboot.bin
 rm allboot.bin
-mv allboot.hex /d/PC-FPGA/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/common/smartrom_bootloader_and_esxdos.hex
+mv allboot.hex /d/FILESERVER/PC-FPGA/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/common/smartrom_bootloader_and_esxdos.hex
 mv SMARTROM.ZX1 binaries
 

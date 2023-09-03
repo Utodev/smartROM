@@ -5,8 +5,7 @@ Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -filter
 iseconfig/filter.filter -intstyle ise -dd _ngo -nt timestamp -uc
 pines_zxuno_v4.ucf -p xc6slx9-tqg144-2 tld_zxuno_v4.ngc tld_zxuno_v4.ngd
 
-Reading NGO file
-"G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4/tld_zxuno_v4.ngc" ...
+Reading NGO file "G:/zxuno_v4/tld_zxuno_v4.ngc" ...
 Gathering constraint information from source properties...
 Done.
 
@@ -36,10 +35,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 116996 kilobytes
+Total memory usage is 118020 kilobytes
 
 Writing NGD file "tld_zxuno_v4.ngd" ...
 Total REAL time to NGDBUILD completion:  6 sec
-Total CPU time to NGDBUILD completion:   4 sec
+Total CPU time to NGDBUILD completion:   5 sec
 
 Writing NGDBUILD log file "tld_zxuno_v4.bld"...

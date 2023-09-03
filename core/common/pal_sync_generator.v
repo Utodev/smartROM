@@ -56,11 +56,7 @@ module pal_sync_generator (
     output reg hsync,
     output reg vsync,
     output reg csync,
-    output wire int_n,
-	 
-	 output reg hblank,
-	 output reg vblank
-	 
+    output wire int_n
     );
 
 `include "config.vh"
@@ -224,8 +220,8 @@ module pal_sync_generator (
 `endif      
     end
 
-//    reg hblank; // = 1'b0;
-//    reg vblank; // = 1'b0;
+    reg hblank; // = 1'b0;
+    reg vblank; // = 1'b0;
     always @* begin
       if (hc >= begin_hblank && hc <= end_hblank)
         hblank = 1'b1;

@@ -1,12 +1,10 @@
 Release 14.7 par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-FPGAWS::  Sun Jan 31 14:36:20 2021
+FPGAWS::  Tue Feb 23 22:32:51 2021
 
-par -filter
-G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4/iseconfig/filter.filter -w
--intstyle ise -ol high -xe n -mt 4 tld_zxuno_v4_map.ncd tld_zxuno_v4.ncd
-tld_zxuno_v4.pcf 
+par -filter G:/zxuno_v4/iseconfig/filter.filter -w -intstyle ise -ol high -xe n
+-mt 4 tld_zxuno_v4_map.ncd tld_zxuno_v4.ncd tld_zxuno_v4.pcf 
 
 
 Constraints file: tld_zxuno_v4.pcf.
@@ -27,16 +25,16 @@ WARNING:Par:251 - Map -timing was run with a lower effort level setting than you
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                 2,890 out of  11,440   25%
-    Number used as Flip Flops:               2,885
+  Number of Slice Registers:                 3,071 out of  11,440   26%
+    Number used as Flip Flops:               3,064
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
-    Number used as AND/OR logics:                5
-  Number of Slice LUTs:                      5,108 out of   5,720   89%
-    Number used as logic:                    5,034 out of   5,720   88%
-      Number using O6 output only:           3,727
-      Number using O5 output only:             325
-      Number using O5 and O6:                  982
+    Number used as AND/OR logics:                7
+  Number of Slice LUTs:                      5,157 out of   5,720   90%
+    Number used as logic:                    5,079 out of   5,720   88%
+      Number using O6 output only:           3,595
+      Number using O5 output only:             328
+      Number using O5 and O6:                1,156
       Number used as ROM:                        0
     Number used as Memory:                      46 out of   1,440    3%
       Number used as Dual Port RAM:             32
@@ -48,18 +46,18 @@ Slice Logic Utilization:
         Number using O6 output only:             2
         Number using O5 output only:             0
         Number using O5 and O6:                 12
-    Number used exclusively as route-thrus:     28
-      Number with same-slice register load:      1
-      Number with same-slice carry load:        27
+    Number used exclusively as route-thrus:     32
+      Number with same-slice register load:      3
+      Number with same-slice carry load:        29
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 1,426 out of   1,430   99%
-  Number of MUXCYs used:                     1,008 out of   2,860   35%
-  Number of LUT Flip Flop pairs used:        5,247
-    Number with an unused Flip Flop:         2,659 out of   5,247   50%
-    Number with an unused LUT:                 139 out of   5,247    2%
-    Number of fully used LUT-FF pairs:       2,449 out of   5,247   46%
+  Number of occupied Slices:                 1,418 out of   1,430   99%
+  Number of MUXCYs used:                     1,036 out of   2,860   36%
+  Number of LUT Flip Flop pairs used:        5,315
+    Number with an unused Flip Flop:         2,559 out of   5,315   48%
+    Number with an unused LUT:                 158 out of   5,315    2%
+    Number of fully used LUT-FF pairs:       2,598 out of   5,315   48%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -72,30 +70,34 @@ Slice Logic Distribution:
 IO Utilization:
   Number of bonded IOBs:                        74 out of     102   72%
     Number of LOCed IOBs:                       74 out of      74  100%
-    IOB Flip Flops:                             26
+    IOB Flip Flops:                             29
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                        31 out of      32   96%
   Number of RAMB8BWERs:                          0 out of      64    0%
-  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
-  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             1 out of      32    3%
+    Number used as BUFIO2FBs:                    1
+    Number used as BUFIO2FB_2CLKs:               0
   Number of BUFG/BUFGMUXs:                       3 out of      16   18%
     Number used as BUFGs:                        3
     Number used as BUFGMUX:                      0
   Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
-  Number of ILOGIC2/ISERDES2s:                  18 out of     200    9%
-    Number used as ILOGIC2s:                    18
+  Number of ILOGIC2/ISERDES2s:                  19 out of     200    9%
+    Number used as ILOGIC2s:                    19
     Number used as ISERDES2s:                    0
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
-  Number of OLOGIC2/OSERDES2s:                   8 out of     200    4%
-    Number used as OLOGIC2s:                     8
+  Number of OLOGIC2/OSERDES2s:                  10 out of     200    5%
+    Number used as OLOGIC2s:                    10
     Number used as OSERDES2s:                    0
   Number of BSCANs:                              0 out of       4    0%
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
   Number of BUFPLL_MCBs:                         0 out of       4    0%
   Number of DSP48A1s:                            2 out of      16   12%
-  Number of ICAPs:                               0 out of       1    0%
+  Number of ICAPs:                               1 out of       1  100%
   Number of MCBs:                                0 out of       2    0%
   Number of PCILOGICSEs:                         0 out of       2    0%
   Number of PLL_ADVs:                            1 out of       2   50%
@@ -108,33 +110,32 @@ Overall effort level (-ol):   High
 Router effort level (-rl):    High 
 
 PAR will use up to 4 processors
-WARNING:Par:288 - The signal uart_rx_IBUF has no load.  PAR will not attempt to route this signal.
 Starting Multi-threaded Router
 
 
-Phase  1  : 30757 unrouted;      REAL time: 7 secs 
+Phase  1  : 30657 unrouted;      REAL time: 7 secs 
 
-Phase  2  : 27563 unrouted;      REAL time: 8 secs 
+Phase  2  : 27259 unrouted;      REAL time: 8 secs 
 
-Phase  3  : 16298 unrouted;      REAL time: 17 secs 
+Phase  3  : 15515 unrouted;      REAL time: 19 secs 
 
-Phase  4  : 16298 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  4  : 15515 unrouted; (Setup:0, Hold:4712, Component Switching Limit:0)     REAL time: 19 secs 
 
 Updating file: tld_zxuno_v4.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 34 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:1019, Component Switching Limit:0)     REAL time: 38 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 34 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:1019, Component Switching Limit:0)     REAL time: 38 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 34 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:1019, Component Switching Limit:0)     REAL time: 38 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 34 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:1019, Component Switching Limit:0)     REAL time: 38 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 34 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 39 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 35 secs 
-Total REAL time to Router completion: 35 secs 
-Total CPU time to Router completion (all processors): 32 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 41 secs 
+Total REAL time to Router completion: 41 secs 
+Total CPU time to Router completion (all processors): 36 secs 
 
 Generating "PAR" statistics.
 
@@ -145,9 +146,12 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|              sysclk |  BUFGMUX_X2Y3| No   | 1040 |  0.752     |  2.143      |
+|              sysclk |  BUFGMUX_X2Y2| No   | 1083 |  0.754     |  2.145      |
 +---------------------+--------------+------+------+------------+-------------+
-|  clk50mhz_IBUF_BUFG |  BUFGMUX_X2Y2| No   |   50 |  0.103     |  1.494      |
+|la_maquina/el_multib |              |      |      |            |             |
+|        oot/clk_icap | BUFGMUX_X3Y13| No   |   13 |  0.072     |  1.526      |
++---------------------+--------------+------+------+------------+-------------+
+|       clk50mhz_IBUF |         Local|      |   52 |  2.495     |  4.611      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -167,13 +171,13 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_clk50 = PERIOD TIMEGRP "clk50mhz" 20 n | SETUP       |     0.488ns|    13.170ns|       0|           0
-  s HIGH 50%                                | HOLD        |     0.416ns|            |       0|           0
-----------------------------------------------------------------------------------------------------------
-  TS_relojes_maestros_reconfiguracion_pll_c | SETUP       |     0.999ns|    33.716ns|       0|           0
-  lk0_bufgin = PERIOD TIMEGRP         "relo | HOLD        |     0.314ns|            |       0|           0
+  TS_relojes_maestros_reconfiguracion_pll_c | SETUP       |     0.974ns|    33.766ns|       0|           0
+  lk0_bufgin = PERIOD TIMEGRP         "relo | HOLD        |     0.297ns|            |       0|           0
   jes_maestros_reconfiguracion_pll_clk0_buf |             |            |            |        |            
   gin" TS_clk50 / 0.56         HIGH 50%     |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_clk50 = PERIOD TIMEGRP "clk50mhz" 20 n | SETUP       |     2.580ns|     8.482ns|       0|           0
+  s HIGH 50%                                | HOLD        |     0.098ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -187,8 +191,8 @@ Derived Constraints for TS_clk50
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_clk50                       |     20.000ns|     13.170ns|     18.881ns|            0|            0|         1314|     46991225|
-| TS_relojes_maestros_reconfigur|     35.714ns|     33.716ns|          N/A|            0|            0|     46991225|            0|
+|TS_clk50                       |     20.000ns|      8.482ns|     18.909ns|            0|            0|         1314|     63747091|
+| TS_relojes_maestros_reconfigur|     35.714ns|     33.766ns|          N/A|            0|            0|     63747091|            0|
 | acion_pll_clk0_bufgin         |             |             |             |             |             |             |             |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
@@ -199,19 +203,17 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 1 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+Total REAL time to PAR completion: 46 secs 
+Total CPU time to PAR completion (all processors): 39 secs 
 
-Total REAL time to PAR completion: 41 secs 
-Total CPU time to PAR completion (all processors): 35 secs 
-
-Peak Memory Usage:  246 MB
+Peak Memory Usage:  248 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
 Timing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 4
+Number of warning messages: 1
 Number of info messages: 0
 
 Writing design to file tld_zxuno_v4.ncd

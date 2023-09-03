@@ -62,7 +62,7 @@ module turbosound (
       midi_out = port_a_ay2[2];
       dout = dout_ay2;
       if (!disable_ay && !disable_turboay)
-        oe = ~oe_n_ay1;
+        oe = ~oe_n_ay2;
       else
         oe = 1'b0;
     end

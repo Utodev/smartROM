@@ -5,139 +5,106 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v" Line 99: Port <arg fmt="%s" index="1">hblank</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\core\zxuno_v4\relojes.v" Line 46: Port <arg fmt="%s" index="1">CLK4OUT</arg> is not connected to this instance
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v" Line 46: Port <arg fmt="%s" index="1">CLK4OUT</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\core\zxuno_v4\tld_zxuno_v4.v" Line 90: Assignment to <arg fmt="%s" index="1">mcolorclk</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v" Line 90: Assignment to <arg fmt="%s" index="1">mcolorclk</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 354: Port <arg fmt="%s" index="1">clk28en</arg> is not connected to this instance
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 369: Port <arg fmt="%s" index="1">clk28en</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 445: Assignment to <arg fmt="%s" index="1">hcnt</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 460: Assignment to <arg fmt="%s" index="1">hcnt</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 446: Assignment to <arg fmt="%s" index="1">vcnt</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 461: Assignment to <arg fmt="%s" index="1">vcnt</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="872" delta="old" >"\\vboxsvr\core\common\new_memory.v" Line 98: Using initial value of <arg fmt="%s" index="1">rom48k_selected</arg> since it is never assigned
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="872" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\new_memory.v" Line 98: Using initial value of <arg fmt="%s" index="1">rom48k_selected</arg> since it is never assigned
+<msg type="warning" file="HDLCompiler" num="1670" delta="old" >"\\vboxsvr\core\common\rom.v" Line 52: Signal &lt;<arg fmt="%s" index="1">mem</arg>&gt; in initial block is partially initialized.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1670" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\rom.v" Line 52: Signal &lt;<arg fmt="%s" index="1">mem</arg>&gt; in initial block is partially initialized.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\ps2_port.v" Line 235: Result of <arg fmt="%d" index="1">4</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\ps2_port.v" Line 235: Result of <arg fmt="%d" index="1">4</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\ps2_port.v" Line 263: Result of <arg fmt="%d" index="1">25</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">24</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\ps2_port.v" Line 263: Result of <arg fmt="%d" index="1">25</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">24</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\coreid.v" Line 60: Result of <arg fmt="%d" index="1">5</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\coreid.v" Line 60: Result of <arg fmt="%d" index="1">5</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\zxuno_v4\multiboot_spartan6.v" Line 139: Net &lt;<arg fmt="%s" index="1">icap_command[0][17]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 281: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"\\vboxsvr\core\zxuno_v4\multiboot_spartan6.v" Line 192: Port <arg fmt="%s" index="1">BUSY</arg> is not connected to this instance
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 370: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 281: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 442: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 370: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 460: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 442: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 485: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">31</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 460: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 486: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 485: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">31</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\pzx_player.v" Line 495: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 486: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 822: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">cpu_speed</arg>&gt;. Formal port size is <arg fmt="%d" index="2">2</arg>-bit while actual signal size is <arg fmt="%d" index="1">4</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\pzx_player.v" Line 495: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">5</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\turbosound.v" Line 108: Assignment to <arg fmt="%s" index="1">oe_n_ay2</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 805: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">cpu_speed</arg>&gt;. Formal port size is <arg fmt="%d" index="2">2</arg>-bit while actual signal size is <arg fmt="%d" index="1">4</arg>-bit.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 877: Assignment to <arg fmt="%s" index="1">ay1_audio</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 860: Assignment to <arg fmt="%s" index="1">ay1_audio</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 878: Assignment to <arg fmt="%s" index="1">ay2_audio</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 861: Assignment to <arg fmt="%s" index="1">ay2_audio</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 222: Net &lt;<arg fmt="%s" index="1">oe_scratch</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 207: Net &lt;<arg fmt="%s" index="1">oe_scratch</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 223: Net &lt;<arg fmt="%s" index="1">scratch_dout[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 208: Net &lt;<arg fmt="%s" index="1">scratch_dout[7]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 226: Net &lt;<arg fmt="%s" index="1">oe_ad724</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 211: Net &lt;<arg fmt="%s" index="1">oe_ad724</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 227: Net &lt;<arg fmt="%s" index="1">ad724_dout[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 212: Net &lt;<arg fmt="%s" index="1">ad724_dout[7]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 235: Net &lt;<arg fmt="%s" index="1">oe_multiboot</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 257: Net &lt;<arg fmt="%s" index="1">nmievents_dout[7]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 236: Net &lt;<arg fmt="%s" index="1">multiboot_dout[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 258: Net &lt;<arg fmt="%s" index="1">oe_nmievents</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 272: Net &lt;<arg fmt="%s" index="1">nmievents_dout[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 260: Net &lt;<arg fmt="%s" index="1">page_configrom_active</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 273: Net &lt;<arg fmt="%s" index="1">oe_nmievents</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="552" delta="old" >"\\vboxsvr\core\common\zxuno.v" Line 354: Input port <arg fmt="%s" index="1">clk28en</arg> is not connected on this instance
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 275: Net &lt;<arg fmt="%s" index="1">page_configrom_active</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\vga_scandoubler.v" Line 157: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 288: Net &lt;<arg fmt="%s" index="1">uart_dout[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\vga_scandoubler.v" Line 158: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 289: Net &lt;<arg fmt="%s" index="1">oe_uart</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\core\common\vga_scandoubler.v" Line 159: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="552" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v" Line 369: Input port <arg fmt="%s" index="1">clk28en</arg> is not connected on this instance
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\vga_scandoubler.v" Line 157: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\vga_scandoubler.v" Line 158: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\vga_scandoubler.v" Line 159: Result of <arg fmt="%d" index="1">6</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="552" delta="old" >"\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v" Line 99: Input port <arg fmt="%s" index="1">kbdcol_membrane[4]</arg> is not connected on this instance
-</msg>
-
-<msg type="warning" file="Xst" num="2898" delta="old" >Port &apos;<arg fmt="%s" index="1">kbdcol_membrane</arg>&apos;, unconnected in block instance &apos;<arg fmt="%s" index="2">la_maquina</arg>&apos;, is tied to GND.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">84</arg>: Output port &lt;<arg fmt="%s" index="3">mcolorclk</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">relojes_maestros</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">99</arg>: Output port &lt;<arg fmt="%s" index="3">kbdrow</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_maquina</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">99</arg>: Output port &lt;<arg fmt="%s" index="3">left</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_maquina</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">99</arg>: Output port &lt;<arg fmt="%s" index="3">right</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_maquina</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">99</arg>: Output port &lt;<arg fmt="%s" index="3">hblank</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_maquina</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">99</arg>: Output port &lt;<arg fmt="%s" index="3">vblank</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_maquina</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\tld_zxuno_v4.v</arg>&quot; line <arg fmt="%s" index="2">84</arg>: Output port &lt;<arg fmt="%s" index="3">mcolorclk</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">relojes_maestros</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="2708" delta="old" >You have instructed XST to treat asynchronous set and reset signals as if they are synchronous. Please carefully review the following points to understand if any implications exist for your particular design:
@@ -149,19 +116,19 @@
       6) In any case, a timing simulation is highly recommended for you to understand any ramification for your particular design situation.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">SRDY</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">SRDY</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK2OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK2OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK3OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK3OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK4OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK4OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK5OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\zxuno_v4\relojes.v</arg>&quot; line <arg fmt="%s" index="2">46</arg>: Output port &lt;<arg fmt="%s" index="3">CLK5OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reconfiguracion_pll</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="2999" delta="old" >Signal &apos;<arg fmt="%s" index="1">rom</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">pll_drp</arg>&apos;, is tied to its initial value.
@@ -173,25 +140,19 @@
 <msg type="warning" file="Xst" num="2898" delta="old" >Port &apos;<arg fmt="%s" index="1">clk28en</arg>&apos;, unconnected in block instance &apos;<arg fmt="%s" index="2">el_z80_con_su_dma</arg>&apos;, is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">kbdcol_membrane</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">354</arg>: Output port &lt;<arg fmt="%s" index="3">halt_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">el_z80_con_su_dma</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">uart_rx</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">383</arg>: Output port &lt;<arg fmt="%s" index="3">hcnt</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_ula</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">369</arg>: Output port &lt;<arg fmt="%s" index="3">halt_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">el_z80_con_su_dma</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">383</arg>: Output port &lt;<arg fmt="%s" index="3">vcnt</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_ula</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">398</arg>: Output port &lt;<arg fmt="%s" index="3">hcnt</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_ula</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">847</arg>: Output port &lt;<arg fmt="%s" index="3">audio_out_ay1</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dos_ays</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">398</arg>: Output port &lt;<arg fmt="%s" index="3">vcnt</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">la_ula</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">864</arg>: Output port &lt;<arg fmt="%s" index="3">audio_out_ay1</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dos_ays</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">864</arg>: Output port &lt;<arg fmt="%s" index="3">audio_out_ay2</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dos_ays</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\zxuno.v</arg>&quot; line <arg fmt="%s" index="2">847</arg>: Output port &lt;<arg fmt="%s" index="3">audio_out_ay2</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dos_ays</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">scratch_dout</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
@@ -200,13 +161,7 @@
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">ad724_dout</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">multiboot_dout</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">nmievents_dout</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">uart_dout</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">oe_scratch</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
@@ -215,16 +170,10 @@
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">oe_ad724</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">oe_multiboot</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">oe_nmievents</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">page_configrom_active</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">oe_uart</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">cpu_speed&lt;3:3&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -236,16 +185,16 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">m1_n</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">REG</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">REG</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">IntE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">IntE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">Stop</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\T80a.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">Stop</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\T80.vhd</arg>&quot; line <arg fmt="%s" index="2">337</arg>: Output port &lt;<arg fmt="%s" index="3">FC_Out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\T80.vhd</arg>&quot; line <arg fmt="%s" index="2">337</arg>: Output port &lt;<arg fmt="%s" index="3">FC_Out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">F&lt;1:1&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -269,7 +218,7 @@
 <msg type="warning" file="Xst" num="2999" delta="old" >Signal &apos;<arg fmt="%s" index="1">mem</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">rom</arg>&apos;, is tied to its initial value.
 </msg>
 
-<msg type="warning" file="Xst" num="3035" delta="old" >Index value(s) does not match array range for signal &lt;<arg fmt="%s" index="1">mem</arg>&gt;, simulation mismatch.
+<msg type="warning" file="Xst" num="3035" delta="new" >Index value(s) does not match array range for signal &lt;<arg fmt="%s" index="1">mem</arg>&gt;, simulation mismatch.
 </msg>
 
 <msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">kbstatus_dout&lt;6&gt;</arg>&lt;<arg fmt="%d" index="2">0</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">ps2_keyb</arg>&gt;.
@@ -290,10 +239,10 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">a&lt;15:11&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\ps2_mouse_kempston.v</arg>&quot; line <arg fmt="%s" index="2">91</arg>: Output port &lt;<arg fmt="%s" index="3">released</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">lectura_de_raton</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\ps2_mouse_kempston.v</arg>&quot; line <arg fmt="%s" index="2">91</arg>: Output port &lt;<arg fmt="%s" index="3">released</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">lectura_de_raton</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\ps2_mouse_kempston.v</arg>&quot; line <arg fmt="%s" index="2">91</arg>: Output port &lt;<arg fmt="%s" index="3">extended</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">lectura_de_raton</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\ps2_mouse_kempston.v</arg>&quot; line <arg fmt="%s" index="2">91</arg>: Output port &lt;<arg fmt="%s" index="3">extended</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">lectura_de_raton</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">mousestatus_dout&lt;6&gt;</arg>&lt;<arg fmt="%d" index="2">0</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">ps2_mouse_kempston</arg>&gt;.
@@ -309,6 +258,84 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">mousestatus_dout&lt;1&gt;</arg>&lt;<arg fmt="%d" index="2">2</arg>:<arg fmt="%d" index="3">2</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">ps2_mouse_kempston</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;0&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">111111111111111111</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;1&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">001010101010011001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;2&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000101010101100110</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;3&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011000010100001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;4&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000000000000000000</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;5&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011001001100001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;7&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011001010000001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;9&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011001100000001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;10&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011000100000000</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;11&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000011000010100001</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;12&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000000000000001110</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;13&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000010000000000000</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;14&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000010000000000000</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">icap_command&lt;15&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">000010000000000000</arg>).
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;6&gt;&lt;16&gt;</arg>&lt;<arg fmt="%d" index="2">0</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;17&gt;</arg>&lt;<arg fmt="%d" index="2">16</arg>:<arg fmt="%d" index="3">16</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;16&gt;</arg>&lt;<arg fmt="%d" index="2">17</arg>:<arg fmt="%d" index="3">17</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;15&gt;</arg>&lt;<arg fmt="%d" index="2">16</arg>:<arg fmt="%d" index="3">16</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;14&gt;</arg>&lt;<arg fmt="%d" index="2">0</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">1</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;13&gt;</arg>&lt;<arg fmt="%d" index="2">14</arg>:<arg fmt="%d" index="3">14</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">1</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;12&gt;</arg>&lt;<arg fmt="%d" index="2">15</arg>:<arg fmt="%d" index="3">15</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;11&gt;</arg>&lt;<arg fmt="%d" index="2">13</arg>:<arg fmt="%d" index="3">13</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">1</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;10&gt;</arg>&lt;<arg fmt="%d" index="2">12</arg>:<arg fmt="%d" index="3">12</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;9&gt;</arg>&lt;<arg fmt="%d" index="2">11</arg>:<arg fmt="%d" index="3">11</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">1</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;8&gt;&lt;8&gt;</arg>&lt;<arg fmt="%d" index="2">9</arg>:<arg fmt="%d" index="3">9</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">1</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">icap_command&lt;6&gt;&lt;17&gt;</arg>&lt;<arg fmt="%d" index="2">10</arg>:<arg fmt="%d" index="3">10</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">seq_multiboot_spartan6</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">a&lt;15:8&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -338,13 +365,10 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">clk35en</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\turbosound.v</arg>&quot; line <arg fmt="%s" index="2">79</arg>: Output port &lt;<arg fmt="%s" index="3">port_a_oe_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ay1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\turbosound.v</arg>&quot; line <arg fmt="%s" index="2">79</arg>: Output port &lt;<arg fmt="%s" index="3">port_a_oe_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ay1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\turbosound.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">oe_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ay2</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\pc-fpga\EXP27MOSQUERA\Spectrum_EXP27-200820_SRAM\common\turbosound.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">port_a_oe_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ay2</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">\\vboxsvr\core\common\turbosound.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">port_a_oe_n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ay2</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">audio_out_ay1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
@@ -423,6 +447,9 @@
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">kmouse_buttons_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">traductor_raton</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;kmouse_buttons_4&gt; &lt;kmouse_buttons_5&gt; &lt;kmouse_buttons_6&gt; &lt;kmouse_buttons_7&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">icap_we</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">secuenciador_multiboot</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;icap_ce&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">specdrum_signed_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">audio_mix</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;specdrum_signed_8&gt; </arg>
@@ -554,7 +581,7 @@
 <msg type="info" file="Xst" num="3218" delta="old" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_FC_Out</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
-<msg type="info" file="Xst" num="3212" delta="old" >HDL ADVISOR - Asynchronous or synchronous initialization of the register &lt;<arg fmt="%s" index="1">envelope_shape</arg>&gt; prevents it from being combined with the RAM &lt;<arg fmt="%s" index="2">Mram_attack_GND_276_o_wide_mux_167_OUT</arg>&gt; for implementation as read-only block RAM.
+<msg type="info" file="Xst" num="3212" delta="old" >HDL ADVISOR - Asynchronous or synchronous initialization of the register &lt;<arg fmt="%s" index="1">envelope_shape</arg>&gt; prevents it from being combined with the RAM &lt;<arg fmt="%s" index="2">Mram_attack_GND_280_o_wide_mux_167_OUT</arg>&gt; for implementation as read-only block RAM.
 </msg>
 
 <msg type="info" file="Xst" num="3218" delta="old" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_out</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
@@ -569,7 +596,7 @@
 <msg type="info" file="Xst" num="3218" delta="old" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram__n0438</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
-<msg type="info" file="Xst" num="3230" delta="old" >The RAM description &lt;<arg fmt="%s" index="1">Mram_ear_PWR_57_o_wide_mux_13_OUT</arg>&gt; will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
+<msg type="info" file="Xst" num="3230" delta="old" >The RAM description &lt;<arg fmt="%s" index="1">Mram_ear_PWR_61_o_wide_mux_13_OUT</arg>&gt; will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
 </msg>
 
 <msg type="info" file="Xst" num="3216" delta="old" >HDL ADVISOR - LUT implementation is currently selected for the RAM &lt;<arg fmt="%s" index="1">Mram_rom</arg>&gt;. If you want the register to be removed and the RAM to be implemented as block RAM, please change the RAM implementation style accordingly.
@@ -601,10 +628,10 @@
 
 <msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mram_scan</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
 
-<msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">dos_ays/ay2/Mram_lin2log1</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
-
 <msg type="info" file="Xst" num="3230" delta="old" >The RAM description &lt;<arg fmt="%s" index="1">dos_ays/ay2/Mram_lin2log</arg>&gt; will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
 </msg>
+
+<msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">dos_ays/ay2/Mram_lin2log1</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
 
 <msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">dos_ays/ay1/Mram_lin2log1</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
 
@@ -752,7 +779,10 @@
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">joyfire</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">kb_special_functions</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;alt_pressed&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2697" delta="old" >Unit &lt;<arg fmt="%s" index="1">zxuno</arg>&gt; : the RAMs &lt;<arg fmt="%s" index="2">dos_ays/ay2/Mram_lin2log1</arg>&gt;, &lt;<arg fmt="%s" index="3">dos_ays/ay1/Mram_lin2log1</arg>&gt; are packed into the single block RAM &lt;<arg fmt="%s" index="4">dos_ays/ay2/Mram_lin2log11</arg>&gt;
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">icap_we</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">seq_multiboot_spartan6</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;icap_ce&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2697" delta="old" >Unit &lt;<arg fmt="%s" index="1">zxuno</arg>&gt; : the RAMs &lt;<arg fmt="%s" index="2">dos_ays/ay1/Mram_lin2log1</arg>&gt;, &lt;<arg fmt="%s" index="3">dos_ays/ay2/Mram_lin2log1</arg>&gt; are packed into the single block RAM &lt;<arg fmt="%s" index="4">dos_ays/ay1/Mram_lin2log11</arg>&gt;
 </msg>
 
 <msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">end_hcint_8</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">pal_sync_generator</arg>.
@@ -978,6 +1008,9 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">scandblctrl_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">scandoubler_ctrl</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;cpu_speed_reg_1&gt; </arg>
 </msg>
 
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">rxrecv</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">uart_rx</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;rts&gt; </arg>
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">relojes_maestros/reconfiguracion_pll/PLL_DRP_inst/SRDY</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt;.
 </msg>
 
@@ -1036,6 +1069,30 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">la_maquina/i2s_midi/left_out_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_15</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_14</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_13</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_12</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_11</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_9</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/uart_esp8266/uartchip/transmitter/bpscounter_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">tld_zxuno_v4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/el_raton/escritura_a_raton/edgedetect_9</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/el_raton/lectura_de_raton/negedgedetect_9&gt; </arg>
@@ -1143,6 +1200,9 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/el_teclado/funciones_especiales/user_nmi</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/el_teclado/teclado_limpio/keybstat_3&gt; </arg>
 </msg>
 
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/el_z80_con_su_dma/la_dma/iocnt_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/el_multiboot/regclkicap&gt; </arg>
+</msg>
+
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/el_raton/escritura_a_raton/ps2clk_synchr_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/el_raton/lectura_de_raton/ps2clk_synchr_0&gt; </arg>
 </msg>
 
@@ -1191,19 +1251,10 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="info" file="Xst" num="3203" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/la_ula/syncs/end_hcint_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is the opposite to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/la_ula/syncs/end_hcint_5&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="2254" delta="old" >Area constraint could not be met for block &lt;<arg fmt="%s" index="1">tld_zxuno_v4</arg>&gt;, final ratio is <arg fmt="%i" index="2">134</arg>.
+<msg type="warning" file="Xst" num="2254" delta="old" >Area constraint could not be met for block &lt;<arg fmt="%s" index="1">tld_zxuno_v4</arg>&gt;, final ratio is <arg fmt="%i" index="2">139</arg>.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/audio_mix/beeper_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">5 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/audio_mix/beeper_6_BRB0&gt; &lt;la_maquina/audio_mix/beeper_5_BRB4&gt; &lt;la_maquina/audio_mix/beeper_3_BRB0&gt; &lt;la_maquina/audio_mix/beeper_2_BRB4&gt; &lt;la_maquina/audio_mix/beeper_0_BRB0&gt; </arg>
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">la_maquina/dos_ays/ay2/reg_port_a_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">la_maquina/dos_ays/ay2/reg_port_b_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">la_maquina/dos_ays/ay2/reg_port_b_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt;.
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">la_maquina/audio_mix/beeper_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">tld_zxuno_v4</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">5 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;la_maquina/audio_mix/beeper_6_BRB1&gt; &lt;la_maquina/audio_mix/beeper_5_BRB4&gt; &lt;la_maquina/audio_mix/beeper_3_BRB0&gt; &lt;la_maquina/audio_mix/beeper_2_BRB4&gt; &lt;la_maquina/audio_mix/beeper_0_BRB1&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="741" delta="old" >HDL ADVISOR - A <arg fmt="%d" index="1">7</arg>-bit shift register was found for signal &lt;<arg fmt="%s" index="2">relojes_maestros/pulso_reconf_7</arg>&gt; and currently occupies <arg fmt="%d" index="3">7</arg> logic cells (<arg fmt="%d" index="4">3</arg> slices). Removing the set/reset logic would take advantage of SRL<arg fmt="%d" index="5">32</arg> (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.

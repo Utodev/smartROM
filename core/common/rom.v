@@ -34,13 +34,13 @@ module rom (
    reg [7:0] mem[0:16383];
    integer i;
    initial begin  
-//      for (i=0;i<16384;i=i+1) begin
-//        mem[i] = 8'h00;
-//      end
+      for (i=0;i<16384;i=i+1) begin
+        mem[i] = 8'h00;
+      end
       $readmemh ("bootloader_to_bios_and_easter_egg.hex", mem, 0);      
    end
 `else
-   reg [7:0] mem [0:9215];  // este tamaï¿½o es el justito para que quepa en un bloque de BRAM, que es de 9KB
+   reg [7:0] mem [0:9215];  // este tamaño es el justito para que quepa en un bloque de BRAM, que es de 9KB
    `ifdef USE_SMARTROM
    integer i;
    `endif
@@ -57,5 +57,7 @@ module rom (
    end
 `endif
 
-   always @(posedge clk) dout <= mem[a];
+   always @(posedge clk) begin
+     dout <= mem[a];
+   end
 endmodule

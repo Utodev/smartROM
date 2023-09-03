@@ -35,9 +35,10 @@
 
 
 
-                define FW_VERSION           "release B (Bomb Jack)"
+                define FW_VERSION           "release C (Colossal Adventure)"
 
 
+                define DIVIDECTRL           $0E3
                 define VRAM_ADDR            $4000
                 define VRAM_ATTR_ADDR       $5800
                 define ZXUNO_PORT           $FC3B
@@ -335,7 +336,7 @@ Inverse         XOR 0
                 RET
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-; ************ Sets Inverse mode for PrintChar (A=1 inverse, A=0 normal)
+; ************ Sets inverse video mode
 
 SetInverseMode  OR A
                 JR NZ, IsInverse
@@ -529,7 +530,7 @@ ClearMem        PUSH DE
 TimexInit       _SETREG REG_DEVCONTROL, 0 ; Make sure bit 2, DI7FFD, is 0
                 _SETREG REG_DEVCTRL2,   0 ; make sure bits 0 and 1, DITIMEX and DIULAPLUS, value is 0
 
-                LD A, 00111110b 			  ; Enable Timex mode (HiRes)
+TimexInit2      LD A, 00111110b 			  ; Enable Timex mode (HiRes)
         		OUT (255),A
 
 SetPalette		LD A, 24                ; Paper
@@ -686,7 +687,7 @@ LoadROMEntries      CALL SetDRV
 
 ; --- reads the entry information
 ReadEntryInfo		LD 	IX, ROMDirectory
-					LD BC, 4096 ; Size of the entries information
+					LD BC, 16384 ; Size of the entries information for the largest ROMS.ZX1 format supported
 					RST $08
 					DB  F_READ
                     RET C
@@ -695,13 +696,47 @@ CloseFileEntries	LD 		A, 0
 					RST     $08
                     DB      F_CLOSE
 
+; --- Determine if it's a big ROMS.ZX1 (up to 255 entries)
+
+                    LD HL, ROMDirectory
+                    LD A, (HL)
+                    CP 'R'
+                    JR NZ, NoBigROMsFile
+                    INC HL
+                    LD A, (HL)
+                    CP 'P'
+                    JR NZ, NoBigROMsFile
+                    INC HL
+                    LD A, (HL)
+                    CP 'v'
+                    JR NZ, NoBigROMsFile
+                    INC HL
+                    LD A, (HL)
+                    CP '2'
+                    JR NZ, NoBigROMsFile
+                    ; -- Patch code so it works fine with a large ROMS file
+                    ; First, patch the places where the ROMdirectory is checked to start from C040 instead of C000
+                    LD A, $40
+                    LD (SkipFirstEntryA + 1), A    
+                    LD (SkipFirstEntryB + 1), A
+                    ; Now Patch the FSEEK that leads to the position of first ROM slot data
+                    INC A ; hey, we are lucky that is at $4000, as we already have $40 in A, so INC A gives the $41 we need
+                    LD (SeekROMPatch+2), A 
+                    XOR A
+                    LD (SeekROMPatch+1), A
+
+NoBigROMsFile
+
+
 ; -- Determine last valid entry
-                    LD E, 0                    ; E will contain last valid entry
-                    LD HL, ROMDirectory + 64    ; Points to second entry, number of slots
+                    LD HL, ROMDirectory + 64 +1    ; Points to second entry, number of slots
+SkipFirstEntryA     LD DE, 0
+                    ADD HL, DE
+                    LD E, 0                     ; E will contain last valid entry
 ValidEntryLoop      LD A, (HL)
                     LD BC, 64
                     ADD HL, BC
-                    OR A
+                    OR A                        ; If a given slot is empty, number of slots will be 0
                     JR Z, FoundLast
                     INC E
                     JR ValidEntryLoop
@@ -746,10 +781,15 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
                     POP HL
                     ADD HL, DE
                     CALL PrintString32
-                    _WRITE "                                                                     "
-                    _WRITE "          "
+                    _WRITE "DivMMC: "
+                    ; Print DivMMC Enable or not
+                    LD A, (IY+2)
+                    AND 4
+                    CALL WriteOnOff
+                    _WRITE "                                                                    "
                     _INVERSE 0
 
+                    
                     ; -- the instructions
                     _PRINTAT 0, STARTLINE + 10
                     _WRITE "<Q A O P> to select ROM - Keys <1> to <0> select ROMs #1 to #10"
@@ -759,20 +799,20 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
 
                     ; -- The global settings section
 
-                    _PRINTAT 0, STARTLINE +16
+                    _PRINTAT 0, STARTLINE +15
                     _WRITE "- Global Settings ----------------------------------------------"
-                    _PRINTAT 0, STARTLINE +18
+                    _PRINTAT 0, STARTLINE +17
                     _GETREG REG_JOYCONF
                     CALL WriteJoyConf
 
-                    _PRINTAT 0, STARTLINE + 20
+                    _PRINTAT 0, STARTLINE + 19
                     _WRITE "<M> MODE: " ;
                     _GETREG REG_SCANDBLCTRL
                     AND 1
                     LD HL, VideModeTable
                     CALL PrintIndexedTable
 
-                    _PRINTAT 32, STARTLINE + 20
+                    _PRINTAT 32, STARTLINE + 19
                     _WRITE "<C> CSYNC: " 
                     _GETREG REG_SCANDBLCTRL
                     AND $20
@@ -781,7 +821,7 @@ PrintFWMenu         PUSH HL     ; Preserve current selected ROM
 CsyncCont           LD HL, CsyncTable
                     CALL PrintIndexedTable
                     
-                    _PRINTAT 0, STARTLINE + 21
+                    _PRINTAT 0, STARTLINE + 20
                     _WRITE "<F> FREQ (Hz): "
                     _GETREG REG_SCANDBLCTRL
                     AND $1C
@@ -790,13 +830,12 @@ CsyncCont           LD HL, CsyncTable
                     LD HL, FreqTable
                     CALL PrintIndexedTable
                     
-                    _PRINTAT 32, STARTLINE + 21
+                    _PRINTAT 32, STARTLINE + 20
                     _WRITE "<S> Scanlines (VGA): "
                     _GETREG REG_SCANDBLCTRL
                     AND 2
                     CALL WriteOnOff
-                    
-                    ; Debug mode
+
                     LD A, (DEBUGMODE)
                     OR A
                     RET Z
@@ -808,8 +847,64 @@ CsyncCont           LD HL, CsyncTable
                     _WRITE "] [JOYCONF: "
                     _GETREG REG_JOYCONF
                     CALL PrintA
-                   
-                    RET
+                    _WRITE "]"
+                    RET                    
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Paints Debug Info
+DebugInfo           LD HL, $5800
+                    LD A, $36 ; yellow
+                    LD (HL), A
+                    LD DE, $5801
+                    LD BC, 767
+                    LDIR
+
+
+                    _GETREG REG_MASTERCONF
+                    LD L, 1
+                    CALL PrintAttr
+                    _GETREG REG_SCANDBLCTRL
+                    LD L, 3
+                    CALL PrintAttr
+                    _GETREG REG_JOYCONF
+                    LD L, 5
+                    CALL PrintAttr
+                    _GETREG REG_DEVCONTROL
+                    LD L, 7
+                    CALL PrintAttr
+                    _GETREG REG_DEVCTRL2
+                    LD L, 9
+                    CALL PrintAttr
+                    RET                    
+
+
+
+; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+; ************ Prints value of A as attributes at line L
+PrintAttr            LD H, 0
+                     ADD HL, HL
+                     ADD HL, HL
+                     ADD HL, HL
+                     ADD HL, HL
+                     ADD HL, HL ; x32
+                     LD DE, $580C
+                     ADD HL, DE
+                     ; Now HL points to line L
+                     LD B, 8
+PrintAttrLoop        RLA
+                     PUSH AF
+                     JR C, Bit1
+                     LD A, $3F
+PrintAttrSetColor    LD (HL),A
+                     INC HL
+                     POP AF
+                     DJNZ PrintAttrLoop
+                     RET
+Bit1                 LD  A, 0
+                     JR PrintAttrSetColor
+
+
+
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -826,8 +921,12 @@ MainMenu            PUSH HL
                     LD D, H
                     LD E, L
                     LD HL, ROMDirectory
-                    
                     ADD HL, DE     ; Now HL Points to entry
+
+SkipFirstEntryB     LD DE, 0       ; If it's a new ROMS.ZX1 with up to 255 entries, first $40 bytes are the header
+                    ADD HL, DE
+
+
                     LD DE, RomDirectoryEntry
                     LD BC, 64
                     LDIR            ; Copy the current selecte ROM directory entry to a safe place (RomDirectoryEntry)
@@ -980,7 +1079,7 @@ KeyPressed14        CP KEY_M                    ; Video Mode
 
 KeyPressed15        CP KEY_G                    ; Debug Mode
                     JR NZ, KeyPressedEnd         
-                    LD A, 1
+                    LD A, 1                     
                     LD (DEBUGMODE), A
                     POP HL
                     JP MainMenu   
@@ -1011,7 +1110,7 @@ LoadROM             CALL ClearScreen            ; Also clear the screen before l
 ; --- seek up to first ROM position
 
 					LD BC, 0   			 ; BCDE --> Offset 
-                    LD DE, 4096 + 65     ; The entries plus 65 bytes not used in the ROMS.ZX1 file
+SeekROMPatch        LD DE, 4096 + 65     ; The entries plus 65 bytes not used in the ROMS.ZX1 file
 					LD IXL, 1 			 ; IXL = 1 --> Seek from current position
 					RST	$08
 					DB	F_SEEK
@@ -1020,7 +1119,7 @@ LoadROM             CALL ClearScreen            ; Also clear the screen before l
 ; Seek Up to expected ROM Offset, it's done by seeking 16384 bytes forward n times, once the file is at $1041, where the ROMs start
 
 SeekSlot
-; -- First we check it it's Slot 0
+; -- First we check if it's Slot 0
                     LD E, A             ; Preserve file handler
                     LD A, (IY + 0)      ; Get Slot Number
                     OR A                   
@@ -1176,11 +1275,32 @@ RomSetDevControl    OR 0
                     LD E, A
                     _SETREGB REG_MASTERCONF               ;  Now, finally, get the MASTERCONF VALUE 
 
-                    AND 2
-                    JP Z, 00000h                     ; If no DivMMC, we jump to 0000 to run System ROM 0
+                    PUSH AF
+                    LD A, (DEBUGMODE)
+                    OR A
+                    JR Z, RunROM
 
-                    DI                              ; Simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in once more at 0000 trap
+ShowDebugInfo       CALL DebugInfo
+                    LD A, 6
+                    OUT (254),A
+
+wait1               CALL GetKey                                     
+                    CP NO_KEY
+                    JR NZ, wait1
+wait2               CALL GetKey                                     
+                    CP NO_KEY
+                    JR Z, wait2
+
+
+RunROM              POP AF
+
+                    AND 2
+                    JP Z, 0                     ; If no DivMMC, we jump to 0000 to run System ROM 0
+
+
+UseDivMMC           DI                              ; Simulate first instruccion in ESXDOS compatible ROMs (DI) and jump to 1 to avoid ESXDOS to page in once more at 0000 trap
                     JP 1
+                    
 
 
 ; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -1199,10 +1319,10 @@ RomSetDevControl    OR 0
 ;      OUT: 7-LOCK	6-MODE1	5-DISCONT	4-MODE0	3-I2KB	2-DISNMI	1-DIVEN	0-BOOTM
 
 
-PrepareMasterConf   LD HL, AUX    ; We will be storing here her
+PrepareMasterConf   LD HL, AUX    ; We will be storing here 
                     XOR A
                     LD (HL),A 
-                    LD E, (IY+2) ; Flags 1
+                    LD E, (IY + 2) ; Flags 1
                     LD A, E
                     AND 00010000b   ; Contention, bit 4 IN
                     JR NZ, CheckDivMMC  ; To keep MemoryContention active, bit 5 must be 0 as it is DISCONT (Disable Contention)
@@ -1704,7 +1824,7 @@ GPressed        LD A, KEY_G
 ;   THE FONT
 ;*****************************************************************************************************************************************************
 
-Font                INCBIN     binaries\font.fnt
+Font                INCBIN     binaries/font.fnt
 
 ;*****************************************************************************************************************************************************
 ;   VARIABLES
@@ -1770,12 +1890,11 @@ FreqTable           DB 5
 
 
 ; -- Variables for internal use
+DEBUGMODE               DB 0
 V_PRINT_POS             DB 0
 AUX                     DB 0
 LAST_VALID_ENTRY        DB 0
 KEY_HAS_BEEN_PRESSED    DB 0
-ESXDOSDrive             DB $FF
-DEBUGMODE               DB 0
 
 ;*****************************************************************************************************************************************************
 ;   FILLER

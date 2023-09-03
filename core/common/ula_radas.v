@@ -89,9 +89,7 @@ module ula_radas (
     output wire [8:0] vcnt,
     output wire hsync,
     output wire vsync,
-    output wire csync,
-    output wire hblank,
-	 output wire vblank
+    output wire csync
     );
 
 `include "config.vh"
@@ -173,9 +171,7 @@ module ula_radas (
     .hsync(hsync),
     .vsync(vsync),
     .csync(csync),
-    .int_n(int_n),
-	 .hblank(hblank),
-	 .vblank(vblank)
+    .int_n(int_n)
     );
 
 ///////////////////////////////////////////////

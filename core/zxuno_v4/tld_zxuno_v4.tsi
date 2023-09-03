@@ -3,10 +3,9 @@ Release 14.7 Trace  (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
  
 C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -filter
-G:/EXP27MOSQUERA/Spectrum_EXP27-200820_SRAM/zxuno_v4/iseconfig/filter.filter
--intstyle ise -v 3 -tsi tld_zxuno_v4.tsi -timegroups -a -s 2 -n 3 -fastpaths
--xml tld_zxuno_v4.twx tld_zxuno_v4.ncd -o tld_zxuno_v4.twr tld_zxuno_v4.pcf
--ucf pines_zxuno_v4.ucf
+G:/zxuno_v4/iseconfig/filter.filter -intstyle ise -v 3 -tsi tld_zxuno_v4.tsi
+-timegroups -a -s 2 -n 3 -fastpaths -xml tld_zxuno_v4.twx tld_zxuno_v4.ncd -o
+tld_zxuno_v4.twr tld_zxuno_v4.pcf -ucf pines_zxuno_v4.ucf
 
 
 Design file:              tld_zxuno_v4.ncd
@@ -77,6 +76,6 @@ Clock Domain Overlap Report
 No overlap to report.
 
 
-Timespec interaction analysis completed Sun Jan 31 14:37:18 2021
+Timespec interaction analysis completed Tue Feb 23 22:33:56 2021
 --------------------------------------------------------------------------------
 

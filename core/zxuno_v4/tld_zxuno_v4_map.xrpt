@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Sun Jan 31 14:36:13 2021">
+  <application stringID="Map" timeStamp="Tue Feb 23 22:32:44 2021">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -45,7 +45,7 @@
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="AMD Ryzen 5 2600 Six-Core Processor            "/>
-          <item stringID="speed" value="3408 MHz"/>
+          <item stringID="speed" value="3417 MHz"/>
         </row>
       </table>
     </section>
@@ -69,16 +69,16 @@
       <item DEFAULT="None" label="-p" stringID="MAP_PARTNAME" value="xc6slx9-tqg144-2"/>
     </section>
     <task stringID="MAP_PACK_REPORT">
-      <item AVAILABLE="11440" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="2890">
-        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="2885"/>
+      <item AVAILABLE="11440" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="3071">
+        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="3064"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="0"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_LATCHTHRU" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_SLICE_LATCHLOGIC" value="5"/>
+        <item dataType="int" stringID="MAP_NUM_SLICE_LATCHLOGIC" value="7"/>
       </item>
-      <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTs" stringID="MAP_SLICE_LUTS" value="5107">
-        <item dataType="int" label="Number using O5 output only" stringID="MAP_NUM_LOGIC_O5ONLY" value="324"/>
-        <item dataType="int" label="Number using O6 output only" stringID="MAP_NUM_LOGIC_O6ONLY" value="3729"/>
-        <item dataType="int" label="Number using O5 and O6" stringID="MAP_NUM_LOGIC_O5ANDO6" value="981"/>
+      <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTs" stringID="MAP_SLICE_LUTS" value="5154">
+        <item dataType="int" label="Number using O5 output only" stringID="MAP_NUM_LOGIC_O5ONLY" value="325"/>
+        <item dataType="int" label="Number using O6 output only" stringID="MAP_NUM_LOGIC_O6ONLY" value="3599"/>
+        <item dataType="int" label="Number using O5 and O6" stringID="MAP_NUM_LOGIC_O5ANDO6" value="1155"/>
         <item dataType="int" stringID="MAP_NUM_ROM_O5ONLY" value="0"/>
         <item dataType="int" stringID="MAP_NUM_ROM_O6ONLY" value="0"/>
         <item dataType="int" stringID="MAP_NUM_ROM_O5ANDO6" value="0"/>
@@ -91,16 +91,16 @@
         <item dataType="int" stringID="MAP_NUM_SRL_O5ONLY" value="0"/>
         <item dataType="int" stringID="MAP_NUM_SRL_O6ONLY" value="2"/>
         <item dataType="int" stringID="MAP_NUM_SRL_O5ANDO6" value="12"/>
-        <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO6" value="27"/>
+        <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO6" value="29"/>
         <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO5" value="0"/>
         <item dataType="int" stringID="MAP_NUM_LUT_RT_O5ANDO6" value="0"/>
         <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_FLOP" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_CARRY4" value="27"/>
+        <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_CARRY4" value="29"/>
         <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
       </item>
       <item AVAILABLE="102" dataType="int" stringID="MAP_AGG_BONDED_IO" value="74"/>
       <item AVAILABLE="98" dataType="int" stringID="MAP_AGG_UNBONDED_IO" value="0"/>
-      <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="26"/>
+      <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="29"/>
       <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IOB_LATCH" value="0"/>
       <item AVAILABLE="49" dataType="int" stringID="MAP_NUM_IOBM" value="0"/>
       <item AVAILABLE="51" dataType="int" stringID="MAP_NUM_BONDED_IOBM" value="0"/>
@@ -120,22 +120,22 @@
       <section stringID="MAP_DESIGN_SUMMARY">
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="2"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="321188"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="31 mins 8 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="31 mins 2 secs "/>
+        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="1"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="322212"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="32 mins 33 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="32 mins 24 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="11440" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="2890">
-          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="2885"/>
+        <item AVAILABLE="11440" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="3071">
+          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="3064"/>
           <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="0"/>
           <item dataType="int" stringID="MAP_NUM_SLICE_LATCHTHRU" value="0"/>
-          <item dataType="int" stringID="MAP_NUM_SLICE_LATCHLOGIC" value="5"/>
+          <item dataType="int" stringID="MAP_NUM_SLICE_LATCHLOGIC" value="7"/>
         </item>
-        <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTs" stringID="MAP_SLICE_LUTS" value="5108">
-          <item dataType="int" label="Number using O5 output only" stringID="MAP_NUM_LOGIC_O5ONLY" value="325"/>
-          <item dataType="int" label="Number using O6 output only" stringID="MAP_NUM_LOGIC_O6ONLY" value="3727"/>
-          <item dataType="int" label="Number using O5 and O6" stringID="MAP_NUM_LOGIC_O5ANDO6" value="982"/>
+        <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTs" stringID="MAP_SLICE_LUTS" value="5157">
+          <item dataType="int" label="Number using O5 output only" stringID="MAP_NUM_LOGIC_O5ONLY" value="328"/>
+          <item dataType="int" label="Number using O6 output only" stringID="MAP_NUM_LOGIC_O6ONLY" value="3595"/>
+          <item dataType="int" label="Number using O5 and O6" stringID="MAP_NUM_LOGIC_O5ANDO6" value="1156"/>
           <item dataType="int" stringID="MAP_NUM_ROM_O5ONLY" value="0"/>
           <item dataType="int" stringID="MAP_NUM_ROM_O6ONLY" value="0"/>
           <item dataType="int" stringID="MAP_NUM_ROM_O5ANDO6" value="0"/>
@@ -148,28 +148,28 @@
           <item dataType="int" stringID="MAP_NUM_SRL_O5ONLY" value="0"/>
           <item dataType="int" stringID="MAP_NUM_SRL_O6ONLY" value="2"/>
           <item dataType="int" stringID="MAP_NUM_SRL_O5ANDO6" value="12"/>
-          <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO6" value="27"/>
-          <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO5" value="1"/>
+          <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO6" value="29"/>
+          <item dataType="int" stringID="MAP_NUM_LUT_RT_EXO5" value="3"/>
           <item dataType="int" stringID="MAP_NUM_LUT_RT_O5ANDO6" value="0"/>
-          <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_FLOP" value="1"/>
-          <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_CARRY4" value="27"/>
+          <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_FLOP" value="3"/>
+          <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_CARRY4" value="29"/>
           <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="1430" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1426">
-          <item AVAILABLE="355" dataType="int" stringID="MAP_NUM_SLICEL" value="403"/>
+        <item AVAILABLE="1430" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1418">
+          <item AVAILABLE="355" dataType="int" stringID="MAP_NUM_SLICEL" value="420"/>
           <item AVAILABLE="360" dataType="int" stringID="MAP_NUM_SLICEM" value="12"/>
-          <item AVAILABLE="715" dataType="int" stringID="MAP_NUM_SLICEX" value="1011"/>
+          <item AVAILABLE="715" dataType="int" stringID="MAP_NUM_SLICEX" value="986"/>
         </item>
-        <item dataType="int" label="Number of LUT Flip Flop pairs used" stringID="MAP_OCCUPIED_LUT_AND_FF" value="5247">
-          <item dataType="int" stringID="MAP_OCCUPIED_LUT_ONLY" value="2659"/>
-          <item dataType="int" label="Number with an unused LUT" stringID="MAP_OCCUPIED_FF_ONLY" value="139"/>
-          <item dataType="int" label="Number of fully used LUT-FF pairs" stringID="MAP_OCCUPIED_FF_AND_LUT" value="2449"/>
+        <item dataType="int" label="Number of LUT Flip Flop pairs used" stringID="MAP_OCCUPIED_LUT_AND_FF" value="5315">
+          <item dataType="int" stringID="MAP_OCCUPIED_LUT_ONLY" value="2559"/>
+          <item dataType="int" label="Number with an unused LUT" stringID="MAP_OCCUPIED_FF_ONLY" value="158"/>
+          <item dataType="int" label="Number of fully used LUT-FF pairs" stringID="MAP_OCCUPIED_FF_AND_LUT" value="2598"/>
         </item>
       </section>
       <section stringID="MAP_IOB_REPORTING">
         <item AVAILABLE="102" dataType="int" stringID="MAP_AGG_BONDED_IO" value="74"/>
         <item AVAILABLE="98" dataType="int" stringID="MAP_AGG_UNBONDED_IO" value="0"/>
-        <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="26"/>
+        <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="29"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IOB_LATCH" value="0"/>
         <item AVAILABLE="49" dataType="int" stringID="MAP_NUM_IOBM" value="0"/>
         <item AVAILABLE="51" dataType="int" stringID="MAP_NUM_BONDED_IOBM" value="0"/>
@@ -192,7 +192,7 @@
         <item AVAILABLE="4" dataType="int" stringID="MAP_NUM_BUFPLL_MCB" value="0"/>
         <item AVAILABLE="16" dataType="int" stringID="MAP_NUM_DSP48A1" value="2"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_GTPA1_DUAL" value="0"/>
-        <item AVAILABLE="1" dataType="int" stringID="MAP_NUM_ICAP" value="0"/>
+        <item AVAILABLE="1" dataType="int" stringID="MAP_NUM_ICAP" value="1"/>
         <item AVAILABLE="2" dataType="int" stringID="MAP_NUM_MCB" value="0"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_PCIE_A1" value="0"/>
         <item AVAILABLE="2" dataType="int" stringID="MAP_NUM_PCILOGICSE" value="0"/>
@@ -796,12 +796,14 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS33"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
+            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF"/>
           </row>
           <row stringID="row" value="71">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="uart_rx"/>
             <item stringID="Type" value="IOB"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS33"/>
+            <item label="Reg&#xA;(s)" stringID="REGS" value="IFF"/>
             <item stringID="Resistor" value="PULLUP"/>
           </row>
           <row stringID="row" value="72">
@@ -811,6 +813,7 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS33"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
+            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF"/>
           </row>
           <row stringID="row" value="73">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="vsync"/>
@@ -832,7 +835,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="70"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="72"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>
@@ -866,7 +869,7 @@
         <item stringID="MAP_DIVCLK_DIVIDE" value="1"/>
       </section>
       <section stringID="MAP_CONTROL_SET_INFORMATION">
-        <item dataType="int" label="Number of unique control sets" stringID="MAP_NUM_CONTROL_SETS" value="214"/>
+        <item dataType="int" label="Number of unique control sets" stringID="MAP_NUM_CONTROL_SETS" value="229"/>
         <tree stringID="MAP_CONTROL_SET_HIERARCHY">
           <property stringID="MAP_CLOCK_SIGNAL"/>
           <property stringID="MAP_RESET_SIGNAL"/>
@@ -882,430 +885,446 @@
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="32"/>
             </node>
           </node>
-          <node stringID="MAP_CLOCK_SIGNAL" value="clk50mhz_IBUF_BUFG">
-            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="49"/>
+          <node stringID="MAP_CLOCK_SIGNAL" value="clk50mhz_IBUF">
+            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="50"/>
             <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="78"/>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut11398_4225">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut11652_4517">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut11461_4244">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut11715_4536">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut11520_4279">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut11774_4575">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut12957_4369">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut13211_4665">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
           </node>
+          <node stringID="MAP_CLOCK_SIGNAL" value="la_maquina/el_multiboot/clk_icap">
+            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="12"/>
+            <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="46"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][22139_9730">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
+            </node>
+          </node>
           <node stringID="MAP_CLOCK_SIGNAL" value="sysclk">
-            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="921"/>
-            <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2690"/>
-            <node stringID="MAP_RESET_SIGNAL" value="][13031_2021">
+            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="956"/>
+            <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2821"/>
+            <node stringID="MAP_RESET_SIGNAL" value="][13399_2340">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5448_2024">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5692_2343">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][13056_2045">
+            <node stringID="MAP_RESET_SIGNAL" value="][13424_2362">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5581_2048">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5826_2365">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][15866_4199">
+            <node stringID="MAP_RESET_SIGNAL" value="][16249_4490">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][17058_5384">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="115"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="221"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut15737_5391">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+            <node stringID="MAP_RESET_SIGNAL" value="][17441_5674">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="117"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="216"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut16197_5682">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut15829_5406">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut16327_5696">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut16117_5479">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="41"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="77"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut16605_5729">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="45"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="71"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut16118_5480">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut16606_5730">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut16799_5640">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut17282_5873">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut17929_5905">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut18169_6122">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut18312_6024">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut18659_6244">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut18630_6080">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="7"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut19185_6346">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19167_6261">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut19719_6528">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19238_6308">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut19808_6574">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19266_6325">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut19836_6591">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19285_6336">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut19855_6602">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19526_6377">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut20099_6646">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut19599_6414">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut20170_6680">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut31791_10664">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="24"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="39"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut33239_11404">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="19"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="40"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][17063_5393">
+            <node stringID="MAP_RESET_SIGNAL" value="][17446_5684">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="1"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut15737_5391">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut16197_5682">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="1"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][21227_9102">
+            <node stringID="MAP_RESET_SIGNAL" value="][21617_9432">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26277_9104">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut26738_9434">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][21656_9342">
+            <node stringID="MAP_RESET_SIGNAL" value="][21986_9629">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut27329_9631">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
+              </node>
+            </node>
+            <node stringID="MAP_RESET_SIGNAL" value="][22335_9884">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="15"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="28"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut28779_9763">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut29675_10263">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="11"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="21"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][23048_10550">
+            <node stringID="MAP_RESET_SIGNAL" value="][23941_11276">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][25525_1">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="150"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="477"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="][16477_4651">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
+            <node stringID="MAP_RESET_SIGNAL" value="][26586_1">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="143"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="480"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="][16860_4961">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="19"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut13231_4443">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut10167_4019">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut13606_4508">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut10199_4032">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut14233_4727">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut14314_4760">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut14395_4793">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut14476_4826">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut14557_4859">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut21298_7212">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut10215_4039">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut21365_7240">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut13864_4808">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut21381_7247">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14075_4904">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14490_5052">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14571_5085">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14652_5118">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14734_5151">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut14816_5184">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut21767_7470">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut21834_7498">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut21850_7505">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut22184_7570">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut22652_7845">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26476_9200">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut26931_9521">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26492_9207">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut26947_9528">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26592_9228">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut27047_9548">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26774_9265">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut27229_9586">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26872_9308">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut27765_9850">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut29842_10094">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut30737_10625">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="21"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut29948_10137">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut30843_10668">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut3336_21">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut3601_27">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="14"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut3521_114">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut3772_112">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5345_2019">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5589_2338">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5478_2043">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5723_2360">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5623_2074">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5868_2386">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5696_2123">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut5941_2423">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5769_2172">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6014_2460">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5842_2220">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6087_2498">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut5939_2270">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6185_2563">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6012_2319">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6258_2600">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6085_2368">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6331_2637">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6158_2416">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6404_2675">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="7"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6385_2542">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6633_2814">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6426_2559">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6674_2831">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6467_2576">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6715_2848">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6508_2593">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6756_2865">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6549_2610">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6797_2882">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6575_2621">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6823_2893">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6581_2624">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6587_2627">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6673_2662">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6709_2677">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6740_2690">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6781_2707">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6822_2724">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6828_2727">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6834_2730">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut6860_2741">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut9902_3741">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut9935_3756">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6829_2896">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut9951_3763">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6835_2899">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6922_2935">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut6963_2952">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7004_2969">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7045_2986">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7086_3003">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7112_3014">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7118_3017">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut7144_3028">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
             </node>
             <node stringID="MAP_RESET_SIGNAL" value="la_maquina/el_teclado/funciones_especiales/master_reset">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="16"/>
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="17"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="36"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="][15242_3701">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26336_9135">
+              <node stringID="MAP_ENABLE_SIGNAL" value="][15625_3978">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut26367_9142">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut30847_10486">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
-              </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut9839_3725">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut10102_4003">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
               </node>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut9875_3733">
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut10138_4011">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
               </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut26797_9465">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut26828_9472">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+              </node>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut32273_11202">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
+              </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut21765_7408">
+            <node stringID="MAP_RESET_SIGNAL" value="lut22234_7682">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="][18605_7066">
+              <node stringID="MAP_ENABLE_SIGNAL" value="][19000_7329">
                 <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut21811_7428">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="9"/>
+            <node stringID="MAP_RESET_SIGNAL" value="lut22280_7702">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="23"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut21765_7408">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="lut22234_7682">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut23227_7956">
+            <node stringID="MAP_RESET_SIGNAL" value="lut23679_8195">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="24"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut23238_7967">
+            <node stringID="MAP_RESET_SIGNAL" value="lut23689_8204">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut23674_8041">
+            <node stringID="MAP_RESET_SIGNAL" value="lut24125_8277">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="24"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut23685_8052">
+            <node stringID="MAP_RESET_SIGNAL" value="lut24135_8286">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut30734_10448">
+            <node stringID="MAP_RESET_SIGNAL" value="lut32159_11161">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="10"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut30863_10493">
+            <node stringID="MAP_RESET_SIGNAL" value="lut32289_11209">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut30870_10497">
+            <node stringID="MAP_RESET_SIGNAL" value="lut32296_11213">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut3544_128">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+            <node stringID="MAP_RESET_SIGNAL" value="lut3796_127">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="][25668_126">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="][26729_123">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
               </node>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="lut3552_135">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
+            <node stringID="MAP_RESET_SIGNAL" value="lut3803_133">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="9"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="][25671_130">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
+              <node stringID="MAP_ENABLE_SIGNAL" value="][26732_129">
+                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
                 <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="9"/>
               </node>
             </node>
@@ -1313,465 +1332,505 @@
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="26"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][13651_2504">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][14019_2776">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][14425_2889">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="9"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][14808_3168">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="41"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][14657_3117">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][15040_3396">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="10"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="41"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][14889_3344">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][14953_3410">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][15272_3623">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][15065_3522">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][15336_3689">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][15448_3801">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][15129_3588">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][15512_3867">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][15866_4199">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][16249_4490">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][16324_4515">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][16707_4813">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][16332_4528">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][16715_4825">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][18513_6991">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][18605_7066">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][19000_7329">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="19"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][21335_9157">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][21725_9486">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][21737_9500">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][21351_9178">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][21996_9703">
+            <node stringID="MAP_ENABLE_SIGNAL" value="][22587_10117">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][25671_130">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="14"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][22675_10197">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="][26355_577">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="12"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][22707_10239">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][22980_10494">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="15"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][23239_10712">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][23557_10945">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][24303_11528">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][24319_11541">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][26732_129">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="7"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="][27437_629">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="10"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="29"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="la_maquina/el_raton/zxuno_addr[7]_zxuno_regwr_AND_1116_o">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
             <node stringID="MAP_ENABLE_SIGNAL" value="la_maquina/el_teclado/lectura_de_teclado/rkb_interrupt">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut10042_3820">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut10067_3834">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut10273_4069">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut10661_1126">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut10685_4015">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut10302_4092">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut13232_4444">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut10951_4295">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut13488_4742">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut13482_4477">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut13738_4775">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut13627_4525">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut13883_4822">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut14902_5219">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut16050_5653">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut16605_5729">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="51"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="83"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20280_6726">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20411_6768">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20452_6792">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20494_6817">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20535_6841">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20577_6866">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20618_6890">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20739_6919">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20888_6958">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20929_6982">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20970_7006">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21013_7032">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21054_7056">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21095_7080">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21137_7105">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21178_7129">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21223_7156">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21255_7174">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21297_7201">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21333_7222">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21402_7252">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut14643_4894">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut15585_5361">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21453_7282">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut15735_5389">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut16117_5479">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="49"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="86"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut19714_6455">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut19896_6495">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut19937_6520">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut19978_6545">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20019_6570">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20060_6595">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20101_6620">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20220_6648">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20422_6687">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20463_6712">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20504_6737">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20545_6762">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20586_6787">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20627_6812">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20668_6837">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20709_6862">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20754_6891">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20787_6914">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21501_7312">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20829_6939">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20865_6960">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut20984_7024">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21032_7048">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21339_7229">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21808_7487">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21392_7252">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21861_7510">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21433_7269">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21902_7527">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21474_7286">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21943_7544">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21515_7303">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut21984_7561">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21556_7320">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22025_7578">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21597_7337">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22066_7595">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21643_7358">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22112_7617">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21684_7375">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22153_7642">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut21811_7428">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="9"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22280_7702">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="23"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22066_7510">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22536_7787">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="9"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22243_7598">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22711_7873">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22392_7636">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22854_7909">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="12"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22500_7670">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut22961_7943">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22581_7703">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut23042_7976">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut22663_7725">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut23124_7997">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="22"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="40"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut23582_7998">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut24033_8234">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut23624_8017">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut24029_8083">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut24071_8102">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut24075_8253">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut24184_8171">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="71"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut24479_8316">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut24521_8335">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut24636_8404">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="80"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="248"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26212_9071">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut26673_9404">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26234_9084">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut26695_9415">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26405_9150">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut26866_9480">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26790_9274">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut27245_9595">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26831_9291">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut27286_9612">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut26915_9328">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut27342_9638">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut27391_9663">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="24"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut27808_9870">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="4"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut27374_9348">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut28266_9891">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut27796_9440">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut28689_9984">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut27806_9445">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut28699_9988">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28015_9459">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut28909_10000">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="7"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28070_9484">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut28964_10019">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28143_9517">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut29037_10044">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28279_9578">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut29173_10090">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28352_9611">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut29321_10150">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28426_9645">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut29517_10250">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28604_9740">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut28622_9751">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut29234_9871">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="10"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut30131_10389">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="5"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="34"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut29539_9976">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="15"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut29730_10061">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut30626_10594">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30011_10181">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30102_10234">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut30997_10765">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30162_10264">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31057_10795">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30203_10281">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31098_10812">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30259_10304">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31154_10835">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30316_10328">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31211_10859">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut30618_10421">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31336_10923">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31496_10991">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="3"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31632_11006">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31773_11059">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut31817_11079">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="9"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut32044_11135">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="10"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut31791_10664">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="11"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut33239_11404">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="13"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="20"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut3426_76">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut33265_11416">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="6"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut35056_12109">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="9"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="26"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut3678_75">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="16"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut3643_209">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut3937_218">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut3652_214">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut3958_237">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="28"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut3654_215">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="6"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut3959_238">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="8"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="28"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut4323_507">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut4609_537">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="8"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut4362_518">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="7"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut4651_548">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="11"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut4523_558">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut4819_613">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="5"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut5611_2067">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut5856_2380">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut7986_3062">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="4"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut8250_3341">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
             </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut8858_3290">
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut8877_3519">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="3"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="17"/>
             </node>
           </node>
           <node stringID="MAP_CLOCK_SIGNAL" value="~sysclk">
-            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="45"/>
-            <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="159"/>
-            <node stringID="MAP_RESET_SIGNAL" value="][17058_5384">
+            <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="50"/>
+            <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="161"/>
+            <node stringID="MAP_RESET_SIGNAL" value="][17441_5674">
               <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
-            <node stringID="MAP_RESET_SIGNAL" value="][17063_5393">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
-              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="1"/>
-              <node stringID="MAP_ENABLE_SIGNAL" value="lut15737_5391">
-                <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="1"/>
-                <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="1"/>
-              </node>
-            </node>
-            <node stringID="MAP_ENABLE_SIGNAL" value="lut15737_5391">
-              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="41"/>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut16197_5682">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="44"/>
               <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="155"/>
+            </node>
+            <node stringID="MAP_ENABLE_SIGNAL" value="lut20097_6644">
+              <item dataType="int" label="Slice&#xA;Load Count" stringID="MAP_SLICE_LOAD_COUNT" value="2"/>
+              <item dataType="int" label="Bel&#xA;Load Count" stringID="MAP_BEL_LOAD_COUNT" value="2"/>
             </node>
           </node>
         </tree>
@@ -1792,26 +1851,26 @@
           <property label="PLL_ADV" stringID="MAP_PLL_ADV"/>
           <node label="Module Name" stringID="MAP_MODULE" value="tld_zxuno_v4">
             <item label="Partition" stringID="MAP_PARTITION" value=""/>
-            <item ACCUMULATED="2579" dataType="int" label="Slices" stringID="MAP_SLICES" value="1153"/>
-            <item ACCUMULATED="2885" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
-            <item ACCUMULATED="5108" dataType="int" label="LUTs" stringID="MAP_LUTS" value="3600"/>
+            <item ACCUMULATED="2612" dataType="int" label="Slices" stringID="MAP_SLICES" value="1134"/>
+            <item ACCUMULATED="3064" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+            <item ACCUMULATED="5157" dataType="int" label="LUTs" stringID="MAP_LUTS" value="3599"/>
             <item ACCUMULATED="46" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
             <item ACCUMULATED="31" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
             <item ACCUMULATED="2" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
-            <item ACCUMULATED="3" dataType="int" label="BUFG" stringID="MAP_BUFG" value="1"/>
+            <item ACCUMULATED="3" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
             <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
             <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
             <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
             <item ACCUMULATED="1" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
             <node label="Module Name" stringID="MAP_MODULE" value="la_maquina">
               <item label="Partition" stringID="MAP_PARTITION" value=""/>
-              <item ACCUMULATED="1313" dataType="int" label="Slices" stringID="MAP_SLICES" value="47"/>
-              <item ACCUMULATED="2744" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
-              <item ACCUMULATED="1323" dataType="int" label="LUTs" stringID="MAP_LUTS" value="104"/>
+              <item ACCUMULATED="1363" dataType="int" label="Slices" stringID="MAP_SLICES" value="52"/>
+              <item ACCUMULATED="2923" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+              <item ACCUMULATED="1365" dataType="int" label="LUTs" stringID="MAP_LUTS" value="119"/>
               <item ACCUMULATED="46" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
               <item ACCUMULATED="30" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
               <item ACCUMULATED="2" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
-              <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+              <item ACCUMULATED="1" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
               <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
               <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
               <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
@@ -1832,9 +1891,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="audio_mix">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="43" dataType="int" label="Slices" stringID="MAP_SLICES" value="37"/>
+                <item ACCUMULATED="40" dataType="int" label="Slices" stringID="MAP_SLICES" value="34"/>
                 <item ACCUMULATED="106" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="84"/>
-                <item ACCUMULATED="100" dataType="int" label="LUTs" stringID="MAP_LUTS" value="80"/>
+                <item ACCUMULATED="96" dataType="int" label="LUTs" stringID="MAP_LUTS" value="76"/>
                 <item ACCUMULATED="10" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="10"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -1874,9 +1933,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="bootrom_rom_y_ram">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="45" dataType="int" label="Slices" stringID="MAP_SLICES" value="21"/>
+                <item ACCUMULATED="37" dataType="int" label="Slices" stringID="MAP_SLICES" value="23"/>
                 <item ACCUMULATED="45" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="42"/>
-                <item ACCUMULATED="34" dataType="int" label="LUTs" stringID="MAP_LUTS" value="10"/>
+                <item ACCUMULATED="19" dataType="int" label="LUTs" stringID="MAP_LUTS" value="5"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="16" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -1887,9 +1946,9 @@
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="toda_la_ram">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="24" dataType="int" label="Slices" stringID="MAP_SLICES" value="24"/>
+                  <item ACCUMULATED="14" dataType="int" label="Slices" stringID="MAP_SLICES" value="14"/>
                   <item ACCUMULATED="3" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="3"/>
-                  <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="24"/>
+                  <item ACCUMULATED="14" dataType="int" label="LUTs" stringID="MAP_LUTS" value="14"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="16" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="16"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -1916,8 +1975,8 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="cacharros_con_spi">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="21" dataType="int" label="Slices" stringID="MAP_SLICES" value="2"/>
-                <item ACCUMULATED="40" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="2"/>
+                <item ACCUMULATED="22" dataType="int" label="Slices" stringID="MAP_SLICES" value="2"/>
+                <item ACCUMULATED="42" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="2"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
@@ -1929,8 +1988,8 @@
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="mi_spi">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="19" dataType="int" label="Slices" stringID="MAP_SLICES" value="19"/>
-                  <item ACCUMULATED="38" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="38"/>
+                  <item ACCUMULATED="20" dataType="int" label="Slices" stringID="MAP_SLICES" value="20"/>
+                  <item ACCUMULATED="40" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="40"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
@@ -1958,9 +2017,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="cassette_digital">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="120" dataType="int" label="Slices" stringID="MAP_SLICES" value="120"/>
+                <item ACCUMULATED="118" dataType="int" label="Slices" stringID="MAP_SLICES" value="118"/>
                 <item ACCUMULATED="248" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="248"/>
-                <item ACCUMULATED="175" dataType="int" label="LUTs" stringID="MAP_LUTS" value="175"/>
+                <item ACCUMULATED="159" dataType="int" label="LUTs" stringID="MAP_LUTS" value="159"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="2" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="2"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -1986,8 +2045,8 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="control_scandoubler">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="11" dataType="int" label="Slices" stringID="MAP_SLICES" value="11"/>
-                <item ACCUMULATED="12" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="12"/>
+                <item ACCUMULATED="10" dataType="int" label="Slices" stringID="MAP_SLICES" value="10"/>
+                <item ACCUMULATED="16" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="16"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
@@ -2002,7 +2061,7 @@
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
                 <item ACCUMULATED="7" dataType="int" label="Slices" stringID="MAP_SLICES" value="7"/>
                 <item ACCUMULATED="16" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="16"/>
-                <item ACCUMULATED="4" dataType="int" label="LUTs" stringID="MAP_LUTS" value="4"/>
+                <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2014,9 +2073,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="dos_ays">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="168" dataType="int" label="Slices" stringID="MAP_SLICES" value="1"/>
-                <item ACCUMULATED="470" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="1"/>
-                <item ACCUMULATED="148" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                <item ACCUMULATED="162" dataType="int" label="Slices" stringID="MAP_SLICES" value="2"/>
+                <item ACCUMULATED="473" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="1"/>
+                <item ACCUMULATED="153" dataType="int" label="LUTs" stringID="MAP_LUTS" value="1"/>
                 <item ACCUMULATED="16" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="1" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2027,22 +2086,8 @@
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="ay1">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="84" dataType="int" label="Slices" stringID="MAP_SLICES" value="84"/>
+                  <item ACCUMULATED="80" dataType="int" label="Slices" stringID="MAP_SLICES" value="80"/>
                   <item ACCUMULATED="236" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="236"/>
-                  <item ACCUMULATED="70" dataType="int" label="LUTs" stringID="MAP_LUTS" value="70"/>
-                  <item ACCUMULATED="8" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="8"/>
-                  <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
-                  <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
-                </node>
-                <node label="Module Name" stringID="MAP_MODULE" value="ay2">
-                  <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="83" dataType="int" label="Slices" stringID="MAP_SLICES" value="83"/>
-                  <item ACCUMULATED="233" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="233"/>
                   <item ACCUMULATED="78" dataType="int" label="LUTs" stringID="MAP_LUTS" value="78"/>
                   <item ACCUMULATED="8" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="8"/>
                   <item ACCUMULATED="1" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="1"/>
@@ -2053,12 +2098,68 @@
                   <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 </node>
+                <node label="Module Name" stringID="MAP_MODULE" value="ay2">
+                  <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                  <item ACCUMULATED="80" dataType="int" label="Slices" stringID="MAP_SLICES" value="80"/>
+                  <item ACCUMULATED="236" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="236"/>
+                  <item ACCUMULATED="74" dataType="int" label="LUTs" stringID="MAP_LUTS" value="74"/>
+                  <item ACCUMULATED="8" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="8"/>
+                  <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                </node>
+              </node>
+              <node label="Module Name" stringID="MAP_MODULE" value="el_multiboot">
+                <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                <item ACCUMULATED="23" dataType="int" label="Slices" stringID="MAP_SLICES" value="11"/>
+                <item ACCUMULATED="84" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="38"/>
+                <item ACCUMULATED="5" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                <item ACCUMULATED="1" dataType="int" label="BUFG" stringID="MAP_BUFG" value="1"/>
+                <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                <node label="Module Name" stringID="MAP_MODULE" value="el_icap">
+                  <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                  <item ACCUMULATED="0" dataType="int" label="Slices" stringID="MAP_SLICES" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                </node>
+                <node label="Module Name" stringID="MAP_MODULE" value="secuenciador_multiboot">
+                  <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                  <item ACCUMULATED="12" dataType="int" label="Slices" stringID="MAP_SLICES" value="12"/>
+                  <item ACCUMULATED="46" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="46"/>
+                  <item ACCUMULATED="5" dataType="int" label="LUTs" stringID="MAP_LUTS" value="5"/>
+                  <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                </node>
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="el_raton">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="55" dataType="int" label="Slices" stringID="MAP_SLICES" value="3"/>
-                <item ACCUMULATED="149" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="4"/>
-                <item ACCUMULATED="62" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                <item ACCUMULATED="50" dataType="int" label="Slices" stringID="MAP_SLICES" value="4"/>
+                <item ACCUMULATED="152" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="4"/>
+                <item ACCUMULATED="81" dataType="int" label="LUTs" stringID="MAP_LUTS" value="1"/>
                 <item ACCUMULATED="1" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2069,9 +2170,9 @@
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="escritura_a_raton">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="29" dataType="int" label="Slices" stringID="MAP_SLICES" value="29"/>
-                  <item ACCUMULATED="64" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="64"/>
-                  <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="24"/>
+                  <item ACCUMULATED="24" dataType="int" label="Slices" stringID="MAP_SLICES" value="24"/>
+                  <item ACCUMULATED="67" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="67"/>
+                  <item ACCUMULATED="42" dataType="int" label="LUTs" stringID="MAP_LUTS" value="42"/>
                   <item ACCUMULATED="1" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="1"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2083,7 +2184,7 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="lectura_de_raton">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="13" dataType="int" label="Slices" stringID="MAP_SLICES" value="13"/>
+                  <item ACCUMULATED="12" dataType="int" label="Slices" stringID="MAP_SLICES" value="12"/>
                   <item ACCUMULATED="44" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="44"/>
                   <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="24"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2112,9 +2213,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="el_teclado">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="189" dataType="int" label="Slices" stringID="MAP_SLICES" value="3"/>
-                <item ACCUMULATED="478" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="6"/>
-                <item ACCUMULATED="139" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                <item ACCUMULATED="198" dataType="int" label="Slices" stringID="MAP_SLICES" value="3"/>
+                <item ACCUMULATED="481" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="6"/>
+                <item ACCUMULATED="140" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="1" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="2" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2126,8 +2227,8 @@
                 <node label="Module Name" stringID="MAP_MODULE" value="escritura_a_teclado">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
                   <item ACCUMULATED="27" dataType="int" label="Slices" stringID="MAP_SLICES" value="27"/>
-                  <item ACCUMULATED="64" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="64"/>
-                  <item ACCUMULATED="25" dataType="int" label="LUTs" stringID="MAP_LUTS" value="25"/>
+                  <item ACCUMULATED="67" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="67"/>
+                  <item ACCUMULATED="17" dataType="int" label="LUTs" stringID="MAP_LUTS" value="17"/>
                   <item ACCUMULATED="1" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="1"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2139,7 +2240,7 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="funciones_especiales">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="14" dataType="int" label="Slices" stringID="MAP_SLICES" value="14"/>
+                  <item ACCUMULATED="15" dataType="int" label="Slices" stringID="MAP_SLICES" value="15"/>
                   <item ACCUMULATED="19" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="19"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2153,9 +2254,9 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="lectura_de_teclado">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="12" dataType="int" label="Slices" stringID="MAP_SLICES" value="12"/>
+                  <item ACCUMULATED="13" dataType="int" label="Slices" stringID="MAP_SLICES" value="13"/>
                   <item ACCUMULATED="48" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="48"/>
-                  <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="24"/>
+                  <item ACCUMULATED="27" dataType="int" label="LUTs" stringID="MAP_LUTS" value="27"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2167,7 +2268,7 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="teclado_limpio">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="82" dataType="int" label="Slices" stringID="MAP_SLICES" value="82"/>
+                  <item ACCUMULATED="91" dataType="int" label="Slices" stringID="MAP_SLICES" value="91"/>
                   <item ACCUMULATED="249" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="249"/>
                   <item ACCUMULATED="43" dataType="int" label="LUTs" stringID="MAP_LUTS" value="43"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2181,9 +2282,9 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="traductor">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="51" dataType="int" label="Slices" stringID="MAP_SLICES" value="51"/>
+                  <item ACCUMULATED="49" dataType="int" label="Slices" stringID="MAP_SLICES" value="49"/>
                   <item ACCUMULATED="92" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="92"/>
-                  <item ACCUMULATED="47" dataType="int" label="LUTs" stringID="MAP_LUTS" value="47"/>
+                  <item ACCUMULATED="53" dataType="int" label="LUTs" stringID="MAP_LUTS" value="53"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="2" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="2"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2196,9 +2297,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="el_z80_con_su_dma">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="464" dataType="int" label="Slices" stringID="MAP_SLICES" value="9"/>
-                <item ACCUMULATED="814" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
-                <item ACCUMULATED="469" dataType="int" label="LUTs" stringID="MAP_LUTS" value="9"/>
+                <item ACCUMULATED="468" dataType="int" label="Slices" stringID="MAP_SLICES" value="6"/>
+                <item ACCUMULATED="811" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+                <item ACCUMULATED="505" dataType="int" label="LUTs" stringID="MAP_LUTS" value="9"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2209,9 +2310,9 @@
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="el_z80">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="386" dataType="int" label="Slices" stringID="MAP_SLICES" value="0"/>
-                  <item ACCUMULATED="616" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
-                  <item ACCUMULATED="384" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                  <item ACCUMULATED="395" dataType="int" label="Slices" stringID="MAP_SLICES" value="0"/>
+                  <item ACCUMULATED="613" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+                  <item ACCUMULATED="409" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2222,9 +2323,9 @@
                   <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                   <node label="Module Name" stringID="MAP_MODULE" value="TheCPU">
                     <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                    <item ACCUMULATED="386" dataType="int" label="Slices" stringID="MAP_SLICES" value="48"/>
-                    <item ACCUMULATED="616" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="162"/>
-                    <item ACCUMULATED="384" dataType="int" label="LUTs" stringID="MAP_LUTS" value="83"/>
+                    <item ACCUMULATED="395" dataType="int" label="Slices" stringID="MAP_SLICES" value="53"/>
+                    <item ACCUMULATED="613" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="164"/>
+                    <item ACCUMULATED="409" dataType="int" label="LUTs" stringID="MAP_LUTS" value="90"/>
                     <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                     <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                     <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2235,9 +2336,9 @@
                     <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                     <node label="Module Name" stringID="MAP_MODULE" value="u0">
                       <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                      <item ACCUMULATED="338" dataType="int" label="Slices" stringID="MAP_SLICES" value="230"/>
-                      <item ACCUMULATED="454" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="326"/>
-                      <item ACCUMULATED="301" dataType="int" label="LUTs" stringID="MAP_LUTS" value="157"/>
+                      <item ACCUMULATED="342" dataType="int" label="Slices" stringID="MAP_SLICES" value="232"/>
+                      <item ACCUMULATED="449" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="321"/>
+                      <item ACCUMULATED="319" dataType="int" label="LUTs" stringID="MAP_LUTS" value="173"/>
                       <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                       <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                       <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2248,7 +2349,7 @@
                       <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
                       <node label="Module Name" stringID="MAP_MODULE" value="Regs">
                         <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                        <item ACCUMULATED="83" dataType="int" label="Slices" stringID="MAP_SLICES" value="83"/>
+                        <item ACCUMULATED="82" dataType="int" label="Slices" stringID="MAP_SLICES" value="82"/>
                         <item ACCUMULATED="128" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="128"/>
                         <item ACCUMULATED="96" dataType="int" label="LUTs" stringID="MAP_LUTS" value="96"/>
                         <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2276,9 +2377,9 @@
                       </node>
                       <node label="Module Name" stringID="MAP_MODULE" value="mcode">
                         <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                        <item ACCUMULATED="18" dataType="int" label="Slices" stringID="MAP_SLICES" value="18"/>
+                        <item ACCUMULATED="21" dataType="int" label="Slices" stringID="MAP_SLICES" value="21"/>
                         <item ACCUMULATED="0" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
-                        <item ACCUMULATED="30" dataType="int" label="LUTs" stringID="MAP_LUTS" value="30"/>
+                        <item ACCUMULATED="32" dataType="int" label="LUTs" stringID="MAP_LUTS" value="32"/>
                         <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                         <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                         <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2293,9 +2394,9 @@
                 </node>
                 <node label="Module Name" stringID="MAP_MODULE" value="la_dma">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="69" dataType="int" label="Slices" stringID="MAP_SLICES" value="69"/>
+                  <item ACCUMULATED="67" dataType="int" label="Slices" stringID="MAP_SLICES" value="67"/>
                   <item ACCUMULATED="198" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="198"/>
-                  <item ACCUMULATED="76" dataType="int" label="LUTs" stringID="MAP_LUTS" value="76"/>
+                  <item ACCUMULATED="87" dataType="int" label="LUTs" stringID="MAP_LUTS" value="87"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2324,7 +2425,7 @@
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
                 <item ACCUMULATED="14" dataType="int" label="Slices" stringID="MAP_SLICES" value="14"/>
                 <item ACCUMULATED="44" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="44"/>
-                <item ACCUMULATED="16" dataType="int" label="LUTs" stringID="MAP_LUTS" value="16"/>
+                <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2350,9 +2451,9 @@
               </node>
               <node label="Module Name" stringID="MAP_MODULE" value="la_ula">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="103" dataType="int" label="Slices" stringID="MAP_SLICES" value="69"/>
+                <item ACCUMULATED="102" dataType="int" label="Slices" stringID="MAP_SLICES" value="68"/>
                 <item ACCUMULATED="259" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="199"/>
-                <item ACCUMULATED="60" dataType="int" label="LUTs" stringID="MAP_LUTS" value="1"/>
+                <item ACCUMULATED="56" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="16" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="1" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="2" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="2"/>
@@ -2379,7 +2480,7 @@
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
                   <item ACCUMULATED="30" dataType="int" label="Slices" stringID="MAP_SLICES" value="30"/>
                   <item ACCUMULATED="60" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="60"/>
-                  <item ACCUMULATED="43" dataType="int" label="LUTs" stringID="MAP_LUTS" value="43"/>
+                  <item ACCUMULATED="40" dataType="int" label="LUTs" stringID="MAP_LUTS" value="40"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                   <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2408,7 +2509,7 @@
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
                 <item ACCUMULATED="2" dataType="int" label="Slices" stringID="MAP_SLICES" value="2"/>
                 <item ACCUMULATED="8" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="8"/>
-                <item ACCUMULATED="4" dataType="int" label="LUTs" stringID="MAP_LUTS" value="4"/>
+                <item ACCUMULATED="0" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2418,12 +2519,68 @@
                 <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
                 <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
               </node>
+              <node label="Module Name" stringID="MAP_MODULE" value="uart_esp8266">
+                <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                <item ACCUMULATED="34" dataType="int" label="Slices" stringID="MAP_SLICES" value="1"/>
+                <item ACCUMULATED="83" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="1"/>
+                <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                <node label="Module Name" stringID="MAP_MODULE" value="uartchip">
+                  <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                  <item ACCUMULATED="33" dataType="int" label="Slices" stringID="MAP_SLICES" value="0"/>
+                  <item ACCUMULATED="82" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
+                  <item ACCUMULATED="24" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                  <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                  <node label="Module Name" stringID="MAP_MODULE" value="receiver">
+                    <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                    <item ACCUMULATED="16" dataType="int" label="Slices" stringID="MAP_SLICES" value="16"/>
+                    <item ACCUMULATED="41" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="41"/>
+                    <item ACCUMULATED="17" dataType="int" label="LUTs" stringID="MAP_LUTS" value="17"/>
+                    <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                  </node>
+                  <node label="Module Name" stringID="MAP_MODULE" value="transmitter">
+                    <item label="Partition" stringID="MAP_PARTITION" value=""/>
+                    <item ACCUMULATED="17" dataType="int" label="Slices" stringID="MAP_SLICES" value="17"/>
+                    <item ACCUMULATED="41" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="41"/>
+                    <item ACCUMULATED="7" dataType="int" label="LUTs" stringID="MAP_LUTS" value="7"/>
+                    <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFG" stringID="MAP_BUFG" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFIO" stringID="MAP_BUFIO" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="BUFR" stringID="MAP_BUFR" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="DCM" stringID="MAP_DCM" value="0"/>
+                    <item ACCUMULATED="0" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
+                  </node>
+                </node>
+              </node>
             </node>
             <node label="Module Name" stringID="MAP_MODULE" value="relojes_maestros">
               <item label="Partition" stringID="MAP_PARTITION" value=""/>
-              <item ACCUMULATED="89" dataType="int" label="Slices" stringID="MAP_SLICES" value="3"/>
+              <item ACCUMULATED="90" dataType="int" label="Slices" stringID="MAP_SLICES" value="3"/>
               <item ACCUMULATED="89" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="11"/>
-              <item ACCUMULATED="155" dataType="int" label="LUTs" stringID="MAP_LUTS" value="0"/>
+              <item ACCUMULATED="163" dataType="int" label="LUTs" stringID="MAP_LUTS" value="8"/>
               <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
               <item ACCUMULATED="0" dataType="int" label="BRAM/FIFO" stringID="MAP_BRAM_FIFO" value="0"/>
               <item ACCUMULATED="0" dataType="int" label="DSP48A1" stringID="MAP_DSP48A1" value="0"/>
@@ -2434,7 +2591,7 @@
               <item ACCUMULATED="1" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="0"/>
               <node label="Module Name" stringID="MAP_MODULE" value="reconfiguracion_pll">
                 <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                <item ACCUMULATED="86" dataType="int" label="Slices" stringID="MAP_SLICES" value="37"/>
+                <item ACCUMULATED="87" dataType="int" label="Slices" stringID="MAP_SLICES" value="37"/>
                 <item ACCUMULATED="78" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="0"/>
                 <item ACCUMULATED="155" dataType="int" label="LUTs" stringID="MAP_LUTS" value="148"/>
                 <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2447,7 +2604,7 @@
                 <item ACCUMULATED="1" dataType="int" label="PLL_ADV" stringID="MAP_PLL_ADV" value="1"/>
                 <node label="Module Name" stringID="MAP_MODULE" value="PLL_DRP_inst">
                   <item label="Partition" stringID="MAP_PARTITION" value=""/>
-                  <item ACCUMULATED="49" dataType="int" label="Slices" stringID="MAP_SLICES" value="49"/>
+                  <item ACCUMULATED="50" dataType="int" label="Slices" stringID="MAP_SLICES" value="50"/>
                   <item ACCUMULATED="78" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="78"/>
                   <item ACCUMULATED="7" dataType="int" label="LUTs" stringID="MAP_LUTS" value="7"/>
                   <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2463,7 +2620,7 @@
             </node>
             <node label="Module Name" stringID="MAP_MODULE" value="salida_vga">
               <item label="Partition" stringID="MAP_PARTITION" value=""/>
-              <item ACCUMULATED="24" dataType="int" label="Slices" stringID="MAP_SLICES" value="24"/>
+              <item ACCUMULATED="25" dataType="int" label="Slices" stringID="MAP_SLICES" value="25"/>
               <item ACCUMULATED="52" dataType="int" label="Slice Reg" stringID="MAP_SLICE_REG" value="52"/>
               <item ACCUMULATED="30" dataType="int" label="LUTs" stringID="MAP_LUTS" value="30"/>
               <item ACCUMULATED="0" dataType="int" label="LUTRAM" stringID="MAP_LUTRAM" value="0"/>
@@ -2504,7 +2661,7 @@
       <item AVAILABLE="4" dataType="int" stringID="MAP_NUM_BUFPLL_MCB" value="0"/>
       <item AVAILABLE="16" dataType="int" stringID="MAP_NUM_DSP48A1" value="2"/>
       <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_GTPA1_DUAL" value="0"/>
-      <item AVAILABLE="1" dataType="int" stringID="MAP_NUM_ICAP" value="0"/>
+      <item AVAILABLE="1" dataType="int" stringID="MAP_NUM_ICAP" value="1"/>
       <item AVAILABLE="2" dataType="int" stringID="MAP_NUM_MCB" value="0"/>
       <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_PCIE_A1" value="0"/>
       <item AVAILABLE="2" dataType="int" stringID="MAP_NUM_PCILOGICSE" value="0"/>
