@@ -1,3 +1,8 @@
+#SmartROM
+
+A boot firmware replacement for ZX-Uno core running in FPGAs without a flash RAM
+
+
 SmartROM for ZX-Uno
 ===================
 
